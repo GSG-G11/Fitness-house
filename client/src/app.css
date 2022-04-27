@@ -1,0 +1,54 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-moz-selection {
+  color: var(--selection-color);
+  background: var(--selection-bg-color);
+}
+
+::selection {
+  color: var(--selection-color);
+  background: var(--selection-bg-color);
+}
+
+select,
+button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+  }
+  
+  ul,
+  li,
+  ol {
+    list-style: none;
+    text-decoration: none;
+  }
+
+  .continer{
+width: 70%;
+margin: 2rem auto;
+display: flex;
+justify-content: center;
+align-items: center;
+height: auto;
+height: auto;
+flex-direction: column;
+
+  }
