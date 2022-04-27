@@ -1,4 +1,4 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import compression from 'compression';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -7,7 +7,7 @@ import { notFundError, serverError } from './error';
 
 require('env2')('.env');
 
-const app: Application = express();
+const app = express();
 const { NODE_ENV } = process.env;
 
 app.use(compression());
