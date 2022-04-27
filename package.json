@@ -4,7 +4,7 @@
   "description": "a website that give the user the ability to search about Gyms suits him",
   "main": "index.js",
   "scripts": {
-    "test": "echo no tests",
+    "test": "jest",
     "lint-fix": "npm run lint-server",
     "prepare": "is-ci || npx husky install",
     "dev": "cross-env NODE_ENV=dev nodemon server/index.ts",
