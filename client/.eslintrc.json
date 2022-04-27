@@ -18,8 +18,7 @@
         "react"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/no-unstable-nested-components": ["off", { "allowAsProps": true }]
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
     "root": true
 }
