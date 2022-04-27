@@ -1,15 +1,13 @@
 {
-    "root": true,
     "env": {
         "browser": true,
         "es2021": true,
         "node": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -18,22 +16,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react",
-        "@typescript-eslint"
+        "react"
     ],
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
-            }
-        }
-    },
     "rules": {
-        "import/extensions": [1, "ignorePackages", { "ts": "never", "tsx": "never" } ],
-         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
-         "@typescript-eslint/no-unused-vars": [
-            "error"
-          ],
-          "linebreak-style": 0
     }
 }
