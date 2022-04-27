@@ -1,21 +1,7 @@
 import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './app.css';
-
-/**
- * Test Component For testing Routes { OuterComponent }
- */
-function OuterComponent() {
-  return (
-    <div className="continer">
-      <h1>Welcome To</h1>
-      <h3>
-        <Outlet />
-      </h3>
-      <h1>Outer Component</h1>
-    </div>
-  );
-}
+import { Dashboard, Home } from './layouts';
 
 /**
  * Test Component For testing Routes { InnerComponent }
@@ -43,7 +29,7 @@ function App() {
   return (
     <Routes>
       {/* Routes For Site Views {login, gym filter,...} */}
-      <Route path="/" element={<OuterComponent />}>
+      <Route path="/" element={<Home />}>
         <Route index element={<InnerComponent />} />
         <Route path="login" element={<InnerComponent />} />
         <Route path="register" element={<InnerComponent />} />
@@ -53,7 +39,7 @@ function App() {
       </Route>
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
-      <Route path="dashboard" element={<OuterComponent />}>
+      <Route path="dashboard" element={<Dashboard />}>
         <Route index element={<InnerComponent />} />
         <Route path="gym" element={<InnerComponent />} />
 
