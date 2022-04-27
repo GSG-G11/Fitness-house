@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo no tests",
-    "lint-fix": "echo lint fix",
+    "lint-fix": "npm run lint-server",
     "prepare": "is-ci || npx husky install",
-    "dev": "cross-env NODE_ENV=dev nodemon server",
+    "dev": "cross-env NODE_ENV=dev nodemon server/index.ts",
     "dev:client": "cd client && npm start",
-    "start": "NODE_ENV=production npx tsc && node ./dist"
+    "start": "NODE_ENV=production npx tsc && node ./dist",
+    "lint-server": "eslint --fix --ext .js,.ts server/"
   },
   "repository": {
     "type": "git",
