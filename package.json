@@ -4,7 +4,8 @@
   "description": "a website that give the user the ability to search about Gyms suits him",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo no tests",
+    "lint-fix": "echo lint fix",
     "prepare": "npx husky install"
   },
   "repository": {
