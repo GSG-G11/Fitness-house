@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo no tests",
     "lint-fix": "echo lint fix",
-    "prepare": "npx husky install"
+    "prepare": "is-ci || npx husky install"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1"
+  },
+  "dependencies": {
+    "is-ci": "^3.0.1"
   }
 }
