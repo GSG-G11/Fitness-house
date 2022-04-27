@@ -1,0 +1,25 @@
+{
+  "name": "fitness-house",
+  "version": "1.0.0",
+  "description": "a website that give the user the ability to search about Gyms suits him",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npx husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G11/Fitness-house.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G11/Fitness-house/issues"
+  },
+  "homepage": "https://github.com/GSG-G11/Fitness-house#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1"
+  }
+}
