@@ -24,7 +24,8 @@
             "ts": "never",
             "json": "never"
             }
-        ]       
+        ],"linebreak-style": 0,
+        "no-console": "off"     
     },
     "settings": {
         "import/resolver": {
