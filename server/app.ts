@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 8080);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));

@@ -18,6 +18,7 @@ module.exports = {
         'test',
         'merge',
         'fs',
+        'db',
       ],
     ],
   },
