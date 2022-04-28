@@ -1,3 +1,6 @@
 import Gym from './gyms';
+import Image from './images';
 
-export default { Gym };
+Image.belongsTo(Gym);
+
+export { Gym, Image };
