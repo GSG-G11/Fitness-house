@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 function Notfound() {
   return (
-    <div>
+    <div className="container">
       <h1>404</h1>
     </div>
   );

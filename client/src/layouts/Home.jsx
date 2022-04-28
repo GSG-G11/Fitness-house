@@ -1,9 +1,9 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className="container">
+    <div>
       <p>navbar</p>
 
       <h2>Header</h2>

@@ -1,8 +1,18 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import './app.css';
-import { Dashboard, Home } from './layouts';
-import { LoginPage, RegisterPage, LoginGymPage, GymPage, NotfoundPage } from './pages';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "./app.css";
+import { Dashboard, Home } from "./Layouts";
+
+import {
+  LoginPage,
+  RegisterPage,
+  LoginGymPage,
+  GymPage,
+  RegisterGymPage,
+  SearchGymPage,
+  ProfileGymPage,
+  NotfoundPage,
+} from "./Pages";
 
 function App() {
   return (
@@ -13,6 +23,9 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="gym/login" element={<LoginGymPage />} />
+        <Route path="gym/register" element={<RegisterGymPage />} />
+        <Route path="gyms/search" element={<SearchGymPage />} />
+        <Route path="gyms/profile/:gymId" element={<ProfileGymPage />} />
 
         {/* .... other Routes ... */}
       </Route>

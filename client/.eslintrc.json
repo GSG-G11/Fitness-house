@@ -21,23 +21,7 @@
   "plugins": ["react", "prettier", "jsx-a11y"],
   "rules": {
     "no-console": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "lf",
-        "printWidth": 80,
-        "trailingComma": "all",
-        "semi": true,
-        "doubleQuote": true,
-        "jsxSingleQuote": false,
-        "singleQuote": true,
-        "useTabs": false,
-        "tabWidth": 2,
-        "bracketSpacing": true,
-        "bracketSameLine": true
-      }
-    ]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "root": true
 }

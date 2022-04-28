@@ -1,9 +1,9 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import { Outlet } from "react-router-dom";
 
 function Dashboard() {
   return (
-    <div className="container">
+    <div>
       <h1>Dashboard</h1>
       <p>navbar</p>
       <p>sidebar</p>

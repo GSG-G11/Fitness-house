@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 function Register() {
   return (
-    <div>
+    <div className="container">
       <h1>Register</h1>
     </div>
   );
