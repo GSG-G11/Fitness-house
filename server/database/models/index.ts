@@ -1,3 +1,3 @@
-import sequelize from '../config/connection';
+import Gym from './gyms';
 
-export default sequelize;
+export default { Gym };
