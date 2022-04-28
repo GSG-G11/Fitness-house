@@ -27,7 +27,7 @@ switch (NODE_ENV) {
 
 const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
-  dialectOptions: { sslConnection },
+  dialectOptions: { sslConnection, charset: 'utf8' },
   logging: false,
 });
 
