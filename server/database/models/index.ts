@@ -1,6 +1,6 @@
 import Gym from './gyms';
 import Image from './images';
-import User from './user';
+import User from './users';
 
 Gym.hasMany(Image, {
   foreignKey: 'gymId',

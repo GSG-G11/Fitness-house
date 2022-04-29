@@ -2,9 +2,8 @@ import { Sequelize } from 'sequelize';
 
 require('env2')('.env');
 
-const {
-  NODE_ENV, DB_URL, TEST_DB_URL, DATABASE_URL,
-} = process.env;
+const { NODE_ENV, DB_URL, TEST_DB_URL, DATABASE_URL } = process.env;
+
 let dbUrl: string = '';
 let sslConnection: boolean | object = false;
 
@@ -30,7 +29,5 @@ const sequelize = new Sequelize(dbUrl, {
   dialectOptions: { sslConnection, charset: 'utf8' },
   logging: false,
 });
-
-sequelize.sync();
 
 export default sequelize;
