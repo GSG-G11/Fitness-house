@@ -1,32 +1,32 @@
 {
   "gyms": [
     {
-      "gym_name": "Technogym gaza",
+      "gym_name": "نادي فريندز للياقة البدنية",
+      "logo": "https://bit.ly/3yij5Wb",
+      "email": "friends.fit@gmail.com",
+      "password": "$2a$10$/TGZhKJ7JhwzvOwpef1.qO7HSWDG2xawPOsVxH0FkExGx.jSyL5ui",
+      "phone": "08-284-4888",
+      "city": "غزة",
+      "description": ".نادي رياضي يحتوي على ملعب وميدان تنافسي وملعب رياضي, أوقات الدوام من 8-11 صباحا ومن 13-17 مساء",
+      "type_gender": "mail",
+      "monthly_price": 49.99,
+      "six_month_price": 249.99,
+      "fulltime": true,
+      "features": ["ميدان تنافسي", "ملعب رياضي"]
+    },
+    {
+      "gym_name": "Technogym gaza تكنو جيم",
       "logo": "https://bit.ly/3vrJEGt",
       "email": "techno.gym@gmail.com",
       "password": "$2a$10$M5M6rtZaXLe3vGtQZle0pOAZ5XlKWwf4BPHVURoligvhb0atbpE0i",
       "phone": "08-262-1439",
-      "city": "Gaza",
-      "description": "A gym that contains a gymnasium for bodybuilding, in addition to a swimming pool. Working hours are from 8-12 am and 12-16 pm",
+      "city": "غزة",
+      "description": "نادي رياضي يحتوي على ملعب صالة لكمال الاجسام ,بالضافة بها مسبح . أوقات الدوام من 8-12 صباحا ومن 12-16 مساء",
       "type_gender": "mail",
       "monthly_price": 69.99,
       "six_month_price": 389.99,
       "fulltime": true,
-      "features": ["Sport club", "bodybuilding gym", "swimming pool"]
-    },
-    {
-      "gym_name": "Technogym 2 gaza",
-      "logo": "https://bit.ly/3vrJEGt",
-      "email": "techno.gym.2@gmail.com",
-      "password": "$2a$10$M5M6rtZaXLe3vGtQZle0pOAZ5XlKWwf4BPHVURoligvhb0atbpE0i",
-      "phone": "082621431",
-      "city": "Gaza",
-      "description": "A gym that contains a gymnasium for bodybuilding, in addition to a swimming pool. Working hours are from 8-12 am and 12-16 pm",
-      "type_gender": "female",
-      "monthly_price": 49.99,
-      "six_month_price": 229.99,
-      "fulltime": true,
-      "features": ["Sport club", "bodybuilding gym", "swimming pool"]
+      "features": ["مسبح", "ميدان تنافسي", "ملعب رياضي"]
     }
   ]
 }

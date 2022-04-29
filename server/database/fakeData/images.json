@@ -1,0 +1,39 @@
+{
+  "images": [
+    {
+      "pathUrl": "https://bit.ly/39s08Wv",
+      "publicKey": "gyms/2wd3wad893adw69da318aw",
+      "gymId": 1
+    },
+    {
+      "pathUrl": "https://bit.ly/3kpe2e9",
+      "publicKey": "gyms/2wd3wad893adw129da318aw",
+      "gymId": 1
+    },
+    {
+      "pathUrl": "https://bit.ly/3LxTj3Y",
+      "publicKey": "gyms/2wd3wad893adw129d15318aw",
+      "gymId": 1
+    },
+    {
+      "pathUrl": "https://bit.ly/3y0jWdK",
+      "publicKey": "gyms/2wd3wad893adw1291215318aw",
+      "gymId": 2
+    },
+    {
+      "pathUrl": "https://bit.ly/3y3O34c",
+      "publicKey": "gyms/2wd3wad893adw1295215318aw",
+      "gymId": 2
+    },
+    {
+      "pathUrl": "https://bit.ly/3vSy8Tp",
+      "publicKey": "gyms/2wd3wad823adw1291215318aw",
+      "gymId": 2
+    },
+    {
+      "pathUrl": "https://bit.ly/3vrJEGt",
+      "publicKey": "gyms/2wd3wad5293adw1291215318aw",
+      "gymId": 2
+    }
+  ]
+}
