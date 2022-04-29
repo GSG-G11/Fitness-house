@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/connection';
 
-const Reviews = sequelize.define('Reviews', {
+const Reviews = sequelize.define('reviews', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
