@@ -1,3 +1,3 @@
-import sequelize from '../config/connection';
+import User from './user';
 
-export default sequelize;
+export default User;
