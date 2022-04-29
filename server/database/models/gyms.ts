@@ -7,7 +7,7 @@ const Gym = sequelize.define('gyms', {
     autoIncrement: true,
     primaryKey: true,
   },
-  username: {
+  gymname: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -45,7 +45,7 @@ const Gym = sequelize.define('gyms', {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  sexMonthPrice: {
+  sixMonthPrice: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
@@ -55,7 +55,7 @@ const Gym = sequelize.define('gyms', {
     defaultValue: false,
   },
   features: {
-    type: DataTypes.JSONB,
+    type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false,
   },
 });
