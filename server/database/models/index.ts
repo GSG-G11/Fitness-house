@@ -1,3 +1,14 @@
+import Gym from './gyms';
+import Image from './images';
 import User from './user';
 
-export default User;
+Gym.hasMany(Image, {
+  foreignKey: 'gymId',
+  as: 'images',
+});
+Image.belongsTo(Gym, {
+  foreignKey: 'gymId',
+  as: 'gym',
+});
+
+export { User, Gym, Image };
