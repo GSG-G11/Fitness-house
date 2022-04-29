@@ -1,6 +1,8 @@
 import Gym from './gyms';
 import Image from './images';
 import User from './users';
+import Subscription from './subscription';
+import Reviews from './reviews';
 
 Gym.hasMany(Image, {
   foreignKey: 'gymId',
@@ -11,4 +13,40 @@ Image.belongsTo(Gym, {
   as: 'gym',
 });
 
-export { User, Gym, Image };
+User.hasMany(Subscription, {
+  foreignKey: 'userId',
+  as: 'subscriptions',
+});
+Subscription.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'users',
+});
+
+Gym.hasMany(Subscription, {
+  foreignKey: 'gymId',
+  as: 'subscriptions',
+});
+Subscription.belongsTo(Gym, {
+  foreignKey: 'gymId',
+  as: 'gyms',
+});
+
+User.hasMany(Reviews, {
+  foreignKey: 'userId',
+  as: 'reviews',
+});
+Reviews.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'users',
+});
+
+Gym.hasMany(Reviews, {
+  foreignKey: 'gymId',
+  as: 'reviews',
+});
+Reviews.belongsTo(Gym, {
+  foreignKey: 'gymId',
+  as: 'gyms',
+});
+
+export { User, Gym, Image, Subscription, Reviews };
