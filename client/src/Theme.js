@@ -34,6 +34,6 @@ function Theme({ children }) {
   );
 }
 Theme.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 export default Theme;
