@@ -1,0 +1,22 @@
+{
+  "subscription": [
+    {
+      "userId": 1,
+      "gymId": 2,
+      "type": "month",
+      "status": true
+    },
+    {
+      "userId": 2,
+      "gymId": 2,
+      "type": "sixMonth",
+      "status": true
+    },
+    {
+      "userId": 3,
+      "gymId": 1,
+      "type": "sixMonth",
+      "status": true
+    }
+  ]
+}
