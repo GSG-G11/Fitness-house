@@ -7,10 +7,6 @@ const Subscription = sequelize.define('Subscription', {
     autoIncrement: true,
     primaryKey: true,
   },
-  created_at: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
   type: {
     type: DataTypes.STRING,
     allowNull: false,
