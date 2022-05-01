@@ -30,4 +30,6 @@ const sequelize = new Sequelize(dbUrl, {
   logging: false,
 });
 
+sequelize.sync();
+
 export default sequelize;
