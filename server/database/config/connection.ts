@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 
 require('env2')('.env');
 
-const { NODE_ENV, DB_URL, TEST_DB_URL, DATABASE_URL } = process.env;
+const { NODE_ENV, DB_URL, TEST_DB_URL, DATABASE_URL, DB_BUILD } = process.env;
 
 let dbUrl: string = '';
 let sslConnection: boolean | object = false;
@@ -30,6 +30,9 @@ const sequelize = new Sequelize(dbUrl, {
   logging: false,
 });
 
-sequelize.sync();
+if (!DB_BUILD) {
+  // sync sequelize when DB_BUILD equals false
+  sequelize.sync();
+}
 
 export default sequelize;
