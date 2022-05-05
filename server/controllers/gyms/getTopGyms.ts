@@ -7,40 +7,35 @@ import Gym from '../../database/models/gyms';
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
     const gyms: any = await Gym.findAll({
-      attributes: ['id', 'gym_name', 'logo', 'city', 'description', 'features'],
+      subQuery: false,
+      attributes: [
+        'id',
+        'gym_name',
+        'logo',
+        'city',
+        'description',
+        'features',
+        [
+          Sequelize.literal(`(
+        SELECT AVG(review.rate)
+          FROM reviews AS review
+          WHERE
+              review.gym_id = gyms.id
+            )`),
+          'avg_rate',
+        ],
+      ],
       include: [
         { model: Image, required: false, attributes: ['id', 'pathUrl'], limit: 1 },
         {
           model: Review,
           required: false,
-          attributes: {
-            exclude: [
-              'id',
-              'rate',
-              'description',
-              'userId',
-              'gym_id',
-              'gymId',
-              'createdAt',
-              'updatedAt',
-            ],
-
-            include: [
-              [
-                Sequelize.literal(`(
-                  SELECT AVG(review.rate)
-                    FROM reviews AS review
-                    WHERE
-                        review.gym_id = gyms.id
-                )`),
-                'avg_rate',
-              ],
-            ],
-          },
+          attributes: [],
         },
       ],
       limit: 3,
-      group: ['id'],
+      group: ['gyms.id'],
+      order: [Sequelize.literal('avg_rate')],
     });
 
     const newUsers = gyms
@@ -51,16 +46,14 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
         city: gym.getDataValue('city'),
         description: gym.getDataValue('description'),
         features: gym.getDataValue('features'),
-        reviews: gym.getDataValue('reviews')[0]
-          ? gym.getDataValue('reviews')[0].getDataValue('avg_rate')
-          : null,
+        reviews: gym.getDataValue('avg_rate') ? +gym.getDataValue('avg_rate') : null,
         image: gym.getDataValue('images')[0]
           ? gym.getDataValue('images')[0].getDataValue('pathUrl')
           : null,
       }))
       .sort((a: { reviews: number }, b: { reviews: number }) => b.reviews - a.reviews);
 
-    res.json({ status: 200, gyms: newUsers });
+    res.json({ status: 200, newUsers });
   } catch (error) {
     next(error);
   }
