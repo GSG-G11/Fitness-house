@@ -7,7 +7,7 @@ const Gym = sequelize.define('gyms', {
     autoIncrement: true,
     primaryKey: true,
   },
-  gymName: {
+  gym_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -36,16 +36,16 @@ const Gym = sequelize.define('gyms', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  typeGender: {
+  type_gender: {
     type: DataTypes.ENUM,
     values: ['mail', 'female', 'mixed'],
     allowNull: false,
   },
-  monthlyPrice: {
+  monthly_price: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  sixMonthPrice: {
+  six_month_price: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },

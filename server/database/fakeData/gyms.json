@@ -1,0 +1,74 @@
+{
+  "gyms": [
+    {
+      "gym_name": "نادي فريندز للياقة البدنية",
+      "logo": "https://bit.ly/3yij5Wb",
+      "email": "friends.fit@gmail.com",
+      "password": "$2a$10$/TGZhKJ7JhwzvOwpef1.qO7HSWDG2xawPOsVxH0FkExGx.jSyL5ui",
+      "phone": "082844888",
+      "city": "غزة",
+      "description": ".نادي رياضي يحتوي على ملعب وميدان تنافسي وملعب رياضي, أوقات الدوام من 8-11 صباحا ومن 13-17 مساء",
+      "type_gender": "mail",
+      "monthly_price": 49.99,
+      "six_month_price": 249.99,
+      "fulltime": true,
+      "features": ["ميدان تنافسي", "ملعب رياضي"]
+    },
+    {
+      "gym_name": "Technogym gaza تكنو جيم",
+      "logo": "https://bit.ly/3vrJEGt",
+      "email": "techno.gym@gmail.com",
+      "password": "$2a$10$M5M6rtZaXLe3vGtQZle0pOAZ5XlKWwf4BPHVURoligvhb0atbpE0i",
+      "phone": "082621439",
+      "city": "غزة",
+      "description": "نادي رياضي يحتوي على ملعب صالة لكمال الاجسام ,بالضافة بها مسبح . أوقات الدوام من 8-12 صباحا ومن 12-16 مساء",
+      "type_gender": "mail",
+      "monthly_price": 69.99,
+      "six_month_price": 389.99,
+      "fulltime": true,
+      "features": ["مسبح", "ميدان تنافسي", "ملعب رياضي"]
+    },
+    {
+      "gym_name": "اوكسجن جيم",
+      "logo": "https://bit.ly/3knj5Mc",
+      "email": "oxegin.gym@gmail.com",
+      "password": "$2a$10$0NDLEQykfJfjqUSc7yhdlemaQ6dZrwekpRjku5X2VZeyCPI881aa2",
+      "phone": "0594421009",
+      "city": "رفح",
+      "description": "(رجال) الأجهزة الأحدث المساحة الأوسع بإختصار (بيت الرياضة) . أوقات الدوام من 8-2 صباحا (نساء) | ومن 3-10 مساء",
+      "type_gender": "mixed",
+      "monthly_price": 49.55,
+      "six_month_price": 229.99,
+      "fulltime": true,
+      "features": ["مدرب خاص", "أحدث الاجهزة", "مساحة واسعة"]
+    },
+    {
+      "gym_name": "مركز الملكة الأنيقة للسيدات",
+      "logo": "https://bit.ly/3OJEc9n",
+      "email": "malka.gym@gmail.com",
+      "password": "$2a$10$w4m7v4QugmcsbIZNa3qD3.KfnKVXLtXidN/tIf/JLadSBFU7s9/7C",
+      "phone": "0594423259",
+      "city": "غزة",
+      "description": "مركز نسائى �� قسم رياضة وتخسيس ولياقة ورياضة وتجميل وبشرة وصبايا . زورونا تجدوا ما يسركم . أوقات الدوام من 8-2 صباحا",
+      "type_gender": "female",
+      "monthly_price": 39.55,
+      "six_month_price": 179.99,
+      "fulltime": true,
+      "features": ["مدربة خاصة", "أحدث الاجهزة", "مساحة واسعة", "تخسيس", "تجميل"]
+    },
+    {
+      "gym_name": "Jalaa Gym -جيم نادي الجلاء",
+      "logo": "https://bit.ly/38DyB44",
+      "email": "jalaa.gym@gmail.com",
+      "password": "$2a$10$wj3py6isXvTffXDxDGlJ3.XOvHcJpYeR7OlQYw3f2UY0CmesL02AK",
+      "phone": "0597246156",
+      "city": "غزة",
+      "description": "جيم رياضي كامل متكامل لبناء الاجسام ولياقة وتخفيف الاوزان للسيدات والشباب..ويشمل نادي صحي ساونا وجاكوزي وبخار تنظيف بشرة ومساج وعلاج طبيعي. الجيم الاقوي رياضيا يهتم بالمشتركين من كلا الفئتين. حيث هناك مدربين ذوي كفاءة وخبرة ",
+      "type_gender": "mixed",
+      "monthly_price": 99.55,
+      "six_month_price": 599.99,
+      "fulltime": true,
+      "features": ["تنظيف بشرة", "أحدث الاجهزة", "مساحة واسعة", "ومساج", "علاج طبيعي"]
+    }
+  ]
+}

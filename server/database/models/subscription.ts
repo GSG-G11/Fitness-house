@@ -8,9 +8,9 @@ const Subscription = sequelize.define('subscriptions', {
     primaryKey: true,
   },
   type: {
-    type: DataTypes.STRING,
+    type: DataTypes.ENUM,
     allowNull: false,
-    values: ['one', 'six'],
+    values: ['month', 'sixMonth'],
   },
   status: {
     type: DataTypes.BOOLEAN,

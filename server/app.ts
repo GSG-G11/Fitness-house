@@ -20,7 +20,7 @@ app.set('port', process.env.PORT || 8080);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
-  app.get('*', (req:Request, res:Response) => {
+  app.get('*', (req: Request, res: Response) => {
     res.sendFile(join(__dirname, '..', 'client', 'build', 'index.html'));
   });
 }

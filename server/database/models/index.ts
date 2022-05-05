@@ -1,54 +1,27 @@
 import Gym from './gyms';
 import Image from './images';
-import User from './user';
+import User from './users';
 import Subscription from './subscription';
-import Reviews from './reviews';
+import Review from './reviews';
 
-Gym.hasMany(Image, {
-  foreignKey: 'gymId',
-  as: 'images',
-});
-Image.belongsTo(Gym, {
-  foreignKey: 'gymId',
-  as: 'gym',
-});
+// Gyms has many images and images belong to gyms
+Gym.hasMany(Image);
+Image.belongsTo(Gym);
 
-User.hasMany(Subscription, {
-  foreignKey: 'userId',
-  as: 'subscriptions',
-});
-Subscription.belongsTo(User, {
-  foreignKey: 'userId',
-  as: 'users',
-});
+// Users has many Subscriptions and Subscriptions belong to users
+User.hasMany(Subscription);
+Subscription.belongsTo(User);
 
-Gym.hasMany(Subscription, {
-  foreignKey: 'gymId',
-  as: 'subscriptions',
-});
-Subscription.belongsTo(Gym, {
-  foreignKey: 'gymId',
-  as: 'gyms',
-});
+// Gyms has many Subscriptions and Subscriptions belong to gyms
+Gym.hasMany(Subscription);
+Subscription.belongsTo(Gym);
 
-User.hasMany(Reviews, {
-  foreignKey: 'userId',
-  as: 'reviews',
-});
-Reviews.belongsTo(User, {
-  foreignKey: 'userId',
-  as: 'users',
-});
+// User has many Reviews and Reviews belong to gyms
+User.hasMany(Review);
+Review.belongsTo(User);
 
-Gym.hasMany(Reviews, {
-  foreignKey: 'gymId',
-  as: 'reviews',
-});
-Reviews.belongsTo(Gym, {
-  foreignKey: 'gymId',
-  as: 'gyms',
-});
+// Gym has many Reviews and Reviews belong to gyms
+Gym.hasMany(Review);
+Review.belongsTo(Gym);
 
-export {
-  User, Gym, Image, Subscription, Reviews,
-};
+export { User, Gym, Image, Subscription, Review };
