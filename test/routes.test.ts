@@ -9,6 +9,7 @@ describe('Gyms API', () => {
   test('Gyms - GET - /api/v1/gyms/top - ', async () => {
     const response = await request(app).get('/api/v1/gyms/top').expect(200);
     expect(response.body.status).toBe(200);
+    expect(response.body.gyms.length).toBe(3);
   });
 });
 
