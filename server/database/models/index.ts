@@ -25,8 +25,6 @@ Gym.hasMany(Review, {
   foreignKey: 'gym_id',
   onDelete: 'CASCADE',
 });
-Review.belongsTo(Gym, {
-  // foreignKey: 'gym_id',
-});
+Review.belongsTo(Gym);
 
 export { User, Gym, Image, Subscription, Review };

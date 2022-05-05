@@ -6,8 +6,6 @@ import Gym from '../../database/models/gyms';
 
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
-    // id ,gym_name,logo,city,description,features
-
     const gyms: any = await Gym.findAll({
       attributes: ['id', 'gym_name', 'logo', 'city', 'description', 'features'],
       include: [
@@ -29,7 +27,6 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
 
             include: [
               [
-                // Note the wrapping parentheses in the call below!
                 Sequelize.literal(`(
                   SELECT AVG(review.rate)
                     FROM reviews AS review
