@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "../Components/Footer";
 import Join from "../Components/Joinus";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
 
       <Outlet />
       <Join />
-      <footer>footer</footer>
+      <Footer />
     </div>
   );
 }
