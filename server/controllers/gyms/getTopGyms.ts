@@ -49,7 +49,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
     const newUsers = gyms
       .map((gym: { getDataValue: (arg0: string) => any }) => ({
         id: gym.getDataValue('id'),
-        gym_name: gym.getDataValue('gym_name'),
+        gymName: gym.getDataValue('gym_name'),
         logo: gym.getDataValue('logo'),
         city: gym.getDataValue('city'),
         description: gym.getDataValue('description'),
@@ -57,7 +57,9 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
         reviews: gym.getDataValue('reviews')[0]
           ? gym.getDataValue('reviews')[0].getDataValue('avg_rate')
           : null,
-        images: gym.getDataValue('images')[0].pathUrl,
+        image: gym.getDataValue('images')[0]
+          ? gym.getDataValue('images')[0].getDataValue('pathUrl')
+          : null,
       }))
       .sort((a: { reviews: number }, b: { reviews: number }) => b.reviews - a.reviews);
 
