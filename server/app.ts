@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import morgan from 'morgan';
 import compression from 'compression';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -19,6 +20,7 @@ app.use([
   cookieParser(),
   express.json(),
   express.urlencoded({ extended: false }),
+  morgan('tiny'),
 ]);
 
 app.set('port', process.env.PORT || 8080);

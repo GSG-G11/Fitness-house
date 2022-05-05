@@ -21,7 +21,12 @@ User.hasMany(Review);
 Review.belongsTo(User);
 
 // Gym has many Reviews and Reviews belong to gyms
-Gym.hasMany(Review);
-Review.belongsTo(Gym);
+Gym.hasMany(Review, {
+  foreignKey: 'gym_id',
+  onDelete: 'CASCADE',
+});
+Review.belongsTo(Gym, {
+  // foreignKey: 'gym_id',
+});
 
 export { User, Gym, Image, Subscription, Review };
