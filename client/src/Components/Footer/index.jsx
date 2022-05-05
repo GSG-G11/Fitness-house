@@ -12,7 +12,7 @@ import "./style.css";
 
 function Footer() {
   return (
-    <div className="main-container-footer">
+    <div className="container-full-width">
       <div className="footer-container">
         <div className="name-container">
           <span className="name__title">فت هاوس</span>
