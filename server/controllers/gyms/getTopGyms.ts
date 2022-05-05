@@ -6,7 +6,7 @@ import Gym from '../../database/models/gyms';
 
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
-    const gyms: any = await Gym.findAll({
+    let gyms: any = await Gym.findAll({
       subQuery: false,
       attributes: [
         'id',
@@ -38,7 +38,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       order: [Sequelize.literal('avg_rate')],
     });
 
-    const newUsers = gyms
+    gyms = gyms
       .map((gym: { getDataValue: (arg0: string) => any }) => ({
         id: gym.getDataValue('id'),
         gymName: gym.getDataValue('gym_name'),
@@ -53,7 +53,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       }))
       .sort((a: { reviews: number }, b: { reviews: number }) => b.reviews - a.reviews);
 
-    res.json({ status: 200, newUsers });
+    res.json({ status: 200, gyms });
   } catch (error) {
     next(error);
   }
