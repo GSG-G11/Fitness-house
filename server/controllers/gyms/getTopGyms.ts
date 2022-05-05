@@ -42,12 +42,8 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
           },
         },
       ],
-      limit: 4,
+      limit: 3,
       group: ['id'],
-      // order: [
-      //   // if needed
-      //   [Sequelize.literal('avg_rate'), 'DESC'],
-      // ],
     });
 
     const newUsers = gyms
