@@ -26,7 +26,7 @@ if (NODE_ENV === 'dev') {
   app.use(morgan('dev'));
 }
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8000);
 
 app.use('/api/v1/', routes);
 
