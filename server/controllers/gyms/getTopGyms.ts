@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { NextFunction, Response, Request } from 'express';
-import Sequelize, { Op } from 'sequelize';
-import { Image, Review } from '../../database/models';
-import Gym from '../../database/models/gyms';
+import Sequelize from 'sequelize';
+import { Gym, Image, Review } from '../../database/models';
 
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
-    let gyms: any = await Gym.findAll({
+    const gyms = await Gym.findAll({
       subQuery: false,
       attributes: [
         'id',
@@ -38,7 +37,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       order: [Sequelize.literal('avg_rate')],
     });
 
-    gyms = gyms
+    const topReviewGyms = gyms
       .map((gym: { getDataValue: (arg0: string) => any }) => ({
         id: gym.getDataValue('id'),
         gymName: gym.getDataValue('gym_name'),
@@ -51,9 +50,9 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
           ? gym.getDataValue('images')[0].getDataValue('pathUrl')
           : null,
       }))
-      .sort((a: { reviews: number }, b: { reviews: number }) => b.reviews - a.reviews);
+      .sort((a, b) => b.reviews! - a.reviews!);
 
-    res.json({ status: 200, gyms });
+    res.json({ status: 200, topReviewGyms });
   } catch (error) {
     next(error);
   }
