@@ -5,27 +5,31 @@ import { Gym, Image, Review } from '../../database/models';
 
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
-    const gyms = await Gym.findAll({
+    let topReviewGyms = await Gym.findAll({
       subQuery: false,
       attributes: [
         'id',
-        'gym_name',
+        ['gym_name', 'gymName'],
         'logo',
         'city',
         'description',
         'features',
         [
           Sequelize.literal(`(
-        SELECT AVG(review.rate)
-          FROM reviews AS review
-          WHERE
-              review.gym_id = gyms.id
+            SELECT 
+              CASE WHEN AVG(review.rate) IS NULL
+                    THEN 0 
+                    ELSE AVG(review.rate)
+              END
+            FROM reviews AS review     
+            WHERE
+              review.gym_id =  gyms.id
             )`),
           'avg_rate',
         ],
       ],
       include: [
-        { model: Image, required: false, attributes: ['id', 'pathUrl'], limit: 1 },
+        { model: Image, required: false, attributes: ['pathUrl'], limit: 1 },
         {
           model: Review,
           required: false,
@@ -34,26 +38,22 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       ],
       limit: 3,
       group: ['gyms.id'],
-      order: [Sequelize.literal('avg_rate')],
+      order: [[Sequelize.literal('avg_rate'), 'DESC']],
     });
 
-    const topReviewGyms = gyms
-      .map((gym: { getDataValue: (arg0: string) => any }) => ({
-        id: gym.getDataValue('id'),
-        gymName: gym.getDataValue('gym_name'),
-        logo: gym.getDataValue('logo'),
-        city: gym.getDataValue('city'),
-        description: gym.getDataValue('description'),
-        features: gym.getDataValue('features'),
-        reviews: gym.getDataValue('avg_rate') ? +gym.getDataValue('avg_rate') : null,
-        image: gym.getDataValue('images')[0]
+    topReviewGyms = topReviewGyms.map(
+      (gym: { [x: string]: any; getDataValue: (arg0: string) => any }) => ({
+        ...gym.get({ plain: true }),
+        images: gym.getDataValue('images')[0]
           ? gym.getDataValue('images')[0].getDataValue('pathUrl')
           : null,
-      }))
-      .sort((a, b) => b.reviews! - a.reviews!);
+      }),
+    );
 
-    res.json({ status: 200, topReviewGyms });
+    res.json({ topReviewGyms });
   } catch (error) {
+    console.log(error);
+
     next(error);
   }
 }
