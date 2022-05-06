@@ -20,8 +20,11 @@ app.use([
   cookieParser(),
   express.json(),
   express.urlencoded({ extended: false }),
-  morgan('tiny'),
 ]);
+
+if (NODE_ENV === 'dev') {
+  app.use(morgan('dev'));
+}
 
 app.set('port', process.env.PORT || 8080);
 
