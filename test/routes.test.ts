@@ -3,7 +3,7 @@ import app from '../server/app';
 import buildDB from '../server/database/fakeData/index';
 import connection from '../server/database/config/connection';
 
-// beforeAll(() => buildDB());
+beforeAll(() => buildDB());
 
 describe('Gyms API', () => {
   test('Gyms - GET - /api/v1/gyms/top - ', async () => {
@@ -13,6 +13,6 @@ describe('Gyms API', () => {
   });
 });
 
-// afterAll(() => {
-//   connection.close();
-// });
+afterAll(() => {
+  connection.close();
+});
