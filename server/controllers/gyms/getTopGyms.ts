@@ -23,9 +23,9 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
               END
             FROM reviews AS review     
             WHERE
-              review.gym_id =  gyms.id
+             "review"."gymId" =  gyms.id
             )`),
-          'avg_rate',
+          'review',
         ],
       ],
       include: [
@@ -38,7 +38,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       ],
       limit: 3,
       group: ['gyms.id'],
-      order: [[Sequelize.literal('avg_rate'), 'DESC']],
+      order: [[Sequelize.literal('review'), 'DESC']],
     });
 
     topReviewGyms = topReviewGyms.map(
@@ -52,8 +52,6 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
 
     res.json({ topReviewGyms });
   } catch (error) {
-    console.log(error);
-
     next(error);
   }
 }
