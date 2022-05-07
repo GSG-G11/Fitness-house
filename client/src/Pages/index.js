@@ -6,6 +6,7 @@ import NotfoundPage from "./NotFound";
 import RegisterGymPage from "./RegisterGym";
 import SearchGymPage from "./SearchGym";
 import ProfileGymPage from "./ProfileGym";
+import HomePage from "./HomePage";
 
 export {
   LoginPage,
@@ -16,4 +17,5 @@ export {
   RegisterGymPage,
   SearchGymPage,
   ProfileGymPage,
+  HomePage,
 };

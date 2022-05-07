@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./app.css";
-import { Dashboard, Home } from "./Layouts";
+import { Dashboard, Home } from "./layouts";
 
 import {
   LoginPage,
@@ -12,6 +12,7 @@ import {
   SearchGymPage,
   ProfileGymPage,
   NotfoundPage,
+  HomePage,
 } from "./Pages";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <Routes>
       {/* Routes For Site Views {login, gym filter,...} */}
       <Route path="/" element={<Home />}>
-        <Route index element={<LoginPage />} />
+        <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="gym/login" element={<LoginGymPage />} />
@@ -29,6 +30,7 @@ function App() {
 
         {/* .... other Routes ... */}
       </Route>
+      {/* Routes For Gym Views {login, gym filter,...} */}
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route path="dashboard" element={<Dashboard />}>
