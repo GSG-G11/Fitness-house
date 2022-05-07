@@ -5,7 +5,7 @@ import { Gym, Image, Review } from '../../database/models';
 
 export default async function getAllGyms(req: Request, res: Response, next: NextFunction) {
   try {
-    let topReviewGyms = await Gym.findAll({
+    const topReviewGyms = await Gym.findAll({
       subQuery: false,
       attributes: [
         'id',
@@ -40,15 +40,6 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       group: ['gyms.id'],
       order: [[Sequelize.literal('review'), 'DESC']],
     });
-
-    topReviewGyms = topReviewGyms.map(
-      (gym: { [x: string]: any; getDataValue: (arg0: string) => any }) => ({
-        ...gym.get({ plain: true }),
-        images: gym.getDataValue('images')[0]
-          ? gym.getDataValue('images')[0].getDataValue('pathUrl')
-          : null,
-      }),
-    );
 
     res.json({ topReviewGyms });
   } catch (error) {

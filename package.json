@@ -41,7 +41,6 @@
     "eslint-plugin-import": "^2.26.0",
     "ts-jest": "^28.0.1",
     "jest": "^28.0.2",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.3"
   },

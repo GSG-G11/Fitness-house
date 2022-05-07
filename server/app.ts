@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import morgan from 'morgan';
 import compression from 'compression';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
@@ -21,10 +20,6 @@ app.use([
   express.json(),
   express.urlencoded({ extended: false }),
 ]);
-
-if (NODE_ENV === 'dev') {
-  app.use(morgan('dev'));
-}
 
 app.set('port', process.env.PORT || 8000);
 
