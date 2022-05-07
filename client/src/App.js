@@ -30,6 +30,7 @@ function App() {
 
         {/* .... other Routes ... */}
       </Route>
+      {/* Routes For Gym Views {login, gym filter,...} */}
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route path="dashboard" element={<Dashboard />}>
