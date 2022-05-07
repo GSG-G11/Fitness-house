@@ -12,6 +12,7 @@ import {
   SearchGymPage,
   ProfileGymPage,
   NotfoundPage,
+  HomePage,
 } from "./Pages";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     <Routes>
       {/* Routes For Site Views {login, gym filter,...} */}
       <Route path="/" element={<Home />}>
-        <Route index element={<LoginPage />} />
+        <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="gym/login" element={<LoginGymPage />} />
