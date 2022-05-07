@@ -4,19 +4,26 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
 import { notFundError, serverError } from './error';
+import routes from './routes';
 
 require('env2')('.env');
 
 const app = express();
 const { NODE_ENV } = process.env;
 
-app.use(compression());
-app.use(cors());
-app.use(cookieParser());
+app.disable('x-powered-by');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.set('port', process.env.PORT || 8080);
+app.use([
+  compression(),
+  cors(),
+  cookieParser(),
+  express.json(),
+  express.urlencoded({ extended: false }),
+]);
+
+app.set('port', process.env.PORT || 8000);
+
+app.use('/api/v1/', routes);
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));

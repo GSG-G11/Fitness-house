@@ -32,3 +32,5 @@ const builderHandler = async () => {
 if (process.env.NODE_ENV !== 'test') {
   builderHandler();
 }
+
+export default builderHandler;
