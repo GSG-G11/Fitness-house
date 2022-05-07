@@ -14,8 +14,7 @@ body {
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; 
-
+  overflow-x: hidden;
 }
 
 ::-moz-selection {
@@ -45,11 +44,8 @@ ol {
 .container {
   margin-left: 50px;
   margin-right: 50px;
-  margin: 2rem ;
-
+  margin: 2rem;
   justify-content: center;
   align-items: center;
   height: auto;
-
- 
 }

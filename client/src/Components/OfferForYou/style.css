@@ -1,0 +1,9 @@
+.container__OfferForYou {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  padding: 0 30px;
+  flex-direction: row;
+  font-family: 'cairo';
+  justify-content: space-between;
+}
