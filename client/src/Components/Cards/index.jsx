@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import GymCard from "../Card";
 import "./style.css";
-import { Link } from "react-router-dom";
 
 function GymCards() {
   const [gyms] = useState([
@@ -45,9 +45,9 @@ function GymCards() {
   return (
     <div className="container-full-width">
       <div className="container">
-        <div className='top-container'>
+        <div className="top-container">
           <h1>أفضل النوادي</h1>
-          <Link to={`gyms/search`}>
+          <Link to="gyms/search">
             <h3>تصنيف</h3>
           </Link>
         </div>

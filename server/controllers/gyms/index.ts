@@ -1,3 +1,4 @@
-import getAllGyms from './getTopGyms';
+import getTopGyms from './getTopGyms';
+import searchGymByName from './SerachGymByName';
 
-export default getAllGyms;
+export { getTopGyms, searchGymByName };

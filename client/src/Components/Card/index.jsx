@@ -13,7 +13,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import PropTypes from "prop-types";
 import { keyframes } from "@mui/material";
 import { Link } from "react-router-dom";
-import './style.css'
+import "./style.css";
 
 const scaleUpCenter = keyframes`
 0%{transform:scale(.5)}
@@ -24,7 +24,7 @@ function GymCard({ gym }) {
   const { id, features, logo, gymName, description, city, image, progress } =
     gym;
   return (
-    <div className='gymCard'>
+    <div className="gymCard">
       <Card
         sx={{
           maxWidth: 370,
@@ -74,7 +74,12 @@ function GymCard({ gym }) {
           </Box>
         </Box>
 
-        <CardMedia component="img" height="194" image={image} alt="Paella dish" />
+        <CardMedia
+          component="img"
+          height="194"
+          image={image}
+          alt="Paella dish"
+        />
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {description}
@@ -97,7 +102,6 @@ function GymCard({ gym }) {
           </Link>
         </Box>
       </Card>
-
     </div>
   );
 }

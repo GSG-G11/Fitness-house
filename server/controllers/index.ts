@@ -1,3 +1,3 @@
-import getAllGyms from './gyms';
+import { getTopGyms, searchGymByName } from './gyms';
 
-export default getAllGyms;
+export { getTopGyms, searchGymByName };
