@@ -1,3 +1,4 @@
 import getAllGyms from './gyms';
+import getGym from './gym';
 
-export default getAllGyms;
+export { getAllGyms, getGym };
