@@ -7,22 +7,22 @@ import CustomError from '../../utils';
 export default async function searchGymByName(req: Request, res: Response, next: NextFunction) {
   try {
     const gyms = await Gym.findAll({
+      attributes: { exclude: ['password', 'monthly_price', 'type_gender', 'fulltime', 'six_month_price', 'updatedAt', 'createdAt'] },
       where: {
         gym_name: {
-          [Sequelize.Op.like]: `%${req.query.q}%`,
+          [Sequelize.Op.iLike]: `%${req.query.q}%`,
         },
       },
       include: [
         {
           model: Image,
-        },
-        {
-          model: Review,
+          limit: 1,
+          attributes: { exclude: ['createdAt', 'updatedAt', 'gymId', 'publicKey', 'id'] },
         },
       ],
     });
     if (gyms.length === 0) {
-      throw new CustomError('No gyms found', 404);
+      throw new CustomError('No gyms found', 200);
     }
     res.status(200).json(gyms);
   } catch (error) {
