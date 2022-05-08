@@ -11,8 +11,8 @@ export default function HomePage() {
     <>
       <Slider />
       <GymCards />
-      <OfferForYou />
       <Join />
+      <OfferForYou />
     </>
   );
 }

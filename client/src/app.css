@@ -13,13 +13,15 @@
 
 html {
   scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
 }
 
 body {
   font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 ::-moz-selection {
@@ -55,10 +57,27 @@ a:focus {
 }
 
 .container {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin: 2rem;
+  margin: 2rem 0;
+  padding-left: 50px;
+  padding-right: 50px;
   justify-content: center;
   align-items: center;
   height: auto;
+  background: transparent;
+}
+
+.sub__container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.bg__container {
+  background: #f3f5f8;
+}
+
+@media screen and (max-width: 700px) {
+  .sub__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

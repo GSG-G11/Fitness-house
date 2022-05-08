@@ -3,8 +3,8 @@ import "./style.css";
 
 function Join() {
   return (
-    <div className="cont">
-      <div className="container">
+    <div className="bg__container container">
+      <div className="sub__container">
         <div className="row">
           <div className="join">
             <h1>كيف يمكنك الإنضمام لناديك المفضل ؟</h1>

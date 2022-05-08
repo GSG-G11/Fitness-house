@@ -7,8 +7,8 @@ import "./style.css";
 
 export default function OfferForYou() {
   return (
-    <Box className="container__OfferForYou">
-      <Box className="container">
+    <Box className="container">
+      <Box className="sub__container">
         <Grid container>
           <Grid className="order_offer_1" item xs={12} lg={4}>
             <Grid container spacing={2}>
@@ -68,6 +68,7 @@ export default function OfferForYou() {
                 variant="h4"
                 component="h2"
                 gutterBottom
+                noWrap
               >
                 ماذا نقدم لك في تمرين
               </Typography>
