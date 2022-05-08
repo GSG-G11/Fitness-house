@@ -1,0 +1,7 @@
+.gymCard{
+    border-radius: 50px;
+}
+
+.gymCard:hover{
+    transform:scale(1.05)
+}

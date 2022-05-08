@@ -1,0 +1,39 @@
+.container__OfferForYou {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  padding: 0 30px;
+  flex-direction: row;
+  font-family: 'cairo';
+  justify-content: space-between;
+}
+
+.order_offer_2 {
+  padding: 0 30px 15px 0;
+}
+
+@media screen and (max-width: 700px) {
+  .container__OfferForYou {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    padding: 0 15px;
+    flex-direction: row;
+    font-family: 'cairo';
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .order_offer_1 {
+    order: 2;
+  }
+  .order_offer_2 {
+    order: 1;
+    padding: 0 0 15px 0 !important;
+  }
+  .muirtl-f31bm {
+    order: 1;
+    padding: 0 0 15px 0 !important;
+  }
+}
