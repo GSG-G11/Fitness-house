@@ -42,6 +42,10 @@ ol {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 .container {
   margin-left: 50px;
   margin-right: 50px;
