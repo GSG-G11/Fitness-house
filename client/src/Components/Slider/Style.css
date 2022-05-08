@@ -1,0 +1,23 @@
+.Slider__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50px;
+   
+  }
+  .slider_row{
+    display: flex;
+    flex-direction: column;
+justify-content: space-around;
+    align-items: center;
+
+
+  }
+  /* @media (max-width: 700px) {
+    .slider_row {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+  } */
+  
