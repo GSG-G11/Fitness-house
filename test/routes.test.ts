@@ -22,12 +22,7 @@ describe("Gyms API", () => {
       .expect(200);
     expect(response.body.length).toEqual(1);
   });
-  test("Gyms - GET - /api/v1/gyms/search - First Item ", async () => {
-    const response = await request(app)
-      .get("/api/v1/gyms/search?q=Technogym")
-      .expect(200);
-    expect(response.body[0].id).toEqual(2);
-  });
+
 });
 
 afterAll(() => {
