@@ -1,5 +1,5 @@
 import { NextFunction, Response, Request } from 'express';
-import { Gym, Image } from '../../database/models';
+import { Gym, Image, Review, User } from '../../database/models';
 
 export default async function getGym(req: Request, res: Response, next: NextFunction) {
   try {
@@ -16,6 +16,12 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
       ],
       include: [
         { model: Image, required: false, attributes: ['pathUrl'] },
+        {
+          model: Review,
+          required: false,
+          attributes: ['rate', 'description', 'createdAt', 'userId'],
+          include: [{ model: User, required: false, attributes: ['username', 'avatar'] }],
+        },
       ],
       where: {
         id,
