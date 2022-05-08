@@ -1,14 +1,22 @@
 import React from "react";
+import GymCards from "../Components/Cards";
 import Join from "../Components/Joinus";
+
 import Slider from "../Components/Slider";
 
-function HomePage() {
+import OfferForYou from "../Components/OfferForYou";
+
+
+export default function HomePage() {
   return (
-    <div>
+
+
+    <>
       <Slider />
-      <Join />{" "}
-    </div>
+      <GymCards />
+      <OfferForYou />
+      <Join />
+    </>
+
   );
 }
-
-export default HomePage;
