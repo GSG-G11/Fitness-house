@@ -53,5 +53,5 @@ jobs:
         # Environment variables used by the `client.js` script to create a new PostgreSQL table.
         env:
           # The hostname used to communicate with the PostgreSQL service container
-          TEST_DB_URL: postgres://fitadmin:fitpassword@postgress:5432/fithouse
+          TEST_DB_URL: postgres://fitadmin:fitpassword@postgres:5432/fithouse
            
