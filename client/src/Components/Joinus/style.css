@@ -6,7 +6,6 @@
   flex-direction: column;
   margin-top: 50px;
   margin-bottom: 50px;
-
   background: #f3f5f8;
 }
 .join {
@@ -84,7 +83,7 @@
   font-family: "Cairo", sans-serif;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .join-steps {
     flex-direction: column;
   }
