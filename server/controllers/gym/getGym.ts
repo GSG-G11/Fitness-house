@@ -8,7 +8,7 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
       subQuery: false,
       attributes: [
         'id',
-        ['gym_name', 'gymName'],
+        'gymName',
         'logo',
         'city',
         'description',
