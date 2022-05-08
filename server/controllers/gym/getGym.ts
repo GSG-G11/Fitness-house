@@ -1,10 +1,11 @@
 import { NextFunction, Response, Request } from 'express';
 import { Gym, Image, Review, User } from '../../database/models';
+import paramsValidation from '../../utils/validation';
 
 export default async function getGym(req: Request, res: Response, next: NextFunction) {
   try {
-    const { id } = req.params;
-    const GymData = await Gym.findAll({
+    const { id } = await paramsValidation.validateAsync(req.params);
+    const GymData = await Gym.findByPk(id, {
       subQuery: false,
       attributes: [
         'id',
@@ -23,9 +24,6 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
           include: [{ model: User, required: false, attributes: ['username', 'avatar'] }],
         },
       ],
-      where: {
-        id,
-      },
     });
     res.json({ GymData });
   } catch (error) {
