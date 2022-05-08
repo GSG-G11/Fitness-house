@@ -11,11 +11,27 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import PropTypes from "prop-types";
+import { keyframes } from "@mui/material";
+import { Link } from "react-router-dom";
+
+const scaleUpCenter = keyframes`
+0%{transform:scale(.5)}
+100%{transform:scale(1)}
+`;
 
 function GymCard({ gym }) {
-  const { features, logo, gymName, description, city, image, progress } = gym;
+  const { id, features, logo, gymName, description, city, image, progress } =
+    gym;
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: 370,
+        padding: 1.6,
+        margin: 1,
+        boxShadow: 4,
+        animation: `${scaleUpCenter} .4s cubic-bezier(.39,.575,.565,1.000) forwards`,
+      }}
+    >
       <Box sx={{ p: 2, display: "flex" }}>
         <Avatar alt="card" src={logo} />
         <Stack spacing={0.5}>
@@ -26,7 +42,7 @@ function GymCard({ gym }) {
         </Stack>
         <Box
           sx={{
-            marginLeft: "8rem",
+            marginLeft: 18,
             position: "relative",
             display: "inline-flex",
           }}
@@ -38,6 +54,7 @@ function GymCard({ gym }) {
               left: 0,
               bottom: 0,
               right: 0,
+              height: 40,
               position: "absolute",
               display: "flex",
               alignItems: "center",
@@ -73,7 +90,9 @@ function GymCard({ gym }) {
         </Stack>
       </Box>
       <Box sx={{ mt: 3, ml: 1, mb: 1 }}>
-        <Button variant="contained">احجز موعد</Button>
+        <Link to={`/gyms/profile/:${id}`}>
+          <Button variant="contained">احجز موعد</Button>
+        </Link>
       </Box>
     </Card>
   );

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import GymCard from "../Card";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function GymCards() {
   const [gyms] = useState([
     {
+      id: 1,
       gymName: "اوكسجن جيم",
       logo: "https://bit.ly/3knj5Mc",
       city: "رفح",
@@ -16,6 +18,7 @@ function GymCards() {
       progress: 75,
     },
     {
+      id: 2,
       gymName: "اوكسجن جيم",
       logo: "https://bit.ly/3knj5Mc",
       city: "رفح",
@@ -27,6 +30,7 @@ function GymCards() {
       progress: 80,
     },
     {
+      id: 3,
       gymName: "اوكسجن جيم",
       logo: "https://bit.ly/3knj5Mc",
       city: "رفح",
@@ -39,12 +43,19 @@ function GymCards() {
     },
   ]);
   return (
-    <div>
-      <h1>أفضل النوادي</h1>
-      <div className="gyms">
-        {gyms.map((gym) => (
-          <GymCard key={gym.id} gym={gym} />
-        ))}
+    <div className="container-full-width">
+      <div className="container">
+        <div className='top-container'>
+          <h1>أفضل النوادي</h1>
+          <Link to={`gyms/search`}>
+            <h3>تصنيف</h3>
+          </Link>
+        </div>
+        <div className="gyms">
+          {gyms.map((gym) => (
+            <GymCard key={gym.id} gym={gym} />
+          ))}
+        </div>
       </div>
     </div>
   );

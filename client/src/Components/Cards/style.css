@@ -1,4 +1,27 @@
+.container-full-width {
+    background: #F3F5F8; 
+    position: relative;
+    padding: 1rem 0;
+  }
+
 .gyms{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+
+.container h1{
+    margin: 1%
+}
+
+.top-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+}
+
+a {
+    color: #333;
+    font-weight: bold;
+    margin: 1%;
 }
