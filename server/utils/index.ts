@@ -1,3 +1,3 @@
 import CustomError from './CustomError';
 
-export default { CustomError };
+export default CustomError;
