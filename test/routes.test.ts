@@ -10,6 +10,26 @@ describe('Gyms API', () => {
     const response = await request(app).get('/api/v1/gyms/top').expect(200);
     expect(response.body.topReviewGyms.length).toBe(3);
   });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/1').expect(200);
+    expect(response.body.Gymdata.length).toBe(1);
+  });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/2').expect(200);
+    expect(response.body.Gymdata.length).toBe(1);
+  });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/3').expect(200);
+    expect(response.body.Gymdata.length).toBe(1);
+  });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/4').expect(200);
+    expect(response.body.Gymdata.length).toBe(1);
+  });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/5').expect(200);
+    expect(response.body.Gymdata.length).toBe(1);
+  });
 });
 
 afterAll(() => {
