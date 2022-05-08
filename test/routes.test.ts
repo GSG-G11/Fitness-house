@@ -13,7 +13,7 @@ describe("Gyms API", () => {
   test("Gyms - GET - /api/v1/gyms/search - failed ", async () => {
     const response = await request(app)
       .get("/api/v1/gyms/search?q=gazaa")
-      .expect(404);
+      .expect(200);
     expect(response.body.message).toBe("No gyms found");
   });
   test("Gyms - GET - /api/v1/gyms/search - success ", async () => {
