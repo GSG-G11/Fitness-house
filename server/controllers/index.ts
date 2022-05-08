@@ -1,4 +1,4 @@
-import getAllGyms from './gyms';
+import getTopGyms from './gyms';
 import getGym from './gym';
 
-export { getAllGyms, getGym };
+export { getTopGyms, getGym };
