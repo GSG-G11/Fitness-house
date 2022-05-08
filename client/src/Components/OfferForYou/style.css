@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.order_offer_2 {
+  padding: 0 30px 15px 0;
+}
+
 @media screen and (max-width: 700px) {
   .container__OfferForYou {
     display: flex;
@@ -26,6 +30,10 @@
   }
   .order_offer_2 {
     order: 1;
-    padding: 0 0 15px 0;
+    padding: 0 0 15px 0 !important;
+  }
+  .muirtl-f31bm {
+    order: 1;
+    padding: 0 0 15px 0 !important;
   }
 }

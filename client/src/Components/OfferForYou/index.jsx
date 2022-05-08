@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Card, CardMedia, Grid, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -64,7 +65,7 @@ export default function OfferForYou() {
                   fontWeight: "bold",
                   color: "#276678",
                 }}
-                variant="h3"
+                variant="h4"
                 component="h2"
                 gutterBottom
               >
@@ -76,7 +77,8 @@ export default function OfferForYou() {
                   component="p"
                   color="textSecondary"
                   sx={{
-                    fontSize: "1.2rem",
+                    fontSize: "16px",
+                    color: "#666666",
                   }}
                 >
                   هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم
@@ -86,9 +88,11 @@ export default function OfferForYou() {
                 </Typography>
               </Box>
               <Box textAlign="left">
-                <Button color="primary" endIcon={<ArrowBackIcon />}>
-                  تعرف على أجمل نوادي
-                </Button>
+                <Link to="/gyms">
+                  <Button color="primary" endIcon={<ArrowBackIcon />}>
+                    تعرف على أجمل نوادي
+                  </Button>
+                </Link>
               </Box>
             </Box>
           </Grid>
