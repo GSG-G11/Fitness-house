@@ -1,14 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <p>navbar</p>
 
       <Outlet />
-
-      <footer>footer</footer>
-    </div>
+      <Footer />
+    </>
   );
 }

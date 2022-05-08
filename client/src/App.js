@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./app.css";
-import { Dashboard, Home } from "./Layouts";
+import { Dashboard, Home } from "./layouts";
 
 import {
   LoginPage,
@@ -30,6 +30,7 @@ function App() {
 
         {/* .... other Routes ... */}
       </Route>
+      {/* Routes For Gym Views {login, gym filter,...} */}
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route path="dashboard" element={<Dashboard />}>

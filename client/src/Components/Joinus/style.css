@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@650&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400&display=swap");
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  background: #f3f5f8;
+}
+.join {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+.row {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  padding: 30px;
+
+  flex-direction: column;
+  font-family: "cairo";
+
+  justify-content: space-between;
+}
+
+.join h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #276678;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  font-family: "Cairo";
+}
+.join p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #666666;
+  margin-top: 10px;
+  font-weight: 400;
+  font-family: "Cairo", sans-serif;
+ margin-bottom: 20px;
+  
+}
+
+.join-steps {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.join-steps-item-img-2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.join-steps-item h2 {
+  font-size: 24px;
+  color: #276678;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  font-family: "Cairo";
+}
+.join-steps-item p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #666666;
+  font-weight: 400;
+  width: 200px;
+  height: 100px;
+
+  margin-top: 10px;
+  font-family: "Cairo", sans-serif;
+}
+
+@media (max-width: 700px) {
+  .join-steps {
+    flex-direction: column;
+  }
+  .join-steps-item {
+    margin-top: 20px;
+  }
+  .join p{
+    width: 100%;
+  }
+}
