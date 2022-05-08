@@ -30,6 +30,14 @@ describe('Gyms API', () => {
     const response = await request(app).get('/api/v1/gyms/5').expect(200);
     expect(response.body.Gymdata.length).toBe(1);
   });
+
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/50').expect(200);
+    expect(response.body.Gymdata.length).toBe(0);
+  });
+  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
+    const response = await request(app).get('/api/v1/gyms/gggggggg').expect(500);
+  });
 });
 
 afterAll(() => {
