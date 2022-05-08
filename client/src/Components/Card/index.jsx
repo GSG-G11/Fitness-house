@@ -87,10 +87,16 @@ function GymCard({ gym }) {
         <CardMedia
           component="img"
           height="194"
+<<<<<<< HEAD
           image={pathUrl}
           alt="Paella dish"
         />
 
+=======
+          image={image}
+          alt="Paella dish"
+        />
+>>>>>>> dd4b5bec55482171de01a6e3db1feee5a0eb3c8d
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {description}
