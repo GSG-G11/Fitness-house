@@ -34,6 +34,26 @@ body {
   background: var(--selection-bg-color);
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #276678;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b4a57;
+}
+
 select,
 button {
   border: none;
@@ -57,9 +77,7 @@ a:focus {
 }
 
 .container {
-  margin: 2rem 0;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 2.125rem 3.125rem;
   justify-content: center;
   align-items: center;
   height: auto;
@@ -72,12 +90,19 @@ a:focus {
 }
 
 .bg__container {
-  background: #f3f5f8;
+  background: #f3f5f8 !important;
 }
 
 @media screen and (max-width: 700px) {
   .sub__container {
     padding-left: 0;
     padding-right: 0;
+  }
+  .container {
+    padding: 2.125rem 1.5625rem;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background: transparent;
   }
 }

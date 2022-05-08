@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
 }
 .name__title {
   color: #276678;
@@ -49,7 +48,6 @@
 
 .copy-right-container {
   width: 100%;
-  background-color: white;
   display: flex;
 }
 .copy-right {
@@ -57,7 +55,6 @@
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  background-color: white;
   padding: 10px 0;
 }
 
@@ -95,6 +92,7 @@
 }
 .footer_sec_2 {
   margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 900px) {

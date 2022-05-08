@@ -37,10 +37,11 @@
 
 .join-steps {
   display: flex;
-  flex-direction: row;
+  gap: 3rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .join-steps-item-img-2 {
@@ -81,4 +82,10 @@
   .join p {
     width: 100%;
   }
+
+  .join h1 {
+    font-size: 25px;
+  }
 }
+
+

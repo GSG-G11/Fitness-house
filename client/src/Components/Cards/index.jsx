@@ -1,9 +1,11 @@
+/* eslint-disable  */
 import React from "react";
 import { Link } from "react-router-dom";
 
 // Component and Customs Hooks:
 import useTopGyms from "../../Hooks/useTopGyms";
 import GymCard from "../Card";
+import LoadingCard from "./LoadingCard";
 
 // Styled Components
 import "./style.css";
@@ -13,7 +15,10 @@ function GymCards() {
 
   const renderGyms = () => {
     if (!errors && isLoading) {
-      return <div>Loading...</div>;
+      const loadingCards = new Array(3).fill(null);
+      return loadingCards.map((_, index) => (
+        <LoadingCard key={index} id={index+1} />
+      ));
     }
     if (!isLoading && errors) {
       return <div>Error...</div>;
@@ -25,7 +30,7 @@ function GymCards() {
   };
 
   return (
-    <div className="container">
+    <div className="bg__container container">
       <div className="sub__container">
         <div className="top-container">
           <h1 className="title_top__rating">أفضل النوادي</h1>

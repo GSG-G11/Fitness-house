@@ -13,7 +13,7 @@ import "./style.css";
 function Footer() {
   return (
     <footer>
-      <div className="bg__container footer_sec_1 container">
+      <div className="footer_sec_1 container">
         <div className="sub__container">
           <div className="footer-container">
             <div className="name-container">
@@ -60,8 +60,8 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer_sec_2 container">
-        <div className="sub__container">
+      <div className="bg__container footer_sec_2 container">
+        <div className="bg__container sub__container">
           <div className="copy-right">
             <span> فت هاوس &copy; 2022 </span>
             <div className="social-media">

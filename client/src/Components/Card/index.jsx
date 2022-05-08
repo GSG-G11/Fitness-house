@@ -1,17 +1,20 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
-import CircularProgress from "@mui/material/CircularProgress";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Avatar,
+  Box,
+  Chip,
+  Button,
+  Stack,
+  Divider,
+  Typography,
+  CircularProgress,
+  keyframes,
+} from "@mui/material";
+
 import PropTypes from "prop-types";
-import { keyframes } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -31,11 +34,11 @@ function GymCard({ gym }) {
     <div className="gymCard" id={`gymCard-${id}`}>
       <Card
         sx={{
-          boxShadow: 4,
+          boxShadow: 3,
           height: "100%",
           display: "flex",
           flexDirection: "column",
-
+          borderRadius: "10px",
           animation: `${scaleUpCenter} .4s cubic-bezier(.39,.575,.565,1.000) forwards`,
         }}
       >
@@ -87,16 +90,10 @@ function GymCard({ gym }) {
         <CardMedia
           component="img"
           height="194"
-<<<<<<< HEAD
           image={pathUrl}
           alt="Paella dish"
         />
 
-=======
-          image={image}
-          alt="Paella dish"
-        />
->>>>>>> dd4b5bec55482171de01a6e3db1feee5a0eb3c8d
         <CardContent>
           <Typography variant="body2" color="text.secondary">
             {description}

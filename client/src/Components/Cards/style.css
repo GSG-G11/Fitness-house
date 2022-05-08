@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .top__rating__gyms {
@@ -19,7 +19,6 @@
   color: #276678;
   margin: 0;
   padding: 0;
-  margin-bottom: 1.25rem;
   font-family: 'Cairo';
 }
 
@@ -28,14 +27,26 @@ a {
   font-weight: normal;
 }
 
-@media screen and (max-width: 1168px) {
-  #gymCard-3 {
-    display: none;
-  }
+@media screen and (max-width: 700px) {
 }
 
 @media screen and (max-width: 900px) {
   #gymCard-3 {
     display: flex;
+  }
+  #load-gymCard-3 {
+    display: flex;
+  }
+  .top-container .title_top__rating {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1168px) {
+  #gymCard-3 {
+    display: none;
+  }
+  #load-gymCard-3 {
+    display: none;
   }
 }
