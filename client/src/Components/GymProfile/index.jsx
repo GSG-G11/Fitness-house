@@ -10,34 +10,31 @@ import {
   CircularProgress,
   Button,
 } from "@mui/material";
-
+import PropTypes from "prop-types";
 import "./style.css";
 import { Link } from "react-router-dom";
 
-function GymProfile() {
+function GymProfile({ gymData }) {
+  const { logo, images, gymName, city, description, features, progress } =
+    gymData;
+
   return (
     <div className="gymprofilecard">
       <div className="rightside">
-        <img
-          src="https://user-images.githubusercontent.com/38624002/167269431-5f4e1fb8-66ea-499b-ae66-aa2d54c9d1ac.jpg"
-          alt="gym"
-        />
+        <img src={images[0].pathUrl} alt="gym" />
       </div>
       <Divider variant="middle" />
 
       <div className="leftside">
         <Box sx={{ p: 2, display: "flex", justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", gap: "0.5rem" }}>
-            <Avatar
-              alt="card"
-              src="https://user-images.githubusercontent.com/38624002/165934807-05e62410-e543-450d-bbff-bb07be858585.png"
-            />
+            <Avatar alt="card" src={logo} />
             <Stack spacing={0.5}>
               <Typography className="gymCard__name" fontWeight={700} noWrap>
-                Technogym Gaza تكنو جيم
+                {gymName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Rafah
+                {city}
               </Typography>
             </Stack>
           </Box>
@@ -49,7 +46,7 @@ function GymProfile() {
               display: "inline-flex",
             }}
           >
-            <CircularProgress variant="determinate" value="80" />
+            <CircularProgress variant="determinate" value={progress} />
             <Box
               sx={{
                 top: 0,
@@ -68,7 +65,7 @@ function GymProfile() {
                 component="div"
                 color="text.secondary"
               >
-                80%
+                {progress}%
               </Typography>
             </Box>
           </Box>
@@ -76,8 +73,7 @@ function GymProfile() {
 
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            نادي رياضي يحتوي على ملعب صالة لكمال الاجسام ,بالضافة بها مسبح .
-            أوقات الدوام من 8-12 صباحا ومن 12-16 مساء
+            {description}
           </Typography>
         </CardContent>
         <Divider variant="middle" />
@@ -85,11 +81,11 @@ function GymProfile() {
           <Typography gutterBottom variant="body1">
             المزايا
           </Typography>
-          <Box sx={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-            <Chip variant="outlined" label="مسبح" />
-            <Chip variant="outlined" label="ميدان تنافسي" />
-            <Chip variant="outlined" label="ملعب رياضي" />
-          </Box>
+          <Stack direction="row" spacing={1}>
+            {features.map((feature) => (
+              <Chip key={feature} variant="outlined" label={feature} />
+            ))}
+          </Stack>
         </Box>
         <Box sx={{ mt: "auto", ml: 2, mb: 2 }}>
           <Link to="/gyms/profile/2">
@@ -100,5 +96,7 @@ function GymProfile() {
     </div>
   );
 }
-
+GymProfile.propTypes = {
+  gymData: PropTypes.instanceOf(Object).isRequired,
+};
 export default GymProfile;
