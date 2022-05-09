@@ -4,35 +4,34 @@ import SimpleImageSlider from "react-simple-image-slider";
 
 const images = [
   {
-    url: "https://user-images.githubusercontent.com/44284483/167286873-7942763b-92e0-4361-b7db-1092848a10fb.png",
+    url: "https://bit.ly/3skUbkM",
   },
   {
-    url: "https://user-images.githubusercontent.com/44284483/167286883-7c9be2bc-723b-4506-9596-aea595bf2971.png",
+    url: "https://bit.ly/3siJZsQ",
   },
   {
-    url: "https://user-images.githubusercontent.com/44284483/167286886-ee544c89-7e6b-4e1c-aada-48d6dab6dbb3.png",
+    url: "https://bit.ly/3KVru4l",
+  },
+  {
+    url: "https://bit.ly/3vUpdCn",
   },
 ];
 
-const style = window.innerWidth - 85;
-
 function Slider() {
   return (
-    <div className="Slider__container">
-      <div className="container">
-        <div className="slider_row">
-          <SimpleImageSlider
-            width={style}
-            loop
-            autoPlay
-            autoPlayDelay={5.0}
-            height={504}
-            images={images}
-            showBullets
-            showNavs
-          />
-        </div>
-      </div>
+    <div className="container__slider">
+      <SimpleImageSlider
+        className="slider"
+        width="100%"
+        loop
+        autoPlay
+        autoPlayDelay={5.0}
+        height={504}
+        images={images}
+        showBullets
+        showNavs
+      />
+      <div className="background" />
     </div>
   );
 }

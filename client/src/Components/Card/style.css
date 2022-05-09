@@ -1,7 +1,24 @@
-.gymCard{
-    border-radius: 50px;
+.gymCard {
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
-.gymCard:hover{
-    transform:scale(1.05)
+.gymCard:hover {
+  transform: scale(1.02);
+}
+
+.gymCard__name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  max-width: 85%;
+}
+
+@media screen and (min-width: 1200px) {
+  .gymCard__name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    max-width: 100%;
+  }
 }

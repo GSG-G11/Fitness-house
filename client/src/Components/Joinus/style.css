@@ -1,18 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@650&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400&display=swap");
-
-.cont {
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  background: #f3f5f8;
-}
 .join {
   text-align: center;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 20px;
 }
 .row {
@@ -22,7 +11,7 @@
   padding: 30px;
 
   flex-direction: column;
-  font-family: "cairo";
+  font-family: 'cairo';
 
   justify-content: space-between;
 }
@@ -34,7 +23,7 @@
   margin: 0;
   padding: 0;
   margin-bottom: 5px;
-  font-family: "Cairo";
+  font-family: 'Cairo';
 }
 .join p {
   font-size: 16px;
@@ -42,17 +31,17 @@
   color: #666666;
   margin-top: 10px;
   font-weight: 400;
-  font-family: "Cairo", sans-serif;
- margin-bottom: 20px;
-  
+  font-family: 'Cairo', sans-serif;
+  margin-bottom: 20px;
 }
 
 .join-steps {
   display: flex;
-  flex-direction: row;
+  gap: 3rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .join-steps-item-img-2 {
@@ -69,7 +58,7 @@
   margin: 0;
   padding: 0;
   margin-bottom: 5px;
-  font-family: "Cairo";
+  font-family: 'Cairo';
 }
 .join-steps-item p {
   font-size: 16px;
@@ -80,7 +69,7 @@
   height: 100px;
 
   margin-top: 10px;
-  font-family: "Cairo", sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 @media (max-width: 900px) {
@@ -90,7 +79,13 @@
   .join-steps-item {
     margin-top: 20px;
   }
-  .join p{
+  .join p {
     width: 100%;
   }
+
+  .join h1 {
+    font-size: 25px;
+  }
 }
+
+
