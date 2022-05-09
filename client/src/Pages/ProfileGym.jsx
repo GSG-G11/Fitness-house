@@ -59,8 +59,8 @@ const gymData = {
 export default function ProfileGym() {
   return (
     <div className="container">
-      <GymReviews />
       <GymProfile gymData={gymData} />
+      <GymReviews />
     </div>
   );
 }
