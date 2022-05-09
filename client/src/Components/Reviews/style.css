@@ -1,0 +1,8 @@
+.review{
+    display: flex;
+    flex-direction: column;
+    padding-left: 100px;
+    padding-right: 100px;
+    align-items: top;
+    justify-content: center;
+}
