@@ -9,7 +9,7 @@ export default async function getAllGyms(req: Request, res: Response, next: Next
       subQuery: false,
       attributes: [
         'id',
-        ['gym_name', 'gymName'],
+        'gymName',
         'logo',
         'city',
         'description',
