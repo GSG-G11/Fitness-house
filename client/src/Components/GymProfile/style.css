@@ -5,6 +5,7 @@
   padding-right: 100px;
   align-items: top;
   justify-content: center;
+
 }
 .leftside{
     width: 50%;
@@ -19,4 +20,60 @@
     height: 400px;
     border-radius: 10px;
     object-fit: cover;
+}
+
+
+
+@media (max-width: 700px) {
+    .gymprofilecard {
+      flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .gymCard__name{
+        font-size: 50px;
+    }
+    .description{
+        width: 400px;
+    }
+    .topsec{
+        width: 400px;
+    }
+    .leftside{
+        width: 100%;
+        justify-content: center;
+    }
+    .rightside img{
+        width: 100%;
+    
+
+    }
+    
+}
+@media (max-width: 400px) {
+    .gymprofilecard {
+      flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .gymCard__name{
+        font-size: 50px;
+    }
+    .description{
+        width: 300px;
+    }
+    .topsec{
+        width: 300px;
+    }
+    .leftside{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .rightside img{
+        width: 100%;
+    
+
+    }
+    
 }
