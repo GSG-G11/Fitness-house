@@ -9,7 +9,7 @@
     "prepare": "is-ci || npx husky install",
     "dev": "cross-env NODE_ENV=dev nodemon server/index.ts",
     "dev:client": "cd client && npm start",
-    "start": "NODE_ENV=production npx tsc && node ./dist",
+    "start": "npx tsc  && NODE_ENV=production node ./dist",
     "lint-server": "eslint --fix --ext .js,.ts server/",
     "db:build": "cross-env DB_BUILD=true NODE_ENV=dev ts-node ./server/database/fakeData/index.ts"
   },
