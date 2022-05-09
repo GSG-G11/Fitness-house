@@ -1,10 +1,12 @@
 import { NextFunction, Response, Request } from 'express';
 import { Gym, Image, Review, User } from '../../database/models';
+import CustomError from '../../utils';
 import paramsValidation from '../../utils/validation';
 
 export default async function getGym(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = await paramsValidation.validateAsync(req.params);
+
     const GymData = await Gym.findByPk(id, {
       subQuery: false,
       attributes: [
@@ -25,8 +27,10 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
         },
       ],
     });
+    if (!GymData) throw new CustomError('عذراُ الجيم غير متوفر', 404);
     res.json({ GymData });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.name === 'ValidationError') next(new CustomError('عذراً خطأ في المعرف', 400));
     next(error);
   }
 }
