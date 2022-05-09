@@ -21,18 +21,8 @@ describe("Gyms API", () => {
     expect(response.body.GymData.city).toBe("غزة");
   });
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
-    const response = await request(app).get('/api/v1/gyms/3').expect(200);
-    expect(response.body.GymData.gymName).toBe("اوكسجن جيم");
-    expect(response.body.GymData.city).toBe("رفح");
-  });
-  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/4').expect(200);
     expect(response.body.GymData.gymName).toBe("مركز الملكة الأنيقة للسيدات");
-    expect(response.body.GymData.city).toBe("غزة");
-  });
-  test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
-    const response = await request(app).get('/api/v1/gyms/5').expect(200);
-    expect(response.body.GymData.gymName).toBe("Jalaa Gym -جيم نادي الجلاء");
     expect(response.body.GymData.city).toBe("غزة");
   });
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
