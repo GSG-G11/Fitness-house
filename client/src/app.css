@@ -82,11 +82,13 @@ a:focus {
   align-items: center;
   height: auto;
   background: transparent;
+
 }
 
 .sub__container {
   padding-left: 50px;
   padding-right: 50px;
+
 }
 
 .bg__container {
