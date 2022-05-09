@@ -106,3 +106,10 @@ a:focus {
     background: transparent;
   }
 }
+
+@media screen and (min-width: 1600px) {
+  .sub__container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}

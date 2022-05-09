@@ -23,7 +23,7 @@
     "no-console": "warn",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/no-array-index-key": "off"
+    "react/prop-types": 2
   },
   "root": true
 }

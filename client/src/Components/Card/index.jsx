@@ -96,7 +96,7 @@ function GymCard({ gym }) {
 
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {description}
+            {description.slice(0, 100)}...
           </Typography>
         </CardContent>
         <Divider variant="middle" />
