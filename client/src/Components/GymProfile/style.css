@@ -3,9 +3,8 @@
     flex-direction: row;
     padding-left: 100px;
   padding-right: 100px;
-  align-items: top;
   justify-content: center;
-
+  align-items: top;
 }
 .leftside{
     width: 50%;

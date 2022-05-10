@@ -1,6 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import GymImages from "../Components/GymImages";
+
 import GymReviews from "../Components/Reviews";
+
 import GymProfile from "../Components/GymProfile";
 
 import { useGetGymDataQuery } from "../Store/Services/TopGyms";
@@ -22,14 +25,17 @@ export default function ProfileGym() {
     return (
       <>
         <GymProfile gymData={gymData} />
+        <div className="container bg__container imgfooter">
+          <GymImages gymData={gymData} />
+        </div>
         <GymReviews gymData={gymData} />
       </>
     );
   };
 
   return (
-    <div className="container">
-      <div className="sub__container">{renderProfile()}</div>
-    </div>
+    // <div className="container">
+    <>{renderProfile()}</>
+    // </div>
   );
 }
