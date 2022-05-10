@@ -6,12 +6,14 @@ import { Gym, Image, Review } from '../../database/models';
 import { CustomError, filterValidation, GymFilter } from '../../utils';
 
 export default async function getFilteredGyms(req: Request, res: Response, next: NextFunction) {
-  const { name, city, typeGender, minPrice, maxPrice, availability, page, features } = req.query;
+  const { name, city, typeGender, minPrice, maxPrice, availability, page, features, review } =
+    req.query;
 
   try {
     await filterValidation.validateAsync({ minPrice, maxPrice, page });
 
     const where: WhereOptions<GymFilter> = {};
+
     if (name) {
       where.gymName = {
         [Op.iLike]: `%${name}%`,
@@ -48,6 +50,13 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
       };
     }
 
+    let having = {};
+    if (review) {
+      having = {
+        [Op.and]: Sequelize.literal(`AVG(reviews.rate) >= ${review}`),
+      };
+    }
+
     const gyms = await Gym.findAll({
       attributes: [
         'id',
@@ -75,6 +84,7 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
         ],
       ],
       where,
+      having,
       include: [
         {
           model: Image,
@@ -104,8 +114,6 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
 
     res.status(200).json({ gyms: pageOfGyms, pages });
   } catch (error: any) {
-    console.log(error);
-
     if (error.name === 'ValidationError') {
       next(new CustomError('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً', 400));
     }
