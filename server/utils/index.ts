@@ -1,3 +1,4 @@
 import CustomError from './CustomError';
+import { GymFilter } from './types';
 
-export default CustomError;
+export { CustomError, GymFilter };

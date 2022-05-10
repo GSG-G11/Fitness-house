@@ -1,15 +1,24 @@
-/* eslint-disable no-unused-vars */
-import { NextFunction, Response, Request } from 'express';
+/* eslint-disable no-unused-vars */ import { NextFunction, Response, Request } from 'express';
 import Sequelize from 'sequelize';
-import { Gym, Image, Review } from '../../database/models';
-import CustomError from '../../utils';
+import { Gym, Image } from '../../database/models';
+import { CustomError } from '../../utils';
 
 export default async function searchGymByName(req: Request, res: Response, next: NextFunction) {
   try {
     const gyms = await Gym.findAll({
-      attributes: { exclude: ['password', 'monthly_price', 'type_gender', 'fulltime', 'six_month_price', 'updatedAt', 'createdAt'] },
+      attributes: {
+        exclude: [
+          'password',
+          'monthlyPrice',
+          'typeGender',
+          'fulltime',
+          'sixMonthPrice',
+          'updatedAt',
+          'createdAt',
+        ],
+      },
       where: {
-        gym_name: {
+        gymName: {
           [Sequelize.Op.iLike]: `%${req.query.q}%`,
         },
       },
@@ -21,9 +30,7 @@ export default async function searchGymByName(req: Request, res: Response, next:
         },
       ],
     });
-    if (gyms.length === 0) {
-      throw new CustomError('No gyms found', 200);
-    }
+
     res.status(200).json(gyms);
   } catch (error) {
     next(error);

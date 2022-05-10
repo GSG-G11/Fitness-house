@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 import { Gym, Image, Review, User } from '../../database/models';
-import CustomError from '../../utils';
+import { CustomError } from '../../utils';
 import paramsValidation from '../../utils/validation';
 
 export default async function getGym(req: Request, res: Response, next: NextFunction) {
@@ -9,14 +9,7 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
 
     const gymData = await Gym.findByPk(id, {
       subQuery: false,
-      attributes: [
-        'id',
-        'gymName',
-        'logo',
-        'city',
-        'description',
-        'features',
-      ],
+      attributes: ['id', 'gymName', 'logo', 'city', 'description', 'features'],
       include: [
         { model: Image, required: false, attributes: ['pathUrl'] },
         {
