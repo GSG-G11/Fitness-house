@@ -10,38 +10,109 @@ describe('Gyms API', () => {
     const response = await request(app).get('/api/v1/gyms/top').expect(200);
     expect(response.body.topReviewGyms.length).toBe(3);
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/1').expect(200);
     expect(response.body.gymData.gymName).toBe('نادي فريندز للياقة البدنية');
     expect(response.body.gymData.city).toBe('غزة');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/2').expect(200);
     expect(response.body.gymData.gymName).toBe('Technogym gaza تكنو جيم');
     expect(response.body.gymData.city).toBe('غزة');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/3').expect(200);
     expect(response.body.gymData.gymName).toBe('اوكسجن جيم');
     expect(response.body.gymData.city).toBe('رفح');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/4').expect(200);
     expect(response.body.gymData.gymName).toBe('مركز الملكة الأنيقة للسيدات');
     expect(response.body.gymData.city).toBe('غزة');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/5').expect(200);
     expect(response.body.gymData.gymName).toBe('Jalaa Gym -جيم نادي الجلاء');
     expect(response.body.gymData.city).toBe('غزة');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/50').expect(404);
     expect(response.body.message).toBe('عذراُ الجيم غير متوفر');
   });
+
   test('Gyms - GET - /api/v1/gyms/:id - ', async () => {
     const response = await request(app).get('/api/v1/gyms/gggggggg').expect(400);
     expect(response.body.message).toBe('عذراً خطأ في المعرف');
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter  ', async () => {
+    const response = await request(app).get('/api/v1/gyms/filter').expect(200);
+    expect(response.body.pages.totalItems).toBe(5);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].id).toBe(3);
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter?name=tec  ', async () => {
+    const response = await request(app).get('/api/v1/gyms/filter?name=tec').expect(200);
+    expect(response.body.pages.totalItems).toBe(1);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].id).toBe(2);
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter?name=tec&city=غزة', async () => {
+    const response = await request(app)
+      .get('/api/v1/gyms/filter?name=tec&city=%D8%BA%D8%B2%D8%A9')
+      .expect(200);
+    expect(response.body.pages.totalItems).toBe(1);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].id).toBe(2);
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail', async () => {
+    const response = await request(app)
+      .get('/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail')
+      .expect(200);
+    expect(response.body.pages.totalItems).toBe(1);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].id).toBe(1);
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail&minPrice=10&maxPrice=350', async () => {
+    const response = await request(app)
+      .get(
+        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail&minPrice=10&maxPrice=350',
+      )
+      .expect(200);
+    expect(response.body.pages.totalItems).toBe(1);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].gymName).toBe('نادي فريندز للياقة البدنية');
+  });
+
+  test('Gyms Filter  - GET - /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail&minPrice=10&maxPrice=350&availability=true', async () => {
+    const response = await request(app)
+      .get(
+        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail&minPrice=10&maxPrice=350&availability=true',
+      )
+      .expect(200);
+    expect(response.body.pages.totalItems).toBe(1);
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.gyms[0].gymName).toBe('نادي فريندز للياقة البدنية');
+    expect(response.body.gyms[0].fulltime).toBe(true);
+  });
+
+  test('Gyms Filter - GET - /api/v1/gyms/filter?page=2', async () => {
+    const response = await request(app).get('/api/v1/gyms/filter?page=2').expect(200);
+    expect(response.body.gyms[0].id).toBe(4);
+    expect(response.body.gyms[0].gymName).toBe('مركز الملكة الأنيقة للسيدات');
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.pages.totalItems).toBe(5);
+    expect(response.body.pages.currentPage).toBe(2);
   });
 });
 afterAll(() => {

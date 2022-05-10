@@ -81,6 +81,8 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
           attributes: [],
         },
       ],
+      group: ['gyms.id'],
+      order: [[Sequelize.literal('review'), 'DESC']],
     });
 
     // get page from query params or default to first page
@@ -99,17 +101,3 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
     next(error);
   }
 }
-
-// {
-//   // gymName: {
-//   //   [Op.iLike]: `%${name ?? ''}%`,
-//   // },
-//   // city,
-//   // typeGender,
-//   // '$reviews.review$': {
-//   //   [Sequelize.Op.iLike]: `%${review}%`,
-//   // },
-//   //   features: {
-//   //     [Op.like]: { [Op.any]: feat },
-//   //   },
-// },
