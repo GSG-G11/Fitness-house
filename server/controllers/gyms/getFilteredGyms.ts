@@ -1,53 +1,53 @@
 /* eslint-disable no-unused-vars */
 import { NextFunction, Response, Request } from 'express';
-import Sequelize, { Op } from 'sequelize';
+import Sequelize, { Op, WhereOptions } from 'sequelize';
 import paginate from 'jw-paginate';
 import { Gym, Image, Review } from '../../database/models';
-import { GymFilter } from '../../utils';
+import { CustomError, filterValidation, GymFilter } from '../../utils';
 
 export default async function getFilteredGyms(req: Request, res: Response, next: NextFunction) {
   const { name, city, typeGender, minPrice, maxPrice, availability, page, features } = req.query;
 
-  // console.log(name, feat);
-
-  const where: Sequelize.WhereOptions<GymFilter> = {};
-  if (name) {
-    where.gymName = {
-      [Op.iLike]: `%${name}%`,
-    };
-  }
-  if (city) {
-    where.city = city;
-  }
-  if (typeGender) {
-    where.typeGender = typeGender;
-  }
-  if (minPrice && maxPrice) {
-    where.monthlyPrice = {
-      [Op.gte]: minPrice,
-      [Op.lte]: maxPrice,
-    };
-  } else if (minPrice) {
-    where.monthlyPrice = {
-      [Op.gte]: minPrice,
-    };
-  } else if (maxPrice) {
-    where.monthlyPrice = {
-      [Op.lte]: maxPrice,
-    };
-  }
-  if (availability) {
-    where.fulltime = availability;
-  }
-
-  if (features) {
-    const feat: string[] = (features as string).split(',');
-    where.features = {
-      [Op.contains]: feat,
-    };
-  }
-
   try {
+    await filterValidation.validateAsync({ minPrice, maxPrice, page });
+
+    const where: WhereOptions<GymFilter> = {};
+    if (name) {
+      where.gymName = {
+        [Op.iLike]: `%${name}%`,
+      };
+    }
+    if (city) {
+      where.city = city;
+    }
+    if (typeGender) {
+      where.typeGender = typeGender;
+    }
+    if (minPrice && maxPrice) {
+      where.monthlyPrice = {
+        [Op.gte]: minPrice,
+        [Op.lte]: maxPrice,
+      };
+    } else if (minPrice) {
+      where.monthlyPrice = {
+        [Op.gte]: minPrice,
+      };
+    } else if (maxPrice) {
+      where.monthlyPrice = {
+        [Op.lte]: maxPrice,
+      };
+    }
+    if (availability) {
+      where.fulltime = availability;
+    }
+
+    if (features) {
+      const feat: string[] = (features as string).split(',');
+      where.features = {
+        [Op.contains]: feat,
+      };
+    }
+
     const gyms = await Gym.findAll({
       attributes: [
         'id',
@@ -103,8 +103,12 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
     const pageOfGyms = gyms.slice(pages.startIndex, pages.endIndex + 1);
 
     res.status(200).json({ gyms: pageOfGyms, pages });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
+
+    if (error.name === 'ValidationError') {
+      next(new CustomError('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً', 400));
+    }
 
     next(error);
   }

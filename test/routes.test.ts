@@ -114,6 +114,27 @@ describe('Gyms API', () => {
     expect(response.body.pages.totalItems).toBe(5);
     expect(response.body.pages.currentPage).toBe(2);
   });
+
+  test('Gyms Filter - GET - /api/v1/gyms/filter?features=ميدان%20تنافسي', async () => {
+    const response = await request(app)
+      .get(
+        '/api/v1/gyms/filter?features=%D9%85%D9%8A%D8%AF%D8%A7%D9%86%20%D8%AA%D9%86%D8%A7%D9%81%D8%B3%D9%8A',
+      )
+      .expect(200);
+    expect(response.body.gyms[0].id).toBe(2);
+    expect(response.body.gyms[0].gymName).toBe('Technogym gaza تكنو جيم');
+    expect(response.body.gyms[0].features[1]).toBe('ميدان تنافسي');
+    expect(response.body.pages.pageSize).toBe(3);
+    expect(response.body.pages.totalItems).toBe(2);
+  });
+
+  test('Gyms Filter - GET - /api/v1/gyms/filter?page=-2', async () => {
+    const response = await request(app)
+      .get('/api/v1/gyms/filter?page=-2')
+      .expect(400);
+    expect(response.body.status).toBe(400);
+    expect(response.body.message).toBe('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً');
+  });
 });
 afterAll(() => {
   connection.close();
