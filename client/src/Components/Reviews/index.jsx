@@ -15,6 +15,7 @@ import "./style.css";
 function GymReviews() {
   const [reviews] = useState([
     {
+      id: 1,
       rate: 5,
       description: "نادي رائع جدا, ومريح",
       createdAt: "2022-05-08T14:15:25.266Z",
@@ -23,6 +24,7 @@ function GymReviews() {
       avatar: "https://bit.ly/37THiXV",
     },
     {
+      id: 2,
       rate: 4,
       description: "نادي رائع جدا, ومريح",
       createdAt: "2022-05-08T14:15:25.266Z",
@@ -31,6 +33,7 @@ function GymReviews() {
       avatar: "https://bit.ly/3EYZU4G",
     },
     {
+      id: 3,
       rate: 3,
       description: "نادي رائع جدا, لكن الملعب كان غير نظيف",
       createdAt: "2022-05-08T14:15:25.266Z",
@@ -39,6 +42,7 @@ function GymReviews() {
       avatar: "https://bit.ly/38CU9xq",
     },
     {
+      id: 4,
       rate: 4,
       description: "نادي رائع جدا, ومريح",
       createdAt: "2022-05-08T14:15:25.266Z",
@@ -47,6 +51,7 @@ function GymReviews() {
       avatar: "https://bit.ly/3EYZU4G",
     },
     {
+      id: 5,
       rate: 3,
       description: "نادي رائع جدا, لكن الملعب كان غير نظيف",
       createdAt: "2022-05-08T14:15:25.266Z",
@@ -63,14 +68,6 @@ function GymReviews() {
     <div className="review">
       <Box className="top-container">
         <Typography>تقييمات المشتركين</Typography>
-        <Button
-          variant="text"
-          onClick={() => {
-            setCountReviews(countReviews + 2);
-          }}
-        >
-          اعرض المزيد
-        </Button>
       </Box>
       <Box
         sx={{
@@ -81,8 +78,16 @@ function GymReviews() {
         }}
       >
         {reviews.slice(0, countReviews).map((review) => (
-          <Review key={review.userId} review={review} />
+          <Review key={review.id} review={review} />
         ))}
+        <Button
+          variant="text"
+          onClick={() => {
+            setCountReviews(countReviews + 2);
+          }}
+        >
+          اعرض المزيد
+        </Button>
       </Box>
       <Stack spacing={0.5}>
         <Typography className="user__name" fontWeight={700} noWrap>
@@ -95,22 +100,34 @@ function GymReviews() {
             setRate(newValue);
           }}
         />
-        <TextField
-          id="outlined-basic"
-          label="أدخل رايك"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <MessageIcon />
-              </InputAdornment>
-            ),
+        <Box
+          className="opinion"
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
           }}
-          value={reviewdescription}
-          onChange={(event) => {
-            setReviewDescription(event.target.value);
-          }}
-          variant="outlined"
-        />
+        >
+          <TextField
+            id="outlined-basic"
+            label="أدخل رايك"
+            sx={{
+              maxWidth: 600,
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <MessageIcon />
+                </InputAdornment>
+              ),
+            }}
+            value={reviewdescription}
+            onChange={(event) => {
+              setReviewDescription(event.target.value);
+            }}
+            variant="outlined"
+          />
+          <Button variant="contained">أضف رايك</Button>
+        </Box>
       </Stack>
     </div>
   );
