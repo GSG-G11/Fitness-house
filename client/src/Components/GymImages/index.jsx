@@ -1,35 +1,3 @@
-// import React from "react";
-// import "./style.css";
-// import PropTypes from "prop-types";
-
-// function GymImages({ images }) {
-//   const first = images[0].pathUrl;
-//   return (
-//     <div className="sub__container">
-//       <h1 className="imagetitle">صور النادي</h1>
-//       <div className="gym__images">
-//         <div className="right-img">
-//           <img src={first} alt="gym" />
-//         </div>
-//         <div className="left-images">
-//           <div className="rightsecc">
-//             <img src={first} alt="gym" />
-//             <img src={first} alt="gym" />
-//           </div>
-//           <div className="leftsecc">
-//             <img src={first} alt="gym" />
-//             <img src={first} alt="gym" />
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// GymImages.propTypes = {
-//   images: PropTypes.instanceOf(Object).isRequired,
-// };
-// export default GymImages;
-
 import React from "react";
 import "./style.css";
 import { Box, Grid, Card, CardMedia } from "@mui/material";
