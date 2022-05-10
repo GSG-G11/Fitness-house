@@ -1,0 +1,32 @@
+
+.imagetitle{
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.gym__images{
+    padding-left:188px;
+  padding-right: 188px;
+ 
+
+}
+.fourimage{
+    width: 100%;
+}
+@media (max-width: 1000px) {
+    .gym__images{
+        padding-left:0px;
+        padding-right: 0px;
+    }
+    .imgfooter{
+        margin-bottom: 420px;
+    }
+  .bg__container{
+    margin-bottom: 420px;
+
+  }
+}
+

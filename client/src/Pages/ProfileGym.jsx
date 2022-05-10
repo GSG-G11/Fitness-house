@@ -1,4 +1,5 @@
 import React from "react";
+import GymImages from "../Components/GymImages";
 import GymProfile from "../Components/GymProfile";
 
 const gymData = {
@@ -19,6 +20,12 @@ const gymData = {
     },
     {
       pathUrl: "https://bit.ly/3LxTj3Y",
+    },
+    {
+      pathUrl: "https://bit.ly/3siJZsQ",
+    },
+    {
+      pathUrl: "https://bit.ly/3KVru4l",
     },
   ],
   reviews: [
@@ -57,8 +64,13 @@ const gymData = {
 
 export default function ProfileGym() {
   return (
-    <div className="container">
-      <GymProfile gymData={gymData} />
-    </div>
+    <>
+      <div className="container">
+        <GymProfile gymData={gymData} />
+      </div>
+      <div className="container bg__container imgfooter">
+        <GymImages images={gymData.images} />
+      </div>
+    </>
   );
 }
