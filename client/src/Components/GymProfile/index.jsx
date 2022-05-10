@@ -75,7 +75,7 @@ function GymProfile({ gymData }) {
 
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            <p className="description"> {description}</p>
+            <span className="description"> {description}</span>
           </Typography>
         </CardContent>
         <Divider variant="middle" />
