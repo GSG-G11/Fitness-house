@@ -22,7 +22,7 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
         {
           model: Review,
           required: false,
-          attributes: ['rate', 'description', 'createdAt', 'userId'],
+          attributes: ['id', 'rate', 'description', 'createdAt', 'userId'],
           include: [{ model: User, required: false, attributes: ['username', 'avatar'] }],
         },
       ],

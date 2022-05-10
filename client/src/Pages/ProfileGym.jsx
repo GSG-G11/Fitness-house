@@ -1,4 +1,5 @@
 import React from "react";
+import GymReviews from "../Components/Reviews";
 import GymProfile from "../Components/GymProfile";
 
 const gymData = {
@@ -59,6 +60,7 @@ export default function ProfileGym() {
   return (
     <div className="container">
       <GymProfile gymData={gymData} />
+      <GymReviews />
     </div>
   );
 }
