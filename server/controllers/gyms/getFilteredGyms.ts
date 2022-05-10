@@ -6,8 +6,8 @@ import { Gym, Image, Review } from '../../database/models';
 import { GymFilter } from '../../utils';
 
 export default async function getFilteredGyms(req: Request, res: Response, next: NextFunction) {
-  const { name, city, typeGender, minPrice, maxPrice, availability, page } = req.query;
-  // const feat: string[] = (feature as string).split(',');
+  const { name, city, typeGender, minPrice, maxPrice, availability, page, features } = req.query;
+
   // console.log(name, feat);
 
   const where: Sequelize.WhereOptions<GymFilter> = {};
@@ -38,6 +38,13 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
   }
   if (availability) {
     where.fulltime = availability;
+  }
+
+  if (features) {
+    const feat: string[] = (features as string).split(',');
+    where.features = {
+      [Op.contains]: feat,
+    };
   }
 
   try {
@@ -72,7 +79,8 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
         {
           model: Image,
           limit: 1,
-          attributes: { exclude: ['createdAt', 'updatedAt', 'gymId', 'publicKey', 'id'] },
+          required: false,
+          attributes: ['pathUrl'],
         },
         {
           association: 'reviews',

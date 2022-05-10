@@ -4,4 +4,5 @@ export interface GymFilter {
   typeGender?: object;
   monthlyPrice?: object;
   fulltime?: object;
+  features?: object;
 }
