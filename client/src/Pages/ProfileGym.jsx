@@ -1,5 +1,8 @@
 import React from "react";
 import GymImages from "../Components/GymImages";
+
+import GymReviews from "../Components/Reviews";
+
 import GymProfile from "../Components/GymProfile";
 
 const gymData = {
@@ -71,6 +74,8 @@ export default function ProfileGym() {
       <div className="container bg__container imgfooter">
         <GymImages images={gymData.images} />
       </div>
+      <GymReviews />
     </>
+
   );
 }
