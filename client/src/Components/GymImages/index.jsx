@@ -3,7 +3,8 @@ import "./style.css";
 import { Box, Grid, Card, CardMedia } from "@mui/material";
 import PropTypes from "prop-types";
 
-function GymImages({ images }) {
+function GymImages({ gymData }) {
+  const { images } = gymData;
   return (
     <Box className="sub__container gym__images">
       <h1 className="imagetitle">صور النادي</h1>
@@ -58,6 +59,6 @@ function GymImages({ images }) {
   );
 }
 GymImages.propTypes = {
-  images: PropTypes.instanceOf(Object).isRequired,
+  gymData: PropTypes.instanceOf(Object).isRequired,
 };
 export default GymImages;
