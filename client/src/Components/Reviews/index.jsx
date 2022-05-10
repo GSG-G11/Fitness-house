@@ -9,61 +9,18 @@ import {
   Button,
 } from "@mui/material";
 import MessageIcon from "@mui/icons-material/Message";
+import PropTypes from "prop-types";
 import Review from "./Review";
 import "./style.css";
 
-function GymReviews() {
-  const [reviews] = useState([
-    {
-      id: 1,
-      rate: 5,
-      description: "نادي رائع جدا, ومريح",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 1,
-      username: "محمود علي",
-      avatar: "https://bit.ly/37THiXV",
-    },
-    {
-      id: 2,
-      rate: 4,
-      description: "نادي رائع جدا, ومريح",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 2,
-      username: "علي محمود",
-      avatar: "https://bit.ly/3EYZU4G",
-    },
-    {
-      id: 3,
-      rate: 3,
-      description: "نادي رائع جدا, لكن الملعب كان غير نظيف",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 3,
-      username: "حسن عبدالله",
-      avatar: "https://bit.ly/38CU9xq",
-    },
-    {
-      id: 4,
-      rate: 4,
-      description: "نادي رائع جدا, ومريح",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 2,
-      username: "علي محمود",
-      avatar: "https://bit.ly/3EYZU4G",
-    },
-    {
-      id: 5,
-      rate: 3,
-      description: "نادي رائع جدا, لكن الملعب كان غير نظيف",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 3,
-      username: "حسن عبدالله",
-      avatar: "https://bit.ly/38CU9xq",
-    },
-  ]);
+function GymReviews({ gymData }) {
+  const { reviews } = gymData;
   const [rate, setRate] = useState(0);
   const [reviewdescription, setReviewDescription] = useState("");
   const [countReviews, setCountReviews] = useState(2);
-
+  const isShowAll = () => {
+    return countReviews >= reviews.length;
+  };
   return (
     <div className="review">
       <Box className="top-container">
@@ -80,14 +37,17 @@ function GymReviews() {
         {reviews.slice(0, countReviews).map((review) => (
           <Review key={review.id} review={review} />
         ))}
-        <Button
-          variant="text"
-          onClick={() => {
-            setCountReviews(countReviews + 2);
-          }}
-        >
-          اعرض المزيد
-        </Button>
+        {!isShowAll() && (
+          <Button
+            sx={{ mt: ".5rem" }}
+            variant="text"
+            onClick={() => {
+              setCountReviews(countReviews + 2);
+            }}
+          >
+            اعرض المزيد
+          </Button>
+        )}
       </Box>
       <Stack spacing={0.5}>
         <Typography className="user__name" fontWeight={700} noWrap>
@@ -113,6 +73,9 @@ function GymReviews() {
             sx={{
               maxWidth: 600,
             }}
+            md={{
+              maxWidth: 1000,
+            }}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -132,5 +95,8 @@ function GymReviews() {
     </div>
   );
 }
+GymReviews.propTypes = {
+  gymData: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default GymReviews;
