@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { NextFunction, Response, Request } from 'express';
 import Sequelize, { Op } from 'sequelize';
+import paginate from 'jw-paginate';
 import { Gym, Image, Review } from '../../database/models';
 import { GymFilter } from '../../utils';
 
@@ -35,7 +36,6 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
       [Op.lte]: maxPrice,
     };
   }
-
   if (availability) {
     where.fulltime = availability;
   }
@@ -83,7 +83,16 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
       ],
     });
 
-    res.status(200).json(gyms);
+    // get page from query params or default to first page
+    const currentPage: number = +page! || 1;
+    // get pager object for specified page
+    const pageSize: number = 3;
+    const pages = paginate(gyms.length, currentPage, pageSize);
+
+    // get page of items from items array
+    const pageOfGyms = gyms.slice(pages.startIndex, pages.endIndex + 1);
+
+    res.status(200).json({ gyms: pageOfGyms, pages });
   } catch (error) {
     console.log(error);
 
