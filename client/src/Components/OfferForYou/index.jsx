@@ -7,8 +7,8 @@ import "./style.css";
 
 export default function OfferForYou() {
   return (
-    <Box className="container__OfferForYou">
-      <Box className="container">
+    <Box className="container">
+      <Box className="sub__container">
         <Grid container>
           <Grid className="order_offer_1" item xs={12} lg={4}>
             <Grid container spacing={2}>
@@ -51,16 +51,17 @@ export default function OfferForYou() {
             xs={12}
             lg={8}
             className="order_offer_2"
-            style={{ height: "100%", minHeight: "225px" }}
+            style={{ height: "100%", minHeight: "325px" }}
           >
             <Box
               display="flex"
               flexDirection="column"
               height="100%"
-              pt={2}
+              pt={5}
               px={2}
             >
               <Typography
+                className="order_offer__title"
                 sx={{
                   fontWeight: "bold",
                   color: "#276678",
@@ -69,7 +70,7 @@ export default function OfferForYou() {
                 component="h2"
                 gutterBottom
               >
-                ماذا نقدم لك في تمرين
+                ماذا نقدم لك في فت هاوس
               </Typography>
               <Box mt="auto" mb={2}>
                 <Typography

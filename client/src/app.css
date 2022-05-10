@@ -13,13 +13,15 @@
 
 html {
   scroll-behavior: smooth;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 ::-moz-selection {
@@ -30,6 +32,26 @@ body {
 ::selection {
   color: var(--selection-color);
   background: var(--selection-bg-color);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #276678;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1b4a57;
 }
 
 select,
@@ -55,10 +77,39 @@ a:focus {
 }
 
 .container {
-  margin-left: 50px;
-  margin-right: 50px;
-  margin: 2rem;
+  padding: 2.125rem 3.125rem;
   justify-content: center;
   align-items: center;
   height: auto;
+  background: transparent;
+}
+
+.sub__container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.bg__container {
+  background: #f3f5f8 !important;
+}
+
+@media screen and (max-width: 700px) {
+  .sub__container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .container {
+    padding: 2.125rem 1.5625rem;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    background: transparent;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .sub__container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 }

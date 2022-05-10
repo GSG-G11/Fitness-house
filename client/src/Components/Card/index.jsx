@@ -1,17 +1,20 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Chip from "@mui/material/Chip";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
-import CircularProgress from "@mui/material/CircularProgress";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Avatar,
+  Box,
+  Chip,
+  Button,
+  Stack,
+  Divider,
+  Typography,
+  CircularProgress,
+  keyframes,
+} from "@mui/material";
+
 import PropTypes from "prop-types";
-import { keyframes } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./style.css";
 
@@ -21,35 +24,45 @@ const scaleUpCenter = keyframes`
 `;
 
 function GymCard({ gym }) {
-  const { id, features, logo, gymName, description, city, image, progress } =
+  const { id, features, logo, gymName, description, city, images, review } =
     gym;
+
+  const { pathUrl } = images[0];
+  const percent = (Math.floor(+review) / 5) * 100;
+
   return (
-    <div className="gymCard">
+    <div className="gymCard" id={`gymCard-${id}`}>
       <Card
         sx={{
-          maxWidth: 370,
-          padding: 1.6,
-          margin: 1,
-          boxShadow: 4,
+          boxShadow: 3,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          borderRadius: "10px",
           animation: `${scaleUpCenter} .4s cubic-bezier(.39,.575,.565,1.000) forwards`,
         }}
       >
-        <Box sx={{ p: 2, display: "flex" }}>
-          <Avatar alt="card" src={logo} />
-          <Stack spacing={0.5}>
-            <Typography fontWeight={700}>{gymName}</Typography>
-            <Typography variant="body2" color="text.secondary">
-              {city}
-            </Typography>
-          </Stack>
+        <Box sx={{ p: 2, display: "flex", justifyContent: "space-between" }}>
+          <Box sx={{ display: "flex", gap: "0.5rem" }}>
+            <Avatar alt="card" src={logo} />
+            <Stack spacing={0.5}>
+              <Typography className="gymCard__name" fontWeight={700} noWrap>
+                {gymName}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {city}
+              </Typography>
+            </Stack>
+          </Box>
+
           <Box
             sx={{
-              marginLeft: 18,
+              marginLeft: 0,
               position: "relative",
               display: "inline-flex",
             }}
           >
-            <CircularProgress variant="determinate" value={progress} />
+            <CircularProgress variant="determinate" value={percent} />
             <Box
               sx={{
                 top: 0,
@@ -68,7 +81,7 @@ function GymCard({ gym }) {
                 component="div"
                 color="text.secondary"
               >
-                {progress}%
+                {percent}%
               </Typography>
             </Box>
           </Box>
@@ -77,12 +90,13 @@ function GymCard({ gym }) {
         <CardMedia
           component="img"
           height="194"
-          image={image}
+          image={pathUrl}
           alt="Paella dish"
         />
+
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            {description}
+            {description.slice(0, 100)}...
           </Typography>
         </CardContent>
         <Divider variant="middle" />
@@ -90,13 +104,13 @@ function GymCard({ gym }) {
           <Typography gutterBottom variant="body1">
             المزايا
           </Typography>
-          <Stack direction="row" spacing={1}>
+          <Box sx={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
             {features.map((feature) => (
               <Chip key={feature} variant="outlined" label={feature} />
             ))}
-          </Stack>
+          </Box>
         </Box>
-        <Box sx={{ mt: 3, ml: 1, mb: 1 }}>
+        <Box sx={{ mt: "auto", ml: 2, mb: 2 }}>
           <Link to={`/gyms/profile/:${id}`}>
             <Button variant="contained">احجز موعد</Button>
           </Link>
