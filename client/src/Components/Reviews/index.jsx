@@ -68,9 +68,11 @@ function GymReviews({ gymData }) {
           }}
         >
           <TextField
+            fullWidth
             id="outlined-basic"
             label="أدخل رايك"
             sx={{
+              m: 1,
               maxWidth: 600,
             }}
             md={{
@@ -89,7 +91,15 @@ function GymReviews({ gymData }) {
             }}
             variant="outlined"
           />
-          <Button variant="contained">أضف رايك</Button>
+          <Button
+            sx={{
+              m: 1,
+              minWidth: 100,
+            }}
+            variant="contained"
+          >
+            أضف رايك
+          </Button>
         </Box>
       </Stack>
     </div>
