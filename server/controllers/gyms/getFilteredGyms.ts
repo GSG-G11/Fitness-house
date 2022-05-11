@@ -55,9 +55,15 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
 
     let having = {};
     if (review) {
-      having = {
-        [Op.and]: Sequelize.literal(`AVG(reviews.rate) >= ${review}`),
-      };
+      if (Number(review) === 0) {
+        having = {
+          [Op.and]: Sequelize.literal(`AVG(reviews.rate) >= ${review} OR AVG(reviews.rate) ISNULL`),
+        };
+      } else {
+        having = {
+          [Op.and]: Sequelize.literal(`AVG(reviews.rate) >= ${review}`),
+        };
+      }
     }
 
     const gyms = await Gym.findAndCountAll({

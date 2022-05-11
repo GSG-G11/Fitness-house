@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */ import { NextFunction, Response, Request } from 'express';
+/* eslint-disable no-unused-vars */
+import { NextFunction, Response, Request } from 'express';
 import Sequelize from 'sequelize';
 import { Gym, Image } from '../../database/models';
-import { CustomError } from '../../utils';
 
 export default async function searchGymByName(req: Request, res: Response, next: NextFunction) {
   try {
