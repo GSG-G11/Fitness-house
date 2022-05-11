@@ -6,7 +6,7 @@ import GymReviews from "../Components/Reviews";
 import GymCards from "../Components/Cards";
 import GymProfile from "../Components/GymProfile";
 
-import { useGetGymDataQuery } from "../Store/Services/TopGyms";
+import { useGetGymDataQuery } from "../Store/Services/gyms";
 
 export default function ProfileGym() {
   const { gymId } = useParams();
@@ -92,6 +92,7 @@ export default function ProfileGym() {
       );
     }
     if (isError) {
+      // Route gym not found
       return <div>عذرا هناك خطأ , أعد تحديث الصفحة </div>;
     }
 
