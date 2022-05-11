@@ -15,8 +15,9 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 function GymProfile({ gymData }) {
-  const { logo, images, gymName, city, description, features, progress } =
+  const { logo, images, gymName, city, description, features, review } =
     gymData;
+  const percent = (Math.floor(+review) / 5) * 100;
 
   return (
     <div className="gymprofilecard">
@@ -47,7 +48,7 @@ function GymProfile({ gymData }) {
                 display: "inline-flex",
               }}
             >
-              <CircularProgress variant="determinate" value={progress} />
+              <CircularProgress variant="determinate" value={percent} />
               <Box
                 sx={{
                   top: 0,
@@ -66,7 +67,7 @@ function GymProfile({ gymData }) {
                   component="div"
                   color="text.secondary"
                 >
-                  {progress}%
+                  {percent}%
                 </Typography>
               </Box>
             </Box>

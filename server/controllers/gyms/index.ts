@@ -1,4 +1,5 @@
 import getTopGyms from './getTopGyms';
-import searchGymByName from './SerachGymByName';
+import searchGymByName from './SearchGymByName';
+import getFilteredGyms from './getFilteredGyms';
 
-export { getTopGyms, searchGymByName };
+export { getTopGyms, searchGymByName, getFilteredGyms };

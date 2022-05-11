@@ -1,3 +1,4 @@
 import paramsValidation from './paramsValidation';
+import filterValidation from './filterValidation';
 
-export default paramsValidation;
+export { filterValidation, paramsValidation };
