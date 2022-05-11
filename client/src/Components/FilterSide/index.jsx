@@ -89,7 +89,6 @@ function FilterSide({ gymData }) {
                   label="أضف المزايا"
                   placeholder="أضف مزايا أخرى"
                   // eslint-disable-next-line react/jsx-props-no-spreading
-                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                 />
               )}
