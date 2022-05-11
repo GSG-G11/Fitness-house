@@ -7,6 +7,19 @@
     align-content: center;
     margin: auto;
 }
+@media (min-width: 2000px) {
+  .review{
+      padding-left:200px;
+      padding-right: 200px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .review{
+      padding-left:10px;
+      padding-right: 10px;
+  }
+}
 
 @media (max-width: 700px) {
     .review {
@@ -17,16 +30,5 @@
     .opinion{
       flex-direction: column;
       align-items: space-between;
-    }
-}
-@media (max-width: 400px) {
-    .review {
-      padding-top: 10px;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .opinion{
-      flex-direction: column;
-      align-content: space-between;
     }
 }
