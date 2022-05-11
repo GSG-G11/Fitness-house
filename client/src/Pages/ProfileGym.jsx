@@ -76,6 +76,5 @@ export default function ProfileGym() {
       </div>
       <GymReviews />
     </>
-
   );
 }
