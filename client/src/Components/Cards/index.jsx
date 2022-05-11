@@ -1,7 +1,7 @@
 /* eslint-disable  */
 import React from 'react';
 
-import { useGetTopGymsQuery } from '../../Store/Services/TopGyms';  
+import { useGetTopGymsQuery } from '../../Store/Services/gyms';  
 import { Link } from 'react-router-dom';
 
 import GymCard from '../Card';
