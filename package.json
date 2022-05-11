@@ -55,7 +55,6 @@
     "is-ci": "^3.0.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
-    "jw-paginate": "^1.0.4",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.0",

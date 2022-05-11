@@ -1,13 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { NextFunction, Response, Request } from 'express';
 import Sequelize, { Op, WhereOptions } from 'sequelize';
-import paginate from 'jw-paginate';
 import { Gym, Image, Review } from '../../database/models';
 import { CustomError, filterValidation, GymFilter } from '../../utils';
+
+const PAGE_SIZE = 3;
 
 export default async function getFilteredGyms(req: Request, res: Response, next: NextFunction) {
   const { name, city, typeGender, minPrice, maxPrice, availability, page, features, review } =
     req.query;
+
+  const currentPage: number = +page! || 1;
 
   try {
     await filterValidation.validateAsync({ minPrice, maxPrice, page });
@@ -57,7 +60,7 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
       };
     }
 
-    const gyms = await Gym.findAll({
+    const gyms = await Gym.findAndCountAll({
       attributes: [
         'id',
         'gymName',
@@ -93,31 +96,42 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
           attributes: ['pathUrl'],
         },
         {
-          association: 'reviews',
           model: Review,
           required: false,
           attributes: [],
         },
       ],
       group: ['gyms.id'],
+      // limit: PAGE_SIZE,
       order: [[Sequelize.literal('review'), 'DESC']],
+      offset: (currentPage - 1) * PAGE_SIZE,
     });
 
-    // get page from query params or default to first page
-    const currentPage: number = +page! || 1;
-    // get pager object for specified page
-    const pageSize: number = 3;
-    const pages = paginate(gyms.length, currentPage, pageSize);
+    const { count, rows } = gyms;
+
+    const pagination = {
+      totalItems: count.length,
+      currentPage,
+      pageSize: PAGE_SIZE,
+      totalPages: Math.ceil(count.length / PAGE_SIZE),
+      startPage: 1,
+      endPage: Math.ceil(count.length / PAGE_SIZE),
+      startIndex: 0,
+      endIndex: Math.ceil(count.length / PAGE_SIZE),
+      nextPage: currentPage + 1,
+      prevPage: currentPage - 1,
+    };
 
     // get page of items from items array
-    const pageOfGyms = gyms.slice(pages.startIndex, pages.endIndex + 1);
+    const pageOfGyms = rows.slice(pagination.startIndex, pagination.endIndex + 1);
 
-    res.status(200).json({ gyms: pageOfGyms, pages });
+    return res.status(200).json({ gyms: pageOfGyms, pagination });
   } catch (error: any) {
-    if (error.name === 'ValidationError') {
-      next(new CustomError('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً', 400));
-    }
+    console.log(error);
 
-    next(error);
+    if (error.name === 'ValidationError') {
+      return next(new CustomError('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً', 400));
+    }
+    return next(error);
   }
 }
