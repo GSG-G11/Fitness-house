@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <>
       <Slider />
-      <GymCards />
+      <GymCards page="HomePage" />
       <OfferForYou />
       <Join />
     </>
