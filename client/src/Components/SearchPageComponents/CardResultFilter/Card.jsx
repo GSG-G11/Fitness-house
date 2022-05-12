@@ -3,7 +3,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   Box,
-  Button,
   CardContent,
   Chip,
   Divider,
@@ -48,8 +47,8 @@ export default function Card({ filter }) {
         <Box
           sx={{ m: 1, mt: "auto", display: "flex", justifyContent: "flex-end" }}
         >
-          <Link to={`/gyms/profile/${id}`}>
-            <Button variant="contained">احجز موعد</Button>
+          <Link className="btn__card" to={`/gyms/profile/${id}`}>
+            احجز موعد
           </Link>
         </Box>
       </div>
