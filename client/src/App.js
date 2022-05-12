@@ -21,7 +21,7 @@ import {
 
 import "./app.css";
 
-import { setAuth } from "./Store/Slices";
+import { setAuth, setLogout } from "./Store/Slices";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ function App() {
           })
         );
       } catch (error) {
-        console.log(error); // ?? handle error
+        dispatch(setLogout());
       }
     };
     checkToken();

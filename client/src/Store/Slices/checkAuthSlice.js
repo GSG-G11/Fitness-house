@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   auth: {
-    id: "",
-    name: "",
-    role: "",
+    id: null,
+    name: null,
+    role: null,
     isLoggedIn: false,
   },
 };
@@ -19,9 +19,9 @@ export const checkAuthSlice = createSlice({
     },
     setLogout: (state) => {
       state.auth = {
-        id: "",
-        name: "",
-        role: "",
+        id: null,
+        name: null,
+        role: null,
         isLoggedIn: false,
       };
     },
