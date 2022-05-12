@@ -1,7 +1,11 @@
-import React from "react";
+/* eslint-disable camelcase */
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./app.css";
+import { useDispatch } from "react-redux";
+import jwt_decode from "jwt-decode";
+import { useCookies } from "react-cookie";
 import { Dashboard, Home } from "./Layouts";
+import "./app.css";
 
 import {
   LoginPage,
@@ -14,8 +18,22 @@ import {
   NotfoundPage,
   HomePage,
 } from "./Pages";
+import { setAuth, setLogout } from "./Store/Slices/checkAuthSlice";
 
 function App() {
+  const [cookies] = useCookies();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkToken = () => {
+      const { token } = cookies;
+      if (!token) dispatch(setLogout());
+      const { role, gymName, gymID } = jwt_decode(token);
+      dispatch(setAuth({ role, id: gymID, name: gymName, isLoggedIn: true }));
+    };
+    checkToken();
+  }, [cookies, dispatch]);
+
   return (
     <Routes>
       {/* Routes For Site Views {login, gym filter,...} */}
