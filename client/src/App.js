@@ -1,6 +1,10 @@
-import React from "react";
+/* eslint-disable consistent-return */
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./app.css";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+
 import { Dashboard, Home } from "./Layouts";
 
 import {
@@ -15,7 +19,34 @@ import {
   HomePage,
 } from "./Pages";
 
+import "./app.css";
+
+import { setAuth, setLogout } from "./Store/Slices";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const checkToken = () => {
+      try {
+        const token = Cookies.get("token");
+        if (!token) return;
+        const { id, name, role } = jwtDecode(token);
+        dispatch(
+          setAuth({
+            id,
+            name,
+            role,
+            isLoggedIn: true,
+          })
+        );
+      } catch (error) {
+        dispatch(setLogout());
+      }
+    };
+    checkToken();
+  }, [dispatch]);
+
   return (
     <Routes>
       {/* Routes For Site Views {login, gym filter,...} */}
