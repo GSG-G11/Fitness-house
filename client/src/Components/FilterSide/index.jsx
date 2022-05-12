@@ -11,6 +11,7 @@ import {
   Slider,
   Autocomplete,
   FormGroup,
+  Button,
 } from "@mui/material";
 import React, { useState } from "react";
 import "./style.css";
@@ -174,6 +175,11 @@ function FilterSide() {
             max={200}
             valueLabelDisplay="auto"
           />
+        </div>
+        <div className="filter-item searchbtn">
+          <div className="switchdiv">
+            <Button variant="contained">اعرض النتائج</Button>
+          </div>
         </div>
       </div>
     </div>

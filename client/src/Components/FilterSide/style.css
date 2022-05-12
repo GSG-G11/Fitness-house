@@ -1,6 +1,5 @@
 .rightfilter{
     width: 20%;
-    height: 100%;
     background-color: #f5f5f5;
    border-radius: 5px;
     right: 0;
@@ -12,19 +11,21 @@
     justify-content: space-around;
     align-items: center;
 flex-direction: row;
+text-align: center;
+margin-top: 15px;
+
+
 
 }
 .filter-head h1{
     font-size: 20px;
     font-weight: bold;
-    margin-top: 10px;
-
-    
+  
 }
+
 .filter-body{
 flex-direction: row;
-margin-top: 20px;
-
+margin-top: 5px;
 }
 .ss{
     display: flex;
@@ -56,6 +57,11 @@ flex-direction: row;
 
 .rating{
     text-align: center;
+}
+.searchbtn{
+margin: 20px;
+padding: 20px;
+  
 }
 @media (max-width: 700px) {
     .rightfilter{
