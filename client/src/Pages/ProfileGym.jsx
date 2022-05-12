@@ -9,7 +9,6 @@ import GymProfile from "../Components/GymProfile";
 import { useGetGymDataQuery } from "../Store/Services/gyms";
 
 export default function ProfileGym() {
-
   const { gymId } = useParams();
   const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(gymId);
   const renderProfile = () => {
