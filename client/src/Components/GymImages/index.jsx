@@ -12,44 +12,56 @@ function GymImages({ gymData }) {
         <Grid style={{ height: "500px" }} item xs={12} md={6}>
           <Grid style={{ height: "100%" }} item xs={12}>
             <Card style={{ height: "97%" }}>
-              <CardMedia style={{ height: "100%" }} image={images[0].pathUrl} />
+              {images[0] && (
+                <CardMedia
+                  style={{ height: "100%" }}
+                  image={images[0].pathUrl}
+                />
+              )}
             </Card>
           </Grid>
         </Grid>
-        {/* ------  */}
 
         <Grid style={{ height: "500px" }} item xs={12} md={6}>
           <Grid style={{ height: "100%" }} container spacing={2}>
             <Grid style={{ height: "50%" }} item xs={12} md={6}>
               <Card style={{ height: "100%" }}>
-                <CardMedia
-                  style={{ height: "100%" }}
-                  image={images[1].pathUrl}
-                />
+                {images[1] && (
+                  <CardMedia
+                    style={{ height: "100%" }}
+                    image={images[1].pathUrl}
+                  />
+                )}
               </Card>
             </Grid>
             <Grid style={{ height: "50%" }} item xs={12} md={6}>
               <Card style={{ height: "100%" }}>
-                <CardMedia
-                  style={{ height: "100%" }}
-                  image={images[2].pathUrl}
-                />
+                {images[2] && (
+                  <CardMedia
+                    style={{ height: "100%" }}
+                    image={images[2].pathUrl}
+                  />
+                )}
               </Card>
             </Grid>
             <Grid style={{ height: "50%" }} item xs={12} md={6}>
               <Card style={{ height: "100%" }}>
-                <CardMedia
-                  style={{ height: "100%" }}
-                  image={images[3].pathUrl}
-                />
+                {images[3] && (
+                  <CardMedia
+                    style={{ height: "100%" }}
+                    image={images[3].pathUrl}
+                  />
+                )}
               </Card>
             </Grid>
             <Grid style={{ height: "50%" }} item xs={12} md={6}>
               <Card style={{ height: "100%" }}>
-                <CardMedia
-                  style={{ height: "100%" }}
-                  image={images[4].pathUrl}
-                />
+                {images[4] && (
+                  <CardMedia
+                    style={{ height: "100%" }}
+                    image={images[4].pathUrl}
+                  />
+                )}
               </Card>
             </Grid>
           </Grid>
