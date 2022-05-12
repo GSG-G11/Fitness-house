@@ -1,0 +1,21 @@
+.filter__section {
+  display: flex;
+  gap: 2.5rem;
+}
+.filter__section__input {
+  flex: 25;
+}
+.filter__section__result {
+  flex: 85;
+}
+
+@media screen and (max-width: 900px) {
+  .filter__section {
+    flex-direction: column;
+  }
+
+  .filter__section__input,
+  .filter__section__result {
+    flex: 100;
+  }
+}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env DB_BUILD=true NODE_ENV=test jest --runInBand",
-    "lint-fix": "npm run lint-server",
+    "lint-fix": "npm run lint-server && cd client && npm run lint && cd ..",
     "prepare": "is-ci || npx husky install",
     "dev": "cross-env NODE_ENV=dev nodemon server/index.ts",
     "dev:client": "cd client && npm start",

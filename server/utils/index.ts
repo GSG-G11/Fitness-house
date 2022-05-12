@@ -1,3 +1,5 @@
 import CustomError from './CustomError';
+import { GymFilter } from './types';
+import { filterValidation, paramsValidation } from './validation';
 
-export default CustomError;
+export { CustomError, GymFilter, filterValidation, paramsValidation };

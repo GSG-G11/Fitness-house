@@ -36,16 +36,15 @@ const Gym = sequelize.define('gyms', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  type_gender: {
-    type: DataTypes.ENUM,
-    values: ['mail', 'female', 'mixed'],
+  typeGender: {
+    type: DataTypes.ENUM('mail', 'female', 'mixed'),
     allowNull: false,
   },
-  monthly_price: {
+  monthlyPrice: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
-  six_month_price: {
+  sixMonthPrice: {
     type: DataTypes.DOUBLE,
     allowNull: false,
   },
