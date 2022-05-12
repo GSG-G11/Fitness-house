@@ -1,11 +1,11 @@
-/* eslint-disable camelcase */
+/* eslint-disable consistent-return */
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 import { useDispatch } from "react-redux";
-import jwt_decode from "jwt-decode";
-import { useCookies } from "react-cookie";
+
 import { Dashboard, Home } from "./Layouts";
-import "./app.css";
 
 import {
   LoginPage,
@@ -18,21 +18,50 @@ import {
   NotfoundPage,
   HomePage,
 } from "./Pages";
-import { setAuth, setLogout } from "./Store/Slices/checkAuthSlice";
+
+import "./app.css";
+
+import { setAuth } from "./Store/Slices";
 
 function App() {
-  const [cookies] = useCookies();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const checkToken = () => {
-      const { token } = cookies;
-      if (!token) dispatch(setLogout());
-      const { role, gymName, gymID } = jwt_decode(token);
-      dispatch(setAuth({ role, id: gymID, name: gymName, isLoggedIn: true }));
+      try {
+        const token = Cookies.get("token");
+        if (!token) return;
+        const decodeToken = jwtDecode(token);
+        switch (decodeToken.role) {
+          case "gym":
+            dispatch(
+              setAuth({
+                role: decodeToken.role,
+                id: decodeToken.gymID,
+                name: decodeToken.gymName,
+                isLoggedIn: true,
+              })
+            );
+            break;
+          case "user":
+            dispatch(
+              setAuth({
+                role: decodeToken.role,
+                id: decodeToken.userID,
+                name: decodeToken.username,
+                isLoggedIn: true,
+              })
+            );
+            break;
+          default:
+            throw new Error("Unknown role");
+        }
+      } catch (error) {
+        console.log(error); // ?? handle error
+      }
     };
     checkToken();
-  }, [cookies, dispatch]);
+  }, [dispatch]);
 
   return (
     <Routes>
