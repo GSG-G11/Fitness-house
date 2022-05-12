@@ -1,80 +1,120 @@
 import React from "react";
+import { Box, Skeleton, Stack, CardContent } from "@mui/material";
+import { useParams } from "react-router-dom";
 import GymImages from "../Components/GymImages";
-
 import GymReviews from "../Components/Reviews";
-
+import GymCards from "../Components/Cards";
 import GymProfile from "../Components/GymProfile";
 
-const gymData = {
-  id: 1,
-  gymName: "نادي فريندز للياقة البدنية",
-  logo: "https://bit.ly/3yij5Wb",
-  city: "غزة",
-  description:
-    ".نادي رياضي يحتوي على ملعب وميدان تنافسي وملعب رياضي, أوقات الدوام من 8-11 صباحا ومن 13-17 مساء",
-  features: ["ميدان تنافسي", "ملعب رياضي"],
-  progress: 75,
-  images: [
-    {
-      pathUrl: "https://bit.ly/39s08Wv",
-    },
-    {
-      pathUrl: "https://bit.ly/3kpe2e9",
-    },
-    {
-      pathUrl: "https://bit.ly/3LxTj3Y",
-    },
-    {
-      pathUrl: "https://bit.ly/3siJZsQ",
-    },
-    {
-      pathUrl: "https://bit.ly/3KVru4l",
-    },
-  ],
-  reviews: [
-    {
-      rate: 2,
-      description: "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      createdAt: "2022-05-08T14:15:25.265Z",
-      userId: 3,
-      user: {
-        username: "حسن عبدالله",
-        avatar: "https://bit.ly/38CU9xq",
-      },
-    },
-    {
-      rate: 1,
-      description: "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      createdAt: "2022-05-08T14:15:25.265Z",
-      userId: 1,
-      user: {
-        username: "محمود علي",
-        avatar: "https://bit.ly/37THiXV",
-      },
-    },
-    {
-      rate: 3,
-      description: "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      createdAt: "2022-05-08T14:15:25.266Z",
-      userId: 2,
-      user: {
-        username: "علي محمود",
-        avatar: "https://bit.ly/3EYZU4G",
-      },
-    },
-  ],
-};
+import { useGetGymDataQuery } from "../Store/Services/gyms";
 
 export default function ProfileGym() {
-  return (
-    <>
-      <div className="container">
-        <GymProfile gymData={gymData} />
-      </div>
-      <div className="container bg__container imgfooter">
-        <GymImages images={gymData.images} />
-      </div>
-      <GymReviews />
-    </>
-  );
+
+  const { gymId } = useParams();
+  const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(gymId);
+  const renderProfile = () => {
+    if (isLoading) {
+      return (
+        <Box className="gymprofilecard">
+          <Box className="rightside">
+            <Skeleton
+              sx={{ height: 400, width: 320, borderRadius: "10px" }}
+              animation="wave"
+              variant="rectangular"
+            />
+          </Box>
+          <Box className="leftside">
+            <Box className="topsec">
+              <Box
+                sx={{ p: 2, display: "flex", justifyContent: "space-between" }}
+              >
+                <Box sx={{ display: "flex", gap: "0.5rem" }}>
+                  <Skeleton
+                    animation="wave"
+                    variant="circular"
+                    width={40}
+                    height={40}
+                  />
+                  <Box width={200}>
+                    <Skeleton
+                      animation="wave"
+                      height={10}
+                      style={{ marginBottom: 6 }}
+                    />
+                    <Skeleton animation="wave" height={10} width="80%" />
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+
+            <CardContent>
+              <Skeleton />
+              <Skeleton />
+              <Skeleton width="60%" />
+            </CardContent>
+            <Box sx={{ m: 2 }}>
+              <Stack direction="row" spacing={1}>
+                <Skeleton
+                  animation="wave"
+                  height={50}
+                  width="35%"
+                  style={{ borderRadius: "10px" }}
+                />
+                <Skeleton
+                  animation="wave"
+                  height={50}
+                  width="35%"
+                  style={{ borderRadius: "10px" }}
+                />
+                <Skeleton
+                  animation="wave"
+                  height={50}
+                  width="35%"
+                  style={{ borderRadius: "10px" }}
+                />
+                <Skeleton
+                  animation="wave"
+                  height={50}
+                  width="35%"
+                  style={{ borderRadius: "10px" }}
+                />
+              </Stack>
+            </Box>
+            <Box sx={{ mt: "auto", ml: 2, mb: 2 }}>
+              <Skeleton
+                animation="wave"
+                height={55}
+                width="40%"
+                style={{ borderRadius: "10px" }}
+              />
+            </Box>
+          </Box>
+        </Box>
+      );
+    }
+    if (isError) {
+      // Route gym not found
+      return <div>عذرا هناك خطأ , أعد تحديث الصفحة </div>;
+    }
+
+    const { gymData } = data;
+    if (isSuccess && gymData.length === 0)
+      return <div>النادي غير موجود , أعد تحديث الصفحة </div>;
+    return (
+      <>
+        <div className="container">
+          <GymProfile gymData={gymData} />
+        </div>
+        <div className="container imgfooter">
+          <GymImages gymData={gymData} />
+        </div>
+        <div className="container">
+          <GymReviews gymData={gymData} />
+        </div>
+        <GymCards page="ProfileGym" />
+      </>
+    );
+  };
+
+  return <>{renderProfile()}</>;
 }

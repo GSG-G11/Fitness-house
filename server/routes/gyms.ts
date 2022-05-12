@@ -1,11 +1,12 @@
 import { Router } from 'express';
 
-import { getTopGyms, searchGymByName, getGym } from '../controllers';
+import { getTopGyms, searchGymByName, getGym, getFilteredGyms } from '../controllers';
 
 const gyms = Router();
 
 gyms.get('/top', getTopGyms);
+gyms.get('/filter', getFilteredGyms);
+gyms.get('/search', searchGymByName);
 gyms.get('/:id', getGym);
-gyms.get('/Search', searchGymByName);
 
 export default gyms;
