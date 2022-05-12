@@ -87,13 +87,11 @@
   border-radius: 10px;
 }
 
-.footer_sec_1 {
-  margin-bottom: 0;
+footer .container {
+  margin-top: 0.4rem;
+  padding: 0.2rem 3.125rem;
 }
-.footer_sec_2 {
-  margin: 0;
-  padding: 0;
-}
+
 
 @media (max-width: 900px) {
   .footer-container {
