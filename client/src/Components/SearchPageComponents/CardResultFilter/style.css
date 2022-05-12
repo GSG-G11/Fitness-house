@@ -1,0 +1,79 @@
+.card_result_filter__container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 1.5rem 5.25rem;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  min-height: 100vh;
+}
+
+.card__filter {
+  display: flex;
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  max-height: 30rem;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.image__card img {
+  width: 100%;
+  max-height: 30rem;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 !important;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.image__card {
+  flex: 35;
+  margin-left: 0.5rem;
+}
+.body__card {
+  flex: 65;
+  padding: 1.123rem;
+  padding-bottom: 0.24rem;
+}
+
+.btn__card {
+  text-decoration: none;
+  color: inherit;
+  font-family: Cairo, sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 6px 16px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #276678;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%),
+    0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+@media screen and (max-width: 500px) {
+  .card__filter {
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+  }
+  .image__card img {
+    max-height: 15rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .card_result_filter__container {
+    padding: 1.5rem 2.25rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .card_result_filter__container {
+    padding: 1.5rem 10.25rem;
+  }
+}
