@@ -33,9 +33,9 @@ const gymData = {
 };
 function FilterSide() {
   const { cities, gymsFeatures, genders } = gymData;
-  const [checked, setChecked] = React.useState(false);
-  const [features, setfeatures] = React.useState([]);
-  const [price, setPrice] = React.useState([20, 40]);
+  const [checked, setChecked] = useState(false);
+  const [features, setfeatures] = useState([]);
+  const [price, setPrice] = useState([20, 40]);
   const [rating, setRating] = useState(3.5);
   const [gymName, setGymName] = useState("");
   const [city, setCity] = useState("");
