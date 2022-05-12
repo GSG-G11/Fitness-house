@@ -12,7 +12,7 @@ import {
   Autocomplete,
   FormGroup,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import PropTypes from "prop-types";
 
@@ -26,34 +26,39 @@ const MenuProps = {
     },
   },
 };
-const initilstate = {
-  name: "",
-  features: [],
-  city: "",
-  gender: "",
-  fulltime: false,
-  rating: 5,
-  price: [0, 150],
+const gymData = {
+  cities: ["غزة", "خانيونس", "رفح"],
+  genders: ["ذكور", "إناث", "ذكور وإناث"],
+  gymsFeatures: ["ميدان تنافسي", "ملعب رياضي", "مسبح", "مدرب شخصي"],
 };
-
-function FilterSide({ gymData }) {
+function FilterSide() {
   const { cities, gymsFeatures, genders } = gymData;
-  const [inputfilter, setInputfilter] = React.useState(initilstate);
-
-  const handleInputChange = (event, inputName, newValue = "") => {
-    const { value, checked } = event.target;
-    if (inputName === "fulltime") {
-      setInputfilter({ ...inputfilter, [inputName]: checked });
-      return;
-    }
-    if (newValue) {
-      setInputfilter({ ...inputfilter, [inputName]: newValue });
-      return;
-    }
-    setInputfilter({ ...inputfilter, [inputName]: value });
+  const [checked, setChecked] = React.useState(false);
+  const [features, setfeatures] = React.useState([]);
+  const [price, setPrice] = React.useState([20, 40]);
+  const [rating, setRating] = useState(3.5);
+  const [gymName, setGymName] = useState("");
+  const [city, setCity] = useState("");
+  const [gender, setGender] = useState("");
+  const handleGymNameChange = (e) => {
+    setGymName(e.target.value);
   };
 
-  const { name, features, city, gender, fulltime, rating, price } = inputfilter;
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
+  };
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+
+  const handleSwitchChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
+  const handlePriceChange = (event, newValue) => {
+    setPrice(newValue);
+  };
+
   return (
     <div className="rightfilter">
       <div className="filter-head">
@@ -63,26 +68,25 @@ function FilterSide({ gymData }) {
       <Divider variant="middle" />
       <div className="filter-body">
         <div className="filter-item">
-          <h3 className="filter-item-title">اسم النادي</h3>
+          <lable className="filter-item-title">اسم النادي</lable>
           <TextField
             sx={{ width: "100%" }}
             size="small"
             id="outlined-basic"
             label="ابحث باسم النادي"
             variant="outlined"
-            value={name}
-            onChange={(event) => handleInputChange(event, "name")}
+            value={gymName}
+            onChange={handleGymNameChange}
           />
         </div>
         <div className="filter-item">
-          <h3 className="filter-item-title">المزايا</h3>
+          <lable className="filter-item-title">المزايا</lable>
           <FormGroup>
             <Autocomplete
               multiple
               id="tags-outlined"
               value={features}
               options={gymsFeatures}
-              // getOptionLabel={({ title }) => title}
               filterSelectedOptions
               renderInput={(params) => (
                 <TextField
@@ -93,19 +97,19 @@ function FilterSide({ gymData }) {
                 />
               )}
               onChange={(event, newValue) => {
-                handleInputChange(event, "features", newValue);
+                setfeatures(newValue);
               }}
             />
           </FormGroup>
         </div>
         {/* this is city section */}
         <div className="filter-item">
-          <h3 className="filter-item-title">المدن</h3>
+          <lable className="filter-item-title">المدن</lable>
           <FormControl sx={{ width: "100%" }} size="small">
             <InputLabel>المدينة</InputLabel>
             <Select
               value={city}
-              onChange={(event) => handleInputChange(event, "city")}
+              onChange={handleCityChange}
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
             >
@@ -119,12 +123,12 @@ function FilterSide({ gymData }) {
         </div>
         {/* this is Gender section */}
         <div className="filter-item">
-          <h3 className="filter-item-title">الفئة</h3>
+          <lable className="filter-item-title">الفئة</lable>
           <FormControl sx={{ width: "100%" }} size="small">
             <InputLabel>الفئة</InputLabel>
             <Select
               value={gender}
-              onChange={(event) => handleInputChange(event, "gender")}
+              onChange={handleGenderChange}
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
             >
@@ -137,36 +141,37 @@ function FilterSide({ gymData }) {
           </FormControl>
         </div>
         <div className="filter-item">
-          <h3 className="filter-item-title">مواعيد الدوام</h3>
+          <lable className="filter-item-title">مواعيد الدوام</lable>
           <div className="switchdiv">
             <h1 className="switch-title">مغلق في الاجازات</h1>
             <Switch
-              checked={fulltime}
-              onChange={(event) => handleInputChange(event, "fulltime")}
+              checked={checked}
+              onChange={handleSwitchChange}
               inputProps={{ "aria-label": "controlled" }}
             />
             <h1 className="switch-title">طوال الأسبوع</h1>
           </div>
         </div>
         <div className="filter-item">
-          <h3 className="filter-item-title">التقييم</h3>
+          <lable className="filter-item-title">التقييم</lable>
           <div className="rating">
             <Rating
               name="simple-controlled"
               value={rating}
+              precision={0.5}
               onChange={(event, newValue) => {
-                handleInputChange(event, "rating", newValue);
+                setRating(newValue);
               }}
             />
           </div>
         </div>
         <div className="filter-item">
-          <h3 className="filter-item-title">السعر</h3>
+          <lable className="filter-item-title">السعر</lable>
           <Slider
             getAriaLabel={() => "Temperature range"}
             value={price}
-            onChange={(event) => handleInputChange(event, "price")}
-            max={500}
+            onChange={handlePriceChange}
+            max={200}
             valueLabelDisplay="auto"
           />
         </div>
