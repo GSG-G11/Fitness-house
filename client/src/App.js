@@ -31,31 +31,15 @@ function App() {
       try {
         const token = Cookies.get("token");
         if (!token) return;
-        const decodeToken = jwtDecode(token);
-        switch (decodeToken.role) {
-          case "gym":
-            dispatch(
-              setAuth({
-                role: decodeToken.role,
-                id: decodeToken.gymID,
-                name: decodeToken.gymName,
-                isLoggedIn: true,
-              })
-            );
-            break;
-          case "user":
-            dispatch(
-              setAuth({
-                role: decodeToken.role,
-                id: decodeToken.userID,
-                name: decodeToken.username,
-                isLoggedIn: true,
-              })
-            );
-            break;
-          default:
-            throw new Error("Unknown role");
-        }
+        const { id, name, role } = jwtDecode(token);
+        dispatch(
+          setAuth({
+            id,
+            name,
+            role,
+            isLoggedIn: true,
+          })
+        );
       } catch (error) {
         console.log(error); // ?? handle error
       }
