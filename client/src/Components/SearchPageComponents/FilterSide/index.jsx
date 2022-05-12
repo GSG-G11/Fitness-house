@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import "./style.css";
-import PropTypes from "prop-types";
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
@@ -185,8 +184,5 @@ function FilterSide() {
     </div>
   );
 }
-FilterSide.propTypes = {
-  gymData: PropTypes.instanceOf(Object).isRequired,
-};
 
 export default FilterSide;

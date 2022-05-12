@@ -1,5 +1,5 @@
 import React from "react";
-import FilterSide from "../../FilterSide";
+import FilterSide from "../FilterSide";
 import CardResultFilter from "../CardResultFilter";
 
 import "./style.css";

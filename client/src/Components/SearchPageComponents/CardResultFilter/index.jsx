@@ -1,3 +1,4 @@
+import { Pagination } from "@mui/material";
 import React from "react";
 import Card from "./Card";
 
@@ -20,6 +21,15 @@ export default function CardResultFilter() {
     <div className="card_result_filter__container">
       {filter.length !== 0 &&
         filter.map((data) => <Card key={data.id} filter={data} />)}
+      <div className="switchdiv">
+        <Pagination
+          count={10}
+          variant="outlined"
+          shape="rounded"
+          size="large"
+          color="primary"
+        />
+      </div>
     </div>
   );
 }
