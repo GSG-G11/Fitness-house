@@ -1,3 +1,3 @@
-import { checkUserAuth, checkGymAuth } from './checkAuth';
+import checkAuth from './checkAuth';
 
-export { checkUserAuth, checkGymAuth };
+export default checkAuth;
