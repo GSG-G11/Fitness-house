@@ -1,7 +1,14 @@
 import CustomError from './CustomError';
 import { checkToken, generateToken } from './jwt';
-import { GymFilter } from './types';
+import { GymFilter, authRequest } from './types';
 import { filterValidation, paramsValidation } from './validation';
 
 export {
-  CustomError, GymFilter, filterValidation, paramsValidation, checkToken, generateToken };
+  CustomError,
+  GymFilter,
+  authRequest,
+  filterValidation,
+  paramsValidation,
+  checkToken,
+  generateToken,
+};
