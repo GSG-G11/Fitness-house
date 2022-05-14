@@ -25,7 +25,7 @@ function App() {
         <Route path="register" element={<RegisterPage />} />
         <Route path="gym/login" element={<LoginGymPage />} />
         <Route path="gym/register" element={<RegisterGymPage />} />
-        <Route path="gyms/search" element={<SearchGymPage />} />
+        <Route path="gyms/filter" element={<SearchGymPage />} />
         <Route path="gyms/profile/:gymId" element={<ProfileGymPage />} />
 
         {/* .... other Routes ... */}

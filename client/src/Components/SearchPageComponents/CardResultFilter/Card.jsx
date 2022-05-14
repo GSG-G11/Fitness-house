@@ -12,16 +12,17 @@ import {
 import { Link } from "react-router-dom";
 
 export default function Card({ filter }) {
-  const { id, name, image, location, description, rating, features } = filter;
+  const { id, gymName, images, location, description, review, features } =
+    filter;
 
   return (
     <div className="card__filter">
       <div className="image__card">
-        <img alt="complex" src={image} />
+        <img alt="complex" src={images[0].pathUrl} />
       </div>
       <div className="body__card">
         <Typography sx={{ m: 1, mb: 0 }} variant="h4">
-          {name}
+          {gymName}
         </Typography>
         <Typography sx={{ mx: 1 }} variant="body3">
           {location}
@@ -32,7 +33,7 @@ export default function Card({ filter }) {
           </Typography>
         </CardContent>
         <Divider variant="middle" />
-        <Rating value={rating} readOnly sx={{ m: 1 }} />
+        <Rating value={+review} readOnly sx={{ m: 1 }} />
         <Box sx={{ m: 1 }}>
           <Typography gutterBottom variant="body1">
             المزايا

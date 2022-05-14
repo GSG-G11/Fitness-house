@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import FilterSide from "../FilterSide";
 import CardResultFilter from "../CardResultFilter";
-
 import "./style.css";
+// import { useGetFilterDataQuery } from "../../../Store/Services/gyms";
 
 export default function Filter() {
+  const [filter, setFilter] = React.useState([]);
+
+  const changeFilterQuery = async (query = "") => {
+    const response = await axios(`/api/v1/gyms/filter?${query}`);
+    setFilter(response.data.gyms);
+  };
+
+  useEffect(() => {
+    changeFilterQuery();
+  }, []);
+
+  // const { data, isLoading, isSuccess, isError } = useGetFilterDataQuery();
+  // console.log(data, isLoading, isSuccess, isError);
+
   return (
     <section className="filter__section">
-      <FilterSide />{" "}
+      <FilterSide changeFilterQuery={changeFilterQuery} />
       <div className="bg__container filter__section__result">
-        <CardResultFilter />
+        <CardResultFilter filter={filter} />
       </div>
     </section>
   );

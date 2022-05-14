@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   Divider,
   FormControl,
@@ -28,15 +29,28 @@ const MenuProps = {
 };
 const gymData = {
   cities: ["غزة", "خانيونس", "رفح"],
-  genders: ["ذكور", "إناث", "ذكور وإناث"],
+  genders: [
+    {
+      name: "ذكور",
+      value: "mail",
+    },
+    {
+      name: "إناث",
+      value: "female",
+    },
+    {
+      name: "ذكور وإناث",
+      value: "mixed",
+    },
+  ],
   gymsFeatures: ["ميدان تنافسي", "ملعب رياضي", "مسبح", "مدرب شخصي"],
 };
-function FilterSide() {
+function FilterSide({ changeFilterQuery }) {
   const { cities, gymsFeatures, genders } = gymData;
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const [features, setfeatures] = useState([]);
-  const [price, setPrice] = useState([20, 40]);
-  const [rating, setRating] = useState(3.5);
+  const [price, setPrice] = useState([1, 199]);
+  const [rating, setRating] = useState(0);
   const [gymName, setGymName] = useState("");
   const [city, setCity] = useState("");
   const [gender, setGender] = useState("");
@@ -68,7 +82,7 @@ function FilterSide() {
       <Divider variant="middle" />
       <div className="filter-body">
         <div className="filter-item">
-          <lable className="filter-item-title">اسم النادي</lable>
+          <p className="filter-item-title">اسم النادي</p>
           <TextField
             sx={{ width: "100%" }}
             size="small"
@@ -80,7 +94,7 @@ function FilterSide() {
           />
         </div>
         <div className="filter-item">
-          <lable className="filter-item-title">المزايا</lable>
+          <p className="filter-item-title">المزايا</p>
           <FormGroup>
             <Autocomplete
               multiple
@@ -104,7 +118,7 @@ function FilterSide() {
         </div>
         {/* this is city section */}
         <div className="filter-item">
-          <lable className="filter-item-title">المدن</lable>
+          <p className="filter-item-title">المدن</p>
           <FormControl sx={{ width: "100%" }} size="small">
             <InputLabel>المدينة</InputLabel>
             <Select
@@ -123,7 +137,7 @@ function FilterSide() {
         </div>
         {/* this is Gender section */}
         <div className="filter-item">
-          <lable className="filter-item-title">الفئة</lable>
+          <p className="filter-item-title">الفئة</p>
           <FormControl sx={{ width: "100%" }} size="small">
             <InputLabel>الفئة</InputLabel>
             <Select
@@ -132,16 +146,16 @@ function FilterSide() {
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
             >
-              {genders.map((value) => (
+              {genders.map(({ name, value }) => (
                 <MenuItem key={value} value={value}>
-                  {value}
+                  {name}
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
         </div>
         <div className="filter-item">
-          <lable className="filter-item-title">مواعيد الدوام</lable>
+          <p className="filter-item-title">مواعيد الدوام</p>
           <div className="switchdiv">
             <h1 className="switch-title">مغلق في الاجازات</h1>
             <Switch
@@ -153,7 +167,7 @@ function FilterSide() {
           </div>
         </div>
         <div className="filter-item">
-          <lable className="filter-item-title">التقييم</lable>
+          <p className="filter-item-title">التقييم</p>
           <div className="rating">
             <Rating
               name="simple-controlled"
@@ -166,7 +180,7 @@ function FilterSide() {
           </div>
         </div>
         <div className="filter-item">
-          <lable className="filter-item-title">السعر</lable>
+          <p className="filter-item-title">السعر</p>
           <Slider
             getAriaLabel={() => "Temperature range"}
             value={price}
@@ -177,7 +191,22 @@ function FilterSide() {
         </div>
         <div className="filter-item searchbtn">
           <div className="switchdiv">
-            <Button variant="contained">اعرض النتائج</Button>
+            <Button
+              onClick={() =>
+                changeFilterQuery(
+                  `name=${gymName}&city=${city}&typeGender=${gender}&minPrice=${
+                    price[0]
+                  }&maxPrice=${
+                    price[1]
+                  }&availability=${checked}&features=${features.join(
+                    ","
+                  )}&review=${rating}`
+                )
+              }
+              variant="contained"
+            >
+              اعرض النتائج
+            </Button>
           </div>
         </div>
       </div>
@@ -186,3 +215,6 @@ function FilterSide() {
 }
 
 export default FilterSide;
+FilterSide.propTypes = {
+  changeFilterQuery: PropTypes.instanceOf(Object).isRequired,
+};
