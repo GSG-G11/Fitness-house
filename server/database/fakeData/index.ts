@@ -19,12 +19,8 @@ const builderHandler = async () => {
   console.log('Database Start seeded (user - gym) ...');
 
   await Promise.all([
-    ...users.map(async (user: any) => {
-      await User.create(user);
-    }),
-    ...gyms.map(async (gym: any) => {
-      await Gym.create(gym);
-    }),
+    ...users.map(async (user: any) => await User.create(user)),
+    ...gyms.map(async (gym: any) => await Gym.create(gym)),
   ]);
 
   console.log(
@@ -32,15 +28,9 @@ const builderHandler = async () => {
   );
 
   await Promise.all([
-    ...images.map(async (image: any) => {
-      await Image.create(image);
-    }),
-    ...subscription.map(async (sub: any) => {
-      await Subscription.create(sub);
-    }),
-    ...reviews.map(async (review: any) => {
-      await Review.create(review);
-    }),
+    ...images.map(async (image: any) => await Image.create(image)),
+    ...subscription.map(async (sub: any) => await Subscription.create(sub)),
+    ...reviews.map(async (review: any) => await Review.create(review)),
   ]);
 
   console.log('Database seeded successfully');
