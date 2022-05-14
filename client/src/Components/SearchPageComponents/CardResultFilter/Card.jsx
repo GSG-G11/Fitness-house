@@ -12,8 +12,7 @@ import {
 import { Link } from "react-router-dom";
 
 export default function Card({ filter }) {
-  const { id, gymName, images, location, description, review, features } =
-    filter;
+  const { id, gymName, images, city, description, review, features } = filter;
 
   return (
     <div className="card__filter">
@@ -25,7 +24,7 @@ export default function Card({ filter }) {
           {gymName}
         </Typography>
         <Typography sx={{ mx: 1 }} variant="body3">
-          {location}
+          {city}
         </Typography>
         <CardContent>
           <Typography variant="body2" color="text.secondary">
