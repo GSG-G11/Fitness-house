@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import gymData from "./gymdata";
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
@@ -26,40 +27,7 @@ const MenuProps = {
     },
   },
 };
-const gymData = {
-  cities: ["غزة", "خانيونس", "رفح"],
-  genders: [
-    {
-      name: "ذكور",
-      value: "mail",
-    },
-    {
-      name: "إناث",
-      value: "female",
-    },
-    {
-      name: "ذكور وإناث",
-      value: "mixed",
-    },
-  ],
-  gymsFeatures: [
-    "أحدث الاجهزة",
-    "مساحة واسعة",
-    "ملعب رياضي",
-    "ملعب صالة لكمال الاجسام",
-    "ملعب تنسيقي",
-    "ميدان تنافسي",
-    "ملعب ترفيهي",
-    "صالة مغطاة",
-    "مدرب شخصي",
-    "تنظيف بشرة",
-    "مساج",
-    "علاج طبيعي",
-    "مدربة خاصة",
-    "تخسيس",
-    "تجميل",
-  ],
-};
+
 function FilterSide({ changeFilterQuery }) {
   const { cities, gymsFeatures, genders } = gymData;
   const [checked, setChecked] = useState(true);
@@ -83,6 +51,15 @@ function FilterSide({ changeFilterQuery }) {
   const handleSwitchChange = (event) => {
     setChecked(event.target.checked);
   };
+  const handleClearState = () => {
+    setfeatures([]);
+    setPrice([30, 150]);
+    setRating(0);
+    setGymName("");
+    setCity("");
+    setGender("");
+    setChecked(true);
+  };
 
   const handlePriceChange = (event, newValue) => {
     setPrice(newValue);
@@ -102,12 +79,16 @@ function FilterSide({ changeFilterQuery }) {
     <div className="rightfilter">
       <div className="filter-head">
         <h1 className="filter-title">البحث</h1>
-        <p className="lead">مسح البحث</p>
+        <InputLabel onClick={handleClearState} className="lead">
+          مسح البحث
+        </InputLabel>
       </div>
       <Divider variant="middle" />
       <div className="filter-body">
         <div className="filter-item">
-          <p className="filter-item-title">اسم النادي</p>
+          <p color="error" className="filter-item-title">
+            اسم النادي
+          </p>
           <TextField
             sx={{ width: "100%" }}
             size="small"
@@ -213,9 +194,6 @@ function FilterSide({ changeFilterQuery }) {
             max={200}
             valueLabelDisplay="auto"
           />
-        </div>
-        <div className="filter-item searchbtn">
-          <div className="switchdiv" />
         </div>
       </div>
     </div>

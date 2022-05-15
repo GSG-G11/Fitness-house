@@ -6,6 +6,9 @@
  
     
 }
+.lead{
+    cursor: pointer;
+}
 .filter-head{
     display: flex;
     justify-content: space-around;
