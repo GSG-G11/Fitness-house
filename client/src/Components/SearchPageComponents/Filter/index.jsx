@@ -3,7 +3,6 @@ import axios from "axios";
 import FilterSide from "../FilterSide";
 import CardResultFilter from "../CardResultFilter";
 import "./style.css";
-// import { useGetFilterDataQuery } from "../../../Store/Services/gyms";
 
 export default function Filter() {
   const [filter, setFilter] = React.useState([]);
@@ -17,14 +16,14 @@ export default function Filter() {
     changeFilterQuery();
   }, []);
 
-  // const { data, isLoading, isSuccess, isError } = useGetFilterDataQuery();
-  // console.log(data, isLoading, isSuccess, isError);
-
   return (
     <section className="filter__section">
       <FilterSide changeFilterQuery={changeFilterQuery} />
       <div className="bg__container filter__section__result">
-        <CardResultFilter filter={filter} />
+        <CardResultFilter
+          filter={filter}
+          changeFilterQuery={changeFilterQuery}
+        />
       </div>
     </section>
   );

@@ -5,10 +5,9 @@ import Card from "./Card";
 
 import "./style.css";
 
-export default function CardResultFilter({ filter }) {
-  const [page, setPage] = React.useState(1);
-  const handlePageChange = (event, value) => {
-    setPage(value);
+export default function CardResultFilter({ filter, changeFilterQuery }) {
+  const handlePageChange = async (event, value) => {
+    changeFilterQuery(`page=${value}`);
   };
 
   return (
@@ -17,10 +16,9 @@ export default function CardResultFilter({ filter }) {
         filter.map((data) => <Card key={data.id} filter={data} />)}
       <div className="switchdiv">
         <Pagination
-          count={filter.length}
+          count={filter.length - 1}
           variant="outlined"
           shape="rounded"
-          page={page}
           size="large"
           onChange={handlePageChange}
         />
@@ -30,4 +28,5 @@ export default function CardResultFilter({ filter }) {
 }
 CardResultFilter.propTypes = {
   filter: PropTypes.instanceOf(Object).isRequired,
+  changeFilterQuery: PropTypes.instanceOf(Object).isRequired,
 };

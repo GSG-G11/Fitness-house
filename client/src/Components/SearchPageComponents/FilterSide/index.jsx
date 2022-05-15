@@ -12,9 +12,8 @@ import {
   Slider,
   Autocomplete,
   FormGroup,
-  Button,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 
 const ITEM_HEIGHT = 25;
@@ -65,7 +64,7 @@ function FilterSide({ changeFilterQuery }) {
   const { cities, gymsFeatures, genders } = gymData;
   const [checked, setChecked] = useState(true);
   const [features, setfeatures] = useState([]);
-  const [price, setPrice] = useState([1, 199]);
+  const [price, setPrice] = useState([30, 150]);
   const [rating, setRating] = useState(0);
   const [gymName, setGymName] = useState("");
   const [city, setCity] = useState("");
@@ -88,6 +87,16 @@ function FilterSide({ changeFilterQuery }) {
   const handlePriceChange = (event, newValue) => {
     setPrice(newValue);
   };
+  useEffect(() => {
+    changeFilterQuery(
+      `name=${gymName}&city=${city}&typeGender=${gender}&minPrice=${
+        price[0]
+      }&maxPrice=${price[1]}&availability=${checked}&features=${features.join(
+        ","
+      )}&review=${rating}`
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [price, checked, rating, gender, features, gymName, city]);
 
   return (
     <div className="rightfilter">
@@ -206,24 +215,7 @@ function FilterSide({ changeFilterQuery }) {
           />
         </div>
         <div className="filter-item searchbtn">
-          <div className="switchdiv">
-            <Button
-              onClick={() =>
-                changeFilterQuery(
-                  `name=${gymName}&city=${city}&typeGender=${gender}&minPrice=${
-                    price[0]
-                  }&maxPrice=${
-                    price[1]
-                  }&availability=${checked}&features=${features.join(
-                    ","
-                  )}&review=${rating}`
-                )
-              }
-              variant="contained"
-            >
-              اعرض النتائج
-            </Button>
-          </div>
+          <div className="switchdiv" />
         </div>
       </div>
     </div>

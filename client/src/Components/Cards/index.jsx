@@ -20,7 +20,6 @@ function GymCards({page}) {
   }
   const { data, isLoading, isSuccess, isError } = useGetTopGymsQuery();
   
-  
   const renderGyms = () => {
     if (isLoading) {
       const loadingCards = new Array(3).fill(null);

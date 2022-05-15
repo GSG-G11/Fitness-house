@@ -12,9 +12,6 @@ export const gymsApi = createApi({
     getGymData: builder.query({
       query: (id) => `/${id}`,
     }),
-    // getFilterData: builder.query({
-    //   query: (query) => `/filter?${query}`,
-    // }),
   }),
 });
 
