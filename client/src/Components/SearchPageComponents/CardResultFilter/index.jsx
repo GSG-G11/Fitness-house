@@ -1,24 +1,33 @@
-import { LinearProgress, Pagination } from "@mui/material";
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-key */
+import { Pagination } from "@mui/material";
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
 import "./style.css";
+import LoadingCard from "./LoadingCard";
 
 export default function CardResultFilter({
   loading,
   filter,
-  changeFilterQuery,
   page,
+  setCurrentPage,
 }) {
   const handlePageChange = async (event, value) => {
-    changeFilterQuery(`page=${value}`);
+    setCurrentPage(value);
   };
-
+  if (loading) {
+    const loadingCards = new Array(3).fill(null);
+    return loadingCards.map((_, index) => (
+      <div className="switchdiv">
+        <LoadingCard key={index} />
+      </div>
+    ));
+  }
   return (
     <div className="card_result_filter__container">
-      {loading && filter.length !== 0 && <LinearProgress />}
-      {!loading && filter.length !== 0 ? (
+      {filter.length !== 0 ? (
         <>
           {filter.map((data) => (
             <Card key={data.id} filter={data} />
@@ -43,7 +52,7 @@ export default function CardResultFilter({
 }
 CardResultFilter.propTypes = {
   filter: PropTypes.instanceOf(Object).isRequired,
-  changeFilterQuery: PropTypes.instanceOf(Object).isRequired,
   page: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
 };

@@ -28,7 +28,7 @@ const MenuProps = {
   },
 };
 
-function FilterSide({ changeFilterQuery }) {
+function FilterSide({ changeFilterQuery, setLoading, page }) {
   const { cities, gymsFeatures, genders } = gymData;
   const [checked, setChecked] = useState(true);
   const [features, setfeatures] = useState([]);
@@ -65,15 +65,26 @@ function FilterSide({ changeFilterQuery }) {
     setPrice(newValue);
   };
   useEffect(() => {
-    changeFilterQuery(
-      `name=${gymName}&city=${city}&typeGender=${gender}&minPrice=${
-        price[0]
-      }&maxPrice=${price[1]}&availability=${checked}&features=${features.join(
-        ","
-      )}&review=${rating}`
-    );
+    // setLoading(true);
+    const getData = async () => {
+      try {
+        await changeFilterQuery(
+          `name=${gymName}&city=${city}&typeGender=${gender}&minPrice=${
+            price[0]
+          }&maxPrice=${
+            price[1]
+          }&availability=${checked}&features=${features.join(
+            ","
+          )}&review=${rating}&page=${page}`
+        );
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    };
+    getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [price, checked, rating, gender, features, gymName, city]);
+  }, [price, checked, rating, gender, features, gymName, city, page]);
 
   return (
     <div className="rightfilter">
@@ -203,4 +214,6 @@ function FilterSide({ changeFilterQuery }) {
 export default FilterSide;
 FilterSide.propTypes = {
   changeFilterQuery: PropTypes.instanceOf(Object).isRequired,
+  setLoading: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
 };
