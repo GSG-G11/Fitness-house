@@ -8,17 +8,16 @@ import {
   ContactInformation,
 } from "./Steps";
 
+const SignupSchema = Yup.object().shape({
+  city: Yup.string().required("حقل المدينة مطلوب"),
+  phone: Yup.string()
+    .length(10, "رقم الهاتف غير صحيح")
+    .required("حقل رقم الهاتف مطلوب"),
+  description: Yup.string().max(255, "الوصف يجب أن لا يزيد عن 255 حرف"),
+});
+
 export default function BodyStepper() {
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
-
-  const SignupSchema = Yup.object().shape({
-    city: Yup.string().required("حقل المدينة مطلوب"),
-    phone: Yup.string()
-      .min(9, "الرقم يجب أن يكون 9 أرقام على الأقل")
-      .max(10, "الرقم يجب أن  لا يكون 10 أرقام")
-      .required("حقل رقم الهاتف مطلوب"),
-    description: Yup.string().max(255, "الوصف يجب أن لا يزيد عن 255 حرف"),
-  });
 
   const contactForm = useFormik({
     initialValues: {

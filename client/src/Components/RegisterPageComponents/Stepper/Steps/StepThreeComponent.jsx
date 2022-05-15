@@ -1,12 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import PropTypes from "prop-types";
-
 import { handleBack } from "../../../../Store/Slices";
 
-export default function StepThreeComponent({ contactForm }) {
-  console.log(contactForm.values);
+export default function StepThreeComponent() {
   const dispatch = useDispatch();
   return (
     <div>
@@ -22,7 +19,3 @@ export default function StepThreeComponent({ contactForm }) {
     </div>
   );
 }
-
-StepThreeComponent.propTypes = {
-  contactForm: PropTypes.instanceOf(Object).isRequired,
-};
