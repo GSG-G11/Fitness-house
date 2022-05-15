@@ -16,3 +16,12 @@ export interface authRequest extends Request {
     role: string;
     };
 }
+
+export interface paramsType {
+    Bucket: string,
+    Key: string,
+    Body: Buffer,
+    ACL: string,
+    ContentEncoding: string,
+    ContentType: string,
+}
