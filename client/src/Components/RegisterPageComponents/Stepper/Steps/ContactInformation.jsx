@@ -61,17 +61,17 @@ export default function ContactInformation({ contactForm }) {
         variant="outlined"
       />
 
-      <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-        <Button onClick={() => dispatch(handleBack())}>السابق</Button>
-
+      <Box sx={{ display: "flex", flexDirection: "row", pt: 2, gap: 3 }}>
         <Button
-          type="submit"
           variant="contained"
-          size="medium"
-          className="w-full"
-          style={{ backgroundColor: "#0369A1", color: "#fff" }}
+          color="secondary"
+          onClick={() => dispatch(handleBack())}
         >
-          التالي
+          الرجوع للخلف
+        </Button>
+
+        <Button type="submit" variant="contained">
+          أكمل التسجيل
         </Button>
       </Box>
     </form>
