@@ -18,16 +18,16 @@ const builderHandler = async () => {
 
   console.log('Database Start seeded (user - gym) ...');
 
-  await Promise.all([await User.bulkCreate(users), await Gym.bulkCreate(gyms)]);
+  await Promise.all([...(await User.bulkCreate(users)), ...(await Gym.bulkCreate(gyms))]);
 
   console.log(
     'Insert Users and Gyms ~~ Now Database Start seeded (images - subscription - reviews) ...',
   );
 
   await Promise.all([
-    await Image.bulkCreate(images),
-    await Subscription.bulkCreate(subscription),
-    await Review.bulkCreate(reviews),
+    ...(await Image.bulkCreate(images)),
+    ...(await Subscription.bulkCreate(subscription)),
+    ...(await Review.bulkCreate(reviews)),
   ]);
 
   console.log('Database seeded successfully');
