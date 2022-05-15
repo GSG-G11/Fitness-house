@@ -76,6 +76,13 @@ a:focus {
   text-decoration: none;
 }
 
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   padding: 2.125rem 3.125rem;
   justify-content: center;
