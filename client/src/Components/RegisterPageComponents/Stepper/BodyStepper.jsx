@@ -1,25 +1,48 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   StepOneComponent,
   StepThreeComponent,
-  StepTwoComponent,
+  ContactInformation,
 } from "./Steps";
 
 export default function BodyStepper() {
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
 
+  const SignupSchema = Yup.object().shape({
+    city: Yup.string().required("حقل المدينة متطلب"),
+    phone: Yup.string()
+      .min(9, "الرقم يجب أن يكون 9 أرقام على الأقل")
+      .max(10, "الرقم يجب أن  لا يكون 10 أرقام")
+      .required("Required"),
+    description: Yup.string().max(255, "الوصف يجب أن لا يزيد عن 255 حرف"),
+  });
+
+  const contactForm = useFormik({
+    initialValues: {
+      city: "غزة",
+      phone: "",
+      description: "",
+    },
+    validationSchema: SignupSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   let StepComponent;
   switch (activeStep) {
     case 1:
-      StepComponent = StepTwoComponent;
+      StepComponent = <ContactInformation contactForm={contactForm} />;
       break;
     case 2:
-      StepComponent = StepThreeComponent;
+      StepComponent = <StepThreeComponent />;
       break;
     default:
-      StepComponent = StepOneComponent;
+      StepComponent = <StepOneComponent />;
   }
 
-  return <StepComponent />;
+  return StepComponent;
 }
