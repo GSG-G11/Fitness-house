@@ -16,14 +16,18 @@ const { subscription } = subscriptionsJson;
 const builderHandler = async () => {
   await sequelize.sync({ force: true });
 
-  console.log('Database Start seeded ...');
+  console.log('Database Start seeded (user - gym) ...');
+
+  await Promise.all([...(await User.bulkCreate(users)), ...(await Gym.bulkCreate(gyms))]);
+
+  console.log(
+    'Insert Users and Gyms ~~ Now Database Start seeded (images - subscription - reviews) ...',
+  );
 
   await Promise.all([
-    users.map((user: any) => User.create(user)),
-    gyms.map((gym: any) => Gym.create(gym)),
-    images.map((image: any) => Image.create(image)),
-    subscription.map((sub: any) => Subscription.create(sub)),
-    reviews.map((review: any) => Review.create(review)),
+    ...(await Image.bulkCreate(images)),
+    ...(await Subscription.bulkCreate(subscription)),
+    ...(await Review.bulkCreate(reviews)),
   ]);
 
   console.log('Database seeded successfully');
