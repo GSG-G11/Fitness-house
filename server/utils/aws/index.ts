@@ -22,4 +22,22 @@ const uploadImage = (image: string) => {
   return s3.upload(params).promise();
 };
 
-export default uploadImage;
+interface deleteParamsType {
+  Bucket: string;
+  Key: string;
+}
+
+function deleteImage(Key: string): Promise<any> {
+  const deleteParams: deleteParamsType = {
+    Bucket: process.env.S3_BUCKET_NAME!,
+    Key,
+  };
+  return s3.deleteObject(deleteParams).promise();
+}
+
+function getImageKey(url: string): string {
+  const urlArr = url.split('/');
+  return `${urlArr[7]}/${urlArr[8]}`;
+}
+
+export { uploadImage, deleteImage, getImageKey };

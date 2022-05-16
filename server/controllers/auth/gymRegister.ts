@@ -3,7 +3,7 @@ import { NextFunction, Response, Request } from 'express';
 
 import { gymRegisterSchema, CustomError, generateToken, hashPassword } from '../../utils';
 import { Gym } from '../../database/models';
-import uploadImage from '../../utils/uploadImage';
+import { uploadImage } from '../../utils/aws';
 
 export default async function gymRegister(req: Request, res: Response, next: NextFunction) {
   try {
@@ -63,13 +63,13 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
 
     return res
       .status(201)
-      .cookie('access_token', token, {
+      .cookie('token', token, {
         maxAge: 900000,
         httpOnly: true,
       })
       .json({
         status: 201,
-        message: 'Gym Sign up successfully',
+        message: 'تم تسجيل النادي بنجاح',
         payload,
       });
   } catch (error: any) {
