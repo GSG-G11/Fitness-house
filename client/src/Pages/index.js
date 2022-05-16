@@ -7,6 +7,8 @@ import RegisterGymPage from "./RegisterGym";
 import SearchGymPage from "./SearchGym";
 import ProfileGymPage from "./ProfileGym";
 import HomePage from "./HomePage";
+import ReviewsGymPage from "./ReviewsGymPage";
+import SubscriberGymPage from "./SubscriberGymPage";
 
 export {
   LoginPage,
@@ -18,4 +20,6 @@ export {
   SearchGymPage,
   ProfileGymPage,
   HomePage,
+  ReviewsGymPage,
+  SubscriberGymPage,
 };

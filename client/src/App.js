@@ -17,6 +17,8 @@ import {
   ProfileGymPage,
   NotfoundPage,
   HomePage,
+  SubscriberGymPage,
+  ReviewsGymPage,
 } from "./Pages";
 
 import "./app.css";
@@ -67,6 +69,8 @@ function App() {
       <Route path="gyms/dashboard" element={<Dashboard />}>
         <Route index element={<GymPage />} />
         <Route path="gym" element={<GymPage />} />
+        <Route path="gym/subscribers" element={<SubscriberGymPage />} />
+        <Route path="gym/reviews" element={<ReviewsGymPage />} />
 
         {/* .... other Routes */}
         <Route path="*" element={<NotfoundPage />} />

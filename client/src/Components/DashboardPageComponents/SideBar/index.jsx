@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 
 import {
@@ -12,11 +12,13 @@ import {
   ListItemIcon,
   ListItemText,
   Drawer as MuiDrawer,
+  Typography,
 } from "@mui/material";
 
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import StarIcon from "@mui/icons-material/Star";
 
 import "./style.css";
 
@@ -46,7 +48,7 @@ const closedMixin = (theme) => ({
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
+  justifyContent: "space-between",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
@@ -69,62 +71,65 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+const listItem = [
+  {
+    text: "المشتركين",
+    icon: <SportsGymnasticsIcon />,
+    link: "gym",
+  },
+  {
+    text: "بيانات النادي",
+    icon: <FitnessCenterIcon />,
+    link: "gym/subscribers",
+  },
+  {
+    text: "التقيمات",
+    icon: <StarIcon />,
+    link: "gym/reviews",
+  },
+];
+
 export default function SideBar({ isOpen, handleDrawer }) {
   return (
     <Drawer variant="permanent" open={isOpen}>
       <DrawerHeader>
+        <Typography variant="h5" component="div">
+          فت هاوس
+        </Typography>
         <IconButton onClick={() => handleDrawer(false)}>
           <ChevronRightIcon />
         </IconButton>
       </DrawerHeader>
-      <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: isOpen ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: isOpen ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: isOpen ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: isOpen ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: isOpen ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: isOpen ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
+        {listItem.map(({ text, icon, link }) => (
+          <div key={text}>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <Link to={link}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: isOpen ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: isOpen ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={text}
+                    sx={{ opacity: isOpen ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Link>
+            </ListItem>
+            <Divider />
+          </div>
         ))}
       </List>
     </Drawer>
