@@ -7,6 +7,9 @@ import {
   Typography,
   IconButton,
   AppBar as MuiAppBar,
+  Box,
+  // Tooltip,
+  Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./style.css";
@@ -46,9 +49,24 @@ export default function Header({ isOpen, handleDrawer }) {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          أهلا وسهلا بكم في صفحة الإدارة
-        </Typography>
+        <Box
+          sx={{ display: "flex", justifyContent: "space-between", flexGrow: 1 }}
+        >
+          <Typography variant="h6" noWrap component="div">
+            أهلا وسهلا بكم في صفحة الإدارة
+          </Typography>
+          <Box
+            sx={{ display: "flex", alignItems: "center", gap: 2 }}
+            title="Open settings"
+          >
+            <IconButton sx={{ p: 0 }}>
+              <Avatar alt="username" src="/static/images/avatar/2.jpg" />
+            </IconButton>
+            <Typography variant="body2" noWrap component="div">
+              username
+            </Typography>
+          </Box>
+        </Box>
       </Toolbar>
     </AppBar>
   );
