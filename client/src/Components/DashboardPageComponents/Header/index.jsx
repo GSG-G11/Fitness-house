@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
@@ -75,7 +74,7 @@ export default function Header({ isOpen, handleDrawer }) {
   );
 }
 
-Header.prototype = {
+Header.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleDrawer: PropTypes.func.isRequired,
 };

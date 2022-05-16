@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
@@ -180,7 +179,7 @@ export default function SideBar({ isOpen, handleDrawer }) {
   );
 }
 
-SideBar.prototype = {
+SideBar.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   handleDrawer: PropTypes.func.isRequired,
 };
