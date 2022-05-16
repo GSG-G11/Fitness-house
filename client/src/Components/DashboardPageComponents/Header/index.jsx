@@ -8,11 +8,9 @@ import {
   IconButton,
   AppBar as MuiAppBar,
   Box,
-  // Tooltip,
   Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import "./style.css";
 
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {

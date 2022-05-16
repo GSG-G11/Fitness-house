@@ -20,8 +20,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import StarIcon from "@mui/icons-material/Star";
 
-import "./style.css";
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
