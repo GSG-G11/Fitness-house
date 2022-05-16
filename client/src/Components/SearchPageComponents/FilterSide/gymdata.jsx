@@ -3,7 +3,7 @@ const gymData = {
   genders: [
     {
       name: "ذكور",
-      value: "mail",
+      value: "male",
     },
     {
       name: "إناث",
