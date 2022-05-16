@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import PropTypes from "prop-types";
 
 import {
   List,
@@ -19,6 +20,7 @@ import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import StarIcon from "@mui/icons-material/Star";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 
@@ -73,7 +75,7 @@ const listItem = [
   {
     text: "بيانات النادي",
     icon: <FitnessCenterIcon />,
-    link: "gym",
+    link: "/gyms/dashboard",
   },
   {
     text: "المشتركين",
@@ -88,6 +90,10 @@ const listItem = [
 ];
 
 export default function SideBar({ isOpen, handleDrawer }) {
+  const handleLogout = () => {
+    console.log("logout");
+  };
+
   return (
     <Drawer variant="permanent" sx={{ background: "red" }} open={isOpen}>
       <DrawerHeader>
@@ -101,7 +107,7 @@ export default function SideBar({ isOpen, handleDrawer }) {
       <Divider />
       <List>
         {listItem.map(({ text, icon, link }) => (
-          <div key={text}>
+          <Fragment key={text}>
             <ListItem disablePadding sx={{ display: "block" }} title={text}>
               <Link to={link}>
                 <ListItemButton
@@ -127,9 +133,54 @@ export default function SideBar({ isOpen, handleDrawer }) {
                 </ListItemButton>
               </Link>
             </ListItem>
-          </div>
+          </Fragment>
         ))}
+
+        <ListItem
+          disablePadding
+          sx={{ display: "block", background: "red" }}
+          title="تسجيل الخروج"
+        >
+          <button
+            onClick={handleLogout}
+            type="button"
+            style={{
+              width: "100%",
+              background: "#ff7e7e",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: isOpen ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: isOpen ? 3 : "auto",
+                  justifyContent: "center",
+                  color: "white",
+                }}
+              >
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="تسجيل الخروج"
+                sx={{ opacity: isOpen ? 1 : 0 }}
+              />
+            </ListItemButton>
+          </button>
+        </ListItem>
       </List>
     </Drawer>
   );
 }
+
+SideBar.prototype = {
+  isOpen: PropTypes.bool.isRequired,
+  handleDrawer: PropTypes.func.isRequired,
+};

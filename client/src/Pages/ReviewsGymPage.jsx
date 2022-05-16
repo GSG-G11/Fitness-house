@@ -7,7 +7,7 @@ export default function ReviewsGymPage() {
   return (
     <div>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to="/URL">الصفحة الرئيسية</Link>
+        <Link to="/gyms/dashboard">الصفحة الرئيسية</Link>
         <Typography color="text.primary">التقيمات</Typography>
       </Breadcrumbs>
       التقيمات
