@@ -10,9 +10,7 @@ import {
 
 const loginInfoSchema = Yup.object().shape({
   image: Yup.string().required("حقل الشعار مطلوب"),
-  name: Yup.string()
-    .min(8, "ادخل اسم صحيح طوله 8 على الاقل")
-    .required("حقل الاسم مطلوب"),
+  name: Yup.string().required("حقل الاسم مطلوب"),
   email: Yup.string()
     .email(" البريد الالكتروني غير صحيح")
     .required("حقل البريد الالكتروني مطلوب"),
