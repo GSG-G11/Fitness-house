@@ -29,19 +29,19 @@ describe('Gyms API Testing - Filtering', () => {
     expect(response.body.gyms[0].id).toBe(2);
   });
 
-  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail', async () => {
+  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=male', async () => {
     const response = await request(app)
-      .get('/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail')
+      .get('/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=male')
       .expect(200);
     expect(response.body.pagination.totalItems).toBe(1);
     expect(response.body.pagination.pageSize).toBe(3);
     expect(response.body.gyms[0].id).toBe(1);
   });
 
-  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail&minPrice=10&maxPrice=350', async () => {
+  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=male&minPrice=10&maxPrice=350', async () => {
     const response = await request(app)
       .get(
-        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail&minPrice=10&maxPrice=350',
+        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=male&minPrice=10&maxPrice=350',
       )
       .expect(200);
     expect(response.body.pagination.totalItems).toBe(1);
@@ -49,10 +49,10 @@ describe('Gyms API Testing - Filtering', () => {
     expect(response.body.gyms[0].gymName).toBe('نادي فريندز للياقة البدنية');
   });
 
-  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=mail&minPrice=10&maxPrice=350&availability=true', async () => {
+  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ال&city=غزة&typeGender=male&minPrice=10&maxPrice=350&availability=true', async () => {
     const response = await request(app)
       .get(
-        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=mail&minPrice=10&maxPrice=350&availability=true',
+        '/api/v1/gyms/filter?name=%D8%A7%D9%84&city=%D8%BA%D8%B2%D8%A9&typeGender=male&minPrice=10&maxPrice=350&availability=true',
       )
       .expect(200);
     expect(response.body.pagination.totalItems).toBe(1);
@@ -89,16 +89,16 @@ describe('Gyms API Testing - Filtering', () => {
     expect(response.body.message).toBe('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً');
   });
 
-  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ا&city=غزة&typeGender=mail&minPrice=10&maxPrice=150&availability=true&page=1&features=ميدان%20تنافسي&review=1', async () => {
+  test('GET: test route filter gyms use query string ~~ path ==> /api/v1/gyms/filter?name=ا&city=غزة&typeGender=male&minPrice=10&maxPrice=150&availability=true&page=1&features=ميدان%20تنافسي&review=1', async () => {
     const response = await request(app)
       .get(
-        '/api/v1/gyms/filter?name=%D8%A7&city=%D8%BA%D8%B2%D8%A9&typeGender=mail&minPrice=10&maxPrice=150&availability=true&page=1&features=%D9%85%D9%8A%D8%AF%D8%A7%D9%86%20%D8%AA%D9%86%D8%A7%D9%81%D8%B3%D9%8A&review=1',
+        '/api/v1/gyms/filter?name=%D8%A7&city=%D8%BA%D8%B2%D8%A9&typeGender=male&minPrice=10&maxPrice=150&availability=true&page=1&features=%D9%85%D9%8A%D8%AF%D8%A7%D9%86%20%D8%AA%D9%86%D8%A7%D9%81%D8%B3%D9%8A&review=1',
       )
       .expect(200);
     expect(response.body.gyms[0].id).toBe(1);
     expect(response.body.gyms[0].gymName).toBe('نادي فريندز للياقة البدنية');
     expect(response.body.gyms[0].city).toBe('غزة');
-    expect(response.body.gyms[0].typeGender).toBe('mail');
+    expect(response.body.gyms[0].typeGender).toBe('male');
     expect(response.body.gyms[0].features[0]).toBe('ميدان تنافسي');
     expect(response.body.pagination.pageSize).toBe(3);
     expect(response.body.pagination.totalItems).toBe(1);

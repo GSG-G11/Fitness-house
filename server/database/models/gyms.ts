@@ -37,7 +37,7 @@ const Gym = sequelize.define('gyms', {
     allowNull: true,
   },
   typeGender: {
-    type: DataTypes.ENUM('mail', 'female', 'mixed'),
+    type: DataTypes.ENUM('male', 'female', 'mixed'),
     allowNull: false,
   },
   monthlyPrice: {
