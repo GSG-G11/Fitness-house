@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
@@ -6,7 +5,6 @@ import {
   TextField,
   InputAdornment,
   Button,
-  Avatar,
   FormHelperText,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -16,25 +14,13 @@ import EmailIcon from "@mui/icons-material/Email";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import convertToBase64 from "../../../../utils";
 
 import "./style.css";
 
 const Input = styled("input")({
   display: "none",
 });
-
-const convertToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
 
 export default function LoginInformation({ loginInformationfForm }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -105,6 +91,7 @@ export default function LoginInformation({ loginInformationfForm }) {
         onChange={loginInformationfForm.handleChange}
         error={!!loginInformationfForm.errors.password}
         helperText={loginInformationfForm.errors.password}
+        autoComplete="new-password"
         variant="outlined"
       />
       <label htmlFor="icon-button-file">
@@ -139,16 +126,9 @@ export default function LoginInformation({ loginInformationfForm }) {
           {loginInformationfForm.errors.image}
         </FormHelperText>
         {loginInformationfForm.values.image && (
-          <Avatar
+          <img
             src={loginInformationfForm.values.image}
-            sx={{
-              mt: 3,
-              height: 100,
-              width: 100,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "start",
-            }}
+            className="preview_img"
             alt="imageProfile"
           />
         )}
