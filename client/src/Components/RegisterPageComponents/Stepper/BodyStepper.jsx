@@ -3,12 +3,22 @@ import { useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
-  StepOneComponent,
+  LoginInformation,
   StepThreeComponent,
   ContactInformation,
 } from "./Steps";
 
 const SignupSchema = Yup.object().shape({
+  image: Yup.string().required("حقل الشعار مطلوب"),
+  name: Yup.string()
+    .min(8, "ادخل اسم صحيح طوله 8 على الاقل")
+    .required("حقل الاسم مطلوب"),
+  email: Yup.string()
+    .email(" البريد الالكتروني غير صحيح")
+    .required("حقل البريد الالكتروني مطلوب"),
+  password: Yup.string()
+    .min(8, "كلمة المرور على الاقل 8 احرف")
+    .required("حقل كلمة المرور مطلوب"),
   city: Yup.string().required("حقل المدينة مطلوب"),
   phone: Yup.string()
     .length(10, "رقم الهاتف غير صحيح")
@@ -18,6 +28,19 @@ const SignupSchema = Yup.object().shape({
 
 export default function BodyStepper() {
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
+
+  const loginInformationfForm = useFormik({
+    initialValues: {
+      image: "",
+      name: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: SignupSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   const contactForm = useFormik({
     initialValues: {
@@ -40,7 +63,9 @@ export default function BodyStepper() {
       StepComponent = <StepThreeComponent />;
       break;
     default:
-      StepComponent = <StepOneComponent />;
+      StepComponent = (
+        <LoginInformation loginInformationfForm={loginInformationfForm} />
+      );
   }
 
   return StepComponent;
