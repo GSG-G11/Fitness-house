@@ -1,5 +1,5 @@
-import StepTwoComponent from "./StepTwoComponent";
+import ContactInformation from "./ContactInformation";
 import StepThreeComponent from "./StepThreeComponent";
 import StepOneComponent from "./StepOneComponent";
 
-export { StepTwoComponent, StepThreeComponent, StepOneComponent };
+export { ContactInformation, StepThreeComponent, StepOneComponent };
