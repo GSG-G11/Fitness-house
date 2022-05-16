@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
   Box,
@@ -13,7 +13,8 @@ import {
   MenuItem,
   Switch,
 } from "@mui/material";
-import { handleBack, handleNext } from "../../../../Store/Slices";
+import PropTypes from "prop-types";
+import { handleBack } from "../../../../Store/Slices";
 import gymData from "./gymdata";
 
 const ITEM_HEIGHT = 25;
@@ -27,57 +28,42 @@ const MenuProps = {
   },
 };
 
-export default function StepThreeComponent() {
+export default function StepThreeComponent({ thirfForm }) {
   const { gymsFeatures, genders } = gymData;
-  const [gender, setGender] = useState("");
-  const [monthPrice, setMonthPrice] = useState(0);
-  const [sixMonthPrice, setSixMonthPrice] = useState(0);
-
-  const [checked, setChecked] = useState(true);
-  const [myfeatures, setfeatures] = useState([]);
   const dispatch = useDispatch();
-  const handleMonthPrice = (e) => {
-    setMonthPrice(e.target.value);
-  };
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  };
-  const handleSwitchChange = (event) => {
-    setChecked(event.target.checked);
-  };
-  const handleSixMonthPrice = (e) => {
-    setSixMonthPrice(e.target.value);
-  };
   return (
-    <form className="form__container">
+    <form className="form__container" onSubmit={thirfForm.handleSubmit}>
       <FormGroup>
         <Autocomplete
           sx={{ width: "500px", marginBottom: "1rem", marginTop: "1rem" }}
           multiple
-          id="tags-outlined"
-          value={myfeatures}
+          name="features"
+          value={thirfForm.values.features}
+          onChange={(event, newValue) => {
+            thirfForm.setFieldValue("features", newValue);
+          }}
           options={gymsFeatures}
           filterSelectedOptions
           renderInput={(params) => (
             <TextField
-              label="أضف المزايا"
-              placeholder="أضف مزايا أخرى"
+              label="المزايا"
+              error={!!thirfForm.errors.features}
+              helperText={thirfForm.errors.features}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...params}
             />
           )}
-          onChange={(event, newValue) => {
-            setfeatures(newValue);
-          }}
         />
       </FormGroup>
       <FormControl sx={{ width: "500px", marginBottom: "1rem" }}>
         <InputLabel>الفئة</InputLabel>
         <Select
-          value={gender}
-          onChange={handleGenderChange}
+          name="gender"
+          value={thirfForm.values.gender}
+          onChange={thirfForm.handleChange}
           input={<OutlinedInput label="Name" />}
           MenuProps={MenuProps}
+          error={!!thirfForm.errors.gender}
         >
           {genders.map(({ name, value }) => (
             <MenuItem key={value} value={value}>
@@ -102,8 +88,10 @@ export default function StepThreeComponent() {
           type="text"
           name="monthPrice"
           variant="outlined"
-          onChange={handleMonthPrice}
-          value={monthPrice}
+          onChange={thirfForm.handleChange}
+          value={thirfForm.values.monthPrice}
+          error={!!thirfForm.errors.monthPrice}
+          helperText={thirfForm.errors.monthPrice}
           required
         />
         <TextField
@@ -113,8 +101,10 @@ export default function StepThreeComponent() {
           type="text"
           name="sixMonthPrice"
           variant="outlined"
-          onChange={handleSixMonthPrice}
-          value={sixMonthPrice}
+          onChange={thirfForm.handleChange}
+          value={thirfForm.values.sixMonthPrice}
+          error={!!thirfForm.errors.sixMonthPrice}
+          helperText={thirfForm.errors.sixMonthPrice}
           required
         />
       </FormControl>
@@ -130,8 +120,9 @@ export default function StepThreeComponent() {
         <div className="switchdiv">
           <h3>مغلق في الاجازات</h3>
           <Switch
-            checked={checked}
-            onChange={handleSwitchChange}
+            name="checked"
+            checked={thirfForm.values.checked}
+            onChange={thirfForm.handleChange}
             inputProps={{ "aria-label": "controlled" }}
           />
           <h3>طوال الأسبوع</h3>
@@ -166,7 +157,6 @@ export default function StepThreeComponent() {
           size="large"
           type="submit"
           variant="contained"
-          onClick={() => dispatch(handleNext())}
         >
           إنهاء التسجيل
         </Button>
@@ -174,3 +164,6 @@ export default function StepThreeComponent() {
     </form>
   );
 }
+StepThreeComponent.propTypes = {
+  thirfForm: PropTypes.instanceOf(Object).isRequired,
+};
