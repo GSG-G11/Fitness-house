@@ -4,9 +4,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
   StepOneComponent,
-  StepThreeComponent,
+  DetailsComponent,
   ContactInformation,
 } from "./Steps";
+
 import { handleNext } from "../../../Store/Slices";
 
 const SignupSchema = Yup.object().shape({
@@ -14,13 +15,17 @@ const SignupSchema = Yup.object().shape({
   phone: Yup.string()
     .length(10, "رقم الهاتف غير صحيح")
     .required("حقل رقم الهاتف مطلوب"),
-  description: Yup.string().max(255, "الوصف يجب أن لا يزيد عن 255 حرف"),
+});
+const detailsSchema = Yup.object().shape({
   features: Yup.array().min(1, "حقل المزايا مطلوب"),
   gender: Yup.string().required("حقل الفئة مطلوب"),
-  monthPrice: Yup.number().moreThan(1, "قيمة الاشتراك الشهرية مطلوبة"),
-  sixMonthPrice: Yup.number().moreThan(1, "قيمة اشتراك الستة أشهر مطلوب"),
+  monthPrice: Yup.number()
+    .moreThan(1, "يرجى إدخال قيمة أعلى من 1")
+    .required("قيمة اشتراك الشهر مطلوب"),
+  sixMonthPrice: Yup.number()
+    .moreThan(1, "يرجى إدخال قيمة أعلى من 1")
+    .required("قيمة اشتراك الستة أشهر مطلوب"),
 });
-
 export default function BodyStepper() {
   const dispatch = useDispatch();
 
@@ -38,7 +43,7 @@ export default function BodyStepper() {
       dispatch(handleNext());
     },
   });
-  const thirfForm = useFormik({
+  const detailsForm = useFormik({
     initialValues: {
       features: [],
       gender: "",
@@ -46,9 +51,9 @@ export default function BodyStepper() {
       sixMonthPrice: 0,
       checked: false,
     },
-    validationSchema: SignupSchema,
-    onSubmit: (values) => {
-      console.log(values);
+    validationSchema: detailsSchema,
+    onSubmit: () => {
+      console.log(detailsForm.values);
     },
   });
   let StepComponent;
@@ -57,7 +62,7 @@ export default function BodyStepper() {
       StepComponent = <ContactInformation contactForm={contactForm} />;
       break;
     case 2:
-      StepComponent = <StepThreeComponent thirfForm={thirfForm} />;
+      StepComponent = <DetailsComponent detailsForm={detailsForm} />;
       break;
     default:
       StepComponent = <StepOneComponent />;
