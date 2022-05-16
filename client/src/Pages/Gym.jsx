@@ -1,11 +1,7 @@
 import React from "react";
 
 function Gym() {
-  return (
-    <div className="container">
-      <h1>Gym</h1>
-    </div>
-  );
+  return <h1>Gym</h1>;
 }
 
 export default Gym;

@@ -64,7 +64,7 @@ function App() {
       {/* Routes For Gym Views {login, gym filter,...} */}
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
-      <Route path="dashboard" element={<Dashboard />}>
+      <Route path="gyms/dashboard" element={<Dashboard />}>
         <Route index element={<GymPage />} />
         <Route path="gym" element={<GymPage />} />
 
