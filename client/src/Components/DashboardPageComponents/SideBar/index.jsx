@@ -71,14 +71,14 @@ const Drawer = styled(MuiDrawer, {
 
 const listItem = [
   {
-    text: "المشتركين",
-    icon: <SportsGymnasticsIcon />,
+    text: "بيانات النادي",
+    icon: <FitnessCenterIcon />,
     link: "gym",
   },
   {
-    text: "بيانات النادي",
-    icon: <FitnessCenterIcon />,
-    link: "gym/subscribers",
+    text: "المشتركين",
+    icon: <SportsGymnasticsIcon />,
+    link: "gym/subscribers ",
   },
   {
     text: "التقيمات",
@@ -89,7 +89,7 @@ const listItem = [
 
 export default function SideBar({ isOpen, handleDrawer }) {
   return (
-    <Drawer variant="permanent" open={isOpen}>
+    <Drawer variant="permanent" sx={{ background: "red" }} open={isOpen}>
       <DrawerHeader>
         <Typography variant="h5" component="div">
           فت هاوس
@@ -98,10 +98,11 @@ export default function SideBar({ isOpen, handleDrawer }) {
           <ChevronRightIcon />
         </IconButton>
       </DrawerHeader>
+      <Divider />
       <List>
         {listItem.map(({ text, icon, link }) => (
           <div key={text}>
-            <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItem disablePadding sx={{ display: "block" }} title={text}>
               <Link to={link}>
                 <ListItemButton
                   sx={{
@@ -126,7 +127,6 @@ export default function SideBar({ isOpen, handleDrawer }) {
                 </ListItemButton>
               </Link>
             </ListItem>
-            <Divider />
           </div>
         ))}
       </List>
