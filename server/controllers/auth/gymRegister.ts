@@ -3,7 +3,7 @@ import { NextFunction, Response, Request } from 'express';
 import { hash } from 'bcryptjs';
 import { gymRegisterSchema, CustomError, generateToken } from '../../utils';
 import { Gym } from '../../database/models';
-import { uploadImage } from '../../utils/aws';
+import uploadImage from '../../utils/aws';
 
 export default async function gymRegister(req: Request, res: Response, next: NextFunction) {
   try {

@@ -8,7 +8,7 @@ const gymRegisterSchema = Joi.object({
     .min(4)
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
     .required(),
-  password: Joi.string().max(50).min(3).required(),
+  password: Joi.string().max(25).min(8).required(),
   phone: Joi.string().required(),
   city: Joi.string().required(),
   description: Joi.string(),
