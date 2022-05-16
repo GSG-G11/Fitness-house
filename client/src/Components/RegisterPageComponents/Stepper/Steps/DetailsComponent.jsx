@@ -15,10 +15,11 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { handleBack } from "../../../../Store/Slices";
-import gymData from "./gymdata";
 import * as gymsFeatures from "../../../../Services/features.json";
+import * as userGenders from "../../../../Services/genders.json";
 
 const { features } = gymsFeatures;
+const { genders } = userGenders;
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
@@ -32,7 +33,6 @@ const MenuProps = {
 };
 
 export default function StepThreeComponent({ detailsForm }) {
-  const { genders } = gymData;
   const dispatch = useDispatch();
   return (
     <form className="form__container" onSubmit={detailsForm.handleSubmit}>
@@ -68,9 +68,9 @@ export default function StepThreeComponent({ detailsForm }) {
           MenuProps={MenuProps}
           error={!!detailsForm.errors.gender}
         >
-          {genders.map(({ name, value }) => (
-            <MenuItem key={value} value={value}>
-              {name}
+          {(genders || []).map(({ gender }) => (
+            <MenuItem key={gender} value={gender}>
+              {gender}
             </MenuItem>
           ))}
         </Select>
