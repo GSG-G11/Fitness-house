@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import { NextFunction, Response, Request } from 'express';
-
-import { gymRegisterSchema, CustomError, generateToken, hashPassword } from '../../utils';
+import { hash } from 'bcryptjs';
+import { gymRegisterSchema, CustomError, generateToken } from '../../utils';
 import { Gym } from '../../database/models';
 import { uploadImage } from '../../utils/aws';
 
@@ -30,8 +30,6 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     if (isExist) {
       throw new CustomError('عذرا هذا الايميل مستخدم من قبل! حاول مرة أخرى', 409);
     }
-    // hash the password
-    const hashedPassword = await hashPassword(password);
 
     // use AWS to upload the image
     // https://steper-form-test.s3.amazonaws.com/{key}
@@ -46,7 +44,7 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
       logo: logoUrl || 'https://bit.ly/3yij5Wb',
       gymName,
       email,
-      password: hashedPassword,
+      password: await hash(password, 10), // hash the password
       phone,
       city,
       description,
