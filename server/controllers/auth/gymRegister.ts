@@ -28,17 +28,22 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     });
     // if is exist throw an error
     if (isExist) {
-      throw new CustomError('Gym already exists', 409);
+      throw new CustomError('عذرا هذا الايميل مستخدم من قبل! حاول مرة أخرى', 409);
     }
     // hash the password
     const hashedPassword = await hashPassword(password);
 
     // use AWS to upload the image
     // https://steper-form-test.s3.amazonaws.com/{key}
-    const { Location } = await uploadImage(logo);
+    // when test register gym , the image is not uploaded to AWS, so the image url is default image
+    let logoUrl: string = 'https://bit.ly/3yij5Wb';
+    if (process.env.NODE_ENV !== 'test') {
+      const { Location } = await uploadImage(logo);
+      logoUrl = Location;
+    }
 
     const gym = await Gym.create({
-      logo: Location || 'https://bit.ly/3yij5Wb',
+      logo: logoUrl || 'https://bit.ly/3yij5Wb',
       gymName,
       email,
       password: hashedPassword,
