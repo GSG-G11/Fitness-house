@@ -50,9 +50,14 @@ export default function Header({ isOpen, handleDrawer }) {
           <MenuIcon />
         </IconButton>
         <Box
-          sx={{ display: "flex", justifyContent: "space-between", flexGrow: 1 }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexGrow: 1,
+          }}
         >
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="body2" noWrap component="div">
             أهلا وسهلا بكم في صفحة الإدارة
           </Typography>
           <Box
