@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
@@ -16,20 +16,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function Dashboard() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(window.innerWidth > 700);
 
   const handleDrawer = (statusOpen) => {
     setIsOpen(statusOpen);
   };
-
-  useEffect(() => {
-    if (window.innerWidth <= 700) {
-      setIsOpen(false);
-    }
-    return () => {
-      setIsOpen(true);
-    };
-  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>

@@ -75,17 +75,17 @@ const listItem = [
   {
     text: "بيانات النادي",
     icon: <FitnessCenterIcon />,
-    link: "/gyms/dashboard",
+    link: "/dashboard/gyms",
   },
   {
     text: "المشتركين",
     icon: <SportsGymnasticsIcon />,
-    link: "gym/subscribers ",
+    link: "/dashboard/gyms/subscribers",
   },
   {
     text: "التقيمات",
     icon: <StarIcon />,
-    link: "gym/reviews",
+    link: "/dashboard/gyms/reviews",
   },
 ];
 
