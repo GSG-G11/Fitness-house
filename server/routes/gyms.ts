@@ -1,8 +1,9 @@
 import { Router } from 'express';
 
-import { getTopGyms, searchGymByName, getGym, getFilteredGyms } from '../controllers';
+import { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin } from '../controllers';
 
 const gyms = Router();
+gyms.post('/login', gymLogin);
 
 gyms.get('/top', getTopGyms);
 gyms.get('/filter', getFilteredGyms);
