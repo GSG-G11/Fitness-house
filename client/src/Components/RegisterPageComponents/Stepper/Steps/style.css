@@ -1,0 +1,18 @@
+.first-form{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    padding-top: 3rem;
+    padding-left: 17rem;
+    padding-right: 17rem;
+    max-width: 100rem;
+
+}
+/* @media (max-width: 1000px) {
+    .first-form{
+        min-width: 50rem; 
+        padding-left:10px;
+        padding-right: 10px;
+    }
+} */
