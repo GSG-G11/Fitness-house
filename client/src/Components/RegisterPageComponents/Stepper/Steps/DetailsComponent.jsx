@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -52,7 +53,6 @@ export default function StepThreeComponent({ detailsForm }) {
               label="المزايا"
               error={!!detailsForm.errors.features}
               helperText={detailsForm.errors.features}
-              // eslint-disable-next-line react/jsx-props-no-spreading
               {...params}
             />
           )}
