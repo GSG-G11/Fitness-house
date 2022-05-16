@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 import { styled } from "@mui/material/styles";
@@ -21,6 +21,15 @@ function Dashboard() {
   const handleDrawer = (statusOpen) => {
     setIsOpen(statusOpen);
   };
+
+  useEffect(() => {
+    if (window.innerWidth <= 700) {
+      setIsOpen(false);
+    }
+    return () => {
+      setIsOpen(true);
+    };
+  }, []);
 
   return (
     <Box sx={{ display: "flex" }}>
