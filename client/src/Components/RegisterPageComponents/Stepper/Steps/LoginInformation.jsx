@@ -49,7 +49,7 @@ export default function LoginInformation({ loginInformationfForm }) {
       onSubmit={loginInformationfForm.handleSubmit}
     >
       <TextField
-        sx={{ mt: 1, width: "500px" }}
+        sx={{ mt: 3, width: "500px" }}
         id="outlined-basic"
         label="اسم النادي"
         name="name"
@@ -68,7 +68,7 @@ export default function LoginInformation({ loginInformationfForm }) {
       />
 
       <TextField
-        sx={{ mt: 1, width: "500px" }}
+        sx={{ mt: 3, width: "500px" }}
         label="أدخل البريد الإلكتروني"
         name="email"
         InputProps={{
@@ -86,7 +86,7 @@ export default function LoginInformation({ loginInformationfForm }) {
       />
 
       <TextField
-        sx={{ mt: 1, width: "500px" }}
+        sx={{ mt: 3, width: "500px" }}
         label="أدخل كلمة السر"
         type={showPassword ? "text" : "password"}
         name="password"
@@ -124,7 +124,7 @@ export default function LoginInformation({ loginInformationfForm }) {
           variant="outlined"
           component="span"
           sx={{
-            mt: 1,
+            mt: 3,
             height: "3.3rem",
             width: "500px",
             display: "flex",
@@ -142,7 +142,7 @@ export default function LoginInformation({ loginInformationfForm }) {
           <Avatar
             src={loginInformationfForm.values.image}
             sx={{
-              mt: 1,
+              mt: 3,
               height: 100,
               width: 100,
               display: "flex",
@@ -157,7 +157,7 @@ export default function LoginInformation({ loginInformationfForm }) {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 1, height: "3.3rem", width: "500px" }}
+        sx={{ mt: 3, height: "3.3rem", width: "500px" }}
       >
         الخطوة التالية
       </Button>
