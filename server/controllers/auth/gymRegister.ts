@@ -3,7 +3,7 @@ import { NextFunction, Response, Request } from 'express';
 
 import { gymRegisterSchema, CustomError, generateToken, hashPassword } from '../../utils';
 import { Gym } from '../../database/models';
-// import uploadImage from '../../utils/uploadImage';
+import uploadImage from '../../utils/uploadImage';
 
 export default async function gymRegister(req: Request, res: Response, next: NextFunction) {
   try {
@@ -20,6 +20,7 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
       sixMonthPrice,
       fulltime,
       features,
+      logo,
     } = await gymRegisterSchema.validateAsync(req.body, { abortEarly: false });
     // Check if the gym already exists
     const isExist = await Gym.findOne({
@@ -34,11 +35,10 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
 
     // use AWS to upload the image
     // https://steper-form-test.s3.amazonaws.com/{key}
-    // const data = await uploadImage('image');
-    // console.log(data);
+    const { Location } = await uploadImage(logo);
 
     const gym = await Gym.create({
-      logo: 'https://bit.ly/3yij5Wb', // secure_url ||
+      logo: Location || 'https://bit.ly/3yij5Wb',
       gymName,
       email,
       password: hashedPassword,
