@@ -8,7 +8,7 @@ import {
   ContactInformation,
 } from "./Steps";
 
-const SignupSchema = Yup.object().shape({
+const loginInfoSchema = Yup.object().shape({
   image: Yup.string().required("حقل الشعار مطلوب"),
   name: Yup.string()
     .min(8, "ادخل اسم صحيح طوله 8 على الاقل")
@@ -19,6 +19,9 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, "كلمة المرور على الاقل 8 احرف")
     .required("حقل كلمة المرور مطلوب"),
+});
+
+const SignupSchema = Yup.object().shape({
   city: Yup.string().required("حقل المدينة مطلوب"),
   phone: Yup.string()
     .length(10, "رقم الهاتف غير صحيح")
@@ -36,7 +39,7 @@ export default function BodyStepper() {
       email: "",
       password: "",
     },
-    validationSchema: SignupSchema,
+    validationSchema: loginInfoSchema,
     onSubmit: (values) => {
       console.log(values);
     },

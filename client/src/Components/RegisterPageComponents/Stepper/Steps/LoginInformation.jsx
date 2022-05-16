@@ -1,9 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 
-import { TextField, InputAdornment, Button, Avatar } from "@mui/material";
+import {
+  TextField,
+  InputAdornment,
+  Button,
+  Avatar,
+  FormHelperText,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import PersonIcon from "@mui/icons-material/Person";
@@ -11,8 +16,6 @@ import EmailIcon from "@mui/icons-material/Email";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-
-import { handleNext } from "../../../../Store/Slices";
 
 import "./style.css";
 
@@ -40,8 +43,6 @@ export default function LoginInformation({ loginInformationfForm }) {
     setShowPassword(!showPassword);
   };
 
-  const dispatch = useDispatch();
-
   return (
     <form
       className="form__container"
@@ -68,7 +69,6 @@ export default function LoginInformation({ loginInformationfForm }) {
 
       <TextField
         sx={{ mt: 1, width: "500px" }}
-        id="outlined-basic"
         label="أدخل البريد الإلكتروني"
         name="email"
         InputProps={{
@@ -87,7 +87,6 @@ export default function LoginInformation({ loginInformationfForm }) {
 
       <TextField
         sx={{ mt: 1, width: "500px" }}
-        id="outlined-basic"
         label="أدخل كلمة السر"
         type={showPassword ? "text" : "password"}
         name="password"
@@ -108,22 +107,17 @@ export default function LoginInformation({ loginInformationfForm }) {
         helperText={loginInformationfForm.errors.password}
         variant="outlined"
       />
-      <label
-        htmlFor="icon-button-file"
-        error={!!loginInformationfForm.errors.image}
-        helperText={loginInformationfForm.errors.image}
-      >
+      <label htmlFor="icon-button-file">
         <Input
           accept="image/*"
-          id="icon-button-file"
           type="file"
+          id="icon-button-file"
           name="image"
           onChange={async (event) => {
             const imageBase = await convertToBase64(
               event.currentTarget.files[0]
             );
             loginInformationfForm.setFieldValue("image", imageBase);
-            console.log(event.currentTarget.files[0]);
           }}
         />
         <Button
@@ -141,7 +135,9 @@ export default function LoginInformation({ loginInformationfForm }) {
           <PhotoCamera sx={{ mr: 1 }} />
           ادخل الشعار
         </Button>
-
+        <FormHelperText id="component-error-text" error>
+          {loginInformationfForm.errors.image}
+        </FormHelperText>
         {loginInformationfForm.values.image && (
           <Avatar
             src={loginInformationfForm.values.image}
@@ -162,9 +158,6 @@ export default function LoginInformation({ loginInformationfForm }) {
         variant="contained"
         type="submit"
         sx={{ mt: 1, height: "3.3rem", width: "500px" }}
-        onClick={() => {
-          dispatch(handleNext());
-        }}
       >
         الخطوة التالية
       </Button>
