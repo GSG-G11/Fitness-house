@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   # Label of the container job
@@ -54,4 +54,4 @@ jobs:
         env:
           # The hostname used to communicate with the PostgreSQL service container
           TEST_DB_URL: postgres://fitadmin:fitpassword@postgres:5432/fithouse
-           
+          JWT_SECRET: fitness-secret-2888

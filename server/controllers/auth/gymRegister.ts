@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { Op } from 'sequelize';
 import { NextFunction, Response, Request } from 'express';
 import { hash } from 'bcryptjs';
@@ -56,6 +57,7 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     });
 
     // Generate payload
+
     const payload = {
       id: gym.getDataValue('id'),
       name: gym.getDataValue('gymName'),
@@ -64,7 +66,7 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     // Generate the token
     const token = await generateToken(payload);
 
-    return res
+    res
       .status(201)
       .cookie('token', token, {
         maxAge: 900000,
@@ -76,14 +78,8 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
         payload,
       });
   } catch (error: any) {
-    console.log(error);
-
     if (error.name === 'ValidationError') {
-      let errors: Array<string> = [];
-      error.details.map((detail: any) => {
-        errors = [...errors, detail.message];
-      });
-      return next(new CustomError(errors.toString(), 400));
+      return next(new CustomError(error.message, 400));
     }
     return next(error);
   }

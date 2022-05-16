@@ -14,14 +14,14 @@ export interface authRequest extends Request {
     id: string;
     name: string;
     role: string;
-    };
+  };
 }
 
 export interface paramsType {
-    Bucket: string,
-    Key: string,
-    Body: Buffer,
-    ACL: string,
-    ContentEncoding: string,
-    ContentType: string,
+  Bucket: string;
+  Key: string;
+  Body: Buffer;
+  ACL: string;
+  ContentEncoding: string;
+  ContentType: string;
 }
