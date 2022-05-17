@@ -11,7 +11,7 @@ import {
   LoginPage,
   RegisterPage,
   LoginGymPage,
-  GymPage,
+  GymProfilePage,
   RegisterGymPage,
   SearchGymPage,
   ProfileGymPage,
@@ -67,7 +67,7 @@ function App() {
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route path="dashboard/gyms" element={<Dashboard />}>
-        <Route index element={<GymPage />} />
+        <Route index element={<GymProfilePage />} />
         <Route path="subscribers" element={<SubscriberGymPage />} />
         <Route path="reviews" element={<ReviewsGymPage />} />
 
