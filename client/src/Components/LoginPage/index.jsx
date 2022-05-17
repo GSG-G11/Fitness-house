@@ -1,30 +1,10 @@
 import React, { useState } from "react";
 import { TextField, InputAdornment, Button, Typography } from "@mui/material";
+
 import { Visibility, VisibilityOff, Email } from "@mui/icons-material";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import PropTypes from "prop-types";
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email(" البريد الالكتروني غير صحيح")
-    .required("حقل البريد الالكتروني مطلوب"),
-  password: Yup.string()
-    .min(8, "كلمة المرور على الاقل 8 احرف")
-    .required("حقل كلمة المرور مطلوب"),
-});
-
-export default function Login() {
-  const loginForm = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: loginSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
-
+export default function Login({ loginForm }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -85,3 +65,6 @@ export default function Login() {
     </form>
   );
 }
+Login.propTypes = {
+  loginForm: PropTypes.instanceOf(Object).isRequired,
+};
