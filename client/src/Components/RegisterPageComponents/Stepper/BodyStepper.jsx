@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { handleNext } from "../../../Store/Slices";
+import {
   LoginInformation,
   DetailsComponent,
   ContactInformation,
@@ -19,7 +20,6 @@ const loginInfoSchema = Yup.object().shape({
     .min(8, "كلمة المرور على الاقل 8 احرف")
     .required("حقل كلمة المرور مطلوب"),
 });
-
 
 const SignupSchema = Yup.object().shape({
   city: Yup.string().required("حقل المدينة مطلوب"),
