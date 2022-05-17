@@ -1,8 +1,6 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-unused-vars */
 import { NextFunction, Response, Request } from 'express';
 
-import { gymLoginSchema, CustomError } from '../../utils';
+import { gymLoginSchema, CustomError, generateToken, comparePassword } from '../../utils';
 import { Gym } from '../../database/models';
 
 export default async function gymLogin(req: Request, res: Response, next: NextFunction) {
@@ -10,11 +8,11 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
     // Validate the request body against the schema
     const {
       email,
-      password,
+      password: gymPassword,
     } = await gymLoginSchema.validateAsync(req.body);
 
     // Check if the gym already exists
-    const isExist = await Gym.findOne({
+    const isExist: any = await Gym.findOne({
       where: { email },
     });
 
@@ -22,9 +20,37 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
     if (!isExist) {
       throw new CustomError('عذرا لا يوجد حساب نادي بهذا البريد الالكتروني! حاول مرة أخرى', 401);
     }
+
+    const { id, gymName, password: hashedPassword } = isExist;
+
+    const checkedPassword: boolean = await comparePassword(gymPassword, hashedPassword);
+
+    if (!checkedPassword) {
+      throw new CustomError('عذرا البريد الالكتروني او كلمة المرور خطأ! حاول مرة أخرى', 401);
+    }
+
+    // Generate payload
+    const payload = {
+      id,
+      name: gymName,
+      role: 'gym',
+    };
+
+    // Generate the token
+    const token = await generateToken(payload);
+    return res
+      .status(201)
+      .cookie('token', token, {
+        httpOnly: true,
+      })
+      .json({
+        status: 201,
+        message: 'تم تسجيل الدخول بنجاح',
+        payload,
+      });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
-      next(new CustomError(error.message, 400));
+      next(new CustomError('عذراً خطأ في تسجيل الدخول', 400));
     }
     return next(error);
   }
