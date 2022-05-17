@@ -13,7 +13,7 @@ import './style.css';
 export default function TopGymCards({page}) {
   const CardsTitle = ()=>{
     if (page ==="HomePage") return "أفضل النوادي";
-    if (page === "ProfileGym") return " نوادي مشابهة";
+    if (page === "ProfileGym") return "نوادي مشابهة";
   }
   const isShowSearch = () =>{
     return page ==="HomePage";
@@ -41,7 +41,7 @@ export default function TopGymCards({page}) {
       <div className="sub__container">
         <div className="top-container">
           <h1 className="title_top__rating">{CardsTitle()}</h1>
-          {isShowSearch() && (<Link to="gyms/search">
+          {isShowSearch() && (<Link to="/gyms/filter">
             <h3>تصنيف</h3>
           </Link>)}
         </div>
