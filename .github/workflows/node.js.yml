@@ -54,4 +54,4 @@ jobs:
         env:
           # The hostname used to communicate with the PostgreSQL service container
           TEST_DB_URL: postgres://fitadmin:fitpassword@postgres:5432/fithouse
-          JWT_SECRET: fitness-secret-2888
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}

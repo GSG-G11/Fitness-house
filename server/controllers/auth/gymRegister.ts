@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-import { Op } from 'sequelize';
 import { NextFunction, Response, Request } from 'express';
 import { hash } from 'bcryptjs';
 import { gymRegisterSchema, CustomError, generateToken } from '../../utils';
@@ -25,12 +24,14 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     } = await gymRegisterSchema.validateAsync(req.body, { abortEarly: false });
     // Check if the gym already exists
     const isExist = await Gym.findOne({
-      where: { email: { [Op.eq]: email } },
+      where: { email },
     });
     // if is exist throw an error
     if (isExist) {
       throw new CustomError('عذرا هذا الايميل مستخدم من قبل! حاول مرة أخرى', 409);
     }
+
+    const hashedPassword = await hash(password, 12);
 
     // use AWS to upload the image
     // https://steper-form-test.s3.amazonaws.com/{key}
@@ -45,7 +46,7 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
       logo: logoUrl || 'https://bit.ly/3yij5Wb',
       gymName,
       email,
-      password: await hash(password, 10), // hash the password
+      password: hashedPassword,
       phone,
       city,
       description,
