@@ -20,7 +20,6 @@ import {
   FormHelperText,
   Typography,
 } from "@mui/material";
-// import { styled } from "@mui/material/styles";
 
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -30,9 +29,9 @@ import { PhotoCamera } from "@mui/icons-material";
 import * as gymsFeatures from "../../../Services/features.json";
 import * as userGenders from "../../../Services/genders.json";
 import * as Cities from "../../../Services/Cities.json";
+import convertToBase64 from "../../../utils";
 
 import "./style.css";
-import convertToBase64 from "../../../utils";
 
 const { features } = gymsFeatures;
 const { genders } = userGenders;
@@ -91,7 +90,10 @@ export default function UpdateProfile() {
     },
   });
   return (
-    <form onSubmit={updateGymForm.handleSubmit}>
+    <form
+      className="form__update_profile"
+      onSubmit={updateGymForm.handleSubmit}
+    >
       <Grid container spacing={2}>
         {/* Input Name Gym */}
         <Grid item xs={12} md={4}>
@@ -115,56 +117,6 @@ export default function UpdateProfile() {
           />
         </Grid>
 
-        {/* Input Price Gym */}
-        <Grid item container sx={{ mt: 1, width: "100%" }} xs={12} md={4}>
-          <FormControl
-            sx={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              gap: "1rem",
-            }}
-          >
-            <TextField
-              sx={{ width: "100%" }}
-              label="الاشتراك الشهري"
-              type="text"
-              name="monthPrice"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <AttachMoneyIcon />
-                  </InputAdornment>
-                ),
-              }}
-              onChange={updateGymForm.handleChange}
-              value={updateGymForm.values.monthPrice}
-              error={!!updateGymForm.errors.monthPrice}
-              helperText={updateGymForm.errors.monthPrice}
-            />
-            <TextField
-              sx={{ width: "100%" }}
-              label="اشتراك ستة أشهر"
-              type="text"
-              name="sixMonthPrice"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <AttachMoneyIcon />
-                  </InputAdornment>
-                ),
-              }}
-              onChange={updateGymForm.handleChange}
-              value={updateGymForm.values.sixMonthPrice}
-              error={!!updateGymForm.errors.sixMonthPrice}
-              helperText={updateGymForm.errors.sixMonthPrice}
-            />
-          </FormControl>
-        </Grid>
-
         {/* Input phone Gym */}
         <Grid item xs={12} md={4}>
           <TextField
@@ -184,6 +136,34 @@ export default function UpdateProfile() {
             onChange={updateGymForm.handleChange}
             value={updateGymForm.values.phone}
           />
+        </Grid>
+
+        {/* Input fulltime */}
+        <Grid item xs={12} md={4}>
+          <FormControl
+            sx={{
+              mt: 1,
+              width: "100%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              border: "1px solid #e0e0e0",
+              height: "3.5rem",
+              borderRadius: "5px",
+            }}
+          >
+            <div className="switchdiv">
+              <Typography variant="body1">مغلق في الاجازات</Typography>
+              <Switch
+                name="fulltime"
+                checked={updateGymForm.values.fulltime}
+                onChange={updateGymForm.handleChange}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+              <Typography variant="body1">طوال الأسبوع</Typography>
+            </div>
+          </FormControl>
         </Grid>
 
         {/* Input gender Gym */}
@@ -227,28 +207,54 @@ export default function UpdateProfile() {
           />
         </Grid>
 
-        {/* Input fulltime */}
-        <Grid item xs={12} md={4}>
+        {/* Input Price Gym */}
+        <Grid item container xs={12} md={4}>
           <FormControl
             sx={{
-              mt: 2,
+              mt: 1,
               width: "100%",
               display: "flex",
               flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "1rem",
             }}
           >
-            <div className="switchdiv">
-              <Typography variant="body1">مغلق في الاجازات</Typography>
-              <Switch
-                name="fulltime"
-                checked={updateGymForm.values.fulltime}
-                onChange={updateGymForm.handleChange}
-                inputProps={{ "aria-label": "controlled" }}
-              />
-              <Typography variant="body1">طوال الأسبوع</Typography>
-            </div>
+            <TextField
+              sx={{ width: "100%" }}
+              label="الاشتراك الشهري"
+              type="text"
+              name="monthPrice"
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <AttachMoneyIcon />
+                  </InputAdornment>
+                ),
+              }}
+              onChange={updateGymForm.handleChange}
+              value={updateGymForm.values.monthPrice}
+              error={!!updateGymForm.errors.monthPrice}
+              helperText={updateGymForm.errors.monthPrice}
+            />
+            <TextField
+              sx={{ width: "100%" }}
+              label="اشتراك ستة أشهر"
+              type="text"
+              name="sixMonthPrice"
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <AttachMoneyIcon />
+                  </InputAdornment>
+                ),
+              }}
+              onChange={updateGymForm.handleChange}
+              value={updateGymForm.values.sixMonthPrice}
+              error={!!updateGymForm.errors.sixMonthPrice}
+              helperText={updateGymForm.errors.sixMonthPrice}
+            />
           </FormControl>
         </Grid>
 

@@ -14,7 +14,7 @@ import {
   GymProfilePage,
   RegisterGymPage,
   SearchGymPage,
-  ProfileGymPage,
+  SingleGymPage,
   NotfoundPage,
   HomePage,
   SubscriberGymPage,
@@ -59,7 +59,7 @@ function App() {
         <Route path="gym/login" element={<LoginGymPage />} />
         <Route path="gym/register" element={<RegisterGymPage />} />
         <Route path="gyms/filter" element={<SearchGymPage />} />
-        <Route path="gyms/profile/:gymId" element={<ProfileGymPage />} />
+        <Route path="gyms/profile/:gymId" element={<SingleGymPage />} />
 
         {/* .... other Routes ... */}
       </Route>

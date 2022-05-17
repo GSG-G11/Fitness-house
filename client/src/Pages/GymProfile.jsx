@@ -6,7 +6,7 @@ import { UpdateProfile } from "../Components";
 
 function GymProfile() {
   return (
-    <>
+    <div className="sub__container__dashboard">
       <Breadcrumbs
         style={{ minWidth: "100%", width: "100%" }}
         // sx={{ minWidth: "100%", width: "100%" }}
@@ -17,7 +17,7 @@ function GymProfile() {
       </Breadcrumbs>
 
       <UpdateProfile />
-    </>
+    </div>
   );
 }
 

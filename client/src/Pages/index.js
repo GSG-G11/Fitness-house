@@ -5,7 +5,7 @@ import GymProfilePage from "./GymProfile";
 import NotfoundPage from "./NotFound";
 import RegisterGymPage from "./RegisterGym";
 import SearchGymPage from "./SearchGym";
-import ProfileGymPage from "./ProfileGym";
+import SingleGymPage from "./SingleGym";
 import HomePage from "./HomePage";
 import ReviewsGymPage from "./ReviewsGymPage";
 import SubscriberGymPage from "./SubscriberGymPage";
@@ -18,7 +18,7 @@ export {
   NotfoundPage,
   RegisterGymPage,
   SearchGymPage,
-  ProfileGymPage,
+  SingleGymPage,
   HomePage,
   ReviewsGymPage,
   SubscriberGymPage,
