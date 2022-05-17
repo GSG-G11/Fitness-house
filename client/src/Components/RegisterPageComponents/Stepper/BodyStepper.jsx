@@ -2,13 +2,24 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  StepOneComponent,
+
+import { handleNext } from "../../../Store/Slices";
+  LoginInformation,
   DetailsComponent,
   ContactInformation,
 } from "./Steps";
 
-import { handleNext } from "../../../Store/Slices";
+const loginInfoSchema = Yup.object().shape({
+  image: Yup.string().required("حقل الشعار مطلوب"),
+  name: Yup.string().required("حقل الاسم مطلوب"),
+  email: Yup.string()
+    .email(" البريد الالكتروني غير صحيح")
+    .required("حقل البريد الالكتروني مطلوب"),
+  password: Yup.string()
+    .min(8, "كلمة المرور على الاقل 8 احرف")
+    .required("حقل كلمة المرور مطلوب"),
+});
+
 
 const SignupSchema = Yup.object().shape({
   city: Yup.string().required("حقل المدينة مطلوب"),
@@ -30,6 +41,19 @@ export default function BodyStepper() {
   const dispatch = useDispatch();
 
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
+
+  const loginInformationfForm = useFormik({
+    initialValues: {
+      image: "",
+      name: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: loginInfoSchema,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   const contactForm = useFormik({
     initialValues: {
@@ -65,7 +89,9 @@ export default function BodyStepper() {
       StepComponent = <DetailsComponent detailsForm={detailsForm} />;
       break;
     default:
-      StepComponent = <StepOneComponent />;
+      StepComponent = (
+        <LoginInformation loginInformationfForm={loginInformationfForm} />
+      );
   }
 
   return StepComponent;
