@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Join() {
+export default function JoinUs() {
   return (
     <div className="bg__container container">
       <div className="sub__container">
@@ -72,5 +72,3 @@ function Join() {
     </div>
   );
 }
-
-export default Join;

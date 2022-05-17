@@ -1,18 +1,13 @@
 import React from "react";
-import GymCards from "../Components/Cards";
-import Join from "../Components/Joinus";
-
-import Slider from "../Components/Slider";
-
-import OfferForYou from "../Components/OfferForYou";
+import { TopGymCards, JoinUs, Slider, OfferForYou } from "../Components";
 
 export default function HomePage() {
   return (
     <>
       <Slider />
-      <GymCards page="HomePage" />
+      <TopGymCards page="HomePage" />
       <OfferForYou />
-      <Join />
+      <JoinUs />
     </>
   );
 }
