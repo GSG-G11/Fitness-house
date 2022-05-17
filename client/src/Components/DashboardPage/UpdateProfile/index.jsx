@@ -19,6 +19,7 @@ import {
   styled,
   FormHelperText,
   Typography,
+  Box,
 } from "@mui/material";
 
 import PersonIcon from "@mui/icons-material/Person";
@@ -265,8 +266,8 @@ export default function UpdateProfile() {
             id="standard-multiline-flexible"
             label="الوصف"
             multiline
-            maxRows={11}
-            minRows={11}
+            maxRows={10}
+            minRows={10}
             name="description"
             onChange={updateGymForm.handleChange}
             value={updateGymForm.values.description}
@@ -296,25 +297,33 @@ export default function UpdateProfile() {
               component="span"
               sx={{
                 mt: 1,
-                height: "3.5rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "start",
+                height: "18.25rem",
+                display: "block",
               }}
             >
-              <PhotoCamera sx={{ mr: 1 }} />
-              ادخل الشعار
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "start",
+                  justifyContent: "center",
+                }}
+              >
+                <PhotoCamera sx={{ mr: 1 }} />
+                تعديل الشعار
+              </Box>
+              <Box>
+                {updateGymForm.values.logo && (
+                  <img
+                    src={updateGymForm.values.logo}
+                    className="preview_profile_img"
+                    alt="imageProfile"
+                  />
+                )}
+              </Box>
             </Button>
             <FormHelperText id="component-error-text" error>
               {updateGymForm.errors.logo}
             </FormHelperText>
-            {updateGymForm.values.logo && (
-              <img
-                src={updateGymForm.values.logo}
-                className="preview_profile_img"
-                alt="imageProfile"
-              />
-            )}
           </label>
         </Grid>
 
@@ -346,7 +355,7 @@ export default function UpdateProfile() {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 2, height: "2.5rem", width: "250px" }}
+        sx={{ mt: 2, height: "2.8rem", width: "225px", fontSize: "1.1rem" }}
       >
         تعديل البيانات
       </Button>
