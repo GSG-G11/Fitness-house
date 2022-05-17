@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Autocomplete, Box, Button, TextField } from "@mui/material";
 import PropTypes from "prop-types";
-import { handleBack, handleNext } from "../../../../Store/Slices";
+import { handleBack } from "../../../../Store/Slices";
 
 import "./style.css";
 
@@ -70,11 +70,7 @@ export default function ContactInformation({ contactForm }) {
           الرجوع للخلف
         </Button>
 
-        <Button
-          type="submit"
-          variant="contained"
-          onClick={() => dispatch(handleNext())}
-        >
+        <Button type="submit" variant="contained">
           أكمل التسجيل
         </Button>
       </Box>
