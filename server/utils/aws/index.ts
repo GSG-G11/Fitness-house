@@ -7,13 +7,13 @@ const s3 = new AWS.S3({
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
 });
 
-const uploadImage = (image: string, userId: number) => {
+const uploadImage = (image: string) => {
   const base64Data = Buffer.from(image.replace(/^data:image\/\w+;base64,/, ''), 'base64');
   const type = image.split(';')[0].split('/')[1];
 
   const params: paramsType = {
     Bucket: `${AWS_BUCKET_NAME}`,
-    Key: `gyms/${userId}${new Date().getTime()}.${type}`,
+    Key: `gyms/${new Date().getTime()}.${type}`,
     Body: base64Data,
     ACL: 'public-read',
     ContentEncoding: 'base64',
@@ -21,4 +21,5 @@ const uploadImage = (image: string, userId: number) => {
   };
   return s3.upload(params).promise();
 };
+
 export default uploadImage;
