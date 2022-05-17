@@ -10,7 +10,7 @@ describe('Gyms API Testing | Login to Gym', () => {
         const response = await request(app).post('/api/v1/gyms/login').send({
             email: 'friends.fit@gmail.com',
             password: 'friends.fit@gmail.com',
-        }).expect(201);
+        });
         expect(response.headers['set-cookie'][0].startsWith('token')).toEqual(true);
         expect(response.body.message).toBe('تم تسجيل الدخول بنجاح');
         expect(response.body.payload.id).toBe(1);
@@ -22,7 +22,7 @@ describe('Gyms API Testing | Login to Gym', () => {
         const response = await request(app).post('/api/v1/gyms/login').send({
             email: 'techno.gym@gmail.com',
             password: 'techno.gym@gmail.com',
-        }).expect(201);
+        });
         expect(response.headers['set-cookie'][0].startsWith('token')).toEqual(true);
         expect(response.body.message).toBe('تم تسجيل الدخول بنجاح');
         expect(response.body.payload.id).toBe(2);
@@ -34,7 +34,7 @@ describe('Gyms API Testing | Login to Gym', () => {
         const response = await request(app).post('/api/v1/gyms/login').send({
             email: 'oxegin.gym@gmail.com',
             password: 'oxegin.gym@gmail.com',
-        }).expect(201);
+        });
         expect(response.headers['set-cookie'][0].startsWith('token')).toEqual(true);
         expect(response.body.message).toBe('تم تسجيل الدخول بنجاح');
         expect(response.body.payload.id).toBe(3);
@@ -46,7 +46,7 @@ describe('Gyms API Testing | Login to Gym', () => {
         const response = await request(app).post('/api/v1/gyms/login').send({
             email: 'malka.gym@gmail.com',
             password: 'malka.gym@gmail.com',
-        }).expect(201);
+        });
         expect(response.headers['set-cookie'][0].startsWith('token')).toEqual(true);
         expect(response.body.message).toBe('تم تسجيل الدخول بنجاح');
         expect(response.body.payload.id).toBe(4);
@@ -58,7 +58,7 @@ describe('Gyms API Testing | Login to Gym', () => {
         const response = await request(app).post('/api/v1/gyms/login').send({
             email: 'jalaa.gym@gmail.com',
             password: 'jalaa.gym@gmail.com',
-        }).expect(201);
+        });
         expect(response.headers['set-cookie'][0].startsWith('token')).toEqual(true);
         expect(response.body.message).toBe('تم تسجيل الدخول بنجاح');
         expect(response.body.payload.id).toBe(5);

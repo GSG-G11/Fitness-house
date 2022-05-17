@@ -39,12 +39,10 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
 
     // Generate the token
     const token = await generateToken(payload);
-    res.status(201)
-      .cookie('token', token, {
-        httpOnly: true,
-      })
+    res.cookie('token', token, {
+      httpOnly: true,
+    })
       .json({
-        status: 201,
         message: 'تم تسجيل الدخول بنجاح',
         payload,
       });
