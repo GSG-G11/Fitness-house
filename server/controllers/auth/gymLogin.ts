@@ -1,6 +1,7 @@
 import { NextFunction, Response, Request } from 'express';
+import { compare } from 'bcryptjs';
 
-import { gymLoginSchema, CustomError, generateToken, comparePassword } from '../../utils';
+import { gymLoginSchema, CustomError, generateToken } from '../../utils';
 import { Gym } from '../../database/models';
 
 export default async function gymLogin(req: Request, res: Response, next: NextFunction) {
@@ -23,7 +24,7 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
 
     const { id, gymName, password: hashedPassword } = isExist;
 
-    const checkedPassword: boolean = await comparePassword(gymPassword, hashedPassword);
+    const checkedPassword: boolean = await compare(gymPassword, hashedPassword);
 
     if (!checkedPassword) {
       throw new CustomError('عذرا البريد الالكتروني او كلمة المرور خطأ! حاول مرة أخرى', 401);
@@ -38,8 +39,7 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
 
     // Generate the token
     const token = await generateToken(payload);
-    return res
-      .status(201)
+    res.status(201)
       .cookie('token', token, {
         httpOnly: true,
       })
