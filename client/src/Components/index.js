@@ -1,9 +1,9 @@
-import Filter from "./SearchPageComponents";
-import StepperLayout from "./RegisterPageComponents";
-import { Header, SideBar } from "./DashboardPageComponents";
-import { TopGymCards, JoinUs, OfferForYou, Slider } from "./HomePageComponents";
-import { Navbar, Footer } from "./LayoutComponents";
-import { GymReviews, GymProfile, GymImages } from "./SingleGymComponents";
+import Filter from "./SearchPage";
+import StepperLayout from "./RegisterPage";
+import { Header, SideBar } from "./DashboardPage";
+import { TopGymCards, JoinUs, OfferForYou, Slider } from "./HomePage";
+import { Navbar, Footer } from "./Layout";
+import { GymReviews, GymProfile, GymImages } from "./SingleGym";
 
 export {
   Filter,
