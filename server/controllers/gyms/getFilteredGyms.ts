@@ -2,7 +2,7 @@
 import { NextFunction, Response, Request } from 'express';
 import Sequelize, { Op, WhereOptions } from 'sequelize';
 import { Gym, Image, Review } from '../../database/models';
-import { CustomError, filterValidation, GymFilter } from '../../utils';
+import { CustomError, filterValidation, GymModel } from '../../utils';
 
 const PAGE_SIZE = 3;
 
@@ -15,7 +15,7 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
   try {
     await filterValidation.validateAsync({ minPrice, maxPrice, page });
 
-    const where: WhereOptions<GymFilter> = {};
+    const where: WhereOptions<GymModel> = {};
 
     if (name) {
       where.gymName = {

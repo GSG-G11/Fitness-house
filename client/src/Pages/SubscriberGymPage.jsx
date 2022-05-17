@@ -7,7 +7,7 @@ function SubscriberGymPage() {
   return (
     <div>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to="/gyms/dashboard">الصفحة الرئيسية</Link>
+        <Link to="/dashboard/gyms">الصفحة الرئيسية</Link>
         <Typography color="text.primary">المشتركين</Typography>
       </Breadcrumbs>
       المشتركين
