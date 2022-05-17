@@ -1,7 +1,7 @@
 import CustomError from './CustomError';
 import { checkToken, generateToken } from './jwt';
+import { filterValidation, paramsValidation, gymLoginSchema, gymRegisterSchema } from './validation';
 import { GymFilter, authRequest, GymModel } from './types';
-import { filterValidation, paramsValidation, gymRegisterSchema } from './validation';
 
 export {
   CustomError,
@@ -9,6 +9,7 @@ export {
   authRequest,
   filterValidation,
   paramsValidation,
+  gymLoginSchema,
   checkToken,
   generateToken,
   gymRegisterSchema,
