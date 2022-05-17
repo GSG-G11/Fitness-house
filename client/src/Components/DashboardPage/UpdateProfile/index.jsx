@@ -39,7 +39,7 @@ const { genders } = userGenders;
 const { cities } = Cities;
 
 const validationSchema = Yup.object().shape({
-  logo: Yup.string().required("حقل الشعار مطلوب"),
+  logo: Yup.string(),
   name: Yup.string().required("حقل الاسم مطلوب"),
   city: Yup.string().required("حقل المدينة مطلوب"),
   phone: Yup.string()
