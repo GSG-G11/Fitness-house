@@ -9,7 +9,16 @@
   margin: 0px;
 }
 
-.preview_img{
+.preview_img {
   width: 500px;
   margin-top: 2rem;
+}
+
+.preview_profile_img {
+  width: 100%;
+  height: 35vh;
+  max-height: 35vh;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border-radius: 8px;
 }

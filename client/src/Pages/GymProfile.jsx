@@ -6,14 +6,18 @@ import { UpdateProfile } from "../Components";
 
 function GymProfile() {
   return (
-    <div>
-      <Breadcrumbs aria-label="breadcrumb">
+    <>
+      <Breadcrumbs
+        style={{ minWidth: "100%", width: "100%" }}
+        // sx={{ minWidth: "100%", width: "100%" }}
+        aria-label="breadcrumb"
+      >
         <Link to="/dashboard/gyms">الصفحة الرئيسية</Link>
         <Typography color="text.primary">بيانات النادي</Typography>
       </Breadcrumbs>
 
       <UpdateProfile />
-    </div>
+    </>
   );
 }
 
