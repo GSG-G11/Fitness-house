@@ -9,7 +9,7 @@ export default function LoginGym() {
       <div className="sub__container">
         <Login />
         <Typography className="center" component="h4" sx={{ mt: 2 }}>
-          ليس لديك حساب؟ <Link to="/gym/register">إنشاء حساب</Link>
+          ليس لديك حساب ؟&ensp;<Link to="/gym/register"> إنشاء حساب </Link>
         </Typography>
       </div>
     </div>
