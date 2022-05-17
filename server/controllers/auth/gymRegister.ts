@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { NextFunction, Response, Request } from 'express';
 import { hash } from 'bcryptjs';
 import { gymRegisterSchema, CustomError, generateToken } from '../../utils';

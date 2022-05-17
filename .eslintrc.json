@@ -1,4 +1,5 @@
-{  "env": {
+{
+  "env": {
     "browser": true,
     "commonjs": true,
     "es2021": true
@@ -23,7 +24,8 @@
     "linebreak-style": 0,
     "no-console": "off",
     "object-curly-newline": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "consistent-return": "off"
   },
   "settings": {
     "import/resolver": {
