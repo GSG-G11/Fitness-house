@@ -266,8 +266,8 @@ export default function UpdateProfile() {
             id="standard-multiline-flexible"
             label="الوصف"
             multiline
-            maxRows={10}
-            minRows={10}
+            maxRows={9}
+            minRows={9}
             name="description"
             onChange={updateGymForm.handleChange}
             value={updateGymForm.values.description}
@@ -297,7 +297,7 @@ export default function UpdateProfile() {
               component="span"
               sx={{
                 mt: 1,
-                height: "18.25rem",
+                height: "16.7rem",
                 display: "block",
               }}
             >
@@ -355,7 +355,7 @@ export default function UpdateProfile() {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 2, height: "2.8rem", width: "225px", fontSize: "1.1rem" }}
+        sx={{ mt: 2, height: "2.6rem", width: "225px", fontSize: "1.1rem" }}
       >
         تعديل البيانات
       </Button>
