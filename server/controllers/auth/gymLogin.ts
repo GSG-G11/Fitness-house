@@ -50,7 +50,7 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
       });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
-      next(new CustomError('عذراً خطأ في تسجيل الدخول', 400));
+      next(new CustomError(error.message, 400));
     }
     return next(error);
   }
