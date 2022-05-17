@@ -1,4 +1,5 @@
 import { Request } from 'express';
+import { Model, InferCreationAttributes, InferAttributes } from 'sequelize';
 
 export interface GymFilter {
   gymName?: object;
@@ -24,4 +25,21 @@ export interface paramsType {
   ACL: string;
   ContentEncoding: string;
   ContentType: string;
+}
+
+export interface GymModel
+  extends Model<InferAttributes<GymModel>, InferCreationAttributes<GymModel>> {
+  id?: number;
+  gymName: string;
+  email: string;
+  password: string;
+  phone: string;
+  description: string;
+  sixMonthPrice: number;
+  features: string[];
+  logo: string;
+  city: string | object;
+  typeGender: string | object;
+  monthlyPrice: number | object;
+  fulltime: boolean | object;
 }

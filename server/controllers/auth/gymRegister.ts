@@ -59,8 +59,8 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     // Generate payload
 
     const payload = {
-      id: gym.getDataValue('id'),
-      name: gym.getDataValue('gymName'),
+      id: gym.id,
+      name: gym.gymName,
       role: 'gym',
     };
     // Generate the token
