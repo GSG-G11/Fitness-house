@@ -1,16 +1,16 @@
 /* eslint-disable  */
 import React from 'react';
 
-import { useGetTopGymsQuery } from '../../Store/Services/gyms';  
+import { useGetTopGymsQuery } from '../../../Store/Services/gyms';  
 import { Link } from 'react-router-dom';
 
-import GymCard from '../Card';
+import GymCard from '../GymCard';
 import LoadingCard from './LoadingCard';
 
 // Styled Components
 import './style.css';
 
-function GymCards({page}) {
+export default function TopGymCards({page}) {
   const CardsTitle = ()=>{
     if (page ==="HomePage") return "أفضل النوادي";
     if (page === "ProfileGym") return " نوادي مشابهة";
@@ -51,4 +51,4 @@ function GymCards({page}) {
   );
 }
 
-export default GymCards;
+

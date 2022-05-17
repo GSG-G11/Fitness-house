@@ -7,7 +7,7 @@ function Gym() {
   return (
     <div>
       <Breadcrumbs aria-label="breadcrumb">
-        <Link to="/gyms/dashboard">الصفحة الرئيسية</Link>
+        <Link to="/dashboard/gyms">الصفحة الرئيسية</Link>
         <Typography color="text.primary">بيانات النادي</Typography>
       </Breadcrumbs>
       gyms
