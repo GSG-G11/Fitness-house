@@ -70,8 +70,6 @@ const Input = styled("input")({
 });
 
 export default function UpdateProfile() {
-  // get form api get data gyms
-
   const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
 
   const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
