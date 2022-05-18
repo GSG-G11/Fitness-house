@@ -1,5 +1,5 @@
 import { getTopGyms, searchGymByName, getFilteredGyms } from './gyms';
+import { getGym, editGymData } from './gym';
 import { gymRegister, gymLogin } from './auth';
-import getGym from './gym';
 
-export { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin, gymRegister };
+export { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin, gymRegister, editGymData };
