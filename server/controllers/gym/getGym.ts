@@ -10,7 +10,18 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
     const gymData = await Gym.findByPk(id, {
       subQuery: false,
       attributes: [
-        'id', 'gymName', 'logo', 'city', 'description', 'features', [
+        'id',
+        'gymName',
+        'logo',
+        'city',
+        'phone',
+        'sixMonthPrice',
+        'monthlyPrice',
+        'fulltime',
+        'typeGender',
+        'description',
+        'features',
+        [
           Sequelize.literal(`(
             SELECT 
               CASE WHEN AVG(review.rate) IS NULL
@@ -23,7 +34,6 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
             )`),
           'review',
         ],
-
       ],
       include: [
         { model: Image, required: false, attributes: ['pathUrl'] },
