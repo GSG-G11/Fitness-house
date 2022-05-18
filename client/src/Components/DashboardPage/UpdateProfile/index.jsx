@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import { useSnackbar } from "notistack";
 import {
   Autocomplete,
   Button,
@@ -74,6 +74,9 @@ const Input = styled("input")({
 
 export default function UpdateProfile() {
   const [isPending, setIsPending] = useState(false);
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
 
   const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
@@ -108,9 +111,23 @@ export default function UpdateProfile() {
         if (status !== 200) throw new Error("حدث خطأ ما");
 
         setIsPending(false);
-        alert("تم تحديث البيانات بنجاح");
+
+        enqueueSnackbar("تم تحديث البيانات بنجاح", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "right",
+          },
+        });
       } catch (error) {
         setIsPending(false);
+        enqueueSnackbar("عذرا حدث خطأ ما", {
+          variant: "error",
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "right",
+          },
+        });
       }
     },
   });
