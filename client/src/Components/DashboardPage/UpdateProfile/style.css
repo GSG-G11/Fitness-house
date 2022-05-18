@@ -19,3 +19,7 @@
     margin: 0 auto;
   }
 }
+
+.rotate__180 {
+  transform: rotate(180deg);
+}

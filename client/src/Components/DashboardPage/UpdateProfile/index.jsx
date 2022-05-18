@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -22,9 +21,12 @@ import {
   Box,
 } from "@mui/material";
 
+import LoadingButton from "@mui/lab/LoadingButton";
+
 import PersonIcon from "@mui/icons-material/Person";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import SendIcon from "@mui/icons-material/Send";
 
 import { PhotoCamera } from "@mui/icons-material";
 
@@ -70,6 +72,7 @@ const Input = styled("input")({
 });
 
 export default function UpdateProfile() {
+  const [isPending, setIsPending] = useState(false);
   const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
 
   const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
@@ -92,6 +95,7 @@ export default function UpdateProfile() {
     enableReinitialize: true,
     validationSchema,
     onSubmit: (values) => {
+      setIsPending(true);
       // send request for Api
       console.log(values);
     },
@@ -149,7 +153,6 @@ export default function UpdateProfile() {
               ),
             }}
             value={updateGymForm.values.gymName}
-            // value={!isLoading && !isError && isSuccess && data.gymData.gymName}
             onChange={updateGymForm.handleChange}
             error={!!updateGymForm.errors.gymName}
             helperText={updateGymForm.errors.gymName}
@@ -241,6 +244,7 @@ export default function UpdateProfile() {
                 label="المدينة"
                 error={!!updateGymForm.errors.city}
                 helperText={updateGymForm.errors.city}
+                // eslint-disable-next-line react/jsx-props-no-spreading
                 {...params}
               />
             )}
@@ -383,6 +387,7 @@ export default function UpdateProfile() {
                   label="المزايا"
                   error={!!updateGymForm.errors.features}
                   helperText={updateGymForm.errors.features}
+                  // eslint-disable-next-line react/jsx-props-no-spreading
                   {...params}
                 />
               )}
@@ -391,13 +396,25 @@ export default function UpdateProfile() {
         </Grid>
       </Grid>
 
-      <Button
-        variant="contained"
+      <LoadingButton
+        style={isPending ? { color: "#00000080" } : { color: "#fff" }}
+        sx={{
+          mt: 2,
+          height: "2.6rem",
+          width: "280px",
+          fontSize: "1rem",
+          "& .MuiLoadingButton-loadingIndicator": {
+            color: "#00000080",
+          },
+        }}
         type="submit"
-        sx={{ mt: 2, height: "2.6rem", width: "225px", fontSize: "1.1rem" }}
+        variant="contained"
+        loading={isPending}
+        endIcon={<SendIcon className="rotate__180" />}
+        loadingPosition="end"
       >
-        تعديل البيانات
-      </Button>
+        {!isPending ? "تعديل البيانات" : "جاري تعديل البيانات"}
+      </LoadingButton>
     </form>
   );
 }
