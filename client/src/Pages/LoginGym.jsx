@@ -26,9 +26,9 @@ export default function LoginGym() {
   const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
-      const datafrom = await axios.post("/api/v1/gyms/login", values);
+      const { data } = await axios.post("/api/v1/gyms/login", values);
       navigate("/dashboard/gyms", { replace: true });
-      const { id, name } = datafrom.data.payload;
+      const { id, name } = data.payload;
       dispatch(
         setAuth({
           id,
