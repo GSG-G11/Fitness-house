@@ -1,8 +1,9 @@
 import { Router } from 'express';
 
-import { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymRegister } from '../controllers';
+import { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin, gymRegister } from '../controllers';
 
 const gyms = Router();
+gyms.post('/login', gymLogin);
 
 // auth
 gyms.post('/register', gymRegister);

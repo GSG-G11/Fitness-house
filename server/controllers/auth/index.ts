@@ -1,4 +1,4 @@
+import gymLogin from './gymLogin';
 import gymRegister from './gymRegister';
 
-export { gymRegister };
-export default gymRegister;
+export { gymRegister, gymLogin };
