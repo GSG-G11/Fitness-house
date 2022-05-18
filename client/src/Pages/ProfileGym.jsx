@@ -1,10 +1,7 @@
 import React from "react";
 import { Box, Skeleton, Stack, CardContent } from "@mui/material";
 import { useParams } from "react-router-dom";
-import GymImages from "../Components/GymImages";
-import GymReviews from "../Components/Reviews";
-import GymCards from "../Components/Cards";
-import GymProfile from "../Components/GymProfile";
+import { GymImages, GymReviews, TopGymCards, GymProfile } from "../Components";
 
 import { useGetGymDataQuery } from "../Store/Services/gyms";
 
@@ -110,7 +107,7 @@ export default function ProfileGym() {
         <div className="container">
           <GymReviews gymData={gymData} />
         </div>
-        <GymCards page="ProfileGym" />
+        <TopGymCards page="ProfileGym" />
       </>
     );
   };

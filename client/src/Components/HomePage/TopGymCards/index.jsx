@@ -1,19 +1,19 @@
 /* eslint-disable  */
 import React from 'react';
 
-import { useGetTopGymsQuery } from '../../Store/Services/gyms';  
+import { useGetTopGymsQuery } from '../../../Store/Services/gyms';  
 import { Link } from 'react-router-dom';
 
-import GymCard from '../Card';
+import GymCard from '../GymCard';
 import LoadingCard from './LoadingCard';
 
 // Styled Components
 import './style.css';
 
-function GymCards({page}) {
+export default function TopGymCards({page}) {
   const CardsTitle = ()=>{
     if (page ==="HomePage") return "أفضل النوادي";
-    if (page === "ProfileGym") return " نوادي مشابهة";
+    if (page === "ProfileGym") return "نوادي مشابهة";
   }
   const isShowSearch = () =>{
     return page ==="HomePage";
@@ -41,7 +41,7 @@ function GymCards({page}) {
       <div className="sub__container">
         <div className="top-container">
           <h1 className="title_top__rating">{CardsTitle()}</h1>
-          {isShowSearch() && (<Link to="gyms/search">
+          {isShowSearch() && (<Link to="/gyms/filter">
             <h3>تصنيف</h3>
           </Link>)}
         </div>
@@ -51,4 +51,4 @@ function GymCards({page}) {
   );
 }
 
-export default GymCards;
+

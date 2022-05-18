@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
+import { GymModel } from '../../utils';
 import sequelize from '../config/connection';
 
-const Gym = sequelize.define('gyms', {
+const Gym = sequelize.define<GymModel>('gyms', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
