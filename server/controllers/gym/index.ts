@@ -1,3 +1,4 @@
 import getGym from './getGym';
+import editGymData from './editGym';
 
-export default getGym;
+export { getGym, editGymData };

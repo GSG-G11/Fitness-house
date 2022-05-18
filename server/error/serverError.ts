@@ -7,6 +7,7 @@ interface Error {
 }
 
 const serverError = (error: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(error);
   if (error.status) {
     res.status(error.status).json({ status: error.status, message: error.message });
   } else {
