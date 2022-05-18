@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import {
   Autocomplete,
@@ -94,10 +95,23 @@ export default function UpdateProfile() {
     initialValues: profileGyms,
     enableReinitialize: true,
     validationSchema,
-    onSubmit: (values) => {
-      setIsPending(true);
-      // send request for Api
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        setIsPending(true);
+
+        const { status } = await axios({
+          method: "PUT",
+          url: "/api/v1/gyms",
+          data: { ...values, gymId: +id },
+        });
+
+        if (status !== 200) throw new Error("حدث خطأ ما");
+
+        setIsPending(false);
+        alert("تم تحديث البيانات بنجاح");
+      } catch (error) {
+        setIsPending(false);
+      }
     },
   });
 
