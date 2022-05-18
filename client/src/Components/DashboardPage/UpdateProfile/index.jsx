@@ -79,7 +79,8 @@ export default function UpdateProfile() {
 
   const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
 
-  const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
+  const { data, isLoading, isError, isSuccess, refetch } =
+    useGetGymDataQuery(id);
 
   const profileGyms = {
     logo: "",
@@ -111,7 +112,7 @@ export default function UpdateProfile() {
         if (status !== 200) throw new Error("حدث خطأ ما");
 
         setIsPending(false);
-
+        refetch();
         enqueueSnackbar("تم تحديث البيانات بنجاح", {
           variant: "success",
           anchorOrigin: {
