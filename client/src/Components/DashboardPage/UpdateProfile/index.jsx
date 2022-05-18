@@ -35,7 +35,7 @@ import convertToBase64 from "../../../utils";
 import "./style.css";
 
 const validationSchema = Yup.object().shape({
-  logo: Yup.string(),
+  logo: Yup.string().required("حقل الصورة مطلوب"),
   name: Yup.string().required("حقل الاسم مطلوب"),
   city: Yup.string().required("حقل المدينة مطلوب"),
   phone: Yup.string()
@@ -67,6 +67,7 @@ const Input = styled("input")({
 });
 
 export default function UpdateProfile() {
+  // get form api get data gyms
   const profileGyms = {
     logo: "https://i.imgur.com/qJHXK8H.png",
     name: "الجيم الخيري",
