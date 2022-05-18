@@ -178,7 +178,7 @@ export default function UpdateProfile() {
               MenuProps={MenuProps}
               error={!!updateGymForm.errors.gender}
             >
-              {(genders || []).map(({ name, value }) => (
+              {genders.map(({ name, value }) => (
                 <MenuItem key={value} value={value}>
                   {name}
                 </MenuItem>
@@ -195,7 +195,7 @@ export default function UpdateProfile() {
             disablePortal
             name="city"
             value={updateGymForm.values.city}
-            options={(cities || []).map(({ city }) => city)}
+            options={cities.map(({ city }) => city)}
             renderInput={(params) => (
               <TextField
                 label="المدينة"
@@ -336,7 +336,7 @@ export default function UpdateProfile() {
               onChange={(event, newValue) => {
                 updateGymForm.setFieldValue("features", newValue);
               }}
-              options={(features || []).map(({ feature }) => feature)}
+              options={features.map(({ feature }) => feature)}
               filterSelectedOptions
               renderInput={(params) => (
                 <TextField
