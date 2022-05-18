@@ -23,18 +23,13 @@ const uploadImage = (image: string) => {
 };
 
 const deleteImage = (image: string) => {
+  const Key = image.split('https://fitness-house.s3.eu-west-2.amazonaws.com/')[1];
   const params: propsDeleteType = {
     Bucket: `${AWS_BUCKET_NAME}`,
-    Key: image,
+    Key,
   };
+  console.log(Key);
   return s3.deleteObject(params).promise();
 };
 
-const getImageKey = (image: string) => {
-  const key = image.split('/');
-  const fileName = key.pop();
-  const folderName = key.pop();
-  return `${folderName}/${fileName}`;
-};
-
-export { uploadImage, deleteImage, getImageKey };
+export { uploadImage, deleteImage };

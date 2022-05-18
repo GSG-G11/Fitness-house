@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
 import Gym from '../../database/models/gyms';
-import { uploadImage, deleteImage, getImageKey } from '../../utils/aws';
+import { uploadImage, deleteImage } from '../../utils/aws';
 import { CustomError, gymEditSchema } from '../../utils';
 
 export default async function editGymData(req: any, res: Response, next: NextFunction) {
@@ -15,11 +15,13 @@ export default async function editGymData(req: any, res: Response, next: NextFun
     if (!gym) {
       throw new CustomError('Gym not found', 404);
     }
-    const logoURL = gym.getDataValue('logo');
+    const logoURL = gym.logo;
     if (req.body.logo !== logoURL) {
       if (process.env.NODE_ENV !== 'test') {
         if (logoURL.includes('amazonaws')) {
-          await deleteImage(getImageKey(logoURL));
+          console.log(logoURL);
+
+          await deleteImage(logoURL);
         }
         const { Location } = await uploadImage(req.body.logo);
         req.body.logo = Location;
