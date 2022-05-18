@@ -1,8 +1,16 @@
 {
-    "genders": [
-        { "gender": "ذكور" },
-        { "gender": "إناث" },
-        { "gender": "ذكور وإناث" }
-       
-      ]
+  "genders": [
+    {
+      "name": "ذكور",
+      "value": "male"
+    },
+    {
+      "name": "إناث",
+      "value": "female"
+    },
+    {
+      "name": "ذكور وإناث",
+      "value": "mixed"
+    }
+  ]
 }

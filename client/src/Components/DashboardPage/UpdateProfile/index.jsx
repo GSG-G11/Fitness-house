@@ -27,16 +27,12 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 import { PhotoCamera } from "@mui/icons-material";
-import * as gymsFeatures from "../../../Services/features.json";
-import * as userGenders from "../../../Services/genders.json";
-import * as Cities from "../../../Services/Cities.json";
+
+import { cities, genders, features } from "../../../Services";
+
 import convertToBase64 from "../../../utils";
 
 import "./style.css";
-
-const { features } = gymsFeatures;
-const { genders } = userGenders;
-const { cities } = Cities;
 
 const validationSchema = Yup.object().shape({
   logo: Yup.string(),
@@ -71,19 +67,22 @@ const Input = styled("input")({
 });
 
 export default function UpdateProfile() {
+  const profileGyms = {
+    logo: "https://i.imgur.com/qJHXK8H.png",
+    name: "الجيم الخيري",
+    city: "غزة",
+    phone: "0561234567",
+    features: ["مسبح", "ميدان تنافسي"],
+    monthPrice: 35,
+    sixMonthPrice: 350,
+    description:
+      "الجيم الخيري هو جيم خيري جدا و أفضل جيم خيري بالمملكة العربية السعودية",
+    gender: "male",
+    fulltime: false,
+  };
+
   const updateGymForm = useFormik({
-    initialValues: {
-      name: "",
-      phone: "",
-      monthPrice: 0,
-      sixMonthPrice: 0,
-      features: [],
-      description: "",
-      gender: "",
-      city: "غزة",
-      fulltime: false,
-      logo: "",
-    },
+    initialValues: profileGyms,
     validationSchema,
     onSubmit: (values) => {
       // send request for Api
@@ -149,7 +148,7 @@ export default function UpdateProfile() {
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              border: "1px solid #e0e0e0",
+              border: "1px solid #bebebe",
               height: "3.5rem",
               borderRadius: "5px",
             }}
@@ -179,9 +178,9 @@ export default function UpdateProfile() {
               MenuProps={MenuProps}
               error={!!updateGymForm.errors.gender}
             >
-              {(genders || []).map(({ gender }) => (
-                <MenuItem key={gender} value={gender}>
-                  {gender}
+              {(genders || []).map(({ name, value }) => (
+                <MenuItem key={value} value={value}>
+                  {name}
                 </MenuItem>
               ))}
             </Select>
