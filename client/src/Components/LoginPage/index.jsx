@@ -49,6 +49,7 @@ export default function Login({ onFinish }) {
         value={loginForm.values.email}
         onChange={loginForm.handleChange}
         error={!!loginForm.errors.email}
+        autoComplete="email"
         helperText={loginForm.errors.email}
         variant="outlined"
       />
@@ -72,7 +73,7 @@ export default function Login({ onFinish }) {
         onChange={loginForm.handleChange}
         error={!!loginForm.errors.password}
         helperText={loginForm.errors.password}
-        autoComplete="new-password"
+        autoComplete="current-password"
         variant="outlined"
       />
       <Button

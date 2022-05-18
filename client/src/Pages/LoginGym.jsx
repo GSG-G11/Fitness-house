@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography, Snackbar, Alert } from "@mui/material";
 import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { setAuth } from "../Store/Slices";
 import { Login } from "../Components";
 
 export default function LoginGym() {
@@ -22,10 +23,20 @@ export default function LoginGym() {
     setState({ ...state, open: false });
   };
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
-      await axios.post("/api/v1/gyms/login", values);
+      const datafrom = await axios.post("/api/v1/gyms/login", values);
       navigate("/dashboard/gyms", { replace: true });
+      const { id, name } = datafrom.data.payload;
+      dispatch(
+        setAuth({
+          id,
+          name,
+          role: "gym",
+          isLoggedIn: true,
+        })
+      );
     } catch (error) {
       const errorMessage = error.response.data.message;
       setState({ ...state, open: true, message: errorMessage });
@@ -42,6 +53,7 @@ export default function LoginGym() {
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
           open={open}
+          autoHideDuration={4000}
           onClose={handleClose}
         >
           <Alert onClose={handleClose} variant="filled" severity="error">
