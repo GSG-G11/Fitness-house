@@ -4,6 +4,7 @@ import { Header, SideBar } from "./DashboardPage";
 import { TopGymCards, JoinUs, OfferForYou, Slider } from "./HomePage";
 import { Navbar, Footer } from "./Layout";
 import { GymReviews, GymProfile, GymImages } from "./SingleGym";
+import Login from "./LoginPage";
 
 export {
   Filter,
@@ -19,4 +20,5 @@ export {
   GymReviews,
   GymProfile,
   GymImages,
+  Login,
 };
