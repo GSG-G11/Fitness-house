@@ -2,7 +2,7 @@ import { NextFunction, Response, Request } from 'express';
 import { hash } from 'bcryptjs';
 import { gymRegisterSchema, CustomError, generateToken } from '../../utils';
 import { Gym } from '../../database/models';
-import uploadImage from '../../utils/aws';
+import { uploadImage } from '../../utils/aws';
 
 export default async function gymRegister(req: Request, res: Response, next: NextFunction) {
   try {
@@ -59,8 +59,8 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
     // Generate payload
 
     const payload = {
-      id: gym.id,
-      name: gym.gymName,
+      id: gym.getDataValue('id'),
+      name: gym.getDataValue('gymName'),
       role: 'gym',
     };
     // Generate the token

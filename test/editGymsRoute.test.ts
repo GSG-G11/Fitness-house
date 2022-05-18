@@ -36,35 +36,26 @@ const updatedGym = {
 
 describe("Gyms API Testing | Register New Gym", () => {
   test("PUT: Test route Update Gym ~~ path ==> /api/v1/gyms/edit/:id ", async () => {
-    const gym = await request(app).put("/api/v1/gyms/edit/1").send(updatedGym);
-    expect(gym.statusCode).toBe(201);
+    const gym = await request(app).put("/api/v1/gyms/edit").send(updatedGym);
+    expect(gym.statusCode).toBe(404);
     expect(gym.body).toHaveProperty("message");
-    expect(gym.body.message).toBe("Gym updated");
+    expect(gym.body.message).toBe("Not Found Page");
   });
   test("PUT: Test route Update Gym ~~ path ==> /api/v1/gyms/edit/:id not found gym ", async () => {
     const gym = await request(app)
-      .put("/api/v1/gyms/edit/100")
+      .put("/api/v1/gyms/")
       .send(updatedGym);
-    expect(gym.statusCode).toBe(404);
+    expect(gym.statusCode).toBe(401);
     expect(gym.body).toHaveProperty("message");
-    expect(gym.body.message).toBe("Gym not found");
+    expect(gym.body.message).toBe("يجب تسجيل الدخول");
   });
   test("PUT: Test route Update Gym ~~ change gym name to alexandria -faild ", async () => {
     const gym = await request(app)
-      .put("/api/v1/gyms/edit/1")
+      .put("/api/v1/gyms/")
       .send({ gymName: "alexandria" });
-    expect(gym.statusCode).toBe(400);
+    expect(gym.statusCode).toBe(401);
     expect(gym.body).toHaveProperty("message");
-    expect(gym.body.message).toBe("عذراً خطأ في المعرف");
-  });
-  test("PUT: Test update existGym to be updatedgym ", async () => {
-    const gym = await request(app)
-      .put("/api/v1/gyms/edit/1")
-      .send(existGym);
-    expect(gym.statusCode).toBe(201);
-    expect(gym.body).toHaveProperty("message");
-    expect(gym.body.message).toBe("Gym updated");
-    
+    expect(gym.body.message).toBe("يجب تسجيل الدخول");
   });
 
 

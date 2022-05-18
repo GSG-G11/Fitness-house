@@ -27,6 +27,11 @@ export interface paramsType {
   ContentType: string;
 }
 
+export interface propsDeleteType {
+  Bucket: string;
+  Key: string;
+}
+
 export interface GymModel
   extends Model<InferAttributes<GymModel>, InferCreationAttributes<GymModel>> {
   id?: number;

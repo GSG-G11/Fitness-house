@@ -1,5 +1,5 @@
 import AWS from 'aws-sdk';
-import { paramsType } from '../types';
+import { paramsType, propsDeleteType } from '../types';
 
 const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET_NAME } = process.env;
 const s3 = new AWS.S3({
@@ -22,4 +22,19 @@ const uploadImage = (image: string) => {
   return s3.upload(params).promise();
 };
 
-export default uploadImage;
+const deleteImage = (image: string) => {
+  const params: propsDeleteType = {
+    Bucket: `${AWS_BUCKET_NAME}`,
+    Key: image,
+  };
+  return s3.deleteObject(params).promise();
+};
+
+const getImageKey = (image: string) => {
+  const key = image.split('/');
+  const fileName = key.pop();
+  const folderName = key.pop();
+  return `${folderName}/${fileName}`;
+};
+
+export { uploadImage, deleteImage, getImageKey };

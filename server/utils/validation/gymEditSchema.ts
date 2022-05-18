@@ -1,14 +1,9 @@
 import Joi from 'joi';
 
 const gymRegisterSchema = Joi.object({
+  gymId: Joi.number().required(),
   gymName: Joi.string().required(),
   logo: Joi.string().required(),
-  email: Joi.string()
-    .max(250)
-    .min(4)
-    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-    .required(),
-  password: Joi.string().max(25).min(8).required(),
   phone: Joi.string().required(),
   city: Joi.string().required(),
   description: Joi.string(),
