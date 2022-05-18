@@ -16,7 +16,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function Dashboard() {
-  const [isOpen, setIsOpen] = useState(window.innerWidth > 700);
+  const [isOpen, setIsOpen] = useState(window.innerWidth > 1150);
 
   const handleDrawer = (statusOpen) => {
     setIsOpen(statusOpen);

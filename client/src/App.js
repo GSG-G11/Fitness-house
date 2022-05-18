@@ -11,10 +11,10 @@ import {
   LoginPage,
   RegisterPage,
   LoginGymPage,
-  GymPage,
+  GymProfilePage,
   RegisterGymPage,
   SearchGymPage,
-  ProfileGymPage,
+  SingleGymPage,
   NotfoundPage,
   HomePage,
   SubscriberGymPage,
@@ -59,7 +59,7 @@ function App() {
         <Route path="gym/login" element={<LoginGymPage />} />
         <Route path="gym/register" element={<RegisterGymPage />} />
         <Route path="gyms/filter" element={<SearchGymPage />} />
-        <Route path="gyms/profile/:gymId" element={<ProfileGymPage />} />
+        <Route path="gyms/profile/:gymId" element={<SingleGymPage />} />
 
         {/* .... other Routes ... */}
       </Route>
@@ -67,7 +67,7 @@ function App() {
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route path="dashboard/gyms" element={<Dashboard />}>
-        <Route index element={<GymPage />} />
+        <Route index element={<GymProfilePage />} />
         <Route path="subscribers" element={<SubscriberGymPage />} />
         <Route path="reviews" element={<ReviewsGymPage />} />
 

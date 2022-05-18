@@ -5,7 +5,7 @@ import { GymImages, GymReviews, TopGymCards, GymProfile } from "../Components";
 
 import { useGetGymDataQuery } from "../Store/Services/gyms";
 
-export default function ProfileGym() {
+export default function SingleGym() {
   const { gymId } = useParams();
   const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(gymId);
   const renderProfile = () => {
