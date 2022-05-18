@@ -28,22 +28,25 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 import { PhotoCamera } from "@mui/icons-material";
 
-import { cities, genders, features } from "../../../Services";
+import { useSelector } from "react-redux";
+import { cities, genders, features as allFeature } from "../../../Services";
 
 import convertToBase64 from "../../../utils";
 
 import "./style.css";
+import { useGetGymDataQuery } from "../../../Store/Services/gyms";
+import LoadingForm from "./LoadingForm";
 
 const validationSchema = Yup.object().shape({
   logo: Yup.string().required("حقل الصورة مطلوب"),
-  name: Yup.string().required("حقل الاسم مطلوب"),
+  gymName: Yup.string().required("حقل الاسم مطلوب"),
   city: Yup.string().required("حقل المدينة مطلوب"),
   phone: Yup.string()
     .length(10, "رقم الهاتف غير صحيح")
     .required("حقل رقم الهاتف مطلوب"),
   features: Yup.array().min(1, "حقل المزايا مطلوب"),
-  gender: Yup.string().required("حقل الفئة مطلوب"),
-  monthPrice: Yup.number()
+  typeGender: Yup.string().required("حقل الفئة مطلوب"),
+  monthlyPrice: Yup.number()
     .moreThan(1, "يرجى إدخال قيمة أعلى من 1")
     .required("قيمة اشتراك الشهر مطلوب"),
   sixMonthPrice: Yup.number()
@@ -68,28 +71,65 @@ const Input = styled("input")({
 
 export default function UpdateProfile() {
   // get form api get data gyms
+
+  const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
+
+  const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
+
   const profileGyms = {
-    logo: "https://i.imgur.com/qJHXK8H.png",
-    name: "الجيم الخيري",
+    logo: "",
+    gymName: "",
     city: "غزة",
-    phone: "0561234567",
-    features: ["مسبح", "ميدان تنافسي"],
-    monthPrice: 35,
-    sixMonthPrice: 350,
-    description:
-      "الجيم الخيري هو جيم خيري جدا و أفضل جيم خيري بالمملكة العربية السعودية",
-    gender: "male",
+    phone: "",
+    features: [],
+    monthlyPrice: "",
+    sixMonthPrice: "",
+    description: "",
+    typeGender: "",
     fulltime: false,
   };
 
   const updateGymForm = useFormik({
     initialValues: profileGyms,
+    enableReinitialize: true,
     validationSchema,
     onSubmit: (values) => {
       // send request for Api
       console.log(values);
     },
   });
+
+  if (isLoading) {
+    return <LoadingForm />;
+  }
+
+  if (!isError && isSuccess) {
+    const {
+      gymData: {
+        gymName,
+        logo,
+        city,
+        phone,
+        features,
+        monthlyPrice,
+        sixMonthPrice,
+        description,
+        typeGender,
+        fulltime,
+      },
+    } = data;
+    profileGyms.gymName = gymName;
+    profileGyms.logo = logo;
+    profileGyms.city = city;
+    profileGyms.phone = phone;
+    profileGyms.features = features;
+    profileGyms.monthlyPrice = monthlyPrice;
+    profileGyms.sixMonthPrice = sixMonthPrice;
+    profileGyms.description = description;
+    profileGyms.typeGender = typeGender;
+    profileGyms.fulltime = fulltime;
+  }
+
   return (
     <form
       className="form__update_profile"
@@ -102,7 +142,7 @@ export default function UpdateProfile() {
             sx={{ mt: 1, width: "100%" }}
             id="outlined-basic"
             label="اسم النادي"
-            name="name"
+            name="gymName"
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -110,10 +150,11 @@ export default function UpdateProfile() {
                 </InputAdornment>
               ),
             }}
-            value={updateGymForm.values.name}
+            value={updateGymForm.values.gymName}
+            // value={!isLoading && !isError && isSuccess && data.gymData.gymName}
             onChange={updateGymForm.handleChange}
-            error={!!updateGymForm.errors.name}
-            helperText={updateGymForm.errors.name}
+            error={!!updateGymForm.errors.gymName}
+            helperText={updateGymForm.errors.gymName}
             variant="outlined"
           />
         </Grid>
@@ -172,12 +213,12 @@ export default function UpdateProfile() {
           <FormControl sx={{ mt: 1, width: "100%" }}>
             <InputLabel>الفئة</InputLabel>
             <Select
-              name="gender"
-              value={updateGymForm.values.gender}
+              name="typeGender"
+              value={updateGymForm.values.typeGender}
               onChange={updateGymForm.handleChange}
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
-              error={!!updateGymForm.errors.gender}
+              error={!!updateGymForm.errors.typeGender}
             >
               {genders.map(({ name, value }) => (
                 <MenuItem key={value} value={value}>
@@ -224,7 +265,7 @@ export default function UpdateProfile() {
               sx={{ width: "100%" }}
               label="الاشتراك الشهري"
               type="text"
-              name="monthPrice"
+              name="monthlyPrice"
               variant="outlined"
               InputProps={{
                 endAdornment: (
@@ -234,9 +275,9 @@ export default function UpdateProfile() {
                 ),
               }}
               onChange={updateGymForm.handleChange}
-              value={updateGymForm.values.monthPrice}
-              error={!!updateGymForm.errors.monthPrice}
-              helperText={updateGymForm.errors.monthPrice}
+              value={updateGymForm.values.monthlyPrice}
+              error={!!updateGymForm.errors.monthlyPrice}
+              helperText={updateGymForm.errors.monthlyPrice}
             />
             <TextField
               sx={{ width: "100%" }}
@@ -337,7 +378,7 @@ export default function UpdateProfile() {
               onChange={(event, newValue) => {
                 updateGymForm.setFieldValue("features", newValue);
               }}
-              options={features.map(({ feature }) => feature)}
+              options={allFeature.map(({ feature }) => feature)}
               filterSelectedOptions
               renderInput={(params) => (
                 <TextField
