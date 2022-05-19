@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+
 import {
   Box,
   Button,
@@ -12,8 +12,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import "./style.css";
 import useNavBar from "../../../Hooks/useNavBar";
+
+import "./style.css";
 
 function Navbar() {
   const {
@@ -61,7 +62,7 @@ function Navbar() {
   const list = () => (
     <Box
       role="presentation"
-      sx={{ width: 250 }}
+      sx={{ width: 250, display: "flex", flexDirection: "column" }}
       onClick={toggleDrawer}
       onKeyDown={toggleDrawer}
     >
@@ -79,7 +80,16 @@ function Navbar() {
       <Divider />
 
       <List>
-        <ListItem disablePadding>
+        <ListItem
+          disablePadding
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            mt: 2,
+          }}
+        >
           <div className="display-raw">
             <Link className="link-auth" to="/gym/register">
               إنشاء حساب
@@ -143,7 +153,8 @@ function Navbar() {
         </div>
       </nav>
 
-      <div>
+      {/*  For mobile Version */}
+      <nav>
         <div className="sub__container display-raw show-mobile">
           <Link to="/" className="brand-logo">
             فت هاوس
@@ -151,7 +162,7 @@ function Navbar() {
 
           <div className="left-nav-mobile">
             {renderInputSearch()}
-            <Button onClick={toggleDrawer}>
+            <Button onClick={toggleDrawer} sx={{ ml: 1 }}>
               <MenuIcon />
             </Button>
           </div>
@@ -160,7 +171,7 @@ function Navbar() {
         <Drawer anchor="right" open={isShowMenu} onClose={toggleDrawer}>
           {list()}
         </Drawer>
-      </div>
+      </nav>
     </>
   );
 }
