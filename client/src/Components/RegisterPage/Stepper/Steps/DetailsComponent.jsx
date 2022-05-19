@@ -46,7 +46,7 @@ export default function StepThreeComponent({ detailsForm }) {
           onChange={(event, newValue) => {
             detailsForm.setFieldValue("features", newValue);
           }}
-          options={(features || []).map(({ feature }) => feature)}
+          options={features.map(({ feature }) => feature)}
           filterSelectedOptions
           renderInput={(params) => (
             <TextField
@@ -61,16 +61,16 @@ export default function StepThreeComponent({ detailsForm }) {
       <FormControl sx={{ width: "500px", marginBottom: "1rem" }}>
         <InputLabel>الفئة</InputLabel>
         <Select
-          name="gender"
-          value={detailsForm.values.gender}
+          name="typeGender"
+          value={detailsForm.values.typeGender}
           onChange={detailsForm.handleChange}
           input={<OutlinedInput label="Name" />}
           MenuProps={MenuProps}
-          error={!!detailsForm.errors.gender}
+          error={!!detailsForm.errors.typeGender}
         >
-          {(genders || []).map(({ gender }) => (
-            <MenuItem key={gender} value={gender}>
-              {gender}
+          {genders.map(({ name, value }) => (
+            <MenuItem key={value} value={value}>
+              {name}
             </MenuItem>
           ))}
         </Select>
@@ -89,12 +89,12 @@ export default function StepThreeComponent({ detailsForm }) {
           id="gym-name-required"
           label="الاشتراك الشهري"
           type="text"
-          name="monthPrice"
+          name="monthlyPrice"
           variant="outlined"
           onChange={detailsForm.handleChange}
-          value={detailsForm.values.monthPrice}
-          error={!!detailsForm.errors.monthPrice}
-          helperText={detailsForm.errors.monthPrice}
+          value={detailsForm.values.monthlyPrice}
+          error={!!detailsForm.errors.monthlyPrice}
+          helperText={detailsForm.errors.monthlyPrice}
         />
         <TextField
           sx={{ width: "240px", marginBottom: "1rem", marginTop: "1rem" }}
@@ -121,8 +121,8 @@ export default function StepThreeComponent({ detailsForm }) {
         <div className="switchdiv">
           <h3>مغلق في الاجازات</h3>
           <Switch
-            name="checked"
-            checked={detailsForm.values.checked}
+            name="fulltime"
+            checked={detailsForm.values.fulltime}
             onChange={detailsForm.handleChange}
             inputProps={{ "aria-label": "controlled" }}
           />

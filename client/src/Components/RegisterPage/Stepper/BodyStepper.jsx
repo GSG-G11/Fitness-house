@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import axios from "axios";
 import { handleNext } from "../../../Store/Slices";
 import {
   LoginInformation,
@@ -11,8 +12,8 @@ import {
 } from "./Steps";
 
 const loginInfoSchema = Yup.object().shape({
-  image: Yup.string().required("حقل الشعار مطلوب"),
-  name: Yup.string().required("حقل الاسم مطلوب"),
+  logo: Yup.string().required("حقل الشعار مطلوب"),
+  gymName: Yup.string().required("حقل الاسم مطلوب"),
   email: Yup.string()
     .email(" البريد الالكتروني غير صحيح")
     .required("حقل البريد الالكتروني مطلوب"),
@@ -29,29 +30,42 @@ const SignupSchema = Yup.object().shape({
 });
 const detailsSchema = Yup.object().shape({
   features: Yup.array().min(1, "حقل المزايا مطلوب"),
-  gender: Yup.string().required("حقل الفئة مطلوب"),
-  monthPrice: Yup.number()
+  typeGender: Yup.string().required("حقل الفئة مطلوب"),
+  monthlyPrice: Yup.number()
     .moreThan(1, "يرجى إدخال قيمة أعلى من 1")
     .required("قيمة اشتراك الشهر مطلوب"),
   sixMonthPrice: Yup.number()
     .moreThan(1, "يرجى إدخال قيمة أعلى من 1")
     .required("قيمة اشتراك الستة أشهر مطلوب"),
 });
+
 export default function BodyStepper() {
+  const [formtest, setFormtest] = useState({});
+
+  const registerGym = async (gym) => {
+    try {
+      const register = await axios.post("/api/v1/gyms/register", gym);
+      console.log(register);
+    } catch (err) {
+      console.log(err, "error");
+    }
+  };
+
   const dispatch = useDispatch();
 
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
 
   const loginInformationForm = useFormik({
     initialValues: {
-      image: "",
-      name: "",
+      logo: "",
+      gymName: "",
       email: "",
       password: "",
     },
     validationSchema: loginInfoSchema,
     onSubmit: (values) => {
-      console.log(values);
+      setFormtest(Object.assign(formtest, values));
+      dispatch(handleNext(values));
     },
   });
 
@@ -63,21 +77,22 @@ export default function BodyStepper() {
     },
     validationSchema: SignupSchema,
     onSubmit: (values) => {
-      console.log(values);
+      setFormtest(Object.assign(formtest, values));
       dispatch(handleNext());
     },
   });
   const detailsForm = useFormik({
     initialValues: {
       features: [],
-      gender: "",
-      monthPrice: 0,
+      typeGender: "",
+      monthlyPrice: 0,
       sixMonthPrice: 0,
-      checked: false,
+      fulltime: false,
     },
     validationSchema: detailsSchema,
-    onSubmit: () => {
-      console.log(detailsForm.values);
+    onSubmit: (values) => {
+      setFormtest(Object.assign(formtest, values));
+      registerGym(formtest);
     },
   });
   let StepComponent;
