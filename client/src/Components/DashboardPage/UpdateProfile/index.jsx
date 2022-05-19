@@ -271,6 +271,9 @@ export default function UpdateProfile() {
             name="city"
             value={updateGymForm.values.city}
             options={cities.map(({ city }) => city)}
+            onChange={(_, newValue) => {
+              updateGymForm.setFieldValue("city", newValue);
+            }}
             renderInput={(params) => (
               <TextField
                 label="المدينة"
@@ -409,7 +412,7 @@ export default function UpdateProfile() {
               multiple
               name="features"
               value={updateGymForm.values.features}
-              onChange={(event, newValue) => {
+              onChange={(_, newValue) => {
                 updateGymForm.setFieldValue("features", newValue);
               }}
               options={allFeature.map(({ feature }) => feature)}
