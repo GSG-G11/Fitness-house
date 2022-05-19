@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   Box,
   Button,
@@ -23,16 +24,18 @@ function Navbar() {
     setIsShowMenu(!isShowMenu);
   };
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     // console.log(event.target.value);
     setSearch(event.target.value);
     setIsPending(true);
 
     // send request to server then set searchGyms to the response
-    setSearchGyms([
-      { id: 1, name: "test 1" },
-      { id: 2, name: "test 2" },
-    ]);
+    const { data } = await axios({
+      method: "get",
+      url: `/api/v1/gyms/search?q=${event.target.value}`,
+    });
+
+    setSearchGyms(data);
   };
 
   const handleBlur = () => {
@@ -45,16 +48,20 @@ function Navbar() {
       isPending && (
         <ul className="list-search">
           {searchGyms.length > 0 ? (
-            searchGyms.map(({ id, name }, index) => (
+            searchGyms.map(({ id, gymName }, index) => (
               <li key={id}>
                 <Link to={`/gyms/profile/${id}`} onClick={handleBlur}>
-                  {name}
+                  {gymName}
                 </Link>
                 {index !== searchGyms.length - 1 && <Divider />}
               </li>
             ))
           ) : (
-            <li>NotFound Any Gym</li>
+            <li>
+              <button type="button" onClick={handleBlur}>
+                لا يوجد أي نوادي
+              </button>
+            </li>
           )}
         </ul>
       )
