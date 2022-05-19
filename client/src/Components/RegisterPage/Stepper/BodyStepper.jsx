@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import axios from "axios";
 import { handleNext } from "../../../Store/Slices";
 import {
   LoginInformation,
@@ -39,17 +38,17 @@ const detailsSchema = Yup.object().shape({
     .required("قيمة اشتراك الستة أشهر مطلوب"),
 });
 
-export default function BodyStepper() {
+export default function BodyStepper({ onFinish }) {
   const [formtest, setFormtest] = useState({});
 
-  const registerGym = async (gym) => {
-    try {
-      const register = await axios.post("/api/v1/gyms/register", gym);
-      console.log(register);
-    } catch (err) {
-      console.log(err, "error");
-    }
-  };
+  // const registerGym = async (gym) => {
+  //   try {
+  //     const register = await axios.post("/api/v1/gyms/register", gym);
+  //     console.log(register);
+  //   } catch (err) {
+  //     console.log(err, "error");
+  //   }
+  // };
 
   const dispatch = useDispatch();
 
@@ -92,7 +91,7 @@ export default function BodyStepper() {
     validationSchema: detailsSchema,
     onSubmit: (values) => {
       setFormtest(Object.assign(formtest, values));
-      registerGym(formtest);
+      onFinish(formtest);
     },
   });
   let StepComponent;

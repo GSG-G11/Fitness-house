@@ -17,7 +17,7 @@ app.use([
   compression(),
   cors(),
   cookieParser(),
-  express.json(),
+  express.json({ limit: '50mb' }),
   express.urlencoded({ extended: false }),
 ]);
 
