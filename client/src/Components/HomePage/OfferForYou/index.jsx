@@ -7,7 +7,7 @@ import "./style.css";
 
 export default function OfferForYou() {
   return (
-    <Box className="container">
+    <Box id="OfferForYouSection" className="container">
       <Box className="sub__container">
         <Grid container>
           <Grid className="order_offer_1" item xs={12} lg={4}>

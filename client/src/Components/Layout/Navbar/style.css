@@ -1,0 +1,45 @@
+.nav-bar {
+  padding: 1rem 0;
+}
+
+.display-raw {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-size: 1.5625rem;
+  font-weight: 700;
+  color: #2e7b91;
+  text-decoration: none;
+  margin-left: 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.brand-logo:hover {
+  color: #205665;
+}
+
+.nav-list {
+  display: flex;
+  gap: 0.8rem;
+}
+
+a.nav-item {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+a.nav-item::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 8px;
+  background: #28768c;
+  transition: all 0.3s ease-in-out;
+  left: 0;
+  bottom: -10px;
+}
