@@ -8,10 +8,6 @@ export default async function postImage(req: any, res: Response, next: NextFunct
     const { images } = await gymImageSchema.validateAsync(req.body);
     const { id } = req.token;
 
-    if (!images) {
-      throw new CustomError('عذرا اعد إضافة الصور ! ', 409);
-    }
-
     const Images = await Promise.all(images.map(async (image: string) => {
       const { Location, Key } = await uploadImage(image);
       return {
@@ -23,7 +19,7 @@ export default async function postImage(req: any, res: Response, next: NextFunct
 
     await Image.bulkCreate(Images);
 
-    res.json({ status: 201, message: 'تم تحميل الصور بنجاح', Images });
+    res.status(201).json({ message: 'تم تحميل الصور بنجاح', Images });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomError(error.message, 400));
