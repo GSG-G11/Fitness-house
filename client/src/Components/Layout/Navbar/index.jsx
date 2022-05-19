@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {
@@ -20,12 +20,33 @@ function Navbar() {
   const [search, setSearch] = useState("");
   const [isShowMenu, setIsShowMenu] = useState(false);
 
+  const ref = useRef(null);
+
+  const handleBlur = () => {
+    setIsPending(false);
+    setSearch("");
+  };
+
+  // function to handle Click Outside input search box
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        handleBlur();
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
+
+  // function to set Is Show Menu or not
   const toggleDrawer = () => {
     setIsShowMenu(!isShowMenu);
   };
 
+  // function to handle Search and send to API
   const handleSearch = async (event) => {
-    // console.log(event.target.value);
     setSearch(event.target.value);
     setIsPending(true);
 
@@ -35,13 +56,14 @@ function Navbar() {
       url: `/api/v1/gyms/search?q=${event.target.value}`,
     });
 
-    setSearchGyms(data);
+    setSearchGyms(data.slice(Math.max(data.length - 10, 0))); // get the last 10 results
   };
 
-  const handleBlur = () => {
-    setIsPending(false);
-    setSearch("");
-  };
+  const listNavbar = [
+    { text: "عن فت هاوس", link: "#OfferForYouSection" },
+    { text: "أفضل النوادي", link: "#TopRatedGymsSection" },
+    { text: "تواصل معنا", link: "#ContactUsSection" },
+  ];
 
   const renderSearch = () => {
     return (
@@ -67,12 +89,6 @@ function Navbar() {
       )
     );
   };
-
-  const listNavbar = [
-    { text: "عن فت هاوس", link: "#OfferForYouSection" },
-    { text: "أفضل النوادي", link: "#TopRatedGymsSection" },
-    { text: "تواصل معنا", link: "#ContactUsSection" },
-  ];
 
   const list = () => (
     <Box
@@ -108,6 +124,26 @@ function Navbar() {
       </List>
     </Box>
   );
+
+  const renderInputSearch = () => {
+    return (
+      <div className="search-container">
+        <input
+          ref={ref}
+          className="search-input"
+          type="search"
+          value={search}
+          name="search"
+          onChange={handleSearch}
+          placeholder="ابحث عن طريق اسم النادي "
+          autoComplete="off"
+          onClose={handleBlur}
+        />
+        {renderSearch()}
+      </div>
+    );
+  };
+
   return (
     <>
       <nav className="sub__container nav-bar hide-mobile">
@@ -117,38 +153,17 @@ function Navbar() {
               فت هاوس
             </Link>
             <ul className="display-raw nav-list">
-              <li>
-                <a className="nav-item" href="#OfferForYouSection">
-                  عن فت هاوس
-                </a>
-              </li>
-              <li>|</li>
-              <li>
-                <a className="nav-item" href="#TopRatedGymsSection">
-                  أفضل النوادي
-                </a>
-              </li>
-              <li>|</li>
-              <li>
-                <a className="nav-item" href="#ContactUsSection">
-                  تواصل معنا
-                </a>
-              </li>
+              {listNavbar.map(({ link, text }) => (
+                <li key={link}>
+                  <a className="nav-item" href={link}>
+                    {text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div className="search-container">
-            <input
-              className="search-input"
-              type="search"
-              value={search}
-              name="search"
-              onChange={handleSearch}
-              placeholder="ابحث عن طريق اسم النادي أو المدينة"
-              autoComplete="off"
-            />
-            {renderSearch()}
-          </div>
+          {renderInputSearch()}
 
           <div className="display-raw">
             <Link className="link-auth" to="/gym/register">
@@ -167,21 +182,12 @@ function Navbar() {
             فت هاوس
           </Link>
 
-          <div className="search-container">
-            <input
-              className="search-input"
-              type="search"
-              value={search}
-              name="search"
-              onChange={handleSearch}
-              placeholder="ابحث عن طريق اسم النادي أو المدينة"
-              autoComplete="off"
-            />
-            {renderSearch()}
+          <div className="left-nav-mobile">
+            {renderInputSearch()}
+            <Button onClick={toggleDrawer}>
+              <MenuIcon />
+            </Button>
           </div>
-          <Button onClick={toggleDrawer}>
-            <MenuIcon />
-          </Button>
         </div>
 
         <Drawer anchor="right" open={isShowMenu} onClose={toggleDrawer}>
