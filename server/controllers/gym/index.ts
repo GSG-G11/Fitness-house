@@ -1,3 +1,4 @@
 import getGym from './getGym';
+import postImage from './postImage';
 
-export default getGym;
+export { getGym, postImage };
