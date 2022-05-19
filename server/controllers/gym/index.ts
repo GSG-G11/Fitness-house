@@ -1,4 +1,5 @@
 import getGym from './getGym';
+import postImage from './postImage';
 import editGymData from './editGym';
 
-export { getGym, editGymData };
+export { getGym, postImage, editGymData };
