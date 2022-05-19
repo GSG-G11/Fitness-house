@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
@@ -28,26 +28,25 @@ import { setAuth, setLogout } from "./Store/Slices";
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const checkToken = () => {
-      try {
-        const token = Cookies.get("token");
-        if (!token) return;
-        const { id, name, role } = jwtDecode(token);
-        dispatch(
-          setAuth({
-            id,
-            name,
-            role,
-            isLoggedIn: true,
-          })
-        );
-      } catch (error) {
-        dispatch(setLogout());
-      }
-    };
-    checkToken();
-  }, [dispatch]);
+  const checkToken = () => {
+    try {
+      const token = Cookies.get("token");
+      if (!token) return;
+      const { id, name, role } = jwtDecode(token);
+      dispatch(
+        setAuth({
+          id,
+          name,
+          role,
+          isLoggedIn: true,
+        })
+      );
+    } catch (error) {
+      dispatch(setLogout());
+    }
+  };
+
+  useMemo(checkToken, [checkToken, dispatch]);
 
   return (
     <Routes>
