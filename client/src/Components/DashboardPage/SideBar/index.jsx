@@ -20,6 +20,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import StarIcon from "@mui/icons-material/Star";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { PhotoCamera } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -75,6 +76,11 @@ const listItem = [
     text: "بيانات النادي",
     icon: <FitnessCenterIcon />,
     link: "/dashboard/gyms",
+  },
+  {
+    text: "صور النادي",
+    icon: <PhotoCamera />,
+    link: "/dashboard/gyms/images",
   },
   {
     text: "المشتركين",
