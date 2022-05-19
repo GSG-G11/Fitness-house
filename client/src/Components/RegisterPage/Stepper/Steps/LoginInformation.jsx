@@ -22,7 +22,7 @@ const Input = styled("input")({
   display: "none",
 });
 
-export default function LoginInformation({ loginInformationfForm }) {
+export default function LoginInformation({ loginInformationForm }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -32,7 +32,7 @@ export default function LoginInformation({ loginInformationfForm }) {
   return (
     <form
       className="form__container"
-      onSubmit={loginInformationfForm.handleSubmit}
+      onSubmit={loginInformationForm.handleSubmit}
     >
       <TextField
         sx={{ mt: 3, width: "500px" }}
@@ -46,10 +46,10 @@ export default function LoginInformation({ loginInformationfForm }) {
             </InputAdornment>
           ),
         }}
-        value={loginInformationfForm.values.name}
-        onChange={loginInformationfForm.handleChange}
-        error={!!loginInformationfForm.errors.name}
-        helperText={loginInformationfForm.errors.name}
+        value={loginInformationForm.values.name}
+        onChange={loginInformationForm.handleChange}
+        error={!!loginInformationForm.errors.name}
+        helperText={loginInformationForm.errors.name}
         variant="outlined"
       />
 
@@ -64,10 +64,10 @@ export default function LoginInformation({ loginInformationfForm }) {
             </InputAdornment>
           ),
         }}
-        value={loginInformationfForm.values.email}
-        onChange={loginInformationfForm.handleChange}
-        error={!!loginInformationfForm.errors.email}
-        helperText={loginInformationfForm.errors.email}
+        value={loginInformationForm.values.email}
+        onChange={loginInformationForm.handleChange}
+        error={!!loginInformationForm.errors.email}
+        helperText={loginInformationForm.errors.email}
         variant="outlined"
       />
 
@@ -87,10 +87,10 @@ export default function LoginInformation({ loginInformationfForm }) {
             </InputAdornment>
           ),
         }}
-        value={loginInformationfForm.values.password}
-        onChange={loginInformationfForm.handleChange}
-        error={!!loginInformationfForm.errors.password}
-        helperText={loginInformationfForm.errors.password}
+        value={loginInformationForm.values.password}
+        onChange={loginInformationForm.handleChange}
+        error={!!loginInformationForm.errors.password}
+        helperText={loginInformationForm.errors.password}
         autoComplete="new-password"
         variant="outlined"
       />
@@ -104,7 +104,7 @@ export default function LoginInformation({ loginInformationfForm }) {
             const imageBase = await convertToBase64(
               event.currentTarget.files[0]
             );
-            loginInformationfForm.setFieldValue("image", imageBase);
+            loginInformationForm.setFieldValue("image", imageBase);
           }}
         />
         <Button
@@ -123,11 +123,11 @@ export default function LoginInformation({ loginInformationfForm }) {
           ادخل الشعار
         </Button>
         <FormHelperText id="component-error-text" error>
-          {loginInformationfForm.errors.image}
+          {loginInformationForm.errors.image}
         </FormHelperText>
-        {loginInformationfForm.values.image && (
+        {loginInformationForm.values.image && (
           <img
-            src={loginInformationfForm.values.image}
+            src={loginInformationForm.values.image}
             className="preview_img"
             alt="imageProfile"
           />
@@ -145,5 +145,5 @@ export default function LoginInformation({ loginInformationfForm }) {
   );
 }
 LoginInformation.propTypes = {
-  loginInformationfForm: PropTypes.instanceOf(Object).isRequired,
+  loginInformationForm: PropTypes.instanceOf(Object).isRequired,
 };

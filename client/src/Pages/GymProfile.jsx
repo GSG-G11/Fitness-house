@@ -2,17 +2,23 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import { Link } from "react-router-dom";
+import { UpdateProfile } from "../Components";
 
-function Gym() {
+function GymProfile() {
   return (
-    <div>
-      <Breadcrumbs aria-label="breadcrumb">
+    <div className="sub__container__dashboard">
+      <Breadcrumbs
+        style={{ minWidth: "100%", width: "100%" }}
+        // sx={{ minWidth: "100%", width: "100%" }}
+        aria-label="breadcrumb"
+      >
         <Link to="/dashboard/gyms">الصفحة الرئيسية</Link>
         <Typography color="text.primary">بيانات النادي</Typography>
       </Breadcrumbs>
-      gyms
+
+      <UpdateProfile />
     </div>
   );
 }
 
-export default Gym;
+export default GymProfile;

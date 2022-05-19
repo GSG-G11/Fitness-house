@@ -42,7 +42,7 @@ export default function BodyStepper() {
 
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
 
-  const loginInformationfForm = useFormik({
+  const loginInformationForm = useFormik({
     initialValues: {
       image: "",
       name: "",
@@ -90,7 +90,7 @@ export default function BodyStepper() {
       break;
     default:
       StepComponent = (
-        <LoginInformation loginInformationfForm={loginInformationfForm} />
+        <LoginInformation loginInformationForm={loginInformationForm} />
       );
   }
 

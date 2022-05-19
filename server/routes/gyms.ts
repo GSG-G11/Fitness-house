@@ -1,6 +1,6 @@
 import { Router } from 'express';
-
-import { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin, gymRegister } from '../controllers';
+import checkAuth from '../middleware/checkAuth';
+import { getTopGyms, searchGymByName, getGym, getFilteredGyms, gymLogin, gymRegister, editGymData } from '../controllers';
 
 const gyms = Router();
 gyms.post('/login', gymLogin);
@@ -12,6 +12,7 @@ gyms.post('/register', gymRegister);
 gyms.get('/top', getTopGyms);
 gyms.get('/filter', getFilteredGyms);
 gyms.get('/search', searchGymByName);
+gyms.put('/', checkAuth('gym'), editGymData);
 gyms.get('/:id', getGym);
 
 export default gyms;

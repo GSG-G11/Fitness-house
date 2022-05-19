@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 import Image from '../../database/models/images';
 import { gymImageSchema, CustomError } from '../../utils';
-import uploadImage from '../../utils/aws';
+import { uploadImage } from '../../utils/aws';
 
 export default async function postImage(req: any, res: Response, next: NextFunction) {
   try {
