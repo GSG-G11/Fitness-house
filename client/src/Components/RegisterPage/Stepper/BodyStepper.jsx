@@ -41,15 +41,6 @@ const detailsSchema = Yup.object().shape({
 export default function BodyStepper({ onFinish }) {
   const [formtest, setFormtest] = useState({});
 
-  // const registerGym = async (gym) => {
-  //   try {
-  //     const register = await axios.post("/api/v1/gyms/register", gym);
-  //     console.log(register);
-  //   } catch (err) {
-  //     console.log(err, "error");
-  //   }
-  // };
-
   const dispatch = useDispatch();
 
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);

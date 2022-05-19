@@ -35,7 +35,7 @@ export default function LoginInformation({ loginInformationForm }) {
       onSubmit={loginInformationForm.handleSubmit}
     >
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         id="outlined-basic"
         label="اسم النادي"
         name="gymName"
@@ -54,7 +54,7 @@ export default function LoginInformation({ loginInformationForm }) {
       />
 
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل البريد الإلكتروني"
         name="email"
         InputProps={{
@@ -72,7 +72,7 @@ export default function LoginInformation({ loginInformationForm }) {
       />
 
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل كلمة السر"
         type={showPassword ? "text" : "password"}
         name="password"
@@ -113,7 +113,7 @@ export default function LoginInformation({ loginInformationForm }) {
           sx={{
             mt: 3,
             height: "3.3rem",
-            width: "500px",
+            width: "350px",
             display: "flex",
             alignItems: "center",
             justifyContent: "start",
@@ -137,7 +137,7 @@ export default function LoginInformation({ loginInformationForm }) {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 3, height: "3.3rem", width: "500px" }}
+        sx={{ mt: 3, height: "3.3rem", width: "350px" }}
       >
         الخطوة التالية
       </Button>

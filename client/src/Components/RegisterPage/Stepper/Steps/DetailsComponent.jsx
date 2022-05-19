@@ -39,7 +39,7 @@ export default function StepThreeComponent({ detailsForm }) {
     <form className="form__container" onSubmit={detailsForm.handleSubmit}>
       <FormGroup>
         <Autocomplete
-          sx={{ width: "500px", marginBottom: "1rem", marginTop: "1rem" }}
+          sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
           multiple
           name="features"
           value={detailsForm.values.features}
@@ -58,7 +58,7 @@ export default function StepThreeComponent({ detailsForm }) {
           )}
         />
       </FormGroup>
-      <FormControl sx={{ width: "500px", marginBottom: "1rem" }}>
+      <FormControl sx={{ width: "350px", marginBottom: "1rem" }}>
         <InputLabel>الفئة</InputLabel>
         <Select
           name="typeGender"
@@ -77,7 +77,7 @@ export default function StepThreeComponent({ detailsForm }) {
       </FormControl>
       <FormControl
         sx={{
-          width: "500px",
+          width: "350px",
           marginBottom: "1rem",
           display: "flex",
           flexDirection: "row",
@@ -85,7 +85,7 @@ export default function StepThreeComponent({ detailsForm }) {
         }}
       >
         <TextField
-          sx={{ width: "240px", marginBottom: "1rem", marginTop: "1rem" }}
+          sx={{ width: "165px", marginBottom: "1rem", marginTop: "1rem" }}
           id="gym-name-required"
           label="الاشتراك الشهري"
           type="text"
@@ -97,7 +97,7 @@ export default function StepThreeComponent({ detailsForm }) {
           helperText={detailsForm.errors.monthlyPrice}
         />
         <TextField
-          sx={{ width: "240px", marginBottom: "1rem", marginTop: "1rem" }}
+          sx={{ width: "165px", marginBottom: "1rem", marginTop: "1rem" }}
           id="gym-name-required"
           label="اشتراك ستة أشهر"
           type="text"
@@ -111,7 +111,7 @@ export default function StepThreeComponent({ detailsForm }) {
       </FormControl>
       <FormControl
         sx={{
-          width: "500px",
+          width: "350px",
           marginBottom: "1rem",
           display: "flex",
           flexDirection: "row",
@@ -131,7 +131,7 @@ export default function StepThreeComponent({ detailsForm }) {
       </FormControl>
       <Box
         sx={{
-          width: "500px",
+          width: "350px",
           marginBottom: "1rem",
           display: "flex",
           flexDirection: "row",
@@ -140,7 +140,7 @@ export default function StepThreeComponent({ detailsForm }) {
       >
         <Button
           sx={{
-            width: "240px",
+            width: "165px",
           }}
           size="large"
           variant="contained"
@@ -152,7 +152,7 @@ export default function StepThreeComponent({ detailsForm }) {
 
         <Button
           sx={{
-            width: "240px",
+            width: "165px",
             height: "56px",
           }}
           size="large"

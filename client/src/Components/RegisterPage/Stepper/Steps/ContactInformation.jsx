@@ -17,7 +17,7 @@ export default function ContactInformation({ contactForm }) {
   return (
     <form onSubmit={contactForm.handleSubmit} className="form__container">
       <TextField
-        sx={{ width: "500px", marginBottom: "1rem", marginTop: "1rem" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         id="gym-name-required"
         label="رقم الهاتف"
         type="text"
@@ -29,7 +29,7 @@ export default function ContactInformation({ contactForm }) {
       />
 
       <Autocomplete
-        sx={{ width: "500px", marginBottom: "1rem", marginTop: "1rem" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         defaultValue="غزة"
         disableClearable
         disablePortal
@@ -47,7 +47,7 @@ export default function ContactInformation({ contactForm }) {
       />
 
       <TextField
-        sx={{ width: "500px", marginBottom: "1rem", marginTop: "1rem" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         id="standard-multiline-flexible"
         label="الوصف"
         multiline
@@ -63,7 +63,7 @@ export default function ContactInformation({ contactForm }) {
 
       <Box
         sx={{
-          width: "500px",
+          width: "350px",
           marginBottom: "1rem",
           display: "flex",
           flexDirection: "row",
@@ -72,7 +72,7 @@ export default function ContactInformation({ contactForm }) {
       >
         <Button
           sx={{
-            width: "240px",
+            width: "165px",
           }}
           size="large"
           variant="contained"
@@ -84,7 +84,7 @@ export default function ContactInformation({ contactForm }) {
 
         <Button
           sx={{
-            width: "240px",
+            width: "165px",
             height: "56px",
           }}
           size="large"
