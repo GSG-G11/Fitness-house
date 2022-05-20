@@ -14,6 +14,7 @@ import {
   MenuItem,
   Switch,
 } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 import PropTypes from "prop-types";
 import { handleBack } from "../../../../Store/Slices";
 import * as gymsFeatures from "../../../../Services/features.json";
@@ -34,6 +35,8 @@ const MenuProps = {
 };
 
 export default function StepThreeComponent({ detailsForm }) {
+  const [loading, setLoading] = React.useState(false);
+
   const dispatch = useDispatch();
   return (
     <form className="form__container" onSubmit={detailsForm.handleSubmit}>
@@ -150,7 +153,12 @@ export default function StepThreeComponent({ detailsForm }) {
           الرجوع للخلف
         </Button>
 
-        <Button
+        <LoadingButton
+          loading={loading}
+          onClick={() => {
+            setLoading(true);
+            detailsForm.handleSubmit();
+          }}
           sx={{
             width: "165px",
             height: "56px",
@@ -160,7 +168,7 @@ export default function StepThreeComponent({ detailsForm }) {
           variant="contained"
         >
           إنهاء التسجيل
-        </Button>
+        </LoadingButton>
       </Box>
     </form>
   );
