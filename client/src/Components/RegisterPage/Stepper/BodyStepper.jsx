@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -39,8 +39,6 @@ const detailsSchema = Yup.object().shape({
 });
 
 export default function BodyStepper({ onFinish }) {
-  const [formtest, setFormtest] = useState({});
-
   const dispatch = useDispatch();
 
   const activeStep = useSelector(({ stepper }) => stepper.activeStep);
@@ -54,7 +52,6 @@ export default function BodyStepper({ onFinish }) {
     },
     validationSchema: loginInfoSchema,
     onSubmit: (values) => {
-      setFormtest(Object.assign(formtest, values));
       dispatch(handleNext(values));
     },
   });
@@ -66,8 +63,7 @@ export default function BodyStepper({ onFinish }) {
       description: "",
     },
     validationSchema: SignupSchema,
-    onSubmit: (values) => {
-      setFormtest(Object.assign(formtest, values));
+    onSubmit: () => {
       dispatch(handleNext());
     },
   });
@@ -81,8 +77,13 @@ export default function BodyStepper({ onFinish }) {
     },
     validationSchema: detailsSchema,
     onSubmit: (values) => {
-      setFormtest(Object.assign(formtest, values));
-      onFinish(formtest);
+      const newValue = {
+        ...loginInformationForm.values,
+        ...contactForm.values,
+        ...values,
+      };
+
+      onFinish(newValue);
     },
   });
   let StepComponent;
