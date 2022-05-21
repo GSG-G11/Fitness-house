@@ -15,7 +15,6 @@ export default function CardInputSearch() {
     setSearch("");
   };
 
-  // function to handle Click Outside input search box
   useEffect(() => {
     const searchGymsHandler = async () => {
       setIsShowResult(true);
@@ -35,7 +34,13 @@ export default function CardInputSearch() {
     if (search.length >= 1) {
       searchGymsHandler();
     }
+    return () => {
+      setSearchGyms([]);
+    };
+  }, [search]);
 
+  // function to handle Click Outside input search box
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         handleBlur();
@@ -44,9 +49,8 @@ export default function CardInputSearch() {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      setSearchGyms([]);
     };
-  }, [search]);
+  }, []);
 
   // function to handle Search and send to API
   const handleSearch = ({ target: { value } }) => setSearch(value);
