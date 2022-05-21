@@ -46,7 +46,7 @@ export default function UploadImages() {
           data: values,
         });
 
-        if (status !== 200) throw new Error("حدث خطأ ما");
+        if (status !== 201) throw new Error("حدث خطأ ما");
         setIsPending(false);
         refetch();
         enqueueSnackbar("تم إضافة الصور بنجاح", {
@@ -92,7 +92,7 @@ export default function UploadImages() {
                   vertical: "top",
                   horizontal: "left",
                 }}
-                color="error"
+                color="primary"
               >
                 <img
                   src={image.pathUrl}
@@ -149,8 +149,7 @@ export default function UploadImages() {
                   vertical: "top",
                   horizontal: "left",
                 }}
-                color="error"
-                // overlap="circular"
+                color="primary"
               >
                 <img src={image} className="preview_img" alt="imageProfile" />
               </Badge>
