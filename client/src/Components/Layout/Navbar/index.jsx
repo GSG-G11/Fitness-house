@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Box,
@@ -9,20 +10,89 @@ import {
   List,
   ListItem,
   ListItemButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-import "./style.css";
 import CardInputSearch from "./CardInputSearch";
+import "./style.css";
+import { setLogout } from "../../../Store/Slices";
 
 function Navbar() {
   const [isShowMenu, setIsShowMenu] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const dispatch = useDispatch();
+
+  const { id, name, isLoggedIn } = useSelector(
+    ({ checkAuth }) => checkAuth.auth
+  );
 
   const toggleDrawer = () => {
     setIsShowMenu(!isShowMenu);
   };
 
+  const handleClick = ({ currentTarget }) => {
+    setAnchorEl(currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    dispatch(setLogout());
+  };
+
   const listNavbar = [{ text: "تواصل معنا", link: "#ContactUsSection" }];
+
+  const authCard = () => (
+    <div className="display-raw">
+      {isLoggedIn ? (
+        <>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            {name}
+            <ArrowDropDownIcon />
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link to="/dashboard/gyms">لوحة التحكم</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to={`/gyms/profile/${id}`}>حسابي</Link>
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>تسجيل الخروج</MenuItem>
+          </Menu>
+        </>
+      ) : (
+        <>
+          <Link className="link-auth" to="/gym/register">
+            إنشاء حساب
+          </Link>
+          <Link className="link-auth" to="/gym/login">
+            تسجيل الدخول
+          </Link>
+        </>
+      )}
+    </div>
+  );
 
   const list = () => (
     <Box
@@ -55,14 +125,7 @@ function Navbar() {
             mt: 2,
           }}
         >
-          <div className="display-raw">
-            <Link className="link-auth" to="/gym/register">
-              إنشاء حساب
-            </Link>
-            <Link className="link-auth" to="/gym/login">
-              تسجيل الدخول
-            </Link>
-          </div>
+          {authCard()}
         </ListItem>
       </List>
     </Box>
@@ -89,14 +152,44 @@ function Navbar() {
 
           <CardInputSearch />
 
-          <div className="display-raw">
-            <Link className="link-auth" to="/gym/register">
-              إنشاء حساب
-            </Link>
-            <Link className="link-auth" to="/gym/login">
-              تسجيل الدخول
-            </Link>
-          </div>
+          {authCard()}
+          {/* <div className="display-raw">
+            {isLoggedIn ? (
+              <>
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
+                  {name}
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+              </>
+            ) : (
+              <>
+                <Link className="link-auth" to="/gym/register">
+                  إنشاء حساب
+                </Link>
+                <Link className="link-auth" to="/gym/login">
+                  تسجيل الدخول
+                </Link>
+              </>
+            )}
+          </div> */}
         </div>
       </nav>
 

@@ -37,7 +37,7 @@ export default function TopGymCards({page}) {
   };
 
   return (
-    <div id="TopRatedGymsSection" className="bg__container container">
+    <div className="bg__container container">
       <div className="sub__container">
         <div className="top-container">
           <h1 className="title_top__rating">{CardsTitle()}</h1>
