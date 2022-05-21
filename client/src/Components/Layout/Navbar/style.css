@@ -52,7 +52,7 @@ a.nav-item:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25%;
+  width: 40%;
 }
 
 .search-input {
@@ -60,8 +60,8 @@ a.nav-item:hover::after {
   padding: 0.5rem;
   border: none;
   border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 1px 5px rgba(6, 6, 6, 0.1);
+  background: #f3f3f3;
+  box-shadow: 0 2.5px 10px rgba(6, 6, 6, 0.2);
   transition: all 0.3s ease-in-out;
   font-size: 1.1rem;
 }

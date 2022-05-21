@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import {
@@ -12,52 +12,17 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import useNavBar from "../../../Hooks/useNavBar";
-
 import "./style.css";
+import CardInputSearch from "./CardInputSearch";
 
 function Navbar() {
-  const {
-    searchGyms,
-    isPending,
-    search,
-    isShowMenu,
-    toggleDrawer,
-    handleSearch,
-    ref,
-    handleBlur,
-  } = useNavBar();
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
-  const listNavbar = [
-    { text: "عن فت هاوس", link: "#OfferForYouSection" },
-    { text: "أفضل النوادي", link: "#TopRatedGymsSection" },
-    { text: "تواصل معنا", link: "#ContactUsSection" },
-  ];
-
-  const renderSearch = () => {
-    return (
-      isPending && (
-        <ul className="list-search">
-          {searchGyms.length > 0 ? (
-            searchGyms.map(({ id, gymName }, index) => (
-              <li key={id}>
-                <Link to={`/gyms/profile/${id}`} onClick={handleBlur}>
-                  {gymName}
-                </Link>
-                {index !== searchGyms.length - 1 && <Divider />}
-              </li>
-            ))
-          ) : (
-            <li>
-              <button type="button" onClick={handleBlur}>
-                لا يوجد أي نوادي
-              </button>
-            </li>
-          )}
-        </ul>
-      )
-    );
+  const toggleDrawer = () => {
+    setIsShowMenu(!isShowMenu);
   };
+
+  const listNavbar = [{ text: "تواصل معنا", link: "#ContactUsSection" }];
 
   const list = () => (
     <Box
@@ -103,24 +68,6 @@ function Navbar() {
     </Box>
   );
 
-  const renderInputSearch = () => {
-    return (
-      <div className="search-container" ref={ref}>
-        <input
-          className="search-input"
-          type="search"
-          value={search}
-          name="search"
-          onChange={handleSearch}
-          placeholder="ابحث عن طريق اسم النادي "
-          autoComplete="off"
-          onClose={handleBlur}
-        />
-        {renderSearch()}
-      </div>
-    );
-  };
-
   return (
     <>
       <nav className="sub__container nav-bar hide-mobile">
@@ -140,7 +87,7 @@ function Navbar() {
             </ul>
           </div>
 
-          {renderInputSearch()}
+          <CardInputSearch />
 
           <div className="display-raw">
             <Link className="link-auth" to="/gym/register">
@@ -161,7 +108,7 @@ function Navbar() {
           </Link>
 
           <div className="left-nav-mobile">
-            {renderInputSearch()}
+            <CardInputSearch />
             <Button onClick={toggleDrawer} sx={{ ml: 1 }}>
               <MenuIcon />
             </Button>
