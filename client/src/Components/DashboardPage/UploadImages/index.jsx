@@ -3,14 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import {
-  Button,
-  FormHelperText,
-  styled,
-  Grid,
-  Badge,
-  IconButton,
-} from "@mui/material";
+import { Button, FormHelperText, styled, Grid, Badge } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
@@ -131,17 +124,10 @@ export default function UploadImages() {
           ImageGymForm.values.images.map((image) => (
             <Grid key={image} item xs={12} md={4} sx={{ mt: 1 }}>
               <Badge
-                badgeContent="X"
+                badgeContent={<CloseIcon sx={{ height: 15, width: 15 }} />}
                 anchorOrigin={{
                   vertical: "top",
                   horizontal: "left",
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <IconButton aria-label="close">
-                      <CloseIcon />
-                    </IconButton>
-                  ),
                 }}
                 color="error"
                 // overlap="circular"
