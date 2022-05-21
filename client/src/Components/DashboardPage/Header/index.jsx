@@ -10,6 +10,8 @@ import {
   Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useSelector } from "react-redux";
+import { useGetGymDataQuery } from "../../../Store/Services/gyms";
 
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
@@ -31,6 +33,10 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function Header({ isOpen, handleDrawer }) {
+  const { id } = useSelector(({ checkAuth }) => checkAuth.auth);
+
+  const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(id);
+
   return (
     <AppBar position="fixed" open={isOpen}>
       <Toolbar>
@@ -62,10 +68,21 @@ export default function Header({ isOpen, handleDrawer }) {
             title="Open settings"
           >
             <IconButton sx={{ p: 0 }}>
-              <Avatar alt="username" src="/static/images/avatar/2.jpg" />
+              <Avatar
+                alt={
+                  !isLoading && !isError && isSuccess
+                    ? data.gymData.gymName
+                    : "GymName"
+                }
+                src={
+                  !isLoading && !isError && isSuccess ? data.gymData.logo : ""
+                }
+              />
             </IconButton>
             <Typography variant="body2" noWrap component="div">
-              username
+              {!isLoading && !isError && isSuccess
+                ? data.gymData.gymName
+                : "Loading..."}
             </Typography>
           </Box>
         </Box>

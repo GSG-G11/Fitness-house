@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 
+import { SnackbarProvider } from "notistack";
+import Fade from "@mui/material/Fade";
+
 import { styled } from "@mui/material/styles";
-import { Box, CssBaseline } from "@mui/material";
+import { Box, Button, CssBaseline } from "@mui/material";
 
 import { Header, SideBar } from "../Components";
 
@@ -22,6 +25,17 @@ function Dashboard() {
     setIsOpen(statusOpen);
   };
 
+  const notistackRef = React.createRef();
+  const onClickDismiss = (key) => () => {
+    notistackRef.current.closeSnackbar(key);
+  };
+
+  const handleDismissAlert = (key) => (
+    <Button style={{ color: "#fff" }} onClick={onClickDismiss(key)}>
+      إزالة
+    </Button>
+  );
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -29,7 +43,14 @@ function Dashboard() {
       <SideBar isOpen={isOpen} handleDrawer={handleDrawer} />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Outlet />
+        <SnackbarProvider
+          ref={notistackRef}
+          maxSnack={3}
+          TransitionComponent={Fade}
+          action={handleDismissAlert}
+        >
+          <Outlet />
+        </SnackbarProvider>
       </Box>
     </Box>
   );
