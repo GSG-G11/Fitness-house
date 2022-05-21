@@ -34,7 +34,7 @@ export default function UploadImages() {
     useGetGymDataQuery(id);
   const gymImages = { images: [] };
   const ImageGymForm = useFormik({
-    initialValues: gymImages,
+    initialValues: { images: [] },
     validationSchema,
     onSubmit: async (values) => {
       console.log(values);
@@ -77,12 +77,32 @@ export default function UploadImages() {
     const {
       gymData: { images },
     } = data;
-    const oldimages = images.map((image) => image.pathUrl);
-    gymImages.images = oldimages;
+    gymImages.images = images;
   }
 
   return (
     <form className="form__upload_image" onSubmit={ImageGymForm.handleSubmit}>
+      <Grid container spacing={2} sx={{ mt: 1 }}>
+        {gymImages &&
+          gymImages.images.map((image) => (
+            <Grid key={image} item xs={12} md={4} sx={{ mt: 1 }}>
+              <Badge
+                badgeContent={<CloseIcon sx={{ height: 15, width: 15 }} />}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                color="error"
+              >
+                <img
+                  src={image.pathUrl}
+                  className="preview_img"
+                  alt="imageProfile"
+                />
+              </Badge>
+            </Grid>
+          ))}
+      </Grid>
       <label htmlFor="icon-button-file">
         <Input
           accept="image/*"
