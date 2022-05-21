@@ -153,43 +153,6 @@ function Navbar() {
           <CardInputSearch />
 
           {authCard()}
-          {/* <div className="display-raw">
-            {isLoggedIn ? (
-              <>
-                <Button
-                  id="basic-button"
-                  aria-controls={open ? "basic-menu" : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
-                >
-                  {name}
-                </Button>
-                <Menu
-                  id="basic-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleClose}
-                  MenuListProps={{
-                    "aria-labelledby": "basic-button",
-                  }}
-                >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>My account</MenuItem>
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                </Menu>
-              </>
-            ) : (
-              <>
-                <Link className="link-auth" to="/gym/register">
-                  إنشاء حساب
-                </Link>
-                <Link className="link-auth" to="/gym/login">
-                  تسجيل الدخول
-                </Link>
-              </>
-            )}
-          </div> */}
         </div>
       </nav>
 

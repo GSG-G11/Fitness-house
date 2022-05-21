@@ -17,6 +17,25 @@ export default function CardInputSearch() {
 
   // function to handle Click Outside input search box
   useEffect(() => {
+    const searchGymsHandler = async () => {
+      setIsShowResult(true);
+
+      // send request to server then set searchGyms to the response
+      const { data } = await axios({
+        method: "get",
+        url: `/api/v1/gyms/search`,
+        params: {
+          q: search,
+        },
+      });
+
+      setSearchGyms(data.slice(Math.max(data.length - 10, 0))); // get the last 10 results
+    };
+
+    if (search.length >= 1) {
+      searchGymsHandler();
+    }
+
     const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         handleBlur();
@@ -25,25 +44,12 @@ export default function CardInputSearch() {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      setSearchGyms([]);
     };
-  }, []);
+  }, [search]);
 
   // function to handle Search and send to API
-  const handleSearch = async (event) => {
-    setSearch(event.target.value);
-    setIsShowResult(true);
-
-    // send request to server then set searchGyms to the response
-    const { data } = await axios({
-      method: "get",
-      url: `/api/v1/gyms/search`,
-      params: {
-        q: event.target.value,
-      },
-    });
-
-    setSearchGyms(data.slice(Math.max(data.length - 10, 0))); // get the last 10 results
-  };
+  const handleSearch = ({ target: { value } }) => setSearch(value);
 
   const renderSearch = () => {
     return (
