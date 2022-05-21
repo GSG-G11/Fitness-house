@@ -3,7 +3,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import { Button, FormHelperText, styled, Grid, Badge } from "@mui/material";
+import {
+  Button,
+  FormHelperText,
+  styled,
+  Grid,
+  Badge,
+  Box,
+} from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
@@ -66,6 +73,7 @@ export default function UploadImages() {
           },
         });
       }
+      ImageGymForm.setFieldValue("images", []);
     },
   });
 
@@ -103,42 +111,72 @@ export default function UploadImages() {
             </Grid>
           ))}
       </Grid>
-      <label htmlFor="icon-button-file">
-        <Input
-          accept="image/*"
-          type="file"
-          id="icon-button-file"
-          name="images"
-          multiple
-          onChange={async (event) => {
-            const imageBase = await convertToBase64(
-              event.currentTarget.files[0]
-            );
-            ImageGymForm.setFieldValue("images", [
-              ...ImageGymForm.values.images,
-              imageBase,
-            ]);
-          }}
-        />
-        <Button
-          variant="outlined"
-          component="span"
-          sx={{
-            mt: 3,
-            height: "3.3rem",
-            width: "500px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "start",
-          }}
-        >
-          <PhotoCamera sx={{ mr: 1 }} />
-          ادخل صور
-        </Button>
-        <FormHelperText id="component-error-text" error>
-          {ImageGymForm.errors.images}
-        </FormHelperText>
-      </label>
+      <Grid container spacing={2} sx={{ mt: 1 }}>
+        <Grid item xs={12} md={4}>
+          <label htmlFor="icon-button-file">
+            <Input
+              accept="image/*"
+              type="file"
+              id="icon-button-file"
+              name="images"
+              multiple
+              onChange={async (event) => {
+                const imageBase = await convertToBase64(
+                  event.currentTarget.files[0]
+                );
+                ImageGymForm.setFieldValue("images", [
+                  ...ImageGymForm.values.images,
+                  imageBase,
+                ]);
+              }}
+            />
+            <Button
+              variant="outlined"
+              component="span"
+              sx={{
+                mt: 1,
+                height: "2.6rem",
+                display: "block",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "start",
+                  justifyContent: "start",
+                }}
+              >
+                <PhotoCamera sx={{ mr: 1 }} />
+                ادخل صور
+              </Box>
+            </Button>
+            <FormHelperText id="component-error-text" error>
+              {ImageGymForm.errors.images}
+            </FormHelperText>
+          </label>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <LoadingButton
+            style={isPending ? { color: "#00000080" } : { color: "#fff" }}
+            sx={{
+              mt: 1,
+              height: "2.6rem",
+              width: "280px",
+              fontSize: "1rem",
+              "& .MuiLoadingButton-loadingIndicator": {
+                color: "#00000080",
+              },
+            }}
+            type="submit"
+            variant="contained"
+            loading={isPending}
+            endIcon={<SendIcon className="rotate__180" />}
+            loadingPosition="end"
+          >
+            {!isPending ? "حفظ الصور" : "جاري حفظ الصور"}
+          </LoadingButton>
+        </Grid>
+      </Grid>
       <Grid container spacing={2} sx={{ mt: 1 }}>
         {ImageGymForm.values.images &&
           ImageGymForm.values.images.map((image) => (
@@ -156,25 +194,6 @@ export default function UploadImages() {
             </Grid>
           ))}
       </Grid>
-      <LoadingButton
-        style={isPending ? { color: "#00000080" } : { color: "#fff" }}
-        sx={{
-          mt: 2,
-          height: "2.6rem",
-          width: "280px",
-          fontSize: "1rem",
-          "& .MuiLoadingButton-loadingIndicator": {
-            color: "#00000080",
-          },
-        }}
-        type="submit"
-        variant="contained"
-        loading={isPending}
-        endIcon={<SendIcon className="rotate__180" />}
-        loadingPosition="end"
-      >
-        {!isPending ? "حفظ الصور" : "جاري حفظ الصور"}
-      </LoadingButton>
     </form>
   );
 }
