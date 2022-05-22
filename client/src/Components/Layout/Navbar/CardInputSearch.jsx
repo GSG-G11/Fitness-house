@@ -16,9 +16,11 @@ export default function CardInputSearch() {
   };
 
   useEffect(() => {
+    const { CancelToken } = axios;
+    const source = CancelToken.source();
+
     const searchGymsHandler = async () => {
       setIsShowResult(true);
-
       // send request to server then set searchGyms to the response
       const { data } = await axios({
         method: "get",
@@ -26,6 +28,7 @@ export default function CardInputSearch() {
         params: {
           q: search,
         },
+        cancelToken: source.token,
       });
 
       setSearchGyms(data.slice(Math.max(data.length - 10, 0))); // get the last 10 results
@@ -34,9 +37,7 @@ export default function CardInputSearch() {
     if (search.length >= 1) {
       searchGymsHandler();
     }
-    return () => {
-      setSearchGyms([]);
-    };
+    return () => source.cancel();
   }, [search]);
 
   // function to handle Click Outside input search box
