@@ -1,46 +1,46 @@
 {
   "reviews": [
     {
+      "username": "حسن عبدالله",
       "rate": 2,
       "description": "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      "gymId": 1,
-      "userId": 3
+      "gymId": 1
     },
     {
+      "username": "جاد محمود",
       "rate": 1,
       "description": "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      "gymId": 1,
-      "userId": 1
+      "gymId": 1
     },
     {
+      "username": "نرمين محمود",
       "rate": 3,
       "description": "للأسف كانت تجربة سيئ جدأ , لا أنصح به ",
-      "gymId": 1,
-      "userId": 2
+      "gymId": 1
     },
     {
+      "username": "علياء جاد",
       "rate": 5,
       "description": "نادي رائع جدا, ومريح",
-      "gymId": 2,
-      "userId": 1
+      "gymId": 2
     },
     {
+      "username": "محمود علي",
       "rate": 4,
       "description": "نادي رائع جدا, ومريح",
-      "gymId": 2,
-      "userId": 2
+      "gymId": 2
     },
     {
+      "username": "نرمين محمود",
       "rate": 3,
       "description": "نادي رائع جدا, لكن الملعب كان غير نظيف",
-      "gymId": 2,
-      "userId": 3
+      "gymId": 2
     },
     {
+      "username": "علي محمود",
       "rate": 5,
       "description": "نادي رائع جدا,  الملعب كان نظيف",
-      "gymId": 3,
-      "userId": 1
+      "gymId": 3
     }
   ]
 }

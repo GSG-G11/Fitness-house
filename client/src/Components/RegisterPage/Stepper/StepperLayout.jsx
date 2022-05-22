@@ -1,6 +1,7 @@
 import React from "react";
-import BodyStepper from "./BodyStepper";
+
 import HeaderStepper from "./HeaderStepper";
+import BodyStepper from "./BodyStepper";
 
 const steps = ["معلومات الدخول", "معلومات التواصل", "تفاصيل النادي"];
 

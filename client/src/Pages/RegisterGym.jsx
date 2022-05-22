@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 import { StepperLayout } from "../Components";
 
 function RegisterGym() {
@@ -16,6 +17,9 @@ function RegisterGym() {
         </Typography>
 
         <StepperLayout />
+        <Typography className="center" component="h4" sx={{ mt: 2 }}>
+          يوحد لديك حساب ؟&ensp;<Link to="/gym/login"> تسجيل الدخول </Link>
+        </Typography>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const gymRegisterSchema = Joi.object({
   password: Joi.string().max(25).min(8).required(),
   phone: Joi.string().required(),
   city: Joi.string().required(),
-  description: Joi.string(),
+  description: Joi.string().allow(''),
   typeGender: Joi.string().required(),
   monthlyPrice: Joi.number().required(),
   sixMonthPrice: Joi.number().required(),

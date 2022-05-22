@@ -35,10 +35,10 @@ export default function LoginInformation({ loginInformationForm }) {
       onSubmit={loginInformationForm.handleSubmit}
     >
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         id="outlined-basic"
         label="اسم النادي"
-        name="name"
+        name="gymName"
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -46,15 +46,15 @@ export default function LoginInformation({ loginInformationForm }) {
             </InputAdornment>
           ),
         }}
-        value={loginInformationForm.values.name}
+        value={loginInformationForm.values.gymName}
         onChange={loginInformationForm.handleChange}
-        error={!!loginInformationForm.errors.name}
-        helperText={loginInformationForm.errors.name}
+        error={!!loginInformationForm.errors.gymName}
+        helperText={loginInformationForm.errors.gymName}
         variant="outlined"
       />
 
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل البريد الإلكتروني"
         name="email"
         InputProps={{
@@ -72,7 +72,7 @@ export default function LoginInformation({ loginInformationForm }) {
       />
 
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل كلمة السر"
         type={showPassword ? "text" : "password"}
         name="password"
@@ -99,12 +99,12 @@ export default function LoginInformation({ loginInformationForm }) {
           accept="image/*"
           type="file"
           id="icon-button-file"
-          name="image"
+          name="logo"
           onChange={async (event) => {
             const imageBase = await convertToBase64(
               event.currentTarget.files[0]
             );
-            loginInformationForm.setFieldValue("image", imageBase);
+            loginInformationForm.setFieldValue("logo", imageBase);
           }}
         />
         <Button
@@ -113,7 +113,7 @@ export default function LoginInformation({ loginInformationForm }) {
           sx={{
             mt: 3,
             height: "3.3rem",
-            width: "500px",
+            width: "350px",
             display: "flex",
             alignItems: "center",
             justifyContent: "start",
@@ -123,11 +123,11 @@ export default function LoginInformation({ loginInformationForm }) {
           ادخل الشعار
         </Button>
         <FormHelperText id="component-error-text" error>
-          {loginInformationForm.errors.image}
+          {loginInformationForm.errors.logo}
         </FormHelperText>
-        {loginInformationForm.values.image && (
+        {loginInformationForm.values.logo && (
           <img
-            src={loginInformationForm.values.image}
+            src={loginInformationForm.values.logo}
             className="preview_img"
             alt="imageProfile"
           />
@@ -137,7 +137,7 @@ export default function LoginInformation({ loginInformationForm }) {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 3, height: "3.3rem", width: "500px" }}
+        sx={{ mt: 3, height: "3.3rem", width: "350px" }}
       >
         الخطوة التالية
       </Button>
