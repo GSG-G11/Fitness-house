@@ -36,7 +36,7 @@ export default function Login({ onFinish }) {
         تسجيل الدخول
       </Typography>
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل البريد الإلكتروني"
         name="email"
         InputProps={{
@@ -54,7 +54,7 @@ export default function Login({ onFinish }) {
         variant="outlined"
       />
       <TextField
-        sx={{ mt: 3, width: "500px" }}
+        sx={{ mt: 3, width: "350px" }}
         label="أدخل كلمة السر"
         type={showPassword ? "text" : "password"}
         name="password"
@@ -79,7 +79,7 @@ export default function Login({ onFinish }) {
       <Button
         variant="contained"
         type="submit"
-        sx={{ mt: 3, height: "3.3rem", width: "500px" }}
+        sx={{ mt: 3, height: "3.3rem", width: "350px" }}
       >
         تسجيل الدخول
       </Button>
