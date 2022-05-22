@@ -7,9 +7,7 @@ import { handleBack } from "../../../../Store/Slices";
 
 import "./style.css";
 
-import * as Cities from "../../../../Services/Cities.json";
-
-const { cities } = Cities;
+import { cities } from "../../../../Services";
 
 export default function ContactInformation({ contactForm }) {
   const dispatch = useDispatch();
