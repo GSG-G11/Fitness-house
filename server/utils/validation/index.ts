@@ -1,3 +1,4 @@
+import addSubscriptionSchema from './addSubscriptionSchema';
 import paramsValidation from './paramsValidation';
 import filterValidation from './filterValidation';
 import gymEditSchema from './gymEditSchema';
@@ -11,4 +12,6 @@ export {
   gymLoginSchema,
   gymRegisterSchema,
   gymImageSchema,
-  gymEditSchema };
+  gymEditSchema,
+  addSubscriptionSchema,
+};

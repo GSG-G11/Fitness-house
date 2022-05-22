@@ -15,7 +15,7 @@ export default function ContactInformation({ contactForm }) {
   return (
     <form onSubmit={contactForm.handleSubmit} className="form__container">
       <TextField
-        sx={{ width: "100%", marginBottom: "1rem", marginTop: "1rem" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         id="gym-name-required"
         label="رقم الهاتف"
         type="text"
@@ -27,7 +27,7 @@ export default function ContactInformation({ contactForm }) {
       />
 
       <Autocomplete
-        sx={{ width: "100%", marginBottom: "1rem" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         defaultValue="غزة"
         disableClearable
         disablePortal
@@ -45,7 +45,7 @@ export default function ContactInformation({ contactForm }) {
       />
 
       <TextField
-        sx={{ width: "100%" }}
+        sx={{ width: "350px", marginBottom: "1rem", marginTop: "1rem" }}
         id="standard-multiline-flexible"
         label="الوصف"
         multiline
@@ -59,8 +59,20 @@ export default function ContactInformation({ contactForm }) {
         variant="outlined"
       />
 
-      <Box sx={{ display: "flex", flexDirection: "row", pt: 2, gap: 3 }}>
+      <Box
+        sx={{
+          width: "350px",
+          marginBottom: "1rem",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
         <Button
+          sx={{
+            width: "165px",
+          }}
+          size="large"
           variant="contained"
           color="secondary"
           onClick={() => dispatch(handleBack())}
@@ -68,7 +80,15 @@ export default function ContactInformation({ contactForm }) {
           الرجوع للخلف
         </Button>
 
-        <Button type="submit" variant="contained">
+        <Button
+          sx={{
+            width: "165px",
+            height: "56px",
+          }}
+          size="large"
+          type="submit"
+          variant="contained"
+        >
           أكمل التسجيل
         </Button>
       </Box>
