@@ -1,6 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 import Sequelize from 'sequelize';
-import { Gym, Image, Review, User } from '../../database/models';
+import { Gym, Image, Review } from '../../database/models';
 import { CustomError, paramsValidation } from '../../utils';
 
 export default async function getGym(req: Request, res: Response, next: NextFunction) {
@@ -40,8 +40,7 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
         {
           model: Review,
           required: false,
-          attributes: ['id', 'rate', 'description', 'createdAt', 'userId'],
-          include: [{ model: User, required: false, attributes: ['username', 'avatar'] }],
+          attributes: ['id', 'username', 'rate', 'description', 'createdAt'],
         },
       ],
     });

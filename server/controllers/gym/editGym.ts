@@ -1,5 +1,5 @@
 import { NextFunction, Response } from 'express';
-import Gym from '../../database/models/gyms';
+import { Gym } from '../../database/models';
 import { uploadImage, deleteImage } from '../../utils/aws';
 import { CustomError, gymEditSchema } from '../../utils';
 
