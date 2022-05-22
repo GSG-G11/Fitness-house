@@ -28,7 +28,6 @@ export default async function addSubscription(req: Request, res: Response, next:
       username,
       userPhone,
       type,
-      status: false,
     });
 
     res.status(201).json({ message: 'تم الاشتراك بنجاح', subscription });
