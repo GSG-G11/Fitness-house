@@ -12,7 +12,7 @@ import "./style.css";
 
 function Footer() {
   return (
-    <footer>
+    <footer id="ContactUsSection">
       <div className="container">
         <div className="sub__container">
           <div className="footer-container">

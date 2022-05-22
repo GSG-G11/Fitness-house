@@ -68,6 +68,18 @@ ol {
   text-decoration: none;
 }
 
+input,
+input::after,
+input::before,
+textarea,
+textarea::after,
+textarea::before,
+textarea,
+select {
+  outline: none;
+  border: none;
+}
+
 a,
 a::after,
 a::before,

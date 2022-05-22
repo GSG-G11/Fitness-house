@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
 
@@ -20,6 +20,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import StarIcon from "@mui/icons-material/Star";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useDispatch } from "react-redux";
+import { setLogout } from "../../../Store/Slices";
 
 const drawerWidth = 240;
 
@@ -89,8 +91,12 @@ const listItem = [
 ];
 
 export default function SideBar({ isOpen, handleDrawer }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleLogout = () => {
-    console.log("logout");
+    dispatch(setLogout());
+    navigate("/", { replace: true });
   };
 
   return (
