@@ -1,6 +1,6 @@
 import Filter from "./SearchPage";
 import StepperLayout from "./RegisterPage";
-import { Header, SideBar, UpdateProfile } from "./DashboardPage";
+import { Header, SideBar, UpdateProfile, UploadImages } from "./DashboardPage";
 import { TopGymCards, JoinUs, OfferForYou, Slider } from "./HomePage";
 import { Navbar, Footer } from "./Layout";
 import { GymReviews, GymProfile, GymImages } from "./SingleGym";
@@ -21,5 +21,6 @@ export {
   GymProfile,
   GymImages,
   UpdateProfile,
+  UploadImages,
   Login,
 };
