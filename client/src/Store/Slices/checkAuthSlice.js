@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
 
 const initialState = {
   auth: {
@@ -18,6 +19,7 @@ export const checkAuthSlice = createSlice({
       state.auth = action.payload;
     },
     setLogout: (state) => {
+      Cookies.remove("token");
       state.auth = {
         id: null,
         name: null,

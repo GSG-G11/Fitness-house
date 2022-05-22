@@ -9,9 +9,12 @@
     "prepare": "is-ci || npx husky install",
     "dev": "cross-env NODE_ENV=dev nodemon server/index.ts",
     "dev:client": "cd client && npm start",
-    "start": "npx tsc  && NODE_ENV=production node ./dist",
+    "start": "NODE_ENV=production node ./dist",
     "lint-server": "eslint --fix --ext .js,.ts server/",
-    "db:build": "cross-env DB_BUILD=true NODE_ENV=dev ts-node ./server/database/fakeData/index.ts"
+    "db:build": "cross-env DB_BUILD=true NODE_ENV=dev ts-node ./server/database/fakeData/index.ts",
+    "heroku-postbuild": " cd client && npm i && npm run build",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc"
   },
   "repository": {
     "type": "git",
@@ -58,6 +61,7 @@
     "is-ci": "^3.0.1",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.19.0",

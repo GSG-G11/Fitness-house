@@ -22,14 +22,9 @@ import axios from "axios";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import PropTypes from "prop-types";
-
 import { handleBack, setAuth } from "../../../../Store/Slices";
-import * as gymsFeatures from "../../../../Services/features.json";
-import * as userGenders from "../../../../Services/genders.json";
+import { features, genders } from "../../../../Services";
 import { detailsSchema } from "../../registerSchema";
-
-const { features } = gymsFeatures;
-const { genders } = userGenders;
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;

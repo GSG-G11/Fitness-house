@@ -1,0 +1,14 @@
+.form__upload_image {
+  width: 100%;
+  height: 100%;
+  margin: 1rem 0;
+}
+
+.preview_img {
+  height: 30vh; 
+  max-height: 30vh; 
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+

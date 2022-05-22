@@ -6,7 +6,7 @@
 
 .preview_profile_img {
   width: 100%;
-  height: 30vh;
+  height: 25vh;
   max-height: 30vh;
   object-fit: cover;
   margin-top: 0.5rem;
@@ -18,4 +18,8 @@
     max-width: 1800px;
     margin: 0 auto;
   }
+}
+
+.rotate__180 {
+  transform: rotate(180deg);
 }

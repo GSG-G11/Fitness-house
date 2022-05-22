@@ -3,6 +3,7 @@ import compression from 'compression';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { join } from 'path';
+import morgan from 'morgan';
 import { notFundError, serverError } from './error';
 import routes from './routes';
 
@@ -14,6 +15,7 @@ const { NODE_ENV } = process.env;
 app.disable('x-powered-by');
 
 app.use([
+  morgan('dev'),
   compression(),
   cors(),
   cookieParser(),
