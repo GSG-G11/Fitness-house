@@ -16,11 +16,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { handleBack } from "../../../../Store/Slices";
-import * as gymsFeatures from "../../../../Services/features.json";
-import * as userGenders from "../../../../Services/genders.json";
-
-const { features } = gymsFeatures;
-const { genders } = userGenders;
+import { features, genders } from "../../../../Services";
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
