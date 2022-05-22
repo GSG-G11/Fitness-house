@@ -30,7 +30,7 @@ function Modal() {
     initialValues: {
       username: "",
       phone: "",
-      subscription: "month",
+      subscription: "",
     },
     validationSchema: subscriptionSchema,
     onSubmit: () => {
