@@ -5,20 +5,20 @@ require('env2')('.env');
 const { NODE_ENV, DB_URL, TEST_DB_URL, DATABASE_URL, DB_BUILD } = process.env;
 
 let dbUrl: string = '';
-let sslConnection: boolean | object = false;
+let ssl: boolean | object = false;
 
 switch (NODE_ENV) {
   case 'dev':
     dbUrl = DB_URL!;
-    sslConnection = false;
+    ssl = false;
     break;
   case 'test':
     dbUrl = TEST_DB_URL!;
-    sslConnection = false;
+    ssl = false;
     break;
   case 'production':
     dbUrl = DATABASE_URL!;
-    sslConnection = { rejectUnauthorized: true };
+    ssl = { rejectUnauthorized: false };
     break;
   default:
     throw new Error('NODE_ENV is not set');
@@ -26,7 +26,7 @@ switch (NODE_ENV) {
 
 const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
-  dialectOptions: { sslConnection, charset: 'utf8' },
+  dialectOptions: { ssl, charset: 'utf8' },
   logging: false,
 });
 
