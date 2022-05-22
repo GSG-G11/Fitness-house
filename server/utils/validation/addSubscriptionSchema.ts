@@ -2,16 +2,13 @@ import Joi from 'joi';
 
 const addSubscriptionSchema = Joi.object({
   gymId: Joi.number().required(),
-  gymName: Joi.string().required(),
-  logo: Joi.string().required(),
-  phone: Joi.string().required(),
-  city: Joi.string().required(),
-  description: Joi.string(),
-  typeGender: Joi.string().required(),
-  monthlyPrice: Joi.number().required(),
-  sixMonthPrice: Joi.number().required(),
-  fulltime: Joi.boolean().required(),
-  features: Joi.array().items(Joi.string()),
+  username: Joi.string().min(2).max(30).required(),
+  userPhone: Joi.string()
+    .length(10)
+    .pattern(/^[0-9]+$/)
+    .required(),
+  type: Joi.string().valid('month', 'sixMonth').required(),
+  status: Joi.boolean().required(),
 });
 
 export default addSubscriptionSchema;
