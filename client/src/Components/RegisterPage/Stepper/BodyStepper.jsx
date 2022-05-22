@@ -39,7 +39,6 @@ export default function BodyStepper() {
     onSubmit: () => {
       dispatch(handleNext());
     },
-    validateOnChange: false,
   });
 
   let StepComponent;
