@@ -43,18 +43,17 @@ export default function UploadImages() {
   const ImageGymForm = useFormik({
     initialValues: { images: [] },
     validationSchema,
-    onSubmit: async (values) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
       try {
         setIsPending(true);
-        const { status } = await axios({
+        await axios({
           method: "POST",
           url: "/api/v1/gym/images",
           data: values,
         });
 
-        if (status !== 201) throw new Error("حدث خطأ ما");
         setIsPending(false);
+        resetForm();
         refetch();
         enqueueSnackbar("تم إضافة الصور بنجاح", {
           variant: "success",
@@ -65,6 +64,7 @@ export default function UploadImages() {
         });
       } catch (error) {
         setIsPending(false);
+        resetForm();
         enqueueSnackbar("عذرا حدث خطأ ما", {
           variant: "error",
           anchorOrigin: {
@@ -93,7 +93,7 @@ export default function UploadImages() {
       <Grid container spacing={2} sx={{ mt: 1 }}>
         {gymImages &&
           gymImages.images.map((image) => (
-            <Grid key={image} item xs={12} md={4} sx={{ mt: 1 }}>
+            <Grid key={image.pathUrl} item xs={12} md={4} sx={{ mt: 1 }}>
               <Badge
                 badgeContent={<CloseIcon sx={{ height: 15, width: 15 }} />}
                 anchorOrigin={{
