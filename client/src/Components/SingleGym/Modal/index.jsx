@@ -17,14 +17,14 @@ import {
   Select,
 } from "@mui/material";
 
+const subscriptionSchema = Yup.object().shape({
+  username: Yup.string().required("حقل اسم المستخدم مطلوب"),
+  phone: Yup.string()
+    .length(10, "رقم الهاتف غير صحيح")
+    .required("حقل رقم الهاتف مطلوب"),
+  subscription: Yup.string().required("حقل الاشتراك مطلوب"),
+});
 function Modal() {
-  const subscriptionSchema = Yup.object().shape({
-    username: Yup.string().required("حقل اسم المستخدم مطلوب"),
-    phone: Yup.string()
-      .length(10, "رقم الهاتف غير صحيح")
-      .required("حقل رقم الهاتف مطلوب"),
-    subscription: Yup.string().required("حقل الاشتراك مطلوب"),
-  });
   const [open, setOpen] = useState(false);
   const modalForm = useFormik({
     initialValues: {
