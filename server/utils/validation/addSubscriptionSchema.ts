@@ -8,7 +8,6 @@ const addSubscriptionSchema = Joi.object({
     .pattern(/^[0-9]+$/)
     .required(),
   type: Joi.string().valid('month', 'sixMonth').required(),
-  status: Joi.boolean().required(),
 });
 
 export default addSubscriptionSchema;
