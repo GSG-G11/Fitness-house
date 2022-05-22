@@ -7,6 +7,15 @@ const Subscription = sequelize.define('subscriptions', {
     autoIncrement: true,
     primaryKey: true,
   },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  userPhone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
   type: {
     type: DataTypes.ENUM,
     allowNull: false,
