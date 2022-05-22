@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {
+  Alert,
+  Snackbar,
   Box,
   Autocomplete,
   Button,
@@ -14,11 +16,17 @@ import {
   MenuItem,
   Switch,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import LoadingButton from "@mui/lab/LoadingButton";
+import { useFormik } from "formik";
 import PropTypes from "prop-types";
-import { handleBack } from "../../../../Store/Slices";
+
+import { handleBack, setAuth } from "../../../../Store/Slices";
 import * as gymsFeatures from "../../../../Services/features.json";
 import * as userGenders from "../../../../Services/genders.json";
+import { detailsSchema } from "../../registerSchema";
 
 const { features } = gymsFeatures;
 const { genders } = userGenders;
@@ -34,10 +42,66 @@ const MenuProps = {
   },
 };
 
-export default function StepThreeComponent({ detailsForm }) {
+export default function StepThreeComponent({ loginValues, contactValues }) {
+  const [state, setState] = useState({
+    message: "",
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+  });
   const [loading, setLoading] = React.useState(false);
 
+  const { message, vertical, horizontal, open } = state;
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setState({ ...state, open: false });
+  };
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const onFinish = async (gym) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/v1/gyms/register", gym);
+      navigate("/dashboard/gyms", { replace: true });
+      const { id, name } = data.payload;
+      dispatch(
+        setAuth({
+          id,
+          name,
+          role: "gym",
+          isLoggedIn: true,
+        })
+      );
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      const errorMessage = error.response.data.message;
+      setState({ ...state, open: true, message: errorMessage });
+    }
+  };
+  const detailsForm = useFormik({
+    initialValues: {
+      features: [],
+      typeGender: "",
+      monthlyPrice: 0,
+      sixMonthPrice: 0,
+      fulltime: false,
+    },
+    validationSchema: detailsSchema,
+    onSubmit: (values) => {
+      const newValue = {
+        ...loginValues,
+        ...contactValues,
+        ...values,
+      };
+
+      onFinish(newValue);
+    },
+    validateOnChange: false,
+  });
   return (
     <form className="form__container" onSubmit={detailsForm.handleSubmit}>
       <FormGroup>
@@ -155,10 +219,6 @@ export default function StepThreeComponent({ detailsForm }) {
 
         <LoadingButton
           loading={loading}
-          onClick={() => {
-            setLoading(true);
-            detailsForm.handleSubmit();
-          }}
           sx={{
             width: "165px",
             height: "56px",
@@ -170,9 +230,20 @@ export default function StepThreeComponent({ detailsForm }) {
           إنهاء التسجيل
         </LoadingButton>
       </Box>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        autoHideDuration={4000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} variant="filled" severity="error">
+          {message}!
+        </Alert>
+      </Snackbar>
     </form>
   );
 }
 StepThreeComponent.propTypes = {
-  detailsForm: PropTypes.instanceOf(Object).isRequired,
+  loginValues: PropTypes.instanceOf(Object).isRequired,
+  contactValues: PropTypes.instanceOf(Object).isRequired,
 };
