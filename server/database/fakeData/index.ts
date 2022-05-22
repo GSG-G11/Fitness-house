@@ -16,7 +16,7 @@ const builderHandler = async () => {
 
   console.log('Database Start seeded (gym) ...');
 
-  await ([...(await Gym.bulkCreate(gyms))]);
+  await Gym.bulkCreate(gyms);
 
   console.log(
     'Insert Gyms ~~ Now Database Start seeded (images - subscription - reviews) ...',
