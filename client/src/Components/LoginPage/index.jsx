@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { TextField, InputAdornment, Button, Typography } from "@mui/material";
+import { TextField, InputAdornment, Typography } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Visibility, VisibilityOff, Email } from "@mui/icons-material";
@@ -14,7 +15,7 @@ const loginSchema = Yup.object().shape({
     .required("حقل كلمة المرور مطلوب"),
 });
 
-export default function Login({ onFinish }) {
+export default function Login({ onFinish, loading }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -29,6 +30,7 @@ export default function Login({ onFinish }) {
     onSubmit: (values) => {
       onFinish(values);
     },
+    validateOnChange: false,
   });
   return (
     <form className="form__container" onSubmit={loginForm.handleSubmit}>
@@ -76,16 +78,25 @@ export default function Login({ onFinish }) {
         autoComplete="current-password"
         variant="outlined"
       />
-      <Button
-        variant="contained"
+      <LoadingButton
+        loading={loading}
+        sx={{
+          mt: 3,
+          width: "350px",
+          height: "56px",
+        }}
+        size="large"
         type="submit"
-        sx={{ mt: 3, height: "3.3rem", width: "350px" }}
+        variant="contained"
       >
         تسجيل الدخول
-      </Button>
+      </LoadingButton>
     </form>
   );
 }
 Login.propTypes = {
   onFinish: PropTypes.func.isRequired,
+};
+Login.propTypes = {
+  loading: PropTypes.bool.isRequired,
 };

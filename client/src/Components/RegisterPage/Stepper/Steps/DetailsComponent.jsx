@@ -44,7 +44,7 @@ export default function StepThreeComponent({ loginValues, contactValues }) {
     vertical: "top",
     horizontal: "center",
   });
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { message, vertical, horizontal, open } = state;
 

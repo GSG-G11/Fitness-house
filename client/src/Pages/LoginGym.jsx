@@ -7,6 +7,8 @@ import { setAuth } from "../Store/Slices";
 import { Login } from "../Components";
 
 export default function LoginGym() {
+  const [loading, setLoading] = React.useState(false);
+
   const [state, setState] = useState({
     message: "",
     open: false,
@@ -26,6 +28,7 @@ export default function LoginGym() {
   const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
+      setLoading(true);
       const { data } = await axios.post("/api/v1/gyms/login", values);
       navigate("/dashboard/gyms", { replace: true });
       const { id, name } = data.payload;
@@ -37,7 +40,9 @@ export default function LoginGym() {
           isLoggedIn: true,
         })
       );
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       const errorMessage = error.response.data.message;
       setState({ ...state, open: true, message: errorMessage });
     }
@@ -46,7 +51,7 @@ export default function LoginGym() {
   return (
     <div className="container">
       <div className="sub__container">
-        <Login onFinish={onFinish} />
+        <Login onFinish={onFinish} loading={loading} />
         <Typography className="center" component="h4" sx={{ mt: 2 }}>
           ليس لديك حساب ؟&ensp;<Link to="/gym/register"> إنشاء حساب </Link>
         </Typography>
