@@ -25,9 +25,11 @@ async function deleteImageController(req: any, res: Response, next: NextFunction
       await deleteImage(imageUrl);
     }
     await Image.destroy({ where: { id }, force: true });
-    res.json({ message: 'image deleted', data: image });
+    res.json({ message: 'image deleted' });
   } catch (error: any) {
-    if (error.name === 'ValidationError') next(new CustomError('عذراً خطأ في المعرف', 400));
+    if (error.name === 'ValidationError') {
+      return next(new CustomError('عذراً خطأ في المعرف', 400));
+    }
     next(error);
   }
 }
