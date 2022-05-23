@@ -130,8 +130,6 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
 
     return res.status(200).json({ gyms: pageOfGyms, pagination });
   } catch (error: any) {
-    console.log(error);
-
     if (error.name === 'ValidationError') {
       return next(new CustomError('عذراً خطأ في السعر أو رقم الصفحة , يجب أن يكون رقماً', 400));
     }
