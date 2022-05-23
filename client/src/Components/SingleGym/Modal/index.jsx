@@ -29,8 +29,8 @@ function Modal() {
   const modalForm = useFormik({
     initialValues: {
       username: "",
-      phone: "",
-      subscription: "",
+      userPhone: "",
+      type: "",
     },
     validationSchema: subscriptionSchema,
     onSubmit: () => {
@@ -77,11 +77,11 @@ function Modal() {
               sx={{ width: "100%", marginTop: "1rem" }}
               inputProps={{ inputMode: "numeric", pattern: "[0-9]*" }}
               size="medium"
-              name="phone"
-              id="phone"
-              value={modalForm.values.phone}
-              error={!!modalForm.errors.phone}
-              helperText={modalForm.errors.phone}
+              name="userPhone"
+              id="userPhone"
+              value={modalForm.values.userPhone}
+              error={!!modalForm.errors.userPhone}
+              helperText={modalForm.errors.userPhone}
               onChange={modalForm.handleChange}
               label="أدخل رقم الهاتف"
               variant="outlined"
@@ -94,9 +94,9 @@ function Modal() {
             >
               <InputLabel size="medium">مدة الاشتراك</InputLabel>
               <Select
-                id="subscription"
-                name="subscription"
-                value={modalForm.values.subscription}
+                id="type"
+                name="type"
+                value={modalForm.values.type}
                 onChange={modalForm.handleChange}
                 input={<OutlinedInput label="Name" />}
               >
