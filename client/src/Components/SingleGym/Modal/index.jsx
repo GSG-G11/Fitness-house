@@ -19,10 +19,10 @@ import {
 
 const subscriptionSchema = Yup.object().shape({
   username: Yup.string().required("حقل اسم المستخدم مطلوب"),
-  phone: Yup.string()
+  userPhone: Yup.string()
     .length(10, "رقم الهاتف غير صحيح")
     .required("حقل رقم الهاتف مطلوب"),
-  subscription: Yup.string().required("حقل الاشتراك مطلوب"),
+  type: Yup.string().required("حقل الاشتراك مطلوب"),
 });
 function Modal() {
   const [open, setOpen] = useState(false);
@@ -35,6 +35,16 @@ function Modal() {
     validationSchema: subscriptionSchema,
     onSubmit: () => {
       console.log(modalForm.values);
+      if (modalForm.values === null) {
+        setOpen(true);
+        console.log("ادخل باقي البيانات");
+      } else {
+        modalForm.values.username = "";
+        modalForm.values.userPhone = "";
+        modalForm.values.type = "";
+        setOpen(false);
+        console.log("تم الاشتراك بنجاح");
+      }
     },
   });
   const handleClickOpen = () => {
@@ -89,7 +99,7 @@ function Modal() {
             <FormControl
               sx={{ width: "100%", marginTop: "1rem" }}
               size="medium"
-              label="أدخل اسم المستخدم"
+              label="أدخل مدة الاشتراك"
               variant="outlined"
             >
               <InputLabel size="medium">مدة الاشتراك</InputLabel>
@@ -106,11 +116,7 @@ function Modal() {
             </FormControl>
           </DialogContent>
           <DialogActions>
-            <Button
-              xs={{ fontWeight: "bold" }}
-              onClick={handleClose}
-              type="submit"
-            >
+            <Button xs={{ fontWeight: "bold" }} type="submit">
               أتمم الحجز
             </Button>
             <Button xs={{ fontWeight: "bold" }} onClick={handleClose}>
