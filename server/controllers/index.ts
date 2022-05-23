@@ -1,5 +1,5 @@
 import { getTopGyms, searchGymByName, getFilteredGyms } from './gyms';
-import { getGym, editGymData, postImage } from './gym';
+import { getGym, editGymData, postImage, getSubscription } from './gym';
 import { gymRegister, gymLogin } from './auth';
 import addSubscription from './subscription';
 
@@ -13,4 +13,5 @@ export {
   postImage,
   editGymData,
   addSubscription,
+  getSubscription,
 };
