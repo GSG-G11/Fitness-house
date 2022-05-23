@@ -8,6 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import * as Yup from "yup";
+import { useSelector } from "react-redux";
 
 import {
   FormControl,
@@ -15,7 +16,11 @@ import {
   MenuItem,
   OutlinedInput,
   Select,
+  Snackbar,
+  Alert,
+  FormHelperText,
 } from "@mui/material";
+import axios from "axios";
 
 const subscriptionSchema = Yup.object().shape({
   username: Yup.string().required("حقل اسم المستخدم مطلوب"),
@@ -26,6 +31,30 @@ const subscriptionSchema = Yup.object().shape({
 });
 function Modal() {
   const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState({ type: "", messageText: "" });
+  const { id, monthlyPrice, sixMonthPrice } = useSelector((e) => {
+    return e.gyms.queries['getGymData("2")'].data.gymData;
+  });
+  const onFinish = async (subscription) => {
+    try {
+      await axios.post("/api/v1/subscriptions", subscription);
+      setMessage({
+        type: "success",
+        messageText: "تم إضافة الإشتراك بنجاح يرجى مراجعة النادي لتأكيد الحجز",
+      });
+      setOpen(false);
+    } catch (error) {
+      if (error.response.status === 409) {
+        setMessage({
+          type: "error",
+          messageText: "تم الاشتراك مسبقاً من قبل هذا الهاتف",
+        });
+      } else {
+        const errorMessage = error.response.data.message;
+        setMessage({ type: "error", messageText: errorMessage });
+      }
+    }
+  };
   const modalForm = useFormik({
     initialValues: {
       username: "",
@@ -33,18 +62,9 @@ function Modal() {
       type: "",
     },
     validationSchema: subscriptionSchema,
-    onSubmit: () => {
-      console.log(modalForm.values);
-      if (modalForm.values === null) {
-        setOpen(true);
-        console.log("ادخل باقي البيانات");
-      } else {
-        modalForm.values.username = "";
-        modalForm.values.userPhone = "";
-        modalForm.values.type = "";
-        setOpen(false);
-        console.log("تم الاشتراك بنجاح");
-      }
+    onSubmit: (values) => {
+      console.log({ ...values, gymId: id });
+      onFinish({ ...values, gymId: id });
     },
   });
   const handleClickOpen = () => {
@@ -54,13 +74,11 @@ function Modal() {
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <div>
       <Button color="primary" onClick={handleClickOpen} variant="contained">
         احجز موعد
       </Button>
-
       <Dialog open={open} onClose={handleClose}>
         <form onSubmit={modalForm.handleSubmit} className="form__container">
           <DialogTitle sx={{ fontWeight: "bold" }} color="primary">
@@ -110,21 +128,45 @@ function Modal() {
                 onChange={modalForm.handleChange}
                 input={<OutlinedInput label="Name" />}
               >
-                <MenuItem value="month"> اشتراك شهري</MenuItem>
-                <MenuItem value="sixMonth">اشتراك ست أشهر</MenuItem>
+                <MenuItem value="month"> {monthlyPrice} اشتراك شهري</MenuItem>
+                <MenuItem value="sixMonth">
+                  {sixMonthPrice}اشتراك ست أشهر
+                </MenuItem>
               </Select>
             </FormControl>
           </DialogContent>
-          <DialogActions>
-            <Button xs={{ fontWeight: "bold" }} type="submit">
+          {message.type === "error" && (
+            <FormHelperText
+              sx={{ fontSize: "14px", fontWeight: "bold" }}
+              id="component-error-text"
+              error
+            >
+              {message.messageText}
+            </FormHelperText>
+          )}
+          <DialogActions sx={{ mb: 2 }}>
+            <Button type="submit" variant="contained">
               أتمم الحجز
             </Button>
-            <Button xs={{ fontWeight: "bold" }} onClick={handleClose}>
+            <Button onClick={handleClose} variant="outlined">
               إلغاء الحجز
             </Button>
           </DialogActions>
         </form>
       </Dialog>
+      <Snackbar
+        open={message.type === "success"}
+        autoHideDuration={6000}
+        onClose={() => setMessage({})}
+      >
+        <Alert
+          onClose={() => setMessage({})}
+          variant="filled"
+          severity="success"
+        >
+          {message.messageText}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
