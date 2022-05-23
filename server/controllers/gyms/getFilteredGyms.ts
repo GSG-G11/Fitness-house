@@ -108,7 +108,6 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
         },
       ],
       group: ['gyms.id'],
-      // limit: PAGE_SIZE,
       order: [[Sequelize.literal('review'), 'DESC']],
       offset: (currentPage - 1) * PAGE_SIZE,
     });
@@ -121,15 +120,13 @@ export default async function getFilteredGyms(req: Request, res: Response, next:
       pageSize: PAGE_SIZE,
       totalPages: Math.ceil(count.length / PAGE_SIZE),
       startPage: 1,
-      endPage: Math.ceil(count.length / PAGE_SIZE),
       startIndex: 0,
-      endIndex: Math.ceil(count.length / PAGE_SIZE),
       nextPage: currentPage + 1,
       prevPage: currentPage - 1,
     };
 
     // get page of items from items array
-    const pageOfGyms = rows.slice(pagination.startIndex, pagination.endIndex + 1);
+    const pageOfGyms = rows.slice(pagination.startIndex, PAGE_SIZE);
 
     return res.status(200).json({ gyms: pageOfGyms, pagination });
   } catch (error: any) {
