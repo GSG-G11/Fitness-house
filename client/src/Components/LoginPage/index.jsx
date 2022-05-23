@@ -30,6 +30,7 @@ export default function Login({ onFinish, loading }) {
     onSubmit: (values) => {
       onFinish(values);
     },
+    validateOnChange: false,
   });
   return (
     <form className="form__container" onSubmit={loginForm.handleSubmit}>
