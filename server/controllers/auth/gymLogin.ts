@@ -7,10 +7,7 @@ import { Gym } from '../../database/models';
 export default async function gymLogin(req: Request, res: Response, next: NextFunction) {
   try {
     // Validate the request body against the schema
-    const {
-      email,
-      password: gymPassword,
-    } = await gymLoginSchema.validateAsync(req.body);
+    const { email, password: gymPassword } = await gymLoginSchema.validateAsync(req.body);
 
     // Check if the gym already exists
     const isExist: any = await Gym.findOne({
@@ -39,9 +36,10 @@ export default async function gymLogin(req: Request, res: Response, next: NextFu
 
     // Generate the token
     const token = await generateToken(payload);
-    res.cookie('token', token, {
-      httpOnly: true,
-    })
+    res
+      .cookie('token', token, {
+        maxAge: 900000,
+      })
       .json({
         message: 'تم تسجيل الدخول بنجاح',
         payload,
