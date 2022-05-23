@@ -36,7 +36,7 @@ export default async function getGym(req: Request, res: Response, next: NextFunc
         ],
       ],
       include: [
-        { model: Image, required: false, attributes: ['pathUrl'] },
+        { model: Image, required: false, attributes: ['id', 'pathUrl'] },
         {
           model: Review,
           required: false,
