@@ -110,7 +110,7 @@ function Modal() {
                 onChange={modalForm.handleChange}
                 input={<OutlinedInput label="Name" />}
               >
-                <MenuItem value="month">اشتراك شهري</MenuItem>
+                <MenuItem value="month"> اشتراك شهري</MenuItem>
                 <MenuItem value="sixMonth">اشتراك ست أشهر</MenuItem>
               </Select>
             </FormControl>
