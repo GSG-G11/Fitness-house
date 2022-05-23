@@ -8,8 +8,6 @@ import { useDispatch } from "react-redux";
 import { Dashboard, Home } from "./Layouts";
 
 import {
-  LoginPage,
-  RegisterPage,
   LoginGymPage,
   GymProfilePage,
   RegisterGymPage,
@@ -25,6 +23,7 @@ import {
 import "./app.css";
 
 import { setAuth, setLogout } from "./Store/Slices";
+import { ProtectedRoutes, RegisteredGymRoutes } from "./middleware";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,19 +53,39 @@ function App() {
       {/* Routes For Site Views {login, gym filter,...} */}
       <Route path="/" element={<Home />}>
         <Route index element={<HomePage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="gym/login" element={<LoginGymPage />} />
-        <Route path="gym/register" element={<RegisterGymPage />} />
         <Route path="gyms/filter" element={<SearchGymPage />} />
         <Route path="gyms/profile/:gymId" element={<SingleGymPage />} />
+
+        <Route
+          path="gym/login"
+          element={
+            <RegisteredGymRoutes>
+              <LoginGymPage />
+            </RegisteredGymRoutes>
+          }
+        />
+        <Route
+          path="gym/register"
+          element={
+            <RegisteredGymRoutes>
+              <RegisterGymPage />
+            </RegisteredGymRoutes>
+          }
+        />
 
         {/* .... other Routes ... */}
       </Route>
       {/* Routes For Gym Views {login, gym filter,...} */}
 
       {/* Routes For dashboard Site Views {update gym data,...} */}
-      <Route path="dashboard/gyms" element={<Dashboard />}>
+      <Route
+        path="dashboard/gyms"
+        element={
+          <ProtectedRoutes>
+            <Dashboard />
+          </ProtectedRoutes>
+        }
+      >
         <Route index element={<GymProfilePage />} />
         <Route path="subscribers" element={<SubscriberGymPage />} />
         <Route path="images" element={<ImagesGymPage />} />
