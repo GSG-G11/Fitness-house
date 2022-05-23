@@ -1,19 +1,29 @@
 import CustomError from './CustomError';
 import { checkToken, generateToken } from './jwt';
-import { filterValidation, paramsValidation, gymLoginSchema, gymRegisterSchema, gymImageSchema, gymEditSchema } from './validation';
-import { GymFilter, authRequest, GymModel } from './types';
+import { GymFilter, authRequest, GymModel, ImageModel } from './types';
+import {
+  filterValidation,
+  paramsValidation,
+  gymLoginSchema,
+  gymRegisterSchema,
+  gymImageSchema,
+  gymEditSchema,
+  addSubscriptionSchema,
+} from './validation';
 
 export {
   CustomError,
   GymFilter,
   authRequest,
+  checkToken,
+  generateToken,
+  GymModel,
   filterValidation,
   paramsValidation,
   gymEditSchema,
   gymLoginSchema,
   gymImageSchema,
-  checkToken,
-  generateToken,
   gymRegisterSchema,
-  GymModel,
+  ImageModel,
+  addSubscriptionSchema,
 };

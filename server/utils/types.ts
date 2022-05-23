@@ -48,3 +48,11 @@ export interface GymModel
   monthlyPrice: number | object;
   fulltime: boolean | object;
 }
+
+export interface ImageModel
+  extends Model<InferAttributes<ImageModel>, InferCreationAttributes<ImageModel>> {
+  id?: number;
+  pathUrl: string;
+  publicKey: string;
+  gymId?: number;
+}

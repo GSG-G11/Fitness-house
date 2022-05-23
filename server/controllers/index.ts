@@ -1,12 +1,18 @@
 import { getTopGyms, searchGymByName, getFilteredGyms } from './gyms';
-import { getGym, editGymData, postImage } from './gym';
+import { getGym, editGymData, postImage, deleteImageController, getSubscription } from './gym';
 import { gymRegister, gymLogin } from './auth';
+import addSubscription from './subscription';
 
 export {
   getTopGyms,
   searchGymByName,
-  getGym, getFilteredGyms,
+  getGym,
+  getFilteredGyms,
   gymLogin,
   gymRegister,
   postImage,
-  editGymData };
+  deleteImageController,
+  editGymData,
+  addSubscription,
+  getSubscription,
+};

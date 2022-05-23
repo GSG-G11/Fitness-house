@@ -1,5 +1,5 @@
 import { NextFunction, Response } from 'express';
-import Image from '../../database/models/images';
+import { Image } from '../../database/models';
 import { gymImageSchema, CustomError } from '../../utils';
 import { uploadImage } from '../../utils/aws';
 
