@@ -70,7 +70,6 @@ export default async function gymRegister(req: Request, res: Response, next: Nex
       .status(201)
       .cookie('token', token, {
         maxAge: 900000,
-        httpOnly: true,
       })
       .json({
         status: 201,
