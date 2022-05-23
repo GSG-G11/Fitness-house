@@ -35,7 +35,7 @@ function Modal() {
   const { id, monthlyPrice, sixMonthPrice } = useSelector((e) => {
     return e.gyms.queries['getGymData("2")'].data.gymData;
   });
-  const onFinish = async (subscription) => {
+  const onFinish = async (subscription, resetForm) => {
     try {
       await axios.post("/api/v1/subscriptions", subscription);
       setMessage({
@@ -43,6 +43,7 @@ function Modal() {
         messageText: "تم إضافة الإشتراك بنجاح يرجى مراجعة النادي لتأكيد الحجز",
       });
       setOpen(false);
+      resetForm();
     } catch (error) {
       if (error.response.status === 409) {
         setMessage({
@@ -62,9 +63,9 @@ function Modal() {
       type: "",
     },
     validationSchema: subscriptionSchema,
-    onSubmit: (values) => {
-      console.log({ ...values, gymId: id });
-      onFinish({ ...values, gymId: id });
+    onSubmit: (values, { resetForm }) => {
+      localStorage.setItem("userPhone", JSON.stringify(values.userPhone));
+      onFinish({ ...values, gymId: id }, resetForm);
     },
   });
   const handleClickOpen = () => {
