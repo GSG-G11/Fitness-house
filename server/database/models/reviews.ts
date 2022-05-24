@@ -12,7 +12,7 @@ const Review = sequelize.define('reviews', {
     allowNull: false,
   },
   rate: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.FLOAT,
     allowNull: false,
   },
   description: {
