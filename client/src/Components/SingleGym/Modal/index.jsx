@@ -21,6 +21,7 @@ import {
   FormHelperText,
 } from "@mui/material";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const subscriptionSchema = Yup.object().shape({
   username: Yup.string().required("حقل اسم المستخدم مطلوب"),
@@ -31,9 +32,10 @@ const subscriptionSchema = Yup.object().shape({
 });
 function Modal() {
   const [open, setOpen] = useState(false);
+  const { gymId } = useParams();
   const [message, setMessage] = useState({ type: "", messageText: "" });
   const { id, monthlyPrice, sixMonthPrice } = useSelector((e) => {
-    return e.gyms.queries['getGymData("2")'].data.gymData;
+    return e.gyms.queries[`getGymData("${gymId}")`].data.gymData;
   });
   const onFinish = async (subscription, resetForm) => {
     try {
@@ -43,6 +45,7 @@ function Modal() {
         messageText: "تم إضافة الإشتراك بنجاح يرجى مراجعة النادي لتأكيد الحجز",
       });
       setOpen(false);
+      localStorage.setItem("userPhone", JSON.stringify(subscription.userPhone));
       resetForm();
     } catch (error) {
       if (error.response.status === 409) {
@@ -64,7 +67,6 @@ function Modal() {
     },
     validationSchema: subscriptionSchema,
     onSubmit: (values, { resetForm }) => {
-      localStorage.setItem("userPhone", JSON.stringify(values.userPhone));
       onFinish({ ...values, gymId: id }, resetForm);
     },
   });
@@ -129,9 +131,11 @@ function Modal() {
                 onChange={modalForm.handleChange}
                 input={<OutlinedInput label="Name" />}
               >
-                <MenuItem value="month"> {monthlyPrice} اشتراك شهري</MenuItem>
+                <MenuItem value="month">
+                  اشتراك شهري - {monthlyPrice} ₪
+                </MenuItem>
                 <MenuItem value="sixMonth">
-                  {sixMonthPrice}اشتراك ست أشهر
+                  اشتراك ست أشهر - {sixMonthPrice} ₪
                 </MenuItem>
               </Select>
             </FormControl>
