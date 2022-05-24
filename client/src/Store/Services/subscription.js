@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { createSelector } from "@reduxjs/toolkit";
 
 export const subscriptionsApi = createApi({
   reducerPath: "subscriptions",
@@ -14,7 +13,3 @@ export const subscriptionsApi = createApi({
 });
 
 export const { useGetSubscriptionsQuery } = subscriptionsApi;
-export const selectUsersResult =
-  subscriptionsApi.endpoints.getSubscriptions.select();
-
-export const selectAll = createSelector(selectUsersResult);
