@@ -3,12 +3,11 @@ import { Avatar, Box, Stack, Typography, Rating } from "@mui/material";
 import PropTypes from "prop-types";
 
 export default function userReview({ review }) {
-  const { rate, description, createdAt, user } = review;
-  const { username, avatar } = user;
+  const { rate, description, createdAt, username } = review;
 
   return (
     <Box sx={{ display: "flex", gap: "1rem", paddingTop: "1.5rem" }}>
-      <Avatar alt="card" src={avatar} />
+      <Avatar alt={username} src="" />
       <Stack spacing={0.5}>
         <Typography className="user__name" fontWeight={700} noWrap>
           {username}

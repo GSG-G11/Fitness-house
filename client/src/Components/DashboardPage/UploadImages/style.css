@@ -5,10 +5,48 @@
 }
 
 .preview_img {
-  height: 30vh; 
-  max-height: 30vh; 
+  height: 30vh;
+  max-height: 30vh;
   object-fit: cover;
   margin-top: 0.5rem;
   border-radius: 8px;
 }
 
+.card__image-gym {
+  position: relative;
+}
+
+.preview_gym_images {
+  height: 25vh;
+  max-height: 25vh;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  background: #e93e32;
+  border-radius: 8px;
+  color: #fff;
+  border: none;
+  padding: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.btn-delete:hover {
+  background: #b7332a;
+}
+
+.card__image-gym:hover .btn-delete {
+  visibility: visible;
+  opacity: 1;
+}

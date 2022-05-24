@@ -8,11 +8,10 @@ import {
   Divider,
   Typography,
   CircularProgress,
-  Button,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import "./style.css";
-import { Link } from "react-router-dom";
+import Modal from "../Modal";
 
 function GymProfile({ gymData }) {
   const { logo, images, gymName, city, description, features, review } =
@@ -91,9 +90,7 @@ function GymProfile({ gymData }) {
           </Stack>
         </Box>
         <Box sx={{ mt: "auto", ml: 2, mb: 2 }}>
-          <Link to="/gyms/profile/2">
-            <Button variant="contained">احجز موعد</Button>
-          </Link>
+          <Modal />
         </Box>
       </div>
     </div>
