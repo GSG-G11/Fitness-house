@@ -77,6 +77,14 @@ function Modal() {
   const handleClose = () => {
     setOpen(false);
   };
+  const customHandleChange = (e) => {
+    const { value } = e.target;
+
+    modalForm.setFieldValue("userPhone", value);
+    if (message.type === "error") {
+      setMessage({ type: "", messageText: "" });
+    }
+  };
   return (
     <div>
       <Button color="primary" onClick={handleClickOpen} variant="contained">
@@ -110,10 +118,11 @@ function Modal() {
               size="medium"
               name="userPhone"
               id="userPhone"
+              onChange={customHandleChange}
               value={modalForm.values.userPhone}
               error={!!modalForm.errors.userPhone}
               helperText={modalForm.errors.userPhone}
-              onChange={modalForm.handleChange}
+              // onChange={modalForm.handleChange}
               label="أدخل رقم الهاتف"
               variant="outlined"
             />
