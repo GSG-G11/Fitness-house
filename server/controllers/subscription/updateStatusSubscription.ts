@@ -33,7 +33,7 @@ export default async function updateStatusSubscription(
 
     // Check if the gym already exists
     if (!subscription) {
-      throw new CustomError('عذرا , هذا الاشتراك , غير موجود', 404);
+      throw new CustomError('عذرا , هذا الاشتراك , غير موجود', 400);
     }
 
     // add subscription logic here
