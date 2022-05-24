@@ -65,4 +65,5 @@ export interface SubscriptionModel
   type: string;
   status?: boolean;
   gymId?: number;
+  gym?: GymModel;
 }

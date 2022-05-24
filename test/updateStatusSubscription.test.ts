@@ -31,7 +31,7 @@ describe('Subscription Gyms API Testing', () => {
       .expect(200);
     expect(response.body.subscription.status).toBe(true);
     expect(response.body.message).toBe(
-      'تم تفعيل الاشتراك بحزمة ستة شهور بنجاح , يرجى زيارة  النادي غداً لتأكيد الإشتراك',
+      'تم تفعيل الاشتراك بحزمة ستة شهور بنجاح, يرجى زيارة نادي نادي فريندز للياقة البدنية غداً لتأكيد الإشتراك',
     );
   });
 

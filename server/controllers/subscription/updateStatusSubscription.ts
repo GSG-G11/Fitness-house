@@ -1,5 +1,5 @@
 import { NextFunction, Response } from 'express';
-import { Subscription } from '../../database/models';
+import { Gym, Subscription } from '../../database/models';
 
 import { CustomError, paramsValidation } from '../../utils';
 import sendSMS from '../../utils/sms';
@@ -23,6 +23,12 @@ export default async function updateStatusSubscription(
         id,
         gymId,
       },
+      include: [
+        {
+          model: Gym,
+          attributes: ['gymName'],
+        },
+      ],
     });
 
     // Check if the gym already exists
@@ -38,7 +44,7 @@ export default async function updateStatusSubscription(
     const typeSub = subscription.type === 'sixMonth' ? 'ستة شهور' : 'شهر';
 
     const message = subscription.status
-      ? `تم تفعيل الاشتراك بحزمة ${typeSub} بنجاح , يرجى زيارة  النادي غداً لتأكيد الإشتراك`
+      ? `تم تفعيل الاشتراك بحزمة ${typeSub} بنجاح, يرجى زيارة نادي ${subscription.gym?.gymName} غداً لتأكيد الإشتراك`
       : 'تم إيقاف الاشتراك بنجاح';
 
     if (process.env.NODE_ENV !== 'test') {
