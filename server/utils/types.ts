@@ -56,3 +56,14 @@ export interface ImageModel
   publicKey: string;
   gymId?: number;
 }
+
+export interface SubscriptionModel
+  extends Model<InferAttributes<SubscriptionModel>, InferCreationAttributes<SubscriptionModel>> {
+  id?: number;
+  username: string;
+  userPhone: string;
+  type: string;
+  status?: boolean;
+  gymId?: number;
+  gym?: GymModel;
+}

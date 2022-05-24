@@ -23,7 +23,9 @@ const uploadImage = (image: string) => {
 };
 
 const deleteImage = (image: string) => {
-  const Key = image.split('https://fitness-house.s3.eu-west-2.amazonaws.com/')[1];
+  const Key =
+    image.split('https://fitness-house.s3.amazonaws.com/')[1] ||
+    image.split('https://fitness-house.s3.eu-west-2.amazonaws.com/')[1];
   const params: propsDeleteType = {
     Bucket: `${AWS_BUCKET_NAME}`,
     Key,

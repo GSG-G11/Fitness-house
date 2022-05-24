@@ -6,7 +6,7 @@ import connection from '../server/database/config/connection';
 const newSubscription = {
   gymId: 1,
   username: 'ali',
-  userPhone: '0592157001',
+  userPhone: '0592157003',
   type: 'month',
 };
 
