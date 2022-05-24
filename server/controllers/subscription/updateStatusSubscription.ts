@@ -47,16 +47,14 @@ export default async function updateStatusSubscription(
       ? `تم تفعيل الاشتراك بحزمة :  ${typeSub} , يرجى زيارة نادي : ${subscription.gym?.gymName} غداً لتأكيد الإشتراك`
       : `تم إيقاف الاشتراك بنادي : ${subscription.gym?.gymName} , يرجى زيارة النادي لتجديد الاشتراك`;
 
-    console.log(message);
-
-    if (process.env.NODE_ENV !== 'test') {
-      sendSMS(`${COUNTRY_CODE}${subscription.userPhone}`, message);
-    }
-
     res.json({
       message,
       subscription,
     });
+
+    if (process.env.NODE_ENV !== 'test') {
+      sendSMS(`${COUNTRY_CODE}${subscription.userPhone}`, message);
+    }
   } catch (error: any) {
     if (error.name === 'ValidationError') {
       return next(new CustomError(error.message, 400));
