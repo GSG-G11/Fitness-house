@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import SubscriberGym from "../Components/DashboardPage/Subscriptions";
 import { useGetSubscriptionsQuery } from "../Store/Services/subscription";
-import EnhancedTableToolbar from "../Components/DashboardPage/Subscriptions/EnhancedTableToolbar";
 import EnhancedTableHead from "../Components/DashboardPage/Subscriptions/EnhancedTableHead";
 
 function SubscriberGymPage() {
@@ -22,7 +21,6 @@ function SubscriberGymPage() {
     return (
       <Box sx={{ width: "100%" }}>
         <Paper sx={{ width: "100%", mt: 2.5 }}>
-          <EnhancedTableToolbar />
           <TableContainer>
             <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
               <EnhancedTableHead />
