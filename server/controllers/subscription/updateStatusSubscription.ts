@@ -50,7 +50,7 @@ export default async function updateStatusSubscription(
     console.log(message);
 
     if (process.env.NODE_ENV !== 'test') {
-      // sendSMS(`${COUNTRY_CODE}${subscription.userPhone}`, message);
+      sendSMS(`${COUNTRY_CODE}${subscription.userPhone}`, message);
     }
 
     res.json({
