@@ -55,4 +55,6 @@ jobs:
           # The hostname used to communicate with the PostgreSQL service container
           TEST_DB_URL: postgres://fitadmin:fitpassword@postgres:5432/fithouse
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          GYM_TOKEN : ${{ secrets.GYM_TOKEN }}
+          GYM_TOKEN: ${{ secrets.GYM_TOKEN }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
