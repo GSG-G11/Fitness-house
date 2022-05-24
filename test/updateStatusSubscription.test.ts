@@ -30,7 +30,9 @@ describe('Subscription Gyms API Testing', () => {
       .set('Cookie', [`token= ${process.env.GYM_TOKEN}`])
       .expect(200);
     expect(response.body.subscription.status).toBe(true);
-    expect(response.body.message).toBe('تم تفعيل الاشتراك بنجاح');
+    expect(response.body.message).toBe(
+      'تم تفعيل الاشتراك بحزمة ستة شهور بنجاح , يرجى زيارة  النادي غداً لتأكيد الإشتراك',
+    );
   });
 
   test('PUT: test route get single gym ~~ path ==> /api/v1/gym/subscription/:id ~~ id = daw - Failed', async () => {
