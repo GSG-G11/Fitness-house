@@ -75,12 +75,10 @@ export default function UploadImages() {
 
   const handleDeleteImage = async (imageId) => {
     try {
-      const { status } = await axios({
+      await axios({
         method: "DELETE",
         url: `/api/v1/gym/images/${imageId}`,
       });
-
-      if (status !== 200) throw new Error("حدث خطأ أثناء حذف الصورة");
 
       enqueueSnackbar("تم حذف الصورة بنجاح", {
         variant: "success",
