@@ -9,6 +9,8 @@ import {
   TableContainer,
   Paper,
   Skeleton,
+  TableRow,
+  TableCell,
 } from "@mui/material";
 import SubscriberGym from "../Components/DashboardPage/Subscriptions";
 import { useGetSubscriptionsQuery } from "../Store/Services/subscription";
@@ -25,26 +27,108 @@ function SubscriberGymPage() {
             <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
               <EnhancedTableHead />
               <TableBody>
-                <Skeleton
-                  animation="wave"
-                  sx={{ width: "470%", height: "70px" }}
-                />
-                <Skeleton
-                  animation="wave"
-                  sx={{ width: "470%", height: "70px" }}
-                />
-                <Skeleton
-                  animation="wave"
-                  sx={{ width: "470%", height: "70px" }}
-                />
-                <Skeleton
-                  animation="wave"
-                  sx={{ width: "470%", height: "70px" }}
-                />
-                <Skeleton
-                  animation="wave"
-                  sx={{ width: "470%", height: "70px" }}
-                />
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton animation="wave" />
+                  </TableCell>
+                </TableRow>
               </TableBody>
             </Table>
           </TableContainer>
