@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 const addReviewSchema = Joi.object({
   gymId: Joi.number().required(),
-  description: Joi.string().min(2).max(1000).required(),
+  description: Joi.string().min(2).max(1000).allow(''),
   userPhone: Joi.string()
     .length(10)
     .pattern(/^[0-9]+$/)
