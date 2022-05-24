@@ -21,7 +21,9 @@ describe('Subscription Gyms API Testing', () => {
       .set('Cookie', [`token= ${process.env.GYM_TOKEN}`])
       .expect(200);
     expect(response.body.subscription.status).toBe(false);
-    expect(response.body.message).toBe('تم إيقاف الاشتراك بنجاح');
+    expect(response.body.message).toBe(
+      'تم إيقاف الاشتراك بنادي : نادي فريندز للياقة البدنية , يرجى زيارة النادي لتجديد الاشتراك',
+    );
   });
 
   test('PUT: test route get single gym ~~ path ==> /api/v1/gym/subscription/:id ~~ id = 4 ', async () => {
@@ -31,7 +33,7 @@ describe('Subscription Gyms API Testing', () => {
       .expect(200);
     expect(response.body.subscription.status).toBe(true);
     expect(response.body.message).toBe(
-      'تم تفعيل الاشتراك بحزمة ستة شهور بنجاح, يرجى زيارة نادي نادي فريندز للياقة البدنية غداً لتأكيد الإشتراك',
+      'تم تفعيل الاشتراك بحزمة :  ستة شهور , يرجى زيارة نادي : نادي فريندز للياقة البدنية غداً لتأكيد الإشتراك',
     );
   });
 
