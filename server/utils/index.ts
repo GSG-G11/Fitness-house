@@ -1,6 +1,6 @@
 import CustomError from './CustomError';
 import { checkToken, generateToken } from './jwt';
-import { GymFilter, authRequest, GymModel, ImageModel } from './types';
+import { GymFilter, authRequest, GymModel, ImageModel, SubscriptionModel } from './types';
 import {
   filterValidation,
   paramsValidation,
@@ -26,4 +26,5 @@ export {
   gymRegisterSchema,
   ImageModel,
   addSubscriptionSchema,
+  SubscriptionModel,
 };

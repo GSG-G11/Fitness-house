@@ -1,3 +1,5 @@
 import addSubscription from './addSubscription';
+import updateStatusSubscription from './updateStatusSubscription';
+import getSubscription from './getSubscription';
 
-export default addSubscription;
+export { addSubscription, updateStatusSubscription, getSubscription };

@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
+import { SubscriptionModel } from '../../utils';
 import sequelize from '../config/connection';
 
-const Subscription = sequelize.define('subscriptions', {
+const Subscription = sequelize.define<SubscriptionModel>('subscriptions', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
