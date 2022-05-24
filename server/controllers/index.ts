@@ -1,5 +1,6 @@
-import { getTopGyms, searchGymByName, getFilteredGyms } from './gyms';
+import { getTopGyms, searchGymByName, getFilteredGyms, addReview } from './gyms';
 import { getGym, editGymData, postImage, deleteImageController } from './gym';
+
 import { gymRegister, gymLogin } from './auth';
 import { addSubscription, updateStatusSubscription, getSubscription } from './subscription';
 
@@ -16,4 +17,5 @@ export {
   addSubscription,
   getSubscription,
   updateStatusSubscription,
+  addReview,
 };
