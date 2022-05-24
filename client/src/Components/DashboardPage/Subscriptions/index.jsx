@@ -19,7 +19,7 @@ import EnhancedTableRow from "./EnhancedTableRow";
 export default function SubscriberGym() {
   const rows = useSelector(
     (state) =>
-      state.subscriptions.queries["getSubscriptions(undefined)"].data
+      state.subscriptions.queries[`getSubscriptions(${undefined})`].data
         .gymSubscription
   );
 
@@ -71,7 +71,7 @@ export default function SubscriberGym() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={Math.ceil(rows.length / rowsPerPage)}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
