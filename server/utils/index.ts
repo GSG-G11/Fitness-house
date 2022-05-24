@@ -9,6 +9,7 @@ import {
   gymImageSchema,
   gymEditSchema,
   addSubscriptionSchema,
+  addReviewSchema,
 } from './validation';
 
 export {
@@ -26,4 +27,5 @@ export {
   gymRegisterSchema,
   ImageModel,
   addSubscriptionSchema,
+  addReviewSchema,
 };

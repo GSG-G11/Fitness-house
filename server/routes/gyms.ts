@@ -14,5 +14,4 @@ gyms.get('/filter', getFilteredGyms);
 gyms.get('/search', searchGymByName);
 gyms.put('/', checkAuth('gym'), editGymData);
 gyms.get('/:id', getGym);
-
 export default gyms;
