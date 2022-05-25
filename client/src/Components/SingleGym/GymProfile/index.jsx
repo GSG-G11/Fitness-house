@@ -14,14 +14,13 @@ import "./style.css";
 import Modal from "../Modal";
 
 function GymProfile({ gymData }) {
-  const { logo, images, gymName, city, description, features, review } =
-    gymData;
+  const { logo, gymName, city, description, features, review } = gymData;
   const percent = (Math.floor(+review) / 5) * 100;
 
   return (
     <div className="gymprofilecard">
       <div className="rightside">
-        <img src={images[0].pathUrl} alt="gym" />
+        <img src={logo} alt="gym" />
       </div>
       <Divider variant="middle" />
 
