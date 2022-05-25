@@ -14,9 +14,35 @@ import "./style.css";
 import Modal from "../Modal";
 
 function GymProfile({ gymData }) {
-  const { logo, gymName, city, description, features, review } = gymData;
+  const {
+    logo,
+    gymName,
+    city,
+    description,
+    features,
+    review,
+    monthlyPrice,
+    sixMonthPrice,
+    typeGender,
+    phone,
+    fulltime,
+  } = gymData;
   const percent = (Math.floor(+review) / 5) * 100;
-
+  let gender = "";
+  let avalabilty = "";
+  if (typeGender === "male") {
+    gender = "هذا النادي للذكور فقط";
+  } else if (typeGender === "female") {
+    gender = "هذا النادي للإناث فقط";
+  } else {
+    gender = "هذا النادي للإناث والذكور معاً";
+  }
+  if (fulltime === true) {
+    avalabilty = "النادي مفتوح جميع أيام الأسبوع";
+  } else {
+    avalabilty = "النادي مغلق في أيام الإجازات";
+  }
+  console.log(gymData);
   return (
     <div className="gymprofilecard">
       <div className="rightside">
@@ -33,9 +59,14 @@ function GymProfile({ gymData }) {
                 <Typography className="gymCard__name" fontWeight={700} noWrap>
                   {gymName}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {city}
-                </Typography>
+                <div className="phonee">
+                  <Typography variant="subtitle1" color="text.secondary">
+                    {city}
+                  </Typography>
+                  <Typography variant="subtitle1" color="text.secondary">
+                    - {phone}
+                  </Typography>
+                </div>
               </Stack>
             </Box>
 
@@ -73,8 +104,26 @@ function GymProfile({ gymData }) {
         </div>
 
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="subtitle1"
+            color="text.secondary"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "right",
+              gap: "15px",
+            }}
+          >
             <span className="description"> {description}</span>
+            <span className="typeGender"> {gender}</span>
+            <span className="avalabilty"> {avalabilty}</span>
+            <span className="monthlyPrice">
+              سعر الإشتراك الشهري : {monthlyPrice}
+            </span>
+            <span className="sixMonthPrice">
+              سعر إشتراك الستة أشهر : {sixMonthPrice}
+            </span>
           </Typography>
         </CardContent>
         <Divider variant="middle" />

@@ -21,8 +21,11 @@
     object-fit: cover;
 }
 
-
-
+.phonee{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
 @media (max-width: 700px) {
     .gymprofilecard {
       flex-direction: column;
