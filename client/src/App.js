@@ -50,12 +50,10 @@ function App() {
 
   return (
     <Routes>
-      {/* Routes For Site Views {login, gym filter,...} */}
       <Route path="/" element={<Home />}>
         <Route index element={<HomePage />} />
         <Route path="gyms/filter" element={<SearchGymPage />} />
         <Route path="gyms/profile/:gymId" element={<SingleGymPage />} />
-
         <Route
           path="gym/login"
           element={
@@ -72,12 +70,8 @@ function App() {
             </RegisteredGymRoutes>
           }
         />
-
-        {/* .... other Routes ... */}
       </Route>
-      {/* Routes For Gym Views {login, gym filter,...} */}
 
-      {/* Routes For dashboard Site Views {update gym data,...} */}
       <Route
         path="dashboard/gyms"
         element={
@@ -90,15 +84,29 @@ function App() {
         <Route path="subscribers" element={<SubscriberGymPage />} />
         <Route path="images" element={<ImagesGymPage />} />
         <Route path="reviews" element={<ReviewsGymPage />} />
-
-        {/* .... other Routes */}
-        <Route path="*" element={<NotfoundPage />} />
+        <Route
+          path="*"
+          element={
+            <NotfoundPage
+              link="/dashboard/gyms"
+              pageClassName="not-found-dashboard-container"
+              title="الرجوع للوحة التحكم"
+            />
+          }
+        />
       </Route>
 
-      {/* .... other Routes */}
-
       {/* Routes For not Found Route */}
-      <Route path="*" element={<NotfoundPage />} />
+      <Route
+        path="*"
+        element={
+          <NotfoundPage
+            link="/"
+            pageClassName="not-found-container"
+            title="الرجوع للرئيسية"
+          />
+        }
+      />
     </Routes>
   );
 }

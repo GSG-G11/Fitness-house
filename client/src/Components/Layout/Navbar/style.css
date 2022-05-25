@@ -60,16 +60,17 @@ a.nav-item:hover::after {
   width: 100%;
   padding: 0.5rem;
   border: none;
-  border-radius: 8px;
-  background: #f3f3f3;
-  box-shadow: 0 2.5px 10px rgba(6, 6, 6, 0.2);
+  border-radius: 5px;
+  background: #ffffff;
+  border: 2px solid #ededed;
   transition: all 0.3s ease-in-out;
   font-size: 1.1rem;
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .list-search {
   position: absolute;
-  top: 35px;
+  top: 40px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -78,16 +79,34 @@ a.nav-item:hover::after {
   z-index: 9999;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
+  border: 2px solid #ededed;
 }
 
-.link-auth:not(:last-child) {
+.link-auth:first-child {
   padding: 5px;
-  border-radius: 8px;
+  border-radius: 5px;
   background: #28768c;
+  border: 1px solid #28768c;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   color: #fff;
   margin: 0 0.5rem;
+  font-weight: bold;
+}
+.link-auth:last-child {
+  padding: 5px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #28768c;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  color: #28768c;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.link-auth:hover {
+  opacity: 0.75;
 }
 
 .show-mobile {

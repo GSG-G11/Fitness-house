@@ -132,3 +132,100 @@ a:focus {
     margin: 0 auto;
   }
 }
+
+/* not Found Style */
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f3f5f8;
+}
+
+.not-found-dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.not-found-gym-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f5f8;
+  height: 50vh;
+}
+
+.not-found-section {
+  min-width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #1687a7;
+}
+
+.not-found-title {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 5em;
+}
+
+#box2 {
+  color: #333;
+  text-align: center;
+}
+
+.notFound {
+  fill: #27a4c7;
+  stroke: #187088;
+  stroke-width: 1.5;
+  animation: lupa 5s infinite;
+}
+
+@keyframes lupa {
+  from {
+    fill: #2fbce4;
+    stroke: #156f88;
+    stroke-dasharray: 0;
+  }
+  to {
+    fill: #156f88;
+    stroke: #2fbce4;
+    stroke-dasharray: 95;
+  }
+}
+.notFound rect {
+  stroke: none;
+}
+
+.not-found-subTitle {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+.not-found-back {
+  padding: 0.5rem 1.25rem;
+  background: #156f88;
+  color: #fff;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .not-found-container,
+  .not-found-dashboard-container {
+    flex-direction: column;
+  }
+
+  .not-found-gym-container {
+    height: 60vh;
+    flex-direction: column;
+  }
+}

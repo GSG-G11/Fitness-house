@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
+
+import "./style.css";
 
 import {
   List,
@@ -19,10 +21,8 @@ import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import StarIcon from "@mui/icons-material/Star";
-import LogoutIcon from "@mui/icons-material/Logout";
+
 import { PhotoCamera } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
-import { setLogout } from "../../../Store/Slices";
 
 const drawerWidth = 240;
 
@@ -96,15 +96,13 @@ const listItem = [
   },
 ];
 
+const activeClassName = () => {
+  return window.location.pathname === "/dashboard/gyms"
+    ? "nav-link-active-main"
+    : "nav-link-active";
+};
+
 export default function SideBar({ isOpen, handleDrawer }) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    dispatch(setLogout());
-    navigate("/", { replace: true });
-  };
-
   return (
     <Drawer variant="permanent" sx={{ background: "red" }} open={isOpen}>
       <DrawerHeader>
@@ -116,11 +114,14 @@ export default function SideBar({ isOpen, handleDrawer }) {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <List>
+      <List disablePadding>
         {listItem.map(({ text, icon, link }) => (
           <Fragment key={text}>
-            <ListItem disablePadding sx={{ display: "block" }} title={text}>
-              <Link to={link}>
+            <NavLink
+              to={link}
+              className={({ isActive }) => (isActive ? activeClassName() : "")}
+            >
+              <ListItem disablePadding sx={{ display: "block" }} title={text}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -142,50 +143,10 @@ export default function SideBar({ isOpen, handleDrawer }) {
                     sx={{ opacity: isOpen ? 1 : 0 }}
                   />
                 </ListItemButton>
-              </Link>
-            </ListItem>
+              </ListItem>
+            </NavLink>
           </Fragment>
         ))}
-
-        <ListItem
-          disablePadding
-          sx={{ display: "block", background: "red" }}
-          title="تسجيل الخروج"
-        >
-          <button
-            onClick={handleLogout}
-            type="button"
-            style={{
-              width: "100%",
-              background: "#ff7e7e",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: isOpen ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: isOpen ? 3 : "auto",
-                  justifyContent: "center",
-                  color: "white",
-                }}
-              >
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="تسجيل الخروج"
-                sx={{ opacity: isOpen ? 1 : 0 }}
-              />
-            </ListItemButton>
-          </button>
-        </ListItem>
       </List>
     </Drawer>
   );
