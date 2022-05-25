@@ -89,7 +89,7 @@ export default function OfferForYou() {
                 </Typography>
               </Box>
               <Box textAlign="left">
-                <Link to="/gyms">
+                <Link to="/gyms/filter">
                   <Button color="primary" endIcon={<ArrowBackIcon />}>
                     تعرف على أجمل نوادي
                   </Button>
