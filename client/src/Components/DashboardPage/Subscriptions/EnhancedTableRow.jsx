@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import {
@@ -9,6 +9,8 @@ import {
   Switch,
   FormGroup,
 } from "@mui/material";
+import axios from "axios";
+import { useSnackbar } from "notistack";
 
 const Android12Switch = styled(Switch)(({ theme }) => ({
   padding: 8,
@@ -44,11 +46,44 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function EnhancedTableRow({ row }) {
-  const [status, setStatus] = React.useState(row.status);
+  const [status, setStatus] = useState(row.status);
+  const { enqueueSnackbar } = useSnackbar();
 
-  const handleChange = () => {
-    setStatus(!status);
+  const handleChange = async () => {
+    try {
+      await axios({
+        method: "PUT",
+        url: `/api/v1/subscriptions/${row.id}`,
+      });
+      if (!status) {
+        enqueueSnackbar("تم تفعيل الاشتراك بنجاح", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "right",
+          },
+        });
+      } else {
+        enqueueSnackbar("تم الغاء تفعيل الاشتراك بنجاح", {
+          variant: "success",
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "right",
+          },
+        });
+      }
+      setStatus(!status);
+    } catch (error) {
+      enqueueSnackbar("عذرا حدث خطأ ما", {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "bottom",
+          horizontal: "right",
+        },
+      });
+    }
   };
+
   return (
     <TableRow hover role="checkbox" tabIndex={-1} key={row.userPhone}>
       <TableCell align="left">{row.username}</TableCell>
