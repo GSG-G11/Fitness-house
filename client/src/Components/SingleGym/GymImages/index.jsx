@@ -6,7 +6,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 
 function GymImages({ gymData }) {
   const { images } = gymData;
-  let image = null;
+  let image = [];
   if (images.length === 0) {
     image = [
       {
