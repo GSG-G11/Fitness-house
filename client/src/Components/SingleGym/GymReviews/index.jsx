@@ -8,6 +8,7 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 import MessageIcon from "@mui/icons-material/Message";
 import PropTypes from "prop-types";
 import Review from "./Review";
@@ -16,6 +17,7 @@ import "./style.css";
 function GymReviews({ gymData }) {
   const { reviews } = gymData;
   const [rate, setRate] = useState(0);
+  const [username, setUsername] = useState("");
   const [reviewdescription, setReviewDescription] = useState("");
   const [countReviews, setCountReviews] = useState(2);
   const isShowAll = () => {
@@ -67,6 +69,30 @@ function GymReviews({ gymData }) {
             justifyContent: "space-between",
           }}
         >
+          <TextField
+            fullWidth
+            id="outlined-basic"
+            label="أدخل اسمك"
+            sx={{
+              m: 1,
+              maxWidth: 600,
+            }}
+            md={{
+              maxWidth: 1000,
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <PersonIcon />
+                </InputAdornment>
+              ),
+            }}
+            value={username}
+            onChange={(event) => {
+              setUsername(event.target.value);
+            }}
+            variant="outlined"
+          />
           <TextField
             fullWidth
             id="outlined-basic"
