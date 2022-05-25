@@ -7,6 +7,15 @@
     align-content: center;
     margin: auto;
 }
+.noreview{
+  margin-bottom: 50px;
+  font-size: large;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
 @media (min-width: 2000px) {
   .review{
       padding-left:200px;

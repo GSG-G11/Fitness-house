@@ -13,7 +13,9 @@
     gap: 25px;;    
 
 }
-
+.phonee, .monthlyPrice, .description, .typeGender, .avalabilty{
+    font-weight: bold;
+}
 .rightside img{
     width: 320px;
     height: 400px;
