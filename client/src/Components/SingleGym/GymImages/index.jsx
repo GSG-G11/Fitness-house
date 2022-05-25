@@ -1,72 +1,41 @@
 import React from "react";
 import "./style.css";
-import { Box, Grid, Card, CardMedia } from "@mui/material";
+import { Box } from "@mui/material";
 import PropTypes from "prop-types";
+import SimpleImageSlider from "react-simple-image-slider";
 
 function GymImages({ gymData }) {
   const { images } = gymData;
+  let image = null;
+  if (images.length === 0) {
+    image = [
+      {
+        url: gymData.logo,
+      },
+    ];
+  } else {
+    image = images.map((e) => {
+      return {
+        url: e.pathUrl,
+      };
+    });
+  }
   return (
     <Box className="sub__container gym__images">
       <h1 className="imagetitle">صور النادي</h1>
-      <Grid container spacing={2}>
-        <Grid style={{ height: "500px" }} item xs={12} md={6}>
-          <Grid style={{ height: "100%" }} item xs={12}>
-            <Card style={{ height: "97%" }}>
-              {images[0] && (
-                <CardMedia
-                  style={{ height: "100%" }}
-                  image={images[0].pathUrl}
-                />
-              )}
-            </Card>
-          </Grid>
-        </Grid>
-
-        <Grid style={{ height: "500px" }} item xs={12} md={6}>
-          <Grid style={{ height: "100%" }} container spacing={2}>
-            <Grid style={{ height: "50%" }} item xs={12} md={6}>
-              <Card style={{ height: "100%" }}>
-                {images[1] && (
-                  <CardMedia
-                    style={{ height: "100%" }}
-                    image={images[1].pathUrl}
-                  />
-                )}
-              </Card>
-            </Grid>
-            <Grid style={{ height: "50%" }} item xs={12} md={6}>
-              <Card style={{ height: "100%" }}>
-                {images[2] && (
-                  <CardMedia
-                    style={{ height: "100%" }}
-                    image={images[2].pathUrl}
-                  />
-                )}
-              </Card>
-            </Grid>
-            <Grid style={{ height: "50%" }} item xs={12} md={6}>
-              <Card style={{ height: "100%" }}>
-                {images[3] && (
-                  <CardMedia
-                    style={{ height: "100%" }}
-                    image={images[3].pathUrl}
-                  />
-                )}
-              </Card>
-            </Grid>
-            <Grid style={{ height: "50%" }} item xs={12} md={6}>
-              <Card style={{ height: "100%" }}>
-                {images[4] && (
-                  <CardMedia
-                    style={{ height: "100%" }}
-                    image={images[4].pathUrl}
-                  />
-                )}
-              </Card>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+      <div className="container__slider">
+        <SimpleImageSlider
+          className="slider"
+          width="50%"
+          loop
+          autoPlay
+          autoPlayDelay={5.0}
+          height={504}
+          images={image}
+          showBullets
+          showNavs
+        />
+      </div>
     </Box>
   );
 }
