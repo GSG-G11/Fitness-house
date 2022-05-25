@@ -81,7 +81,7 @@ function GymCard({ gym }) {
                 component="div"
                 color="text.secondary"
               >
-                {percent}%
+                {percent === 0 ? "نادي جديد" : `${percent}%`}
               </Typography>
             </Box>
           </Box>
