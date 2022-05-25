@@ -65,6 +65,7 @@ a.nav-item:hover::after {
   border: 2px solid #ededed;
   transition: all 0.3s ease-in-out;
   font-size: 1.1rem;
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .list-search {
