@@ -17,7 +17,7 @@ export default function Card({ filter }) {
   return (
     <div className="card__filter">
       <div className="image__card">
-        <img alt="complex" src={images[0].pathUrl} />
+        {images.length && <img alt="complex" src={images[0].pathUrl} />}
       </div>
       <div className="body__card">
         <Typography sx={{ m: 1, mb: 0 }} variant="h4">
