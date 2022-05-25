@@ -46,18 +46,17 @@ const Android12Switch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function EnhancedTableRow({ row }) {
-  const [statusState, setStatusState] = useState(row.status);
+  const [status, setStatus] = useState(row.status);
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = async () => {
     try {
-      setStatusState(!statusState);
-      const { status } = await axios({
+      setStatus(!status);
+      await axios({
         method: "PUT",
         url: `/api/v1/subscriptions/${row.id}`,
       });
-      if (status !== 200) throw new Error("حدث خطأ ما");
-      if (!statusState) {
+      if (!status) {
         enqueueSnackbar("تم تفعيل الاشتراك بنجاح", {
           variant: "success",
           anchorOrigin: {
@@ -84,6 +83,7 @@ export default function EnhancedTableRow({ row }) {
       });
     }
   };
+
   return (
     <TableRow hover role="checkbox" tabIndex={-1} key={row.userPhone}>
       <TableCell align="left">{row.username}</TableCell>
@@ -97,12 +97,12 @@ export default function EnhancedTableRow({ row }) {
           <FormControlLabel
             control={
               <Android12Switch
-                name="statusState"
-                checked={statusState}
+                name="status"
+                checked={status}
                 onChange={handleChange}
               />
             }
-            label={statusState ? "مشترك" : "غير مشترك"}
+            label={status ? "مشترك" : "غير مشترك"}
           />
         </FormGroup>
       </TableCell>
