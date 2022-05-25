@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function Notfound({ link, pageClassName }) {
+export default function Notfound({ link, pageClassName, title }) {
   return (
     <div className={`sub__container ${pageClassName}`}>
       <div className="not-found-section" id="box">
@@ -25,12 +25,11 @@ export default function Notfound({ link, pageClassName }) {
           </g>
         </svg>
         <h1 className="not-found-title">404</h1>
-        <h2>NOT FOUND</h2>
       </div>
       <div className="not-found-section" id="box2">
         <h2 className="not-found-subTitle">عذراً , الصفحة غير موجودة !</h2>
         <Link className="not-found-back" to={link}>
-          الرجوع للرئيسية
+          {title}
         </Link>
       </div>
     </div>
@@ -40,4 +39,5 @@ export default function Notfound({ link, pageClassName }) {
 Notfound.propTypes = {
   link: PropTypes.string.isRequired,
   pageClassName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };

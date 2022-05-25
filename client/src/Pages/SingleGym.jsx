@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { GymImages, GymReviews, TopGymCards, GymProfile } from "../Components";
 
 import { useGetGymDataQuery } from "../Store/Services/gyms";
+import NotfoundPage from "./NotFound";
 
 export default function SingleGym() {
   const { gymId } = useParams();
@@ -90,7 +91,13 @@ export default function SingleGym() {
     }
     if (isError) {
       // Route gym not found
-      return <div>عذرا هناك خطأ , أعد تحديث الصفحة </div>;
+      return (
+        <NotfoundPage
+          link="/gyms/filter"
+          pageClassName="not-found-gym-container"
+          title="إبحث عن النوادي"
+        />
+      );
     }
 
     const { gymData } = data;

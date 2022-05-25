@@ -149,6 +149,14 @@ a:focus {
   height: 80vh;
 }
 
+.not-found-gym-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f5f8;
+  height: 50vh;
+}
+
 .not-found-section {
   min-width: 25vw;
   display: flex;
@@ -213,6 +221,11 @@ a:focus {
 @media screen and (max-width: 600px) {
   .not-found-container,
   .not-found-dashboard-container {
+    flex-direction: column;
+  }
+
+  .not-found-gym-container {
+    height: 60vh;
     flex-direction: column;
   }
 }

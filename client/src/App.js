@@ -90,6 +90,7 @@ function App() {
             <NotfoundPage
               link="/dashboard/gyms"
               pageClassName="not-found-dashboard-container"
+              title="الرجوع للوحة التحكم"
             />
           }
         />
@@ -98,7 +99,13 @@ function App() {
       {/* Routes For not Found Route */}
       <Route
         path="*"
-        element={<NotfoundPage link="/" pageClassName="not-found-container" />}
+        element={
+          <NotfoundPage
+            link="/"
+            pageClassName="not-found-container"
+            title="الرجوع للرئيسية"
+          />
+        }
       />
     </Routes>
   );
