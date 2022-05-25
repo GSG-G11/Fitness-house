@@ -51,7 +51,6 @@ export default function EnhancedTableRow({ row }) {
 
   const handleChange = async () => {
     try {
-      setStatus(!status);
       await axios({
         method: "PUT",
         url: `/api/v1/subscriptions/${row.id}`,
@@ -73,6 +72,7 @@ export default function EnhancedTableRow({ row }) {
           },
         });
       }
+      setStatus(!status);
     } catch (error) {
       enqueueSnackbar("عذرا حدث خطأ ما", {
         variant: "error",
