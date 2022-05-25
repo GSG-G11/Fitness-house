@@ -8,7 +8,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import * as Yup from "yup";
-import { useSelector } from "react-redux";
 
 import {
   FormControl,
@@ -22,6 +21,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useGetGymDataQuery } from "../../../Store/Services/gyms";
 
 const subscriptionSchema = Yup.object().shape({
   username: Yup.string().required("حقل اسم المستخدم مطلوب"),
@@ -34,9 +34,9 @@ function Modal() {
   const [open, setOpen] = useState(false);
   const { gymId } = useParams();
   const [message, setMessage] = useState({ type: "", messageText: "" });
-  const { id, monthlyPrice, sixMonthPrice } = useSelector((e) => {
-    return e.gyms.queries[`getGymData("${gymId}")`].data.gymData;
-  });
+  const { data } = useGetGymDataQuery(gymId);
+  const { monthlyPrice, sixMonthPrice } = data;
+
   const onFinish = async (subscription, resetForm) => {
     try {
       await axios.post("/api/v1/subscriptions", subscription);
@@ -67,7 +67,7 @@ function Modal() {
     },
     validationSchema: subscriptionSchema,
     onSubmit: (values, { resetForm }) => {
-      onFinish({ ...values, gymId: id }, resetForm);
+      onFinish({ ...values, gymId }, resetForm);
     },
   });
   const handleClickOpen = () => {
