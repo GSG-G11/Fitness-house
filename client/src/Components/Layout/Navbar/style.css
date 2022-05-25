@@ -60,16 +60,16 @@ a.nav-item:hover::after {
   width: 100%;
   padding: 0.5rem;
   border: none;
-  border-radius: 8px;
-  background: #f3f3f3;
-  box-shadow: 0 2.5px 10px rgba(6, 6, 6, 0.2);
+  border-radius: 5px;
+  background: #ffffff;
+  border: 2px solid #ededed;
   transition: all 0.3s ease-in-out;
   font-size: 1.1rem;
 }
 
 .list-search {
   position: absolute;
-  top: 35px;
+  top: 40px;
   left: 0;
   width: 100%;
   background: #fff;
@@ -78,6 +78,7 @@ a.nav-item:hover::after {
   z-index: 9999;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
+  border: 2px solid #ededed;
 }
 
 .link-auth:not(:last-child) {
