@@ -42,7 +42,6 @@ function GymProfile({ gymData }) {
   } else {
     avalabilty = "النادي مغلق في أيام الإجازات";
   }
-  console.log(gymData);
   return (
     <div className="gymprofilecard">
       <div className="rightside">
