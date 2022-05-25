@@ -120,7 +120,7 @@ function GymProfile({ gymData }) {
             <span className="monthlyPrice">
               سعر الإشتراك الشهري : {monthlyPrice}
             </span>
-            <span className="sixMonthPrice">
+            <span className="monthlyPrice">
               سعر إشتراك الستة أشهر : {sixMonthPrice}
             </span>
           </Typography>

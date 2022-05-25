@@ -23,32 +23,38 @@ function GymReviews({ gymData }) {
   };
   return (
     <div className="review">
-      <Box className="top-container">
-        <Typography>تقييمات المشتركين</Typography>
-      </Box>
-      <Box
-        sx={{
-          p: 2,
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
-        }}
-      >
-        {reviews.slice(0, countReviews).map((review) => (
-          <Review key={review.id} review={review} />
-        ))}
-        {!isShowAll() && (
-          <Button
-            sx={{ mt: ".5rem" }}
-            variant="text"
-            onClick={() => {
-              setCountReviews(countReviews + 2);
+      {reviews.length > 0 ? (
+        <div>
+          <Box className="top-container">
+            <Typography>تقييمات المشتركين</Typography>
+          </Box>
+          <Box
+            sx={{
+              p: 2,
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: "column",
             }}
           >
-            اعرض المزيد
-          </Button>
-        )}
-      </Box>
+            {reviews.slice(0, countReviews).map((review) => (
+              <Review key={review.id} review={review} />
+            ))}
+            {!isShowAll() && (
+              <Button
+                sx={{ mt: ".5rem" }}
+                variant="text"
+                onClick={() => {
+                  setCountReviews(countReviews + 2);
+                }}
+              >
+                اعرض المزيد
+              </Button>
+            )}
+          </Box>
+        </div>
+      ) : (
+        <p className="noreview">لا يوجد تقييمات سابقة </p>
+      )}
       <Stack spacing={0.5}>
         <Typography className="user__name" fontWeight={700} noWrap>
           أضف رايك
