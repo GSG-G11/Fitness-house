@@ -1,4 +1,5 @@
 import * as nodemailer from 'nodemailer';
+import CustomError from '../CustomError';
 
 async function sendEmail(to: string, subject: string, html: string) {
   try {
@@ -19,7 +20,7 @@ async function sendEmail(to: string, subject: string, html: string) {
       html,
     });
   } catch (error) {
-    console.log(error);
+    throw new CustomError('حدث خطأ في الارسال أعد المحاولة', 500);
   }
 }
 
