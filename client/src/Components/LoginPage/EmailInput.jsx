@@ -3,7 +3,7 @@ import { Email } from "@mui/icons-material";
 import { TextField, InputAdornment } from "@mui/material";
 import PropTypes from "prop-types";
 
-function EmailInput({ loginForm }) {
+function EmailInput({ form }) {
   return (
     <TextField
       sx={{ mt: 3, width: "350px" }}
@@ -16,16 +16,16 @@ function EmailInput({ loginForm }) {
           </InputAdornment>
         ),
       }}
-      value={loginForm.values.email}
-      onChange={loginForm.handleChange}
-      error={!!loginForm.errors.email}
+      value={form.values.email}
+      onChange={form.handleChange}
+      error={!!form.errors.email}
       autoComplete="email"
-      helperText={loginForm.errors.email}
+      helperText={form.errors.email}
       variant="outlined"
     />
   );
 }
 EmailInput.propTypes = {
-  loginForm: PropTypes.instanceOf(Object).isRequired,
+  form: PropTypes.instanceOf(Object).isRequired,
 };
 export default EmailInput;

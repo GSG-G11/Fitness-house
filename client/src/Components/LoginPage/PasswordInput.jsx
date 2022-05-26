@@ -3,7 +3,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { TextField, InputAdornment } from "@mui/material";
 import PropTypes from "prop-types";
 
-function PasswordInput({ loginForm }) {
+function PasswordInput({ form, label }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => {
@@ -13,9 +13,13 @@ function PasswordInput({ loginForm }) {
     <div>
       <TextField
         sx={{ mt: 3, width: "350px" }}
-        label="أدخل كلمة السر"
+        label={
+          label === "password"
+            ? " ادخل كلمة المرور"
+            : " ادخل كلمة المرور الجديدة"
+        }
         type={showPassword ? "text" : "password"}
-        name="password"
+        name={label}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end" onClick={handleClickShowPassword}>
@@ -27,10 +31,10 @@ function PasswordInput({ loginForm }) {
             </InputAdornment>
           ),
         }}
-        value={loginForm.values.password}
-        onChange={loginForm.handleChange}
-        error={!!loginForm.errors.password}
-        helperText={loginForm.errors.password}
+        value={form.values[label]}
+        onChange={form.handleChange}
+        error={!!form.errors[label]}
+        helperText={form.errors[label]}
         autoComplete="current-password"
         variant="outlined"
       />
@@ -38,6 +42,9 @@ function PasswordInput({ loginForm }) {
   );
 }
 PasswordInput.propTypes = {
-  loginForm: PropTypes.instanceOf(Object).isRequired,
+  form: PropTypes.instanceOf(Object).isRequired,
+};
+PasswordInput.propTypes = {
+  label: PropTypes.string.isRequired,
 };
 export default PasswordInput;
