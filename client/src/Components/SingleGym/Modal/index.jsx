@@ -45,7 +45,13 @@ function Modal() {
         messageText: "تم إضافة الإشتراك بنجاح يرجى مراجعة النادي لتأكيد الحجز",
       });
       setOpen(false);
-      localStorage.setItem("userPhone", JSON.stringify(subscription.userPhone));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          phone: subscription.userPhone,
+          username: subscription.username,
+        })
+      );
       resetForm();
     } catch (error) {
       if (error.response.status === 409) {
