@@ -7,7 +7,8 @@ import { useGetGymDataQuery } from "../Store/Services/gyms";
 
 export default function SingleGym() {
   const { gymId } = useParams();
-  const { data, isLoading, isError, isSuccess } = useGetGymDataQuery(gymId);
+  const { data, isLoading, isError, isSuccess, refetch } =
+    useGetGymDataQuery(gymId);
   const renderProfile = () => {
     if (isLoading) {
       return (
@@ -105,7 +106,7 @@ export default function SingleGym() {
           <GymImages gymData={gymData} />
         </div>
         <div className="container">
-          <GymReviews gymData={gymData} />
+          <GymReviews gymData={gymData} refetch={refetch} />
         </div>
         <TopGymCards page="ProfileGym" />
       </>
