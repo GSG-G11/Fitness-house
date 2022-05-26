@@ -16,7 +16,6 @@ import {
   NotfoundPage,
   HomePage,
   SubscriberGymPage,
-  ReviewsGymPage,
   ImagesGymPage,
 } from "./Pages";
 
@@ -67,7 +66,7 @@ function App() {
         <Route
           path="gym/rest-password"
           element={
-            <RegisteredGymRoutes>
+            <RegisteredGymRoutes rest>
               <RestPassword />
             </RegisteredGymRoutes>
           }
@@ -101,7 +100,6 @@ function App() {
         <Route index element={<GymProfilePage />} />
         <Route path="subscribers" element={<SubscriberGymPage />} />
         <Route path="images" element={<ImagesGymPage />} />
-        <Route path="reviews" element={<ReviewsGymPage />} />
         <Route
           path="*"
           element={
