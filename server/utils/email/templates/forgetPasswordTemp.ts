@@ -209,6 +209,7 @@ export default function forgetPasswordTemp(link: string) {
                                 <div style="line-height: 160%; text-align: center; word-wrap: break-word;">
                                   <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 24px; line-height: 38.4px;">مرحبا</span></p>
                                   <p style="font-size: 14px; line-height: 160%;"><span style="font-size: 22px; line-height: 35.2px;">أنت على وشك لتعديل كلمة المرور , يرجى النقر على الزر أسفل </span></p>
+                                  <p style="font-size: 12px; line-height: 120%;"><span style="font-size: 18px; line-height: 20.2px;">تنتهي صلاحية هذا الرابط بعد , نصف ساعة</span></p>
                                 </div>
   
                               </td>

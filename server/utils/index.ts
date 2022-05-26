@@ -1,6 +1,12 @@
 import CustomError from './CustomError';
 import { checkToken, generateToken } from './jwt';
-import { GymFilter, authRequest, GymModel, ImageModel, SubscriptionModel } from './types';
+import {
+  GymFilter,
+  authRequest,
+  GymModel,
+  ImageModel,
+  SubscriptionModel,
+} from './types';
 import {
   filterValidation,
   paramsValidation,
@@ -10,6 +16,8 @@ import {
   gymEditSchema,
   addSubscriptionSchema,
   addReviewSchema,
+  forgetPasswordSchema,
+  resetPasswordSchema,
 } from './validation';
 
 import sendEmail from './email';
@@ -32,4 +40,6 @@ export {
   SubscriptionModel,
   addReviewSchema,
   sendEmail,
+  forgetPasswordSchema,
+  resetPasswordSchema,
 };

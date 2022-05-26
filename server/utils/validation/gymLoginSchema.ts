@@ -4,7 +4,7 @@ const gymLoginSchema = Joi.object({
   email: Joi.string()
     .max(250)
     .min(4)
-    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'live'] } })
     .required(),
   password: Joi.string().max(25).min(8).required(),
 });
