@@ -1,7 +1,6 @@
 import { verify, sign } from 'jsonwebtoken';
 
 const OPTIONS: object = {
-  expiresIn: '30d',
   algorithm: 'HS256',
 };
 export function checkToken(token: string) {
@@ -13,9 +12,9 @@ export function checkToken(token: string) {
   });
 }
 
-export function generateToken(payload: object) {
+export function generateToken(payload: object, options: object = OPTIONS) {
   return new Promise((resolve, reject) => {
-    sign(payload, process.env.JWT_SECRET!, OPTIONS, (err, encodePayload) => {
+    sign(payload, process.env.JWT_SECRET!, options, (err, encodePayload) => {
       if (err) return reject(err);
       return resolve(encodePayload);
     });

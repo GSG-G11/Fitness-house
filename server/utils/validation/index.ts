@@ -6,6 +6,8 @@ import gymLoginSchema from './gymLoginSchema';
 import gymRegisterSchema from './gymRegisterSchema';
 import gymImageSchema from './gymImageSchema';
 import addReviewSchema from './addReviewSchema';
+import forgetPasswordSchema from './forgetPasswordSchema';
+import resetPasswordSchema from './resetPasswordSchema';
 
 export {
   filterValidation,
@@ -16,4 +18,6 @@ export {
   gymEditSchema,
   addSubscriptionSchema,
   addReviewSchema,
+  forgetPasswordSchema,
+  resetPasswordSchema,
 };
