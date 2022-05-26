@@ -3,7 +3,7 @@ import React from "react";
 
 export default function LoadingCard() {
   return (
-    <Card sx={{ width: 800, height: 380, marginTop: 2, marginBottom: 2 }}>
+    <Card sx={{ width: "800px", height: 380, marginTop: 3, marginBottom: 2 }}>
       <CardHeader
         avatar={
           <Skeleton

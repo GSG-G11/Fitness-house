@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import gymData from "./gymdata";
+import { features as gymsFeatures, genders, cities } from "../../../Services";
 
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
@@ -29,7 +29,6 @@ const MenuProps = {
 };
 
 function FilterSide({ changeFilterQuery, setLoading, page }) {
-  const { cities, gymsFeatures, genders } = gymData;
   const [checked, setChecked] = useState(true);
   const [features, setfeatures] = useState([]);
   const [price, setPrice] = useState([30, 150]);
@@ -117,7 +116,7 @@ function FilterSide({ changeFilterQuery, setLoading, page }) {
               multiple
               id="tags-outlined"
               value={features}
-              options={gymsFeatures}
+              options={gymsFeatures.map(({ feature }) => feature)}
               filterSelectedOptions
               renderInput={(params) => (
                 <TextField
@@ -144,9 +143,9 @@ function FilterSide({ changeFilterQuery, setLoading, page }) {
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
             >
-              {cities.map((value) => (
-                <MenuItem key={value} value={value}>
-                  {value}
+              {cities.map(({ city: cityItem }) => (
+                <MenuItem key={cityItem} value={cityItem}>
+                  {cityItem}
                 </MenuItem>
               ))}
             </Select>

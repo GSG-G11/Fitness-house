@@ -12,12 +12,17 @@ import {
 import { Link } from "react-router-dom";
 
 export default function Card({ filter }) {
-  const { id, gymName, images, city, description, review, features } = filter;
+  const { id, gymName, logo, images, city, description, review, features } =
+    filter;
 
   return (
     <div className="card__filter">
       <div className="image__card">
-        <img alt="complex" src={images[0].pathUrl} />
+        {images.length ? (
+          <img alt="complex" src={images[0].pathUrl} />
+        ) : (
+          <img alt="complex" src={logo} />
+        )}{" "}
       </div>
       <div className="body__card">
         <Typography sx={{ m: 1, mb: 0 }} variant="h4">

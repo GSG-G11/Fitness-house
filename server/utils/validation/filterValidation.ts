@@ -1,8 +1,8 @@
 import Joi from 'joi';
 
 const filterValidation = Joi.object({
-  minPrice: Joi.number().positive(),
-  maxPrice: Joi.number().positive(),
+  minPrice: Joi.number().integer(),
+  maxPrice: Joi.number().positive().integer(),
   page: Joi.number().integer().positive(),
 });
 
