@@ -1,5 +1,4 @@
-/* eslint-disable no-useless-escape */
-const Joi = require('joi');
+import Joi from 'joi';
 
 const forgetPasswordSchema = Joi.object({
   email: Joi.string()

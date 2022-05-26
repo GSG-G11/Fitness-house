@@ -1,5 +1,4 @@
-/* eslint-disable no-useless-escape */
-const Joi = require('joi');
+import Joi from 'joi';
 
 const resetPasswordSchema = Joi.object({
   token: Joi.string().required(),

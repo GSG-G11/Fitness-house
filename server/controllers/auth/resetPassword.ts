@@ -45,7 +45,7 @@ export default async function resetPassword(req: Request, res: Response, next: N
       });
   } catch (error: any) {
     if (error.name === 'ValidationError') {
-      next(new CustomError(error.message, 400));
+      return next(new CustomError(error.message, 400));
     }
     return next(error);
   }
