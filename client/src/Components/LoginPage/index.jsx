@@ -34,7 +34,7 @@ export default function Login({ onFinish, loading }) {
         تسجيل الدخول
       </Typography>
       <EmailInput form={loginForm} />
-      <PasswordInput form={loginForm} />
+      <PasswordInput form={loginForm} label="password" />
       <LoadingButton
         loading={loading}
         sx={{
