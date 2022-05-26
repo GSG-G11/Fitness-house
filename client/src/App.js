@@ -24,6 +24,8 @@ import "./app.css";
 
 import { setAuth, setLogout } from "./Store/Slices";
 import { ProtectedRoutes, RegisteredGymRoutes } from "./middleware";
+import RestPassword from "./Pages/RestPassword";
+import ForgetPassword from "./Pages/ForgetPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +61,22 @@ function App() {
           element={
             <RegisteredGymRoutes>
               <LoginGymPage />
+            </RegisteredGymRoutes>
+          }
+        />
+        <Route
+          path="gym/rest-password"
+          element={
+            <RegisteredGymRoutes>
+              <RestPassword />
+            </RegisteredGymRoutes>
+          }
+        />
+        <Route
+          path="gym/forget-password"
+          element={
+            <RegisteredGymRoutes>
+              <ForgetPassword />
             </RegisteredGymRoutes>
           }
         />
