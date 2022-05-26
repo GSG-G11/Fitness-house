@@ -12,6 +12,8 @@ import {
   addReviewSchema,
 } from './validation';
 
+import sendEmail from './email';
+
 export {
   CustomError,
   GymFilter,
@@ -29,4 +31,5 @@ export {
   addSubscriptionSchema,
   SubscriptionModel,
   addReviewSchema,
+  sendEmail,
 };
