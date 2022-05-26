@@ -112,7 +112,7 @@ function GymCard({ gym }) {
         </Box>
         <Box sx={{ mt: "auto", ml: 2, mb: 2 }}>
           <Link to={`/gyms/profile/${id}`}>
-            <Button variant="contained">احجز موعد</Button>
+            <Button variant="contained"> اعرض التفاصيل</Button>
           </Link>
         </Box>
       </Card>
