@@ -33,8 +33,8 @@ export default function Login({ onFinish, loading }) {
       <Typography className="center" variant="h3" component="h4" sx={{ mb: 2 }}>
         تسجيل الدخول
       </Typography>
-      <EmailInput loginForm={loginForm} />
-      <PasswordInput loginForm={loginForm} />
+      <EmailInput form={loginForm} />
+      <PasswordInput form={loginForm} />
       <LoadingButton
         loading={loading}
         sx={{

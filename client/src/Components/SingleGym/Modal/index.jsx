@@ -35,7 +35,7 @@ function Modal() {
   const { gymId } = useParams();
   const [message, setMessage] = useState({ type: "", messageText: "" });
   const { data } = useGetGymDataQuery(gymId);
-  const { monthlyPrice, sixMonthPrice } = data;
+  const { monthlyPrice, sixMonthPrice } = data.gymData;
 
   const onFinish = async (subscription, resetForm) => {
     try {
