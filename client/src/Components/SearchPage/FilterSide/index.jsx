@@ -17,7 +17,6 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import { features as gymsFeatures, genders, cities } from "../../../Services";
 
-console.log(gymsFeatures, genders, cities);
 const ITEM_HEIGHT = 25;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
