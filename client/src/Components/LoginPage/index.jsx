@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { TextField, InputAdornment, Typography } from "@mui/material";
+import React from "react";
+import { Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Visibility, VisibilityOff, Email } from "@mui/icons-material";
 import PropTypes from "prop-types";
+import EmailInput from "./EmailInput";
+import PasswordInput from "./PasswordInput";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -16,11 +17,6 @@ const loginSchema = Yup.object().shape({
 });
 
 export default function Login({ onFinish, loading }) {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
   const loginForm = useFormik({
     initialValues: {
       email: "",
@@ -37,47 +33,8 @@ export default function Login({ onFinish, loading }) {
       <Typography className="center" variant="h3" component="h4" sx={{ mb: 2 }}>
         تسجيل الدخول
       </Typography>
-      <TextField
-        sx={{ mt: 3, width: "350px" }}
-        label="أدخل البريد الإلكتروني"
-        name="email"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <Email />
-            </InputAdornment>
-          ),
-        }}
-        value={loginForm.values.email}
-        onChange={loginForm.handleChange}
-        error={!!loginForm.errors.email}
-        autoComplete="email"
-        helperText={loginForm.errors.email}
-        variant="outlined"
-      />
-      <TextField
-        sx={{ mt: 3, width: "350px" }}
-        label="أدخل كلمة السر"
-        type={showPassword ? "text" : "password"}
-        name="password"
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end" onClick={handleClickShowPassword}>
-              {showPassword ? (
-                <VisibilityOff sx={{ cursor: "pointer" }} />
-              ) : (
-                <Visibility sx={{ cursor: "pointer" }} />
-              )}
-            </InputAdornment>
-          ),
-        }}
-        value={loginForm.values.password}
-        onChange={loginForm.handleChange}
-        error={!!loginForm.errors.password}
-        helperText={loginForm.errors.password}
-        autoComplete="current-password"
-        variant="outlined"
-      />
+      <EmailInput loginForm={loginForm} />
+      <PasswordInput loginForm={loginForm} />
       <LoadingButton
         loading={loading}
         sx={{
