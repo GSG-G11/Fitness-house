@@ -49,3 +49,9 @@ Solution
 - [Github Actions](https://github.com/GSG-G11/Fitness-house/actions)
 - [Nodemailer](https://nodemailer.com)
 
+
+### Database Schema
+
+![](https://i.imgur.com/iCpRHGl.png)
+
+([back to top](about:blank#top))
