@@ -44,20 +44,20 @@ a website that give the user the ability to search about Gyms suits him
   </ol>
 </details>
 
-### About The Project
+### About The Project <span id="about-the-project"></span>
 
 ![](https://i.imgur.com/aBY2TC6.png)
 
 
-### Problem
+### Problem <span id="problem"></span>
 
 Problem
 
-### Solution
+### Solution <span id="solution"></span>
 
 Solution
 
-### Built With
+### Built With  <span id="built-with"></span>
 
 - [React.js](https://reactjs.org/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
@@ -72,16 +72,16 @@ Solution
 - [Nodemailer](https://nodemailer.com)
 
 
-### Database Schema
+### Database Schema <span id="database-schema"></span>
 
 ![](https://i.imgur.com/iCpRHGl.png)
 
 
-## Getting Started
+## Getting Started <span id="getting-started"></span> 
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+### Prerequisites  <span id="prerequisites"></span>
 
 - npm
     
@@ -90,7 +90,7 @@ To get a local copy up and running follow these simple example steps.
     ```
     
 
-### Installation
+### Installation <span id="installation"></span>
 
 1. Create a free account at [AWS S3](https://aws.amazon.com/s3/)
 2. Clone the repo
@@ -112,7 +112,7 @@ To get a local copy up and running follow these simple example steps.
 5. In the `Server` folder, rename `.env.example` file to `.env` and fill in the environment variables with your own data.
     
     
-## Usage
+## Usage <span id="usage"></span>
 
 ### User Stories
 
@@ -147,7 +147,7 @@ To get a local copy up and running follow these simple example steps.
 
 
 
-## Contact
+## Contact <span id="contact"></span>
 
 ### Our Great Team
 
