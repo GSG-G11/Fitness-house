@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import PropTypes from "prop-types";
 
-export default function RegisteredGymRoutes({ children, rest }) {
+export default function RegisteredGymRoutes({ children, isResetPage }) {
   const { isLoggedIn } = useSelector(({ checkAuth }) => checkAuth.auth);
   const [searchParams] = useSearchParams();
   if (isLoggedIn) {
@@ -12,7 +12,7 @@ export default function RegisteredGymRoutes({ children, rest }) {
   }
 
   // if is not logged in and has not token redirect to login page
-  if (rest && !searchParams.get("token")) {
+  if (isResetPage && !searchParams.get("token")) {
     return <Navigate to="/gym/login" />;
   }
 
@@ -21,9 +21,9 @@ export default function RegisteredGymRoutes({ children, rest }) {
 
 RegisteredGymRoutes.propTypes = {
   children: PropTypes.node.isRequired,
-  rest: PropTypes.bool,
+  isResetPage: PropTypes.bool,
 };
 
 RegisteredGymRoutes.defaultProps = {
-  rest: false,
+  isResetPage: false,
 };
