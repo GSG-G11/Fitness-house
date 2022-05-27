@@ -34,3 +34,18 @@ Problem
 ### Solution
 
 Solution
+
+### Built With
+
+- [React.js](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Express.js](https://expressjs.com/)
+- [TypeScript](https://www.typescriptlang.org/docs/)
+- [Sequelize](https://sequelize.org/)
+- [Material UI](https://mui.com/)
+- [AWS S3](https://aws.amazon.com/s3/)
+- [Twilio](https://www.twilio.com/)
+- [Husky](https://www.npmjs.com/package/husky)
+- [Github Actions](https://github.com/GSG-G11/Fitness-house/actions)
+- [Nodemailer](https://nodemailer.com)
+
