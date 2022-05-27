@@ -55,3 +55,40 @@ Solution
 ![](https://i.imgur.com/iCpRHGl.png)
 
 ([back to top](about:blank#top))
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- npm
+    
+    ```
+    npm install npm@latest -g
+    ```
+    
+
+### Installation
+
+1. Create a free account at [AWS S3](https://aws.amazon.com/s3/)
+2. Clone the repo
+    
+    ```
+    git clone https://github.com/GSG-G11/Fitness-house.git
+    ```
+    
+3. Install NPM packages
+    
+    ```
+    npm install
+    ```
+    
+4. In the project root folder, rename `.env.example` file to `.env` and fill in the environment variables
+    
+
+    
+5. In the `Server` folder, rename `.env.example` file to `.env` and fill in the environment variables with your own data.
+    
+    ([back to top](about:blank#top))
+    
