@@ -28,14 +28,14 @@ a website that give the user the ability to search about Gyms suits him
         <li>
           <a href="#user-stories">User Stories</a>
             <ul>
-                <li><a href="#user-stories">As a user</a></li>
-                <li><a href="gym-owner-stories">As a Gym Owner</a></li>
+                <li><a href="#user-stories">As a User</a></li>
+                <li><a href="#gym-owner-stories">As a Gym Owner</a></li>
             </ul>
           </li>           <li>
           <a href="#user-journey">User Journey</a>
           <ul>
-              <li><a href="##user-journey">As a Student</a></li>
-                <li><a href="#gym-owner-journey">As a Teacher</a></li>
+              <li><a href="#user-journey">As a User</a></li>
+                <li><a href="#gym-owner-journey">As a Gym Owner</a></li>
           </ul>
           </li> 
       </ul>
@@ -43,7 +43,8 @@ a website that give the user the ability to search about Gyms suits him
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
-## About The Project
+
+### About The Project
 
 ![](https://i.imgur.com/aBY2TC6.png)
 
