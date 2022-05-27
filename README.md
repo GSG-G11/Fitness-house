@@ -92,3 +92,25 @@ To get a local copy up and running follow these simple example steps.
     
     ([back to top](about:blank#top))
     
+## Usage
+
+### User Stories
+
+### As a User who wants to subscribe to a gym:
+
+- I can view gyms
+- I can filter gyms by Price/Location/gender/feature.
+- I can view gym profile
+- I can join the gym I want
+- I have to know when gym confirm my subscription by sms.
+- I can add my review to club I joined.
+### As a Gym Owner
+
+- I can create an account.
+- I have profile to display Gym info
+- I can add my information (location, monthly price, equipment, works hours based on gender, etc...)
+- I can edit my gym data.
+- I can see subscriptions.
+- I can activate user subscription or deactivate it.
+- I can view reviews
+    
