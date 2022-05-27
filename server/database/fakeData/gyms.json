@@ -2,7 +2,7 @@
   "gyms": [
     {
       "gymName": "نادي فريندز للياقة البدنية",
-      "logo": "https://bit.ly/3yij5Wb",
+      "logo": "https://user-images.githubusercontent.com/38624002/170736419-be22cdbb-857b-4697-a601-a1f17bb3ccb7.jpg",
       "email": "friends.fit@gmail.com",
       "password": "$2a$10$/TGZhKJ7JhwzvOwpef1.qO7HSWDG2xawPOsVxH0FkExGx.jSyL5ui",
       "phone": "082844888",
@@ -16,7 +16,7 @@
     },
     {
       "gymName": "Technogym gaza تكنو جيم",
-      "logo": "https://bit.ly/3vrJEGt",
+      "logo": "https://user-images.githubusercontent.com/38624002/170738427-0c345522-8ffa-4d8e-8983-7399979f9833.jpg",
       "email": "techno.gym@gmail.com",
       "password": "$2a$10$M5M6rtZaXLe3vGtQZle0pOAZ5XlKWwf4BPHVURoligvhb0atbpE0i",
       "phone": "082621439",
@@ -30,7 +30,7 @@
     },
     {
       "gymName": "اوكسجن جيم",
-      "logo": "https://bit.ly/3knj5Mc",
+      "logo": "https://user-images.githubusercontent.com/38624002/170734739-42d65662-9b41-4256-92ea-4eb8e7a348a3.jpg",
       "email": "oxegin.gym@gmail.com",
       "password": "$2a$10$0NDLEQykfJfjqUSc7yhdlemaQ6dZrwekpRjku5X2VZeyCPI881aa2",
       "phone": "0594421009",
@@ -44,7 +44,7 @@
     },
     {
       "gymName": "مركز الملكة الأنيقة للسيدات",
-      "logo": "https://bit.ly/3OJEc9n",
+      "logo": "https://user-images.githubusercontent.com/38624002/170739093-7eb69c95-5492-4b26-a609-a6c746b9950b.jpg",
       "email": "malka.gym@gmail.com",
       "password": "$2a$10$w4m7v4QugmcsbIZNa3qD3.KfnKVXLtXidN/tIf/JLadSBFU7s9/7C",
       "phone": "0594423259",
@@ -68,7 +68,7 @@
       "monthlyPrice": 99.55,
       "sixMonthPrice": 599.99,
       "fulltime": false,
-      "features": ["تنظيف بشرة", "أحدث الاجهزة", "مساحة واسعة", "ومساج", "علاج طبيعي"]
+      "features": ["تنظيف بشرة", "أحدث الاجهزة", "مساحة واسعة", "مساج", "علاج طبيعي"]
     }
   ]
 }
