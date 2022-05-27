@@ -28,7 +28,7 @@ export default async function forgetPassword(req: Request, res: Response, next: 
       algorithm: 'HS256',
     });
 
-    const html = forgetPasswordTemp(`${process.env.BASE_URL}gym/rest-password?token=${token}`);
+    const html = forgetPasswordTemp(`${process.env.BASE_URL}gym/reset-password?token=${token}`);
 
     sendEmail(email, 'إعادة ضبط كلمة المرور', html);
 

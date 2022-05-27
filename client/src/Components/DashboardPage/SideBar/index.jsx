@@ -20,7 +20,6 @@ import {
 import SportsGymnasticsIcon from "@mui/icons-material/SportsGymnastics";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import StarIcon from "@mui/icons-material/Star";
 
 import { PhotoCamera } from "@mui/icons-material";
 
@@ -88,11 +87,6 @@ const listItem = [
     text: "المشتركين",
     icon: <SportsGymnasticsIcon />,
     link: "/dashboard/gyms/subscribers",
-  },
-  {
-    text: "التقيمات",
-    icon: <StarIcon />,
-    link: "/dashboard/gyms/reviews",
   },
 ];
 

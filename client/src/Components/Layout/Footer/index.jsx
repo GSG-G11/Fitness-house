@@ -33,17 +33,17 @@ function Footer() {
                 </div>
                 <div className="iconDev">
                   <FaPhone className="icons" size="1.2em" />
-                  <span>+972-000000</span>
+                  <span>18645236605+</span>
                 </div>
                 <div className="iconDev">
                   <a
-                    href="mailto:fithouse-gz@gmail.com"
+                    href="mailto:fit.house.gsg@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaEnvelope className="icons" size="1.2em" />
                   </a>
-                  <span>fithouse-gz@gmail.com</span>
+                  <span>fit.house.gsg@gmail.com</span>
                 </div>
                 <div className="iconDev">
                   <a
