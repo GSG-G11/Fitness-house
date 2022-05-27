@@ -28,13 +28,13 @@ a website that give the user the ability to search about Gyms suits him
         <li>
           <a href="#user-stories">User Stories</a>
             <ul>
-                <li><a href="#user-stories">As a User</a></li>
+                <li><a href="#user--stories">As a User</a></li>
                 <li><a href="#gym-owner-stories">As a Gym Owner</a></li>
             </ul>
           </li>           <li>
           <a href="#user-journey">User Journey</a>
           <ul>
-              <li><a href="#user-journey">As a User</a></li>
+              <li><a href="#user--journey">As a User</a></li>
                 <li><a href="#gym-owner-journey">As a Gym Owner</a></li>
           </ul>
           </li> 
@@ -117,6 +117,7 @@ To get a local copy up and running follow these simple example steps.
 ### User Stories
 
 ### As a User who wants to subscribe to a gym:
+<span id="user--stories"></span>
 
 - I can view gyms
 - I can filter gyms by Price/Location/gender/feature.
@@ -124,7 +125,7 @@ To get a local copy up and running follow these simple example steps.
 - I can join the gym I want
 - I have to know when gym confirm my subscription by sms.
 - I can add my review to club I joined.
-### As a Gym Owner
+### As a Gym Owner <span id="gym-owner-stories"></span>
 
 - I can create an account.
 - I have profile to display Gym info
@@ -134,13 +135,13 @@ To get a local copy up and running follow these simple example steps.
 - I can activate user subscription or deactivate it.
 - I can view reviews
     
-### User Journey
+### User Journey 
 
-### As a **User**
+### As a **User** <span id="user--journey"></span>
 
 - When I open the site, I will be able to see all the gyms on the site and I can filter them based on several options available to me, and I can book an subscription with any gym and know if my subscription has been activated or not.
 
-### As a Gym Owner
+### As a Gym Owner  <span id="gym-owner-journey"></span>
 
 - when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
 
