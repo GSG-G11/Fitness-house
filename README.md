@@ -3,23 +3,46 @@ a website that give the user the ability to search about Gyms suits him
 
 [View Demo](https://fit-house.herokuapp.com/) . [Design Link](https://www.figma.com/file/qGg34gxhl1FXBYBlldKiYy/%D8%AA%D9%85%D8%B1%D9%8A%D9%86) · [Report Bug](https://github.com/GSG-G11/Fitness-house/issues) · [Request Feature](https://github.com/GSG-G11/Fitness-house/issues)
 
-- Table of Contents
-    1. [About The Project](about:blank#about-the-project)
-        - [Problem](about:blank#problem)
-        - [Solution](about:blank#solution)
-        - [Built With](about:blank#built-with)
-        - [Database Schema](about:blank#database-schema)
-    2. [Getting Started](about:blank#getting-started)
-        - [Prerequisites](about:blank#prerequisites)
-        - [Installation](about:blank#installation)
-    3. [Usage](about:blank#usage)
-        - [User Stories](about:blank#user-stories)
-            - [As a User](about:blank#user-stories)
-            - [As a Gym Owner](about:blank#Gym_Owner-stories)
-        - [User Journey](about:blank#user-journey)
-            - [As A Gym Owner](about:blank#user-journey)
-            - [As A User](about:blank#Gym_Owner-journey)
-    4. [Contact](about:blank#contact)
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#database-schema">Database Schema</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#usage">Usage</a>
+      <ul>
+        <li>
+          <a href="#user-stories">User Stories</a>
+            <ul>
+                <li><a href="#user-stories">As a user</a></li>
+                <li><a href="gym-owner-stories">As a Gym Owner</a></li>
+            </ul>
+          </li>           <li>
+          <a href="#user-journey">User Journey</a>
+          <ul>
+              <li><a href="##user-journey">As a Student</a></li>
+                <li><a href="#gym-owner-journey">As a Teacher</a></li>
+          </ul>
+          </li> 
+      </ul>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 ## About The Project
 
 ![](https://i.imgur.com/aBY2TC6.png)
