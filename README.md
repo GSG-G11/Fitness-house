@@ -51,11 +51,11 @@ a website that give the user the ability to search about Gyms suits him
 
 ### Problem <span id="problem"></span>
 
-Problem
+There are many gyms in the Gaza Strip, which makes the process of finding the right gym very difficult for the user, in addition to the absence of any sites that provide this service to the user besides Facebook groups.
 
 ### Solution <span id="solution"></span>
 
-Solution
+Fithouse is a platform that offers to find the best suitable gym for you and book an appointment with the gym you have chosen.
 
 ### Built With  <span id="built-with"></span>
 
