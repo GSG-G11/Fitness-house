@@ -20,7 +20,6 @@ a website that give the user the ability to search about Gyms suits him
             - [As A Gym Owner](about:blank#user-journey)
             - [As A User](about:blank#Gym_Owner-journey)
     4. [Contact](about:blank#contact)
-    5. [Acknowledgments](about:blank#acknowledgments)
 ## About The Project
 
 ![](https://i.imgur.com/aBY2TC6.png)
@@ -123,5 +122,23 @@ To get a local copy up and running follow these simple example steps.
 ### As a Gym Owner
 
 - when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
+
+([back to top](about:blank#top))
+
+
+## Contact
+
+### Our Great Team
+
+
+- Ayman Fahgan [@Afahgan](https://github.com/AFahgan)
+- Ahmed Qeshta  [@AhmedQeshta](https://github.com/AhmedQeshta)
+-  Rawan Eyad  [@rawaneyad](https://github.com/rawaneyad)
+
+### Our Great Team Leader
+-  Lina Ebeid   [@LinaYahya](https://github.com/LinaYahya)
+
+
+Project Link: [https://github.com/GSG-G11/Fitness-hous](https://github.com/GSG-G11/Fitness-house)[e](https://github.com/GSG-G11/Fitness-house)
 
 ([back to top](about:blank#top))
