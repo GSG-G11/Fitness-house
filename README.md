@@ -114,3 +114,14 @@ To get a local copy up and running follow these simple example steps.
 - I can activate user subscription or deactivate it.
 - I can view reviews
     
+### User Journey
+
+### As a **User**
+
+- When I open the site, I will be able to see all the gyms on the site and I can filter them based on several options available to me, and I can book an subscription with any gym and know if my subscription has been activated or not.
+
+### As a Gym Owner
+
+- when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
+
+([back to top](about:blank#top))
