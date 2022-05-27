@@ -98,7 +98,7 @@ const activeClassName = () => {
 
 export default function SideBar({ isOpen, handleDrawer }) {
   return (
-    <Drawer variant="permanent" sx={{ background: "red" }} open={isOpen}>
+    <Drawer variant="permanent" open={isOpen}>
       <DrawerHeader>
         <Typography variant="h5" component="div">
           فت هاوس

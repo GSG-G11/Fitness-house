@@ -1,113 +1,98 @@
 {
   "images": [
     {
-      "pathUrl": "https://bit.ly/39s08Wv",
-      "publicKey": "gyms/2wd3wad893adw69da318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170736504-90b92b94-1971-4345-894a-b8c9c4c3ecaa.jpg",
+      "publicKey": "gyms/170736504-90b92b94-1971-4345-894a-b8c9c4c3ecaa",
       "gymId": 1
     },
     {
-      "pathUrl": "https://bit.ly/3kpe2e9",
-      "publicKey": "gyms/2wd3wad893adw129da318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170736675-75716bd3-7465-4e62-bcef-c054f563ef4d.jpg",
+      "publicKey": "gyms/170736675-75716bd3-7465-4e62-bcef-c054f563ef4d",
       "gymId": 1
     },
     {
-      "pathUrl": "https://bit.ly/3LxTj3Y",
-      "publicKey": "gyms/2wd3wad893adw129d15318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170736846-2ab7b88e-0cbe-437f-aae5-c9c29927d11d.jpg",
+      "publicKey": "gyms/170736846-2ab7b88e-0cbe-437f-aae5-c9c29927d11d",
       "gymId": 1
     },
     {
-      "pathUrl": "https://bit.ly/3kpe2e9",
-      "publicKey": "gyms/2wd3wad893adw129da318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170737191-67aeaf11-f9ac-4cbb-8c42-24b30c9616de.jpg",
+      "publicKey": "gyms/170737191-67aeaf11-f9ac-4cbb-8c42-24b30c9616de",
       "gymId": 1
     },
     {
-      "pathUrl": "https://bit.ly/3LxTj3Y",
-      "publicKey": "gyms/2wd3wad893adw129d15318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170737065-83c81161-c473-4a0a-91f6-ff7359d26bac.jpg",
+      "publicKey": "gyms/170737065-83c81161-c473-4a0a-91f6-ff7359d26bac",
       "gymId": 1
     },
     {
-      "pathUrl": "https://bit.ly/3y0jWdK",
-      "publicKey": "gyms/2wd3wad893adw1291215318aw",
-      "gymId": 2
-    },
-    {
-      "pathUrl": "https://bit.ly/3y3O34c",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170738620-1d94c6e3-de3c-4b10-8e70-11aedf6ce499.jpg",
       "publicKey": "gyms/2wd3wad893adw1295215318aw",
       "gymId": 2
     },
     {
-      "pathUrl": "https://bit.ly/3vSy8Tp",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170738524-115c29b0-05e3-45c4-ba5b-cf9b0e63eafc.jpg",
+      "publicKey": "gyms/2wd3wad893adw1291215318aw",
+      "gymId": 2
+    },
+    {
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170738679-a517c81c-5eae-4d83-8076-13a4d989349e.jpg",
       "publicKey": "gyms/2wd3wad823adw1291215318aw",
       "gymId": 2
     },
     {
-      "pathUrl": "https://bit.ly/3vrJEGt",
-      "publicKey": "gyms/2wd3wad5293adw1291215318aw",
-      "gymId": 2
-    },
-    {
-      "pathUrl": "https://bit.ly/3vrJEGt",
-      "publicKey": "gyms/2wd3wad5293adw1291215318aw",
-      "gymId": 2
-    },
-    {
-      "pathUrl": "https://bit.ly/3vVlCT1",
-      "publicKey": "gyms/2wd3wad5293adw1292355318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170735881-29e05fec-29bb-48e6-a9de-61e2e096db93.jpg",
+      "publicKey": "gyms/170735881-29e05fec-29bb-48e6-a9de-61e2e096db93",
       "gymId": 3
     },
     {
-      "pathUrl": "https://bit.ly/37TB2zo",
-      "publicKey": "gyms/2wd3wad5293adw1292355318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170733800-06c0ca39-ddce-4304-95aa-0d9b8716b17d.jpg",
+      "publicKey": "gyms/170733800-06c0ca39-ddce-4304-95aa-0d9b8716b17d",
       "gymId": 3
     },
     {
-      "pathUrl": "https://bit.ly/3vUL8b8",
-      "publicKey": "gyms/2wd3wad5293adw1292dw55318aw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170733886-1d9a620a-e024-4085-87ee-500ac4a2401d.jpg",
+      "publicKey": "gyms/170733886-1d9a620a-e024-4085-87ee-500ac4a2401d",
       "gymId": 3
     },
     {
-      "pathUrl": "https://bit.ly/3MFFv7o",
-      "publicKey": "gyms/2wd3wad5293adw1292355518aw",
+      "pathUrl": "(https://user-images.githubusercontent.com/38624002/170734026-1e74fa0f-472e-4476-8d7c-81fbd7bad2c9.jpg",
+      "publicKey": "gyms/170734026-1e74fa0f-472e-4476-8d7c-81fbd7bad2c9",
       "gymId": 3
     },
     {
-      "pathUrl": "https://bit.ly/3vP4j6l",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
-      "gymId": 3
-    },
-    {
-      "pathUrl": "https://bit.ly/3kqRidQ",
-      "publicKey": "gyms/2wd3wad5293adw12923553594dw",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739133-35d65cd6-6205-4590-8549-f990d97a7386.jpg",
+      "publicKey": "gyms/170739133-35d65cd6-6205-4590-8549-f990d97a7386",
       "gymId": 4
     },
     {
-      "pathUrl": "https://bit.ly/3OJEc9n",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739320-21460f4e-aeba-4946-b15a-f44249aeb965.jpg",
+      "publicKey": "gyms/170739320-21460f4e-aeba-4946-b15a-f44249aeb965",
       "gymId": 4
     },
     {
-      "pathUrl": "https://bit.ly/3vsZMYj",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739298-e7cde669-e2e4-4ce0-8501-4cc27d75d614.jpg",
+      "publicKey": "gyms/170739298-e7cde669-e2e4-4ce0-8501-4cc27d75d614",
       "gymId": 4
     },
     {
-      "pathUrl": "https://bit.ly/37MykMc",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739744-0a06a337-4691-43ae-a301-390130061d0e.jpg",
+      "publicKey": "gyms/170739744-0a06a337-4691-43ae-a301-390130061d0e",
       "gymId": 5
     },
     {
-      "pathUrl": "https://bit.ly/3s0XjSG",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739616-c29ada73-9cbc-4f94-af2e-2d8166879494.jpg",
+      "publicKey": "gyms/170739616-c29ada73-9cbc-4f94-af2e-2d8166879494",
       "gymId": 5
     },
     {
-      "pathUrl": "https://bit.ly/3vVOFG8",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739763-e1711500-406e-4ead-ab36-5ae2ee9a6199.jpg",
+      "publicKey": "gyms/170739763-e1711500-406e-4ead-ab36-5ae2ee9a6199.jpg",
       "gymId": 5
     },
     {
-      "pathUrl": "https://bit.ly/3LtsMo5",
-      "publicKey": "gyms/2wd3wad5293adw129235531836",
+      "pathUrl": "https://user-images.githubusercontent.com/38624002/170739954-bade149e-7e38-4134-b2d8-09c0a43e6b07.jpg",
+      "publicKey": "gyms/170739954-bade149e-7e38-4134-b2d8-09c0a43e6b07.jpg",
       "gymId": 5
     }
   ]
