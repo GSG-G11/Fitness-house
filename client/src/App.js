@@ -64,7 +64,7 @@ function App() {
           }
         />
         <Route
-          path="gym/rest-password"
+          path="gym/reset-password"
           element={
             <RegisteredGymRoutes isResetPage>
               <RestPassword />
