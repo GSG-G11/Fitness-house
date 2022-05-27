@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import PropTypes from "prop-types";
 import EmailInput from "../EmailInput";
 
 const forgetSchema = Yup.object().shape({
@@ -10,14 +11,14 @@ const forgetSchema = Yup.object().shape({
     .email(" البريد الالكتروني غير صحيح")
     .required("حقل البريد الالكتروني مطلوب"),
 });
-export default function ForgetPasswordCom() {
+export default function ForgetPasswordCom({ onFinish, loading }) {
   const forgetForm = useFormik({
     initialValues: {
       email: "",
     },
     validationSchema: forgetSchema,
     onSubmit: (values) => {
-      console.log(values);
+      onFinish(values);
     },
     validateOnChange: false,
   });
@@ -28,6 +29,7 @@ export default function ForgetPasswordCom() {
       </Typography>
       <EmailInput form={forgetForm} />
       <LoadingButton
+        loading={loading}
         sx={{
           mt: 3,
           width: "350px",
@@ -42,3 +44,11 @@ export default function ForgetPasswordCom() {
     </form>
   );
 }
+
+ForgetPasswordCom.propTypes = {
+  onFinish: PropTypes.func.isRequired,
+};
+
+ForgetPasswordCom.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};
