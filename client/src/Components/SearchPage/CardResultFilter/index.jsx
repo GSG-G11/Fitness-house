@@ -20,8 +20,8 @@ export default function CardResultFilter({
   if (loading) {
     const loadingCards = new Array(3).fill(null);
     return loadingCards.map((_, index) => (
-      <div className="switchdiv">
-        <LoadingCard key={index} />
+      <div key={index} className="switchdiv">
+        <LoadingCard />
       </div>
     ));
   }

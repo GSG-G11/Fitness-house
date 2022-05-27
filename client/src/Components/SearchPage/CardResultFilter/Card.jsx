@@ -22,7 +22,7 @@ export default function Card({ filter }) {
           <img alt="complex" src={images[0].pathUrl} />
         ) : (
           <img alt="complex" src={logo} />
-        )}{" "}
+        )}
       </div>
       <div className="body__card">
         <Typography sx={{ m: 1, mb: 0 }} variant="h4">
