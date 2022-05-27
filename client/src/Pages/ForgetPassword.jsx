@@ -11,7 +11,7 @@ export default function ForgetPassword() {
     open: false,
     vertical: "top",
     horizontal: "center",
-    severity: "",
+    severity: "success",
   });
 
   const { message, vertical, horizontal, open, severity } = alertMessage;
