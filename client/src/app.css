@@ -24,6 +24,16 @@ body {
   overflow-x: hidden;
 }
 
+body #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer__container {
+  margin-top: auto;
+}
+
 ::-moz-selection {
   color: var(--selection-color);
   background: var(--selection-bg-color);
