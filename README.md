@@ -46,8 +46,7 @@ a website that give the user the ability to search about Gyms suits him
 
 ### About The Project <span id="about-the-project"></span>
 
-![](https://i.imgur.com/aBY2TC6.png)
-
+![database schema](https://user-images.githubusercontent.com/38624002/170699743-9727eb3c-be21-497d-b236-61b2fe2670be.png)
 
 ### Problem <span id="problem"></span>
 
