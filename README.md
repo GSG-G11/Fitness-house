@@ -24,7 +24,6 @@ a website that give the user the ability to search about Gyms suits him
 
 ![](https://i.imgur.com/aBY2TC6.png)
 
-([back to top](about:blank#top))
 
 ### Problem
 
@@ -53,7 +52,6 @@ Solution
 
 ![](https://i.imgur.com/iCpRHGl.png)
 
-([back to top](about:blank#top))
 
 ## Getting Started
 
@@ -89,7 +87,6 @@ To get a local copy up and running follow these simple example steps.
     
 5. In the `Server` folder, rename `.env.example` file to `.env` and fill in the environment variables with your own data.
     
-    ([back to top](about:blank#top))
     
 ## Usage
 
@@ -123,7 +120,6 @@ To get a local copy up and running follow these simple example steps.
 
 - when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
 
-([back to top](about:blank#top))
 
 
 ## Contact
@@ -141,4 +137,3 @@ To get a local copy up and running follow these simple example steps.
 
 Project Link: [https://github.com/GSG-G11/Fitness-hous](https://github.com/GSG-G11/Fitness-house)[e](https://github.com/GSG-G11/Fitness-house)
 
-([back to top](about:blank#top))
