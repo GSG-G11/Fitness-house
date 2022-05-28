@@ -25,19 +25,20 @@ a website that give the user the ability to search about Gyms suits him
     <li>
       <a href="#usage">Usage</a>
       <ul>
-        <li>
-          <a href="#user-stories">User Stories</a>
-            <ul>
-                <li><a href="#user--stories">As a User</a></li>
-                <li><a href="#gym-owner-stories">As a Gym Owner</a></li>
-            </ul>
-          </li>           <li>
+               <li>
           <a href="#user-journey">User Journey</a>
           <ul>
               <li><a href="#user--journey">As a User</a></li>
                 <li><a href="#gym-owner-journey">As a Gym Owner</a></li>
           </ul>
           </li> 
+            <li>
+          <a href="#user-stories">User Stories</a>
+            <ul>
+                <li><a href="#user--stories">As a User</a></li>
+                <li><a href="#gym-owner-stories">As a Gym Owner</a></li>
+            </ul>
+          </li>  
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -58,18 +59,13 @@ There are many gyms in the Gaza Strip, which makes the process of finding the ri
 Fithouse is a platform that offers to find the best suitable gym for you and book an appointment with the gym you have chosen.
 
 ### Built With  <span id="built-with"></span>
+- Front End : [React.js](https://reactjs.org/) - [Redux Toolkit](https://redux-toolkit.js.org/) - [Material UI](https://mui.com/) - [React Router](https://reacttraining.com/react-router/web/guides/quick-start) - [React Hooks](https://reactjs.org/docs/hooks-intro.html) 
+- Back End : [Express.js](https://expressjs.com/) - [TypeScript](https://www.typescriptlang.org/docs/)
+- Database : [Sequelize](https://sequelize.org/)
+- CI/CD : [Git](https://git-scm.com/) - [Github Actions](https://github.com/GSG-G11/Fitness-house/actions)
+- Storage : [AWS S3](https://aws.amazon.com/s3/)
+- other : [Twilio](https://www.twilio.com/) - [Husky](https://www.npmjs.com/package/husky) - [Nodemailer](https://nodemailer.com)
 
-- [React.js](https://reactjs.org/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [Express.js](https://expressjs.com/)
-- [TypeScript](https://www.typescriptlang.org/docs/)
-- [Sequelize](https://sequelize.org/)
-- [Material UI](https://mui.com/)
-- [AWS S3](https://aws.amazon.com/s3/)
-- [Twilio](https://www.twilio.com/)
-- [Husky](https://www.npmjs.com/package/husky)
-- [Github Actions](https://github.com/GSG-G11/Fitness-house/actions)
-- [Nodemailer](https://nodemailer.com)
 
 
 ### Database Schema <span id="database-schema"></span>
@@ -113,6 +109,16 @@ To get a local copy up and running follow these simple example steps.
     
     
 ## Usage <span id="usage"></span>
+### User Journey 
+
+### As a **User** <span id="user--journey"></span>
+
+- When I open the site, I will be able to see all the gyms on the site and I can filter them based on several options available to me, and I can book an subscription with any gym and know if my subscription has been activated or not.
+
+### As a Gym Owner  <span id="gym-owner-journey"></span>
+
+- when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
+
 
 ### User Stories
 
@@ -135,16 +141,6 @@ To get a local copy up and running follow these simple example steps.
 - I can activate user subscription or deactivate it.
 - I can view reviews
     
-### User Journey 
-
-### As a **User** <span id="user--journey"></span>
-
-- When I open the site, I will be able to see all the gyms on the site and I can filter them based on several options available to me, and I can book an subscription with any gym and know if my subscription has been activated or not.
-
-### As a Gym Owner  <span id="gym-owner-journey"></span>
-
-- when I open the site I can add a new gym and add everything about it, and i can see the users who booked an appointment and activate user subscription or deactivate it.
-
 
 
 ## Contact <span id="contact"></span>
