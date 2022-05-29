@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import React from "react";
 
 import "./styles.css";
@@ -5,16 +6,7 @@ import "./styles.css";
 export default function Loading() {
   return (
     <div className="loading__container">
-      <div className="lds-roller">
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-      </div>
+      <CircularProgress />
       <span>جاري التحميل . يرجي الانتظار</span>
     </div>
   );
