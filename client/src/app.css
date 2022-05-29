@@ -46,12 +46,12 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #276678;
+  background: #b0b0b0;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1b4a57;
+  background: #717171;
 }
 
 select,
