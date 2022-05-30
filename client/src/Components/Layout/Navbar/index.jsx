@@ -167,7 +167,7 @@ function Navbar() {
           <Link to="/" className="brand-logo">
             <Avatar
               alt="logo"
-              src="%PUBLIC_URL%/logo.png"
+              src="/logo.png"
               sx={{ width: "100%", height: 35, borderRadius: 0 }}
             />
           </Link>
