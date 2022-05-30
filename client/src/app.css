@@ -114,6 +114,7 @@ a:focus {
 }
 
 .sub__container {
+  width: 100%;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -139,6 +140,8 @@ a:focus {
 @media screen and (min-width: 1600px) {
   .sub__container {
     max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
