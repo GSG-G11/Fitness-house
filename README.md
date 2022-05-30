@@ -1,7 +1,26 @@
-# Fitness-house
-a website that give the user the ability to search about Gyms suits him
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/GSG-G11/Fitness-house">
+    <img src="https://user-images.githubusercontent.com/38624002/171007838-db2ba64e-e990-47d8-9277-c41154326f72.png" alt="Logo" width="150" height="80">
+  </a>
 
-[View Demo](https://fit-house.herokuapp.com/) . [Design Link](https://www.figma.com/file/qGg34gxhl1FXBYBlldKiYy/%D8%AA%D9%85%D8%B1%D9%8A%D9%86) · [Report Bug](https://github.com/GSG-G11/Fitness-house/issues) · [Request Feature](https://github.com/GSG-G11/Fitness-house/issues)
+<h3 align="center">Fit house - فت هاوس</h3>
+
+  <p align="center">
+    A website that give the user the ability to search about Gyms suits him
+    <br />
+    <br />
+    <a href="https://fit-house.herokuapp.com/" target="_blank">View Demo</a>
+    ·
+    <a href="https://www.figma.com/file/qGg34gxhl1FXBYBlldKiYy/%D8%AA%D9%85%D8%B1%D9%8A%D9%86">Design Link</a>
+    ·
+    <a href="https://github.com/GSG-G11/Fitness-house/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/GSG-G11/Fitness-house/issues">Request Feature</a>
+  </p>
+</div>
+
 
 <details>
   <summary>Table of Contents</summary>
@@ -45,9 +64,10 @@ a website that give the user the ability to search about Gyms suits him
   </ol>
 </details>
 
+
 ### About The Project <span id="about-the-project"></span>
 
-![](https://i.imgur.com/aBY2TC6.png)
+![about the project](https://user-images.githubusercontent.com/38624002/171005793-537ea717-485c-4f80-b2b8-e98f1d058652.png)
 
 
 ### Problem <span id="problem"></span>

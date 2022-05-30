@@ -18,8 +18,8 @@
 }
 
 .background {
-  background: rgb(38, 104, 122);
-  background: linear-gradient(150deg, #26687a77 0%, #a5c9e84c 100%);
+  background: #ffffff;
+  background: linear-gradient(150deg, #4b919248 0%, #86c1c215 100%);
   height: 100%;
   width: 100%;
   position: absolute;
