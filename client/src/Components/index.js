@@ -5,6 +5,7 @@ import { TopGymCards, JoinUs, OfferForYou, Slider } from "./HomePage";
 import { Navbar, Footer } from "./Layout";
 import { GymReviews, GymProfile, GymImages } from "./SingleGym";
 import Login from "./LoginPage";
+import Loading from "./Loading";
 
 export {
   Filter,
@@ -23,4 +24,5 @@ export {
   UpdateProfile,
   UploadImages,
   Login,
+  Loading,
 };

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  Avatar,
   Box,
   Button,
   Divider,
@@ -137,7 +138,11 @@ function Navbar() {
         <div className="display-raw">
           <div className="display-raw">
             <Link to="/" className="brand-logo">
-              فت هاوس
+              <Avatar
+                alt="logo"
+                src="/logo.png"
+                sx={{ width: "100%", height: 35, borderRadius: 0 }}
+              />
             </Link>
             <ul className="display-raw nav-list">
               {listNavbar.map(({ link, text }) => (
@@ -156,11 +161,15 @@ function Navbar() {
         </div>
       </nav>
 
-      {/*  For mobile Version */}
+      {/*  For mobile Version  */}
       <nav>
         <div className="sub__container display-raw show-mobile">
           <Link to="/" className="brand-logo">
-            فت هاوس
+            <Avatar
+              alt="logo"
+              src="/logo.png"
+              sx={{ width: "100%", height: 35, borderRadius: 0 }}
+            />
           </Link>
 
           <div className="left-nav-mobile">

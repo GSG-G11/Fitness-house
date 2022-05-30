@@ -12,6 +12,7 @@
     "start": "NODE_ENV=production node ./dist",
     "lint-server": "eslint --fix --ext .js,.ts server/",
     "db:build": "cross-env DB_BUILD=true NODE_ENV=dev ts-node ./server/database/fakeData/index.ts",
+    "db:build-production": "cross-env DB_BUILD=true NODE_ENV=production ts-node ./server/database/fakeData/index.ts",
     "heroku-postbuild": " cd client && npm i && npm run build",
     "tsc": "tsc",
     "postinstall": "npm run tsc"

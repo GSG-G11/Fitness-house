@@ -1,0 +1,18 @@
+.loading__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  color: #26829b;
+  flex-direction: column;
+  font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.loading__container span {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: 1.1rem;
+}
+

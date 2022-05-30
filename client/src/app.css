@@ -56,12 +56,12 @@ body #root {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #276678;
+  background: #b0b0b0;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #1b4a57;
+  background: #717171;
 }
 
 select,
@@ -114,6 +114,7 @@ a:focus {
 }
 
 .sub__container {
+  width: 100%;
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -139,7 +140,8 @@ a:focus {
 @media screen and (min-width: 1600px) {
   .sub__container {
     max-width: 1600px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
