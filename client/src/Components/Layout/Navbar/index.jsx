@@ -161,7 +161,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/*  For mobile Version */}
+      {/*  For mobile Version  */}
       <nav>
         <div className="sub__container display-raw show-mobile">
           <Link to="/" className="brand-logo">
