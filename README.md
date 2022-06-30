@@ -148,7 +148,7 @@ To get a local copy up and running follow these simple example steps.
 ### Our Great Team
 
 
-- Ayman Fahgan [@Afahgan](https://github.com/AFahgan)
+- Ayman Fahgan [@AymanSami98](https://github.com/AymanSami98)
 - Ahmed Qeshta  [@AhmedQeshta](https://github.com/AhmedQeshta)
 -  Rawan Eyad  [@rawaneyad](https://github.com/rawaneyad)
 
